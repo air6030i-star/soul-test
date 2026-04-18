@@ -156,6 +156,30 @@ body{
 /* ââ FOOTER ââ */
 .footer{text-align:center;padding:24px;font-size:11px;color:var(--text-mid);opacity:.6;letter-spacing:.06em}
 
+/* ââ FAQ ââ */
+.faq-section{background:var(--warm);border-top:1px solid rgba(196,121,74,.15);padding:56px 24px 64px}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:40px}
+.faq-tag{display:inline-block;background:rgba(194,82,40,.1);color:var(--copper);font-size:11px;letter-spacing:.18em;padding:4px 14px;border-radius:20px;margin-bottom:14px}
+.faq-title{font-size:clamp(20px,3.5vw,28px);font-weight:400;color:var(--text-dark);letter-spacing:.08em;margin-bottom:8px}
+.faq-sub{font-size:13px;color:var(--text-mid)}
+.faq-sub a{color:var(--copper);text-decoration:none}
+.faq-group{margin-bottom:32px}
+.faq-group-label{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--text-mid);margin-bottom:12px;padding-left:4px}
+.faq-item{background:#fff;border-radius:12px;margin-bottom:10px;border:1px solid rgba(196,121,74,.15);overflow:hidden;box-shadow:0 1px 8px rgba(92,42,16,.04)}
+.faq-q{width:100%;background:none;border:none;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:12px;font-family:inherit;font-size:15px;font-weight:500;color:var(--text-dark);transition:background .2s}
+.faq-q:hover{background:rgba(253,238,221,.5)}
+.faq-q.open{background:rgba(253,238,221,.6)}
+.faq-arrow{font-size:16px;color:var(--copper);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:400px;padding:0 20px 20px}
+.faq-a p{font-size:14px;line-height:1.9;color:var(--text-mid)}
+.faq-a a{color:var(--copper);text-decoration:none}
+.faq-a a:hover{text-decoration:underline}
+.faq-link{display:inline-block;margin-top:12px;background:rgba(194,82,40,.08);border:1px solid rgba(194,82,40,.2);color:var(--copper);padding:10px 18px;border-radius:8px;font-size:13px;text-decoration:none;transition:background .2s}
+.faq-link:hover{background:rgba(194,82,40,.15)}
+
 @media(max-width:480px){
   .mbti-grid{grid-template-columns:repeat(4,1fr);gap:5px}
   .mbti-btn{padding:8px 2px}
@@ -207,14 +231,130 @@ body{
     </div>
   </div>
 
-  <!-- FAQ -->
-  <div class="faq-mini">
-    <div class="faq-mini-title">å¸¸è¦åé¡</div>
-    <div class="faq-mini-item"><strong>ä¸è¼å¾æä¸éï¼</strong><br>è«ç¢ºèªè£ç½®æå®è£ PDF é±è®å¨ï¼Adobe Reader æææ©å§å»ºï¼ã</div>
-    <div class="faq-mini-item"><strong>é¸é¯ MBTI äºï¼</strong><br>ç´æ¥éæ°é¸æå³å¯ï¼é é¢ä¸æ¹ææ´æ°ã</div>
-    <div class="faq-mini-item"><strong>è³¼è²·å¨åçæ³åå¾ä¸ä»½ PDFï¼</strong><br>é¸å¥½çµåå¾æåæé¡¯ç¤ºä¸åä¸è¼æéã</div>
-  </div>
 
+</div>
+
+<!-- ââ FAQ ââ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="faq-tag">FAQ</div>
+      <h2 class="faq-title">å¸¸è¦åé¡</h2>
+      <p class="faq-sub">æ¾ä¸å°ç­æ¡ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-group">
+        <div class="faq-group-label">ð¥ ä¸è¼ç¸é</div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>è²·å®ä¹å¾æéº¼ä¸è¼ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>è³¼è²·æåå¾ï¼ä½ ææ¶å° Gumroad å¯ä¾çæ¶æä¿¡ãé»éä¿¡ä¸­çãView contentãæéï¼æå¨æ¶æé é¢é»ãð é»éè£¡ï¼é¸æä½ ççµåä¸è¼ PDFãï¼é²å¥æ¬é é¢å¾é¸æä½ ç MBTI äººæ ¼é¡åï¼å³å¯ç«å³ä¸è¼å°å±¬ PDFã</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>ä¸è¼é£çµæä¸éæéº¼è¾¦ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>è«åç¢ºèªç¶²è·¯é£ç·æ­£å¸¸ãè¥ä½¿ç¨ææ©ï¼å»ºè­°æ¹ç¨ Chrome æ Safari çè¦½å¨éåãè¥é£çµä»ç¡æ³ä½¿ç¨ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼æåæå¨ 24 å°æå§èçã</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>æä¸ç¥éèªå·±ç MBTI æéº¼è¾¦ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>å¯ä»¥åå°åè²»æ¸¬é©ç¶²ç«å®ææ¸¬é©ï¼ç´ 10 åéå³å¯å¾å°çµæï¼ååä¾ä¸è¼ä½ çå°å±¬çæ¬ã</p>
+            <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">ð åå¾åè²» MBTI æ¸¬é©ï¼16Personalitiesï¼</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">ð¦ ç¢åç¸é</div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>æ¨æºçå Pro çå·®å¨åªè£¡ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p><strong>æ¨æºç NT$199</strong> â 8 é è¨ºæ·å·¥å·ï¼å¹«ä½ å¿«éèªè­è¦ªå­éé­çµåãäºè§£è¡çªæ¨¡å¼èå°è©±è³æ¬ã</p>
+            <p style="margin-top:8px"><strong>Pro ç NT$499</strong> â 17 é è¡åæåï¼å« 4 é±ç·´ç¿è¨ç«ãæç·æ¥æè³æ¬ãç¶æ¯èªæåæé¡ç­ï¼é©åæ³æ·±åº¦æ¹è®è¦ªå­éä¿çç¶æ¯ã</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>ä¸åä¸çåå«ä»éº¼ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>ä¸åä¸çï¼NT$649ï¼åå«ä¸ä»½ç¢åï¼<strong>ç¶æ¯ç´å£æå + æ¨æºçè¦ªå­æå + Pro çè¦ªå­æå</strong>ï¼åè³¼äº«æåªæ å¹æ ¼ï¼æ¯åéè³¼è²·ç NT$148ã</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>è³¼è²·å¾å¯ä»¥ä¸è¼å¶ä» MBTI çµååï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>å¯ä»¥ï¼æ¬é é¢å¯ä»¥èªç±é¸æä»»ä½ MBTI çµåä¸è¼ï¼ä¸åéå¶ãå¦æä½ çå­©å­æå¤åå¯è½çé¡åï¼æ­¡è¿å¨é¨ä¸è¼ä¾æ¯è¼ã</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">ð° ä»æ¬¾èéæ¬¾</div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>æ¯æ´åªäºä»æ¬¾æ¹å¼ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>éé Gumroad å¹³å°ä»æ¬¾ï¼æ¯æ´ä¿¡ç¨å¡ï¼VisaãMastercardãAmerican Expressï¼ PayPalï¼ä»æ¬¾å®å¨ç± Gumroad ä¿éã</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>å¯ä»¥éæ¬¾åï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>æä¾ <strong>30 å¤©éæ¬¾ä¿è­</strong>ãå¦ééæ¬¾ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼ä¸¦èªªæè³¼è²·æ¥æèè¨å®ç·¨èï¼æåæç¡å¿«åå©è¾¦çã</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">ð¬ å¶ä»</div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>æåé¡æ¾ä¸å°ç­æ¡æéº¼è¾¦ï¼</span>
+            <span class="faq-arrow">â¾</span>
+          </button>
+          <div class="faq-a">
+            <p>è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼æåæå¨ <strong>24 å°æå§</strong>åè¦ä½ ã</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <div class="footer">Â© 2026 Soul Universe Â· éé­è¦ªå­ç³»å</div>
@@ -391,7 +531,7 @@ const LINKS = {
     'INFP-INTP': 'https://drive.google.com/uc?export=download&id=1h34mrvjN_3nXyrbd5gIVOZ1bF8LgC1jE',
     'INFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1SXmC_koCkpQu43T2FWi4wuSv0Y-yqSrb',
     'INFP-ISFP': 'https://drive.google.com/uc?export=download&id=1DSa53YYq-IXvK9UetUil_oOyVq3zmtbK',
-    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1HnnY2Nqcs5I1KcF2f13m1ya4_B_m9wec',
+    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1HhnY2Nqcs5I1KcF2f13m1ya4_B_m9wec',
     'INFP-ISTP': 'https://drive.google.com/uc?export=download&id=1si6EEzn_MgvuPjxgkRuVnDcsiGfnuZmO',
     'INTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1AkRwuDFKWbfzUnFhu8DG4SFLWTVt4Eo0',
     'INTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1Lqr6QuzX4x9fOdqnuv0jsuab8KuJf7vl',
@@ -592,7 +732,7 @@ const LINKS = {
     'ESTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1Xrhtu5i1f5vCN9DHasUx9ZONuQtCE-jS',
     'ESTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1XMDVmUGGV_UktIW5FKWX1esZA4aid1bS',
     'ESTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1fuqy8D3dcmV1zg2BpiQZLF9MDtpS8ekV',
-    'ESTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1-KmATT6aktVj16HITfl7jjOEQLJRqwgd',
+    'ESTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1-KmAUT6aktVj16HITfl7jjOEQLJRqwgd',
     'ESTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1cVLUmW43hSkysjkELR74jYhWGLDIG94D',
     'ESTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1bSJUjFdXmvjOHvFRYeM6g-w31TW4G6zu',
     'ESTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1ssm4pnYZDs2s8eW3q8NeZn02X7jkkVe3',
@@ -739,143 +879,4 @@ const LINKS = {
     'ISTP-ESFP': 'https://drive.google.com/uc?export=download&id=18zqyiMS4T9_xXF8VC3HplSbO9QQIOZuV',
     'ISTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1fbSAFxjfoDc1EUDQ4MKVIHIKheLArIxE',
     'ISTP-ESTP': 'https://drive.google.com/uc?export=download&id=1fBIQZt431XLxpcAQ2IT5jkglR_m7Zpqv',
-    'ISTP-INFJ': 'https://drive.google.com/uc?export=download&id=1VkMzrgRNa1omNSSqTjBQzp0fK2C9jhgx',
-    'ISTP-INFP': 'https://drive.google.com/uc?export=download&id=1ZGp1eIAnYVzPQKIljgkYm0Z7XAqqBiI5',
-    'ISTP-INTJ': 'https://drive.google.com/uc?export=download&id=15fwk84RykIQcNQX4C-2Y897QyXJ8Otpn',
-    'ISTP-INTP': 'https://drive.google.com/uc?export=download&id=1wjHbnEMMyBDl8AQ2PJYMRFOzd-nLMPMH',
-    'ISTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1iwaAtAqVQ_EfTZGqv1M23sqwgCR4cTvW',
-    'ISTP-ISFP': 'https://drive.google.com/uc?export=download&id=1QizJpflnIxn9hfdXFF4cOwU9cDZ_vbIx',
-    'ISTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1_vniEp2EbWZDFvaPVI2sACPzYkIykcQ2',
-    'ISTP-ISTP': 'https://drive.google.com/uc?export=download&id=1tHEcriiRuztrdQRtjgGTAgchh3yY2SlK',
-  },
-  relief: {
-    'ENFJ': 'https://drive.google.com/uc?export=download&id=1x_-_v6vVTGE6jNl1s4mfvmZGS6LZ1CHX',
-    'ENFP': 'https://drive.google.com/uc?export=download&id=1EJ0f1yco5-Itgz081erFhG9Ut4VcPYHx',
-    'ENTJ': 'https://drive.google.com/uc?export=download&id=1InoO-AuuSXlRlkNK14O7XNw04o7e2j7r',
-    'ENTP': 'https://drive.google.com/uc?export=download&id=1mwrvELY5BX3iHudkTl6UmpXe6J5HSF5y',
-    'ESFJ': 'https://drive.google.com/uc?export=download&id=1ER44udH93m-EqAiMhVV4N0QFZd-BsSqU',
-    'ESFP': 'https://drive.google.com/uc?export=download&id=1jcZHcNcI74Kgm3X6EYbUk6F4bScGivwE',
-    'ESTJ': 'https://drive.google.com/uc?export=download&id=1RujJwS6PJLcWN75uVW7oA27Qqz8JW6kE',
-    'ESTP': 'https://drive.google.com/uc?export=download&id=1dnGG6w0TJlGSvkJPerhffqcLdLS5EODr',
-    'INFJ': 'https://drive.google.com/uc?export=download&id=17RutLYGtg4xevxImLxfSnQEfQWJ0CvFv',
-    'INFP': 'https://drive.google.com/uc?export=download&id=1yYeVGc8fRBZatWiho2CPaKShn47dPKb1',
-    'INTJ': 'https://drive.google.com/uc?export=download&id=14XaJ3TYb0siv6csGEL-NkfmVsi5MD-dl',
-    'INTP': 'https://drive.google.com/uc?export=download&id=1fBENHMkfuz-PF6Qo-q9eZObigVRnqr85',
-    'ISFJ': 'https://drive.google.com/uc?export=download&id=1h8F7demPi5CkgRJei6_YjzyYwOm8qTkP',
-    'ISFP': 'https://drive.google.com/uc?export=download&id=1zjqvQfh3tyEF3Yjnw-l5ZkZ7RjJYmvzz',
-    'ISTJ': 'https://drive.google.com/uc?export=download&id=1aMRbHDOq1rbSeEw751OrGaq-lxps6d-1',
-    'ISTP': 'https://drive.google.com/uc?export=download&id=1tCm9nzrFnBuy5Gbe6K285tJ052TjA8LK',
-  }
-};
-
-// ââââââââââââââââââââââââââââââââââââââââââââ
-
-// å¾ URL åæ¸å¤æ·è³¼è²·æ¹æ¡
-const params = new URLSearchParams(window.location.search);
-const product = params.get('product') || 'standard'; // relief | standard | pro | bundle
-
-const PRODUCT_INFO = {
-  relief:   { label:'ç¶æ¯ç´å£æå', badge:'badge-relief', icon:'ð¿', needChild: false },
-  standard: { label:'æ¨æºçæå',   badge:'badge-standard', icon:'ð', needChild: true },
-  pro:      { label:'Pro çæå',   badge:'badge-pro', icon:'â¨', needChild: true },
-  bundle:   { label:'ä¸åä¸å£åç', badge:'badge-bundle', icon:'ð', needChild: true },
-};
-
-const info = PRODUCT_INFO[product] || PRODUCT_INFO.standard;
-
-// é¡¯ç¤ºæ¹æ¡æ¨ç±¤
-document.getElementById('product-badge').className = 'product-badge ' + info.badge;
-document.getElementById('product-badge').innerHTML = info.icon + ' ' + info.label + ' å·²è³¼è²·';
-
-// æ¯å¦éè¦å­©å­é¡å
-if (info.needChild) {
-  document.getElementById('step-child').style.display = 'block';
-}
-
-// å»ºç« MBTI æé
-function buildGrid(gridId, who) {
-  const grid = document.getElementById(gridId);
-  TYPES.forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'mbti-btn';
-    btn.innerHTML = `<span class="code">${t}</span><span class="soul">${SOULS[t]}</span>`;
-    btn.onclick = () => selectType(who, t, btn);
-    grid.appendChild(btn);
-  });
-}
-
-buildGrid('parent-grid', 'p');
-buildGrid('child-grid', 'c');
-
-let selectedP = null, selectedC = null;
-
-function selectType(who, type, btn) {
-  const gridId = who === 'p' ? 'parent-grid' : 'child-grid';
-  document.getElementById(gridId).querySelectorAll('.mbti-btn').forEach(b => b.classList.remove('selected'));
-  btn.classList.add('selected');
-  if (who === 'p') {
-    selectedP = type;
-    if (info.needChild) {
-      const childStep = document.getElementById('step-child');
-      childStep.style.opacity = '1';
-      childStep.style.pointerEvents = 'auto';
-      setTimeout(() => childStep.scrollIntoView({behavior:'smooth', block:'nearest'}), 150);
-    }
-  } else {
-    selectedC = type;
-  }
-  checkAndShowDownload();
-}
-
-function checkAndShowDownload() {
-  const ready = info.needChild ? (selectedP && selectedC) : selectedP;
-  if (!ready) return;
-
-  const comboKey = info.needChild ? `${selectedP}-${selectedC}` : selectedP;
-  const pSoul = SOULS[selectedP];
-  const cSoul = selectedC ? SOULS[selectedC] : null;
-
-  document.getElementById('dl-combo').textContent =
-    cSoul ? `${selectedP} ${pSoul} Ã ${selectedC} ${cSoul}` : `${selectedP} ${pSoul}`;
-  document.getElementById('dl-soul').textContent =
-    cSoul ? `${pSoul} Ã ${cSoul}` : pSoul;
-
-  const linksEl = document.getElementById('dl-links');
-  linksEl.innerHTML = '';
-
-  function makeBtn(label, sizeLabel, link, cls) {
-    if (!link) {
-      // é£çµå°æªå¡«å¥æé¡¯ç¤ºæç¤º
-      const div = document.createElement('div');
-      div.className = 'pending-notice';
-      div.textContent = 'â³ æ­¤æªæ¡é£çµæºåä¸­ï¼è«ç¨å¾åè©¦æè¯ç¹« air6030i@gmail.com';
-      linksEl.appendChild(div);
-      return;
-    }
-    const a = document.createElement('a');
-    a.href = link;
-    a.target = '_blank';
-    a.className = `btn-download ${cls}`;
-    a.innerHTML = `<span class="btn-dl-label">${label}</span><span class="btn-dl-size">${sizeLabel} Â· é»æ­¤ä¸è¼ â</span>`;
-    linksEl.appendChild(a);
-  }
-
-  if (product === 'relief') {
-    makeBtn('ç¶æ¯ç´å£æå PDF', `${selectedP} ${pSoul}`, LINKS.relief[selectedP], 'btn-dl-relief');
-  } else if (product === 'standard') {
-    makeBtn('æ¨æºçè¦ªå­æå PDF', `${selectedP} Ã ${selectedC}`, LINKS.standard[comboKey], 'btn-dl-standard');
-  } else if (product === 'pro') {
-    makeBtn('Pro çè¦ªå­æå PDF', `${selectedP} Ã ${selectedC}`, LINKS.pro[comboKey], 'btn-dl-pro');
-  } else if (product === 'bundle') {
-    makeBtn('ç¶æ¯ç´å£æå PDF', `${selectedP} ${pSoul}`, LINKS.relief[selectedP], 'btn-dl-relief');
-    makeBtn('æ¨æºçè¦ªå­æå PDF', `${selectedP} Ã ${selectedC}`, LINKS.standard[comboKey], 'btn-dl-standard');
-    makeBtn('Pro çè¦ªå­æå PDF', `${selectedP} Ã ${selectedC}`, LINKS.pro[comboKey], 'btn-dl-pro');
-  }
-
-  const area = document.getElementById('download-area');
-  area.classList.add('show');
-  setTimeout(() => area.scrollIntoView({behavior:'smooth', block:'nearest'}), 150);
-}
-</script>
-</body>
-</html>
+    'ISTP-IN
