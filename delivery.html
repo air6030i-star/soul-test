@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>éé­è¦ªå­ Â· åå¾ä½ çå°å±¬æå</title>
+<title>靈魂親子 · 取得你的專屬指南</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&display=swap');
 
@@ -29,7 +29,7 @@ body{
   min-height:100vh;
 }
 
-/* ââ HEADER ââ */
+/* ── HEADER ── */
 .header{
   background:linear-gradient(160deg,#6e2e10 0%,#4a200c 60%,#3a1608 100%);
   padding:40px 24px 36px;
@@ -48,10 +48,10 @@ body{
 .header h1 span{color:var(--gold)}
 .header-sub{font-size:13px;color:rgba(255,220,180,.6);letter-spacing:.06em}
 
-/* ââ MAIN ââ */
+/* ── MAIN ── */
 .main{max-width:680px;margin:0 auto;padding:40px 24px 60px}
 
-/* ââ STEP CARD ââ */
+/* ── STEP CARD ── */
 .step-card{
   background:#fff;border-radius:16px;padding:32px 28px;
   box-shadow:0 2px 20px rgba(92,42,16,.08);
@@ -68,7 +68,7 @@ body{
 .step-title{font-size:17px;font-weight:500;color:var(--text-dark);margin-bottom:6px}
 .step-sub{font-size:13px;color:var(--text-mid);margin-bottom:20px;line-height:1.8}
 
-/* ââ æ¹æ¡æ¨ç±¤ ââ */
+/* ── 方案標籤 ── */
 .product-badge{
   display:inline-flex;align-items:center;gap:8px;
   padding:10px 20px;border-radius:30px;margin-bottom:24px;
@@ -79,7 +79,7 @@ body{
 .badge-pro{background:rgba(212,136,42,.15);color:var(--dark);border:1px solid rgba(212,136,42,.4)}
 .badge-bundle{background:linear-gradient(135deg,rgba(194,82,40,.1),rgba(212,136,42,.1));color:var(--dark);border:1px solid rgba(196,121,74,.35)}
 
-/* ââ MBTI é¸æå¨ ââ */
+/* ── MBTI 選擇器 ── */
 .picker-label{font-size:13px;color:var(--text-mid);letter-spacing:.08em;margin-bottom:12px}
 .picker-label strong{color:var(--text-dark)}
 .mbti-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px}
@@ -98,7 +98,7 @@ body{
 }
 .mbti-btn.selected .code{color:var(--copper)}
 
-/* ââ ä¸è¼å ââ */
+/* ── 下載區 ── */
 .download-area{
   display:none;
   background:linear-gradient(135deg,rgba(212,136,42,.08),rgba(194,82,40,.06));
@@ -140,23 +140,23 @@ body{
   opacity:.8;
 }
 
-/* ââ ç­å¾ä¸å³æç¤º ââ */
+/* ── 等待上傳提示 ── */
 .pending-notice{
   background:rgba(212,136,42,.08);border:1px dashed rgba(212,136,42,.4);
   border-radius:10px;padding:16px 20px;font-size:13px;
   color:var(--text-mid);line-height:1.8;text-align:center;
 }
 
-/* ââ FAQ ââ */
+/* ── FAQ ── */
 .faq-mini{margin-top:32px}
 .faq-mini-title{font-size:13px;color:var(--text-mid);letter-spacing:.1em;margin-bottom:12px}
 .faq-mini-item{margin-bottom:12px;font-size:13px;line-height:1.8}
 .faq-mini-item strong{color:var(--text-dark)}
 
-/* ââ FOOTER ââ */
+/* ── FOOTER ── */
 .footer{text-align:center;padding:24px;font-size:11px;color:var(--text-mid);opacity:.6;letter-spacing:.06em}
 
-/* ââ FAQ ââ */
+/* ── FAQ ── */
 .faq-section{background:var(--warm);border-top:1px solid rgba(196,121,74,.15);padding:56px 24px 64px}
 .faq-inner{max-width:680px;margin:0 auto}
 .faq-header{text-align:center;margin-bottom:40px}
@@ -192,163 +192,163 @@ body{
 <body>
 
 <div class="header">
-  <div class="header-badge">SOUL PARENTING Â· éé­è¦ªå­</div>
-  <h1>æè¬ä½ çè³¼è²·<br><span>ä½ çæåæ­£å¨ç­ä½  â¦</span></h1>
-  <p class="header-sub">é¸æä½ ç MBTI çµåï¼ç«å³åå¾å°å±¬ PDF</p>
+  <div class="header-badge">SOUL PARENTING · 靈魂親子</div>
+  <h1>感謝你的購買<br><span>你的指南正在等你 ✦</span></h1>
+  <p class="header-sub">選擇你的 MBTI 組合，立即取得專屬 PDF</p>
 </div>
 
 <div class="main">
 
-  <!-- æ¹æ¡é¡¯ç¤º -->
+  <!-- 方案顯示 -->
   <div style="text-align:center;margin-bottom:28px">
-    <div class="product-badge" id="product-badge"><!-- ç± JS å¡«å¥ --></div>
+    <div class="product-badge" id="product-badge"><!-- 由 JS 填入 --></div>
   </div>
 
-  <!-- STEP 1ï¼ç¶æ¯é¡åï¼æææ¹æ¡é½éè¦ï¼ -->
+  <!-- STEP 1：父母類型（所有方案都需要） -->
   <div class="step-card" id="step-parent">
     <div class="step-num">1</div>
-    <div class="step-title">ä½ ï¼ç¶æ¯ï¼æ¯åªç¨®éé­ï¼</div>
-    <div class="step-sub">é¸æä½ ç MBTI é¡å</div>
-    <div class="mbti-grid" id="parent-grid"><!-- ç± JS å¡«å¥ --></div>
+    <div class="step-title">你（父母）是哪種靈魂？</div>
+    <div class="step-sub">選擇你的 MBTI 類型</div>
+    <div class="mbti-grid" id="parent-grid"><!-- 由 JS 填入 --></div>
   </div>
 
-  <!-- STEP 2ï¼å­©å­é¡åï¼éç´å£æåæé¡¯ç¤ºï¼ -->
+  <!-- STEP 2：孩子類型（非紓壓手冊才顯示） -->
   <div class="step-card" id="step-child" style="display:none;opacity:.4;pointer-events:none">
     <div class="step-num">2</div>
-    <div class="step-title">å­©å­æ¯åªç¨®éé­ï¼</div>
-    <div class="step-sub">æ ¹æä½ è§å¯å°çå­©å­è¡çºé¸æ</div>
-    <div class="mbti-grid" id="child-grid"><!-- ç± JS å¡«å¥ --></div>
+    <div class="step-title">孩子是哪種靈魂？</div>
+    <div class="step-sub">根據你觀察到的孩子行為選擇</div>
+    <div class="mbti-grid" id="child-grid"><!-- 由 JS 填入 --></div>
   </div>
 
-  <!-- ä¸è¼å -->
+  <!-- 下載區 -->
   <div class="download-area" id="download-area">
-    <div class="download-combo" id="dl-combo">â</div>
-    <div class="download-combo-soul" id="dl-soul">â</div>
-    <div class="download-links" id="dl-links"><!-- ç± JS å¡«å¥ --></div>
+    <div class="download-combo" id="dl-combo">—</div>
+    <div class="download-combo-soul" id="dl-soul">—</div>
+    <div class="download-links" id="dl-links"><!-- 由 JS 填入 --></div>
     <div class="download-note">
-      PDF ä¸è¼å¾å¯æ°¸ä¹ä¿å­ Â· å»ºè­°å²å­å°é²ç«¯åä»½<br>
-      æä»»ä½åé¡è«è¯ç¹« air6030i@gmail.com
+      PDF 下載後可永久保存 · 建議儲存到雲端備份<br>
+      有任何問題請聯繫 air6030i@gmail.com
     </div>
   </div>
 
 
 </div>
 
-<!-- ââ FAQ ââ -->
+<!-- ── FAQ ── -->
 <div class="faq-section">
   <div class="faq-inner">
     <div class="faq-header">
       <div class="faq-tag">FAQ</div>
-      <h2 class="faq-title">å¸¸è¦åé¡</h2>
-      <p class="faq-sub">æ¾ä¸å°ç­æ¡ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
+      <h2 class="faq-title">常見問題</h2>
+      <p class="faq-sub">找不到答案？請寄信至 <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
     </div>
 
     <div class="faq-list">
 
       <div class="faq-group">
-        <div class="faq-group-label">ð¥ ä¸è¼ç¸é</div>
+        <div class="faq-group-label">📥 下載相關</div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>è²·å®ä¹å¾æéº¼ä¸è¼ï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>買完之後怎麼下載？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>è³¼è²·æåå¾ï¼ä½ ææ¶å° Gumroad å¯ä¾çæ¶æä¿¡ãé»éä¿¡ä¸­çãView contentãæéï¼æå¨æ¶æé é¢é»ãð é»éè£¡ï¼é¸æä½ ççµåä¸è¼ PDFãï¼é²å¥æ¬é é¢å¾é¸æä½ ç MBTI äººæ ¼é¡åï¼å³å¯ç«å³ä¸è¼å°å±¬ PDFã</p>
+            <p>購買成功後，你會收到 Gumroad 寄來的收據信。點開信中的「View content」按鈕，或在收據頁面點「👇 點這裡，選擇你的組合下載 PDF」，進入本頁面後選擇你的 MBTI 人格類型，即可立即下載專屬 PDF。</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>ä¸è¼é£çµæä¸éæéº¼è¾¦ï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>下載連結打不開怎麼辦？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>è«åç¢ºèªç¶²è·¯é£ç·æ­£å¸¸ãè¥ä½¿ç¨ææ©ï¼å»ºè­°æ¹ç¨ Chrome æ Safari çè¦½å¨éåãè¥é£çµä»ç¡æ³ä½¿ç¨ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼æåæå¨ 24 å°æå§èçã</p>
+            <p>請先確認網路連線正常。若使用手機，建議改用 Chrome 或 Safari 瀏覽器開啟。若連結仍無法使用，請寄信至 <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>，我們會在 24 小時內處理。</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>æä¸ç¥éèªå·±ç MBTI æéº¼è¾¦ï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>我不知道自己的 MBTI 怎麼辦？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>å¯ä»¥åå°åè²»æ¸¬é©ç¶²ç«å®ææ¸¬é©ï¼ç´ 10 åéå³å¯å¾å°çµæï¼ååä¾ä¸è¼ä½ çå°å±¬çæ¬ã</p>
-            <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">ð åå¾åè²» MBTI æ¸¬é©ï¼16Personalitiesï¼</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="faq-group">
-        <div class="faq-group-label">ð¦ ç¢åç¸é</div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>æ¨æºçå Pro çå·®å¨åªè£¡ï¼</span>
-            <span class="faq-arrow">â¾</span>
-          </button>
-          <div class="faq-a">
-            <p><strong>æ¨æºç NT$199</strong> â 8 é è¨ºæ·å·¥å·ï¼å¹«ä½ å¿«éèªè­è¦ªå­éé­çµåãäºè§£è¡çªæ¨¡å¼èå°è©±è³æ¬ã</p>
-            <p style="margin-top:8px"><strong>Pro ç NT$499</strong> â 17 é è¡åæåï¼å« 4 é±ç·´ç¿è¨ç«ãæç·æ¥æè³æ¬ãç¶æ¯èªæåæé¡ç­ï¼é©åæ³æ·±åº¦æ¹è®è¦ªå­éä¿çç¶æ¯ã</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>ä¸åä¸çåå«ä»éº¼ï¼</span>
-            <span class="faq-arrow">â¾</span>
-          </button>
-          <div class="faq-a">
-            <p>ä¸åä¸çï¼NT$649ï¼åå«ä¸ä»½ç¢åï¼<strong>ç¶æ¯ç´å£æå + æ¨æºçè¦ªå­æå + Pro çè¦ªå­æå</strong>ï¼åè³¼äº«æåªæ å¹æ ¼ï¼æ¯åéè³¼è²·ç NT$148ã</p>
-          </div>
-        </div>
-
-        <div class="faq-item">
-          <button class="faq-q" onclick="toggleFaq(this)">
-            <span>è³¼è²·å¾å¯ä»¥ä¸è¼å¶ä» MBTI çµååï¼</span>
-            <span class="faq-arrow">â¾</span>
-          </button>
-          <div class="faq-a">
-            <p>å¯ä»¥ï¼æ¬é é¢å¯ä»¥èªç±é¸æä»»ä½ MBTI çµåä¸è¼ï¼ä¸åéå¶ãå¦æä½ çå­©å­æå¤åå¯è½çé¡åï¼æ­¡è¿å¨é¨ä¸è¼ä¾æ¯è¼ã</p>
+            <p>可以先到免費測驗網站完成測驗，約 10 分鐘即可得到結果，再回來下載你的專屬版本。</p>
+            <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">👉 前往免費 MBTI 測驗（16Personalities）</a>
           </div>
         </div>
       </div>
 
       <div class="faq-group">
-        <div class="faq-group-label">ð° ä»æ¬¾èéæ¬¾</div>
+        <div class="faq-group-label">📦 產品相關</div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>æ¯æ´åªäºä»æ¬¾æ¹å¼ï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>標準版和 Pro 版差在哪裡？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>éé Gumroad å¹³å°ä»æ¬¾ï¼æ¯æ´ä¿¡ç¨å¡ï¼VisaãMastercardãAmerican Expressï¼ PayPalï¼ä»æ¬¾å®å¨ç± Gumroad ä¿éã</p>
+            <p><strong>標準版 NT$199</strong> — 8 頁診斷工具，幫你快速認識親子靈魂組合、了解衝突模式與對話腳本。</p>
+            <p style="margin-top:8px"><strong>Pro 版 NT$499</strong> — 17 頁行動指南，含 4 週練習計畫、情緒急救腳本、父母自我反思題等，適合想深度改變親子關係的父母。</p>
           </div>
         </div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>å¯ä»¥éæ¬¾åï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>三合一版包含什麼？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>æä¾ <strong>30 å¤©éæ¬¾ä¿è­</strong>ãå¦ééæ¬¾ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼ä¸¦èªªæè³¼è²·æ¥æèè¨å®ç·¨èï¼æåæç¡å¿«åå©è¾¦çã</p>
+            <p>三合一版（NT$649）包含三份產品：<strong>父母紓壓手冊 + 標準版親子指南 + Pro 版親子指南</strong>，合購享最優惠價格，比分開購買省 NT$148。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>購買後可以下載其他 MBTI 組合嗎？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>可以！本頁面可以自由選擇任何 MBTI 組合下載，不受限制。如果你的孩子有多個可能的類型，歡迎全部下載來比較。</p>
           </div>
         </div>
       </div>
 
       <div class="faq-group">
-        <div class="faq-group-label">ð¬ å¶ä»</div>
+        <div class="faq-group-label">💰 付款與退款</div>
 
         <div class="faq-item">
           <button class="faq-q" onclick="toggleFaq(this)">
-            <span>æåé¡æ¾ä¸å°ç­æ¡æéº¼è¾¦ï¼</span>
-            <span class="faq-arrow">â¾</span>
+            <span>支援哪些付款方式？</span>
+            <span class="faq-arrow">▾</span>
           </button>
           <div class="faq-a">
-            <p>è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>ï¼æåæå¨ <strong>24 å°æå§</strong>åè¦ä½ ã</p>
+            <p>透過 Gumroad 平台付款，支援信用卡（Visa、Mastercard、American Express） PayPal，付款安全由 Gumroad 保障。</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>可以退款嗎？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>提供 <strong>30 天退款保證</strong>。如需退款，請寄信至 <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>，並說明購買日期與訂單編號，我們會盡快協助辦理。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-group">
+        <div class="faq-group-label">📬 其他</div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span>有問題找不到答案怎麼辦？</span>
+            <span class="faq-arrow">▾</span>
+          </button>
+          <div class="faq-a">
+            <p>請寄信至 <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a>，我們會在 <strong>24 小時內</strong>回覆你。</p>
           </div>
         </div>
       </div>
@@ -357,26 +357,26 @@ body{
   </div>
 </div>
 
-<div class="footer">Â© 2026 Soul Universe Â· éé­è¦ªå­ç³»å</div>
+<div class="footer">© 2026 Soul Universe · 靈魂親子系列</div>
 
 <script>
 const SOULS = {
-  INFJ:'å®è­·æ°´é­', ENFJ:'å¼è·¯è±é­', INFP:'æåå¤¢è', ENFP:'å½©è¹é¢¨é­',
-  INTJ:'æåå»ºç¯å¸«', ENTJ:'å¾éé·¹é­', INTP:'è¿·å®®æè', ENTP:'é¢¶é¢¨è¾¯å£«',
-  ISFJ:'æº«å·¢è­·è¡', ESFJ:'æé½è¯ç¹«è', ISFP:'éè¬ç«é­', ESFP:'èå°åé­',
-  ISTJ:'ç£ç³å®å', ESTJ:'éµåºå°è»', ISTP:'æ²é»åå®¢', ESTP:'éé»çé­'
+  INFJ:'守護水魂', ENFJ:'引路花魂', INFP:'月光夢者', ENFP:'彩虹風魂',
+  INTJ:'星圖建築師', ENTJ:'征途鷹魂', INTP:'迷宮思者', ENTP:'颶風辯士',
+  ISFJ:'溫巢護衛', ESFJ:'暖陽聯繫者', ISFP:'靜謐畫魂', ESFP:'舞台光魂',
+  ISTJ:'磐石守則', ESTJ:'鐵序將軍', ISTP:'沉默刀客', ESTP:'閃電炎魂'
 };
 
 const TYPES = ['INFJ','ENFJ','INFP','ENFP','INTJ','ENTJ','INTP','ENTP',
                'ISFJ','ESFJ','ISFP','ESFP','ISTJ','ESTJ','ISTP','ESTP'];
 
-// Google Drive é£çµå°ç§è¡¨ï¼528 å PDFï¼
+// Google Drive 連結對照表（528 個 PDF）
 const LINKS = {
   standard: {
     'ENFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1yoKf40sjkaTt8kZCrrWvcrbuS62L5NrO',
     'ENFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1aUfH9qVJktHvvsxEr81JkYT96sw1IME3',
     'ENFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1IGLt4iIC0m5Vfdghrg8MUpkRht64qdG-',
-    'ENFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1RixzPMHA4qqkJiI-wZODgcQ0F8u2wu63',
+    'ENFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1RixzPMHA4qqkJim-wZODgcQ0F8u2wu63',
     'ENFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1ES00kNS0xlzkkYg-U37r_thb6auGrWEX',
     'ENFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1HJ3b3d639SNkd-_cQ1ko75qxnCo5Mb39',
     'ENFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1xMbO-7F6-n5V0kuGfgD5gagvh4Y9okgt',
@@ -531,7 +531,7 @@ const LINKS = {
     'INFP-INTP': 'https://drive.google.com/uc?export=download&id=1h34mrvjN_3nXyrbd5gIVOZ1bF8LgC1jE',
     'INFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1SXmC_koCkpQu43T2FWi4wuSv0Y-yqSrb',
     'INFP-ISFP': 'https://drive.google.com/uc?export=download&id=1DSa53YYq-IXvK9UetUil_oOyVq3zmtbK',
-    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1HhnY2Nqcs5I1KcF2f13m1ya4_B_m9wec',
+    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1HnnY2Nqcs5I1KcF2f13m1ya4_B_m9wec',
     'INFP-ISTP': 'https://drive.google.com/uc?export=download&id=1si6EEzn_MgvuPjxgkRuVnDcsiGfnuZmO',
     'INTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1AkRwuDFKWbfzUnFhu8DG4SFLWTVt4Eo0',
     'INTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1Lqr6QuzX4x9fOdqnuv0jsuab8KuJf7vl',
@@ -691,7 +691,7 @@ const LINKS = {
     'ENTP-INFP': 'https://drive.google.com/uc?export=download&id=1792yWtfWybwMaiT-PMRdLQSb8RygQP5K',
     'ENTP-INTJ': 'https://drive.google.com/uc?export=download&id=1ECdVkwkYosqs9b1vaSsO0i8HJI6tOHBO',
     'ENTP-INTP': 'https://drive.google.com/uc?export=download&id=1rkDrxnfCf0Fn3Kloejhzyc_yM_BOOGC9',
-    'ENTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1FL_MOk0ropccpQ3IzmsUjW1k5-b7ldlG',
+    'ENTP-ISFJ': 'https://drive.google.com/uc?export=download&id=UFL_MOk0ropccpQ3IzmsUjW1k5-b7ldlG',
     'ENTP-ISFP': 'https://drive.google.com/uc?export=download&id=1TkIxCqR08cogObZMbdU_zU2d0uy06c0j',
     'ENTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1U2-c8_39HoZorK-E4gpeOc4zVkL5pcXJ',
     'ENTP-ISTP': 'https://drive.google.com/uc?export=download&id=154a78-GPwfas79HsRZ_C3VAwqc44RO7s',
@@ -833,7 +833,7 @@ const LINKS = {
     'ISFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1arLV_LDdsg50Al6Eavby70btFtd4WvUc',
     'ISFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1NfL_oMkaO2AGn_7wc0rnMXv5yGS9vJZV',
     'ISFJ-INFP': 'https://drive.google.com/uc?export=download&id=1PkkuUUFppBIaMKxmnPcU7nsJW0VwSrRQ',
-    'ISFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1SS6r4mRq-RRgEcRcNTBxnMGyfrNxNrHu',
+    'ISFJ-INTJ': 'https://drive.google.com/uc?export?download&id=1SS6r4mRq-RRgEcRcNTBxnMGyfrNxNrHu',
     'ISFJ-INTP': 'https://drive.google.com/uc?export=download&id=1SaXkIpv3sbhdL5j89sItjkNGek-Qve-a',
     'ISFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1hxgXp-3XfBNNOiLJKKvgp7TQrXxOSf-2',
     'ISFJ-ISFP': 'https://drive.google.com/uc?export=download&id=15n0ztCLlJQZAs_xk7UG9Zf3-_ATl5bNg',
