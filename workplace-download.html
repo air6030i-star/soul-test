@@ -1,0 +1,883 @@
+<\!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>éé­è·å ´ Â· åå¾ä½ çå°å±¬æå</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dk:#0c0f1a;--dk2:#141824;--dk3:#1c2235;
+  --gold:#e8a820;--gold2:#f0c040;--teal:#00c4a0;
+  --txt:#e0eeea;--muted:#6a9090;--muted2:#4a6868;
+  --serif:'Noto Serif TC',Georgia,serif;
+  --sans:'Noto Sans TC',sans-serif;
+}
+body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:100vh;line-height:1.8}
+
+/* ââ HEADER ââ */
+.header{background:linear-gradient(160deg,#1c2235 0%,#0c0f1a 100%);padding:40px 24px 36px;text-align:center;border-bottom:1px solid rgba(232,168,32,.2)}
+.header-badge{display:inline-block;border:1px solid rgba(232,168,32,.35);border-radius:20px;padding:5px 18px;margin-bottom:16px;font-size:11px;color:var(--gold);letter-spacing:.18em;font-family:var(--sans)}
+.header h1{font-size:clamp(20px,4vw,32px);font-weight:300;color:#fff;letter-spacing:.1em;line-height:1.6;margin-bottom:8px}
+.header h1 span{color:var(--gold)}
+.header-sub{font-size:13px;color:var(--muted);letter-spacing:.06em;font-family:var(--sans)}
+
+/* ââ MAIN ââ */
+.main{max-width:680px;margin:0 auto;padding:40px 24px 60px}
+
+/* ââ STEP CARD ââ */
+.step-card{background:var(--dk2);border-radius:16px;padding:32px 28px;border:1px solid rgba(232,168,32,.12);margin-bottom:24px}
+.step-card.disabled{opacity:.4;pointer-events:none}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:12px;font-weight:700;margin-bottom:12px}
+.step-title{font-size:17px;font-weight:500;color:#fff;margin-bottom:6px;font-family:var(--sans)}
+.step-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.8;font-family:var(--sans)}
+
+/* ââ æ¹æ¡æ¨ç±¤ ââ */
+.product-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;margin-bottom:24px;font-size:14px;font-weight:500;font-family:var(--sans)}
+.badge-relief{background:rgba(0,196,160,.1);color:var(--teal);border:1px solid rgba(0,196,160,.3)}
+.badge-standard{background:rgba(232,168,32,.1);color:var(--gold);border:1px solid rgba(232,168,32,.3)}
+.badge-pro{background:rgba(240,192,64,.12);color:var(--gold2);border:1px solid rgba(240,192,64,.4)}
+.badge-bundle{background:linear-gradient(135deg,rgba(232,168,32,.1),rgba(0,196,160,.08));color:var(--gold);border:1px solid rgba(232,168,32,.3)}
+
+/* ââ MBTI é¸æå¨ ââ */
+.picker-label{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)}
+.mbti-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+.mbti-btn{padding:10px 4px;border:1px solid rgba(232,168,32,.15);border-radius:8px;background:transparent;cursor:pointer;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.4;transition:all .2s;text-align:center}
+.mbti-btn .code{font-size:13px;font-weight:700;display:block;color:var(--txt);margin-bottom:2px}
+.mbti-btn .soul{font-size:9px;color:var(--muted)}
+.mbti-btn:hover{border-color:var(--gold);background:rgba(232,168,32,.06)}
+.mbti-btn.selected{border-color:var(--gold);background:rgba(232,168,32,.12)}
+.mbti-btn.selected .code{color:var(--gold)}
+
+/* ââ ä¸è¼å ââ */
+.download-area{display:none;background:linear-gradient(135deg,rgba(232,168,32,.06),rgba(0,196,160,.04));border:1px solid rgba(232,168,32,.25);border-radius:14px;padding:28px 24px;text-align:center;margin-top:8px}
+.download-area.show{display:block}
+.download-combo{font-size:15px;font-weight:500;color:var(--gold);margin-bottom:4px;letter-spacing:.08em;font-family:var(--sans)}
+.download-combo-soul{font-size:12px;color:var(--muted);margin-bottom:20px;font-family:var(--sans)}
+.download-links{display:flex;flex-direction:column;gap:12px}
+.btn-download{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-family:var(--sans);border:none;cursor:pointer;transition:all .2s}
+.btn-dl-standard{background:linear-gradient(135deg,var(--gold),#c8860a);color:#0c0f1a;font-weight:700}
+.btn-dl-pro{background:linear-gradient(135deg,#b8860b,#8b6914);color:#fff8e7;font-weight:700}
+.btn-dl-relief{background:linear-gradient(135deg,var(--teal),#009070);color:#0c0f1a;font-weight:700}
+.btn-download:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(232,168,32,.3)}
+.btn-dl-label{font-weight:600}
+.btn-dl-size{font-size:11px;opacity:.75}
+.download-note{font-size:11px;color:var(--muted);margin-top:16px;line-height:1.8}
+
+/* ââ ç­å¾ä¸å³æç¤º ââ */
+.pending-notice{background:rgba(232,168,32,.06);border:1px dashed rgba(232,168,32,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);line-height:1.8;text-align:center;font-family:var(--sans)}
+
+/* ââ FAQ ââ */
+.faq-section{background:var(--dk2);border-top:1px solid rgba(232,168,32,.1);padding:56px 24px 64px}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:40px}
+.faq-tag{display:inline-block;background:rgba(232,168,32,.1);color:var(--gold);font-size:11px;letter-spacing:.18em;padding:4px 14px;border-radius:20px;margin-bottom:14px;font-family:var(--sans)}
+.faq-title{font-size:clamp(20px,3.5vw,28px);font-weight:300;color:#fff;letter-spacing:.08em;margin-bottom:8px}
+.faq-sub{font-size:13px;color:var(--muted);font-family:var(--sans)}
+.faq-sub a{color:var(--gold);text-decoration:none}
+.faq-group{margin-bottom:32px}
+.faq-group-label{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-left:4px;font-family:var(--sans)}
+.faq-item{background:var(--dk3);border-radius:12px;margin-bottom:10px;border:1px solid rgba(232,168,32,.1);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:12px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--txt);transition:background .2s}
+.faq-q:hover{background:rgba(232,168,32,.05)}
+.faq-arrow{font-size:16px;color:var(--gold);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:400px;padding:0 20px 20px}
+.faq-a p{font-size:13px;line-height:1.9;color:var(--muted)}
+.faq-a a{color:var(--gold);text-decoration:none}
+.faq-link{display:inline-block;margin-top:12px;background:rgba(232,168,32,.08);border:1px solid rgba(232,168,32,.2);color:var(--gold);padding:10px 18px;border-radius:8px;font-size:13px;text-decoration:none;transition:background .2s;font-family:var(--sans)}
+.faq-link:hover{background:rgba(232,168,32,.15)}
+
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--muted2);letter-spacing:.06em;font-family:var(--sans)}
+
+@media(max-width:480px){
+  .mbti-grid{grid-template-columns:repeat(4,1fr);gap:5px}
+  .mbti-btn{padding:8px 2px}
+  .mbti-btn .code{font-size:12px}
+  .mbti-btn .soul{display:none}
+  .step-card{padding:24px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SOUL WORKPLACE Â· éé­è·å ´</div>
+  <h1>æè¬ä½ çè³¼è²·<br><span>ä½ çæåæ­£å¨ç­ä½  â¦</span></h1>
+  <p class="header-sub">é¸æä½ ç MBTI åèï¼ç«å³åå¾å°å±¬ PDF</p>
+</div>
+
+<div class="main">
+
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="product-badge" id="product-badge"></div>
+  </div>
+
+  <\!-- STEP 1ï¼ä½ çé¡å -->
+  <div class="step-card" id="step-you">
+    <div class="step-num">1</div>
+    <div class="step-title">ä½ æ¯åªç¨®éé­ï¼</div>
+    <div class="step-sub" id="step-you-sub">é¸æä½ ç MBTI é¡å</div>
+    <div class="mbti-grid" id="you-grid"></div>
+  </div>
+
+  <\!-- STEP 2ï¼å°æ¹é¡åï¼éç´å£æé¡¯ç¤ºï¼ -->
+  <div class="step-card disabled" id="step-them" style="display:none">
+    <div class="step-num">2</div>
+    <div class="step-title" id="step-them-title">å°æ¹æ¯åªç¨®éé­ï¼</div>
+    <div class="step-sub">é¸æä¸»ç®¡ / åäºç MBTI é¡å</div>
+    <div class="mbti-grid" id="them-grid"></div>
+  </div>
+
+  <\!-- ä¸è¼å -->
+  <div class="download-area" id="download-area">
+    <div class="download-combo" id="dl-combo">â</div>
+    <div class="download-combo-soul" id="dl-soul">â</div>
+    <div class="download-links" id="dl-links"></div>
+    <div class="download-note">
+      PDF ä¸è¼å¾å¯æ°¸ä¹ä¿å­ Â· å»ºè­°å²å­å°é²ç«¯åä»½<br>
+      æä»»ä½åé¡è«è¯ç¹« air6030i@gmail.com
+    </div>
+  </div>
+
+  <\!-- FAQ mini -->
+  <div style="margin-top:32px">
+    <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">å¸¸è¦åé¡</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">ä¸è¼å¾æä¸éï¼</strong><br>è«ç¢ºèªè£ç½®æå®è£ PDF é±è®å¨ï¼Adobe Reader æææ©å§å»ºï¼ã</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">é¸é¯ MBTI äºï¼</strong><br>ç´æ¥éæ°é¸æå³å¯ï¼é é¢ä¸æ¹ææ´æ°ã</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans)"><strong style="color:var(--txt)">è³¼è²·å¨åçæ³åå¾ä¸ä»½ï¼</strong><br>é¸å¥½çµåå¾æåæé¡¯ç¤ºä¸åä¸è¼æéã</div>
+  </div>
+</div>
+
+<\!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="faq-tag">FAQ</div>
+      <h2 class="faq-title">å¸¸è¦åé¡</h2>
+      <p class="faq-sub">æ¾ä¸å°ç­æ¡ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð¥ ä¸è¼ç¸é</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>è²·å®ä¹å¾æéº¼ä¸è¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>è³¼è²·æåå¾ï¼ä½ ææ¶å° Gumroad å¯ä¾çæ¶æä¿¡ãé»éä¿¡ä¸­çãView contentãæéï¼é²å¥æ¬é é¢å¾é¸æä½ ç MBTI åèï¼å³å¯ç«å³ä¸è¼å°å±¬ PDFã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>æä¸ç¥éå°æ¹ç MBTI æéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a">
+          <p>å¯ä»¥åæ ¹æå°æ¹çè¡çºç¹å¾µçæ¸¬ï¼æè«å°æ¹åæ¸¬é©ãå¦æä¸ç¢ºå®ï¼å¯ä»¥åä¸è¼å¹¾åææ¥è¿çåèçæ¬ä¾æ¯è¼ã</p>
+          <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">ð åè²» MBTI æ¸¬é©ï¼16Personalitiesï¼</a>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>ä¸è¼é£çµæä¸éæéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>è«åç¢ºèªç¶²è·¯é£ç·æ­£å¸¸ãè¥ä½¿ç¨ææ©ï¼å»ºè­°æ¹ç¨ Chrome æ Safari çè¦½å¨ãè¥ä»ç¡æ³ä½¿ç¨ï¼è«å¯ä¿¡è³ air6030i@gmail.comï¼24 å°æå§åè¦ã</p></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð¦ ç¢åç¸é</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>æ¨æºçå Pro çå·®å¨åªè£¡ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a">
+          <p><strong style="color:var(--gold)">æ¨æºç NT$320</strong> â è¨ºæ·å·¥å·ï¼å¹«ä½ å¿«éäºè§£éæ¹çè·å ´éé­çµåãè¡çªæ¨¡å¼èå°è©±è³æ¬ã</p>
+          <p style="margin-top:8px"><strong style="color:var(--gold2)">Pro ç NT$480</strong> â æ·±åº¦è¡åæåï¼å«è·å ´å£ååæãæºéé¢¨æ ¼å°ç§ã4 é±è¡åè¨ç«ï¼é©åæ³æ ¹æ¬æ¹è®è·å ´éä¿çäººã</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>ä¸åä¸çåå«ä»éº¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>å¨åçï¼NT$640ï¼åå«ä¸ä»½ç¢åï¼<strong>ç´å£æå + æ¨æºçæå + Pro çæå</strong>ï¼åè³¼ç NT$320ã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>è³¼è²·å¾å¯ä»¥ä¸è¼å¶ä»çµååï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>å¯ä»¥ï¼æ¬é é¢å¯ä»¥èªç±é¸æä»»ä½ MBTI çµåä¸è¼ï¼ä¸åéå¶ãå¦æä½ æå¤ä½åäºæä¸»ç®¡ï¼æ­¡è¿å¨é¨ä¸è¼ã</p></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð° ä»æ¬¾èéæ¬¾</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>æ¯æ´åªäºä»æ¬¾æ¹å¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>éé Gumroad å¹³å°ä»æ¬¾ï¼æ¯æ´ä¿¡ç¨å¡ï¼VisaãMastercardãAmerican Expressï¼å PayPalã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>å¯ä»¥éæ¬¾åï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>æä¾ <strong>30 å¤©éæ¬¾ä¿è­</strong>ãè«å¯ä¿¡è³ air6030i@gmail.com ä¸¦èªªæè³¼è²·æ¥æèè¨å®ç·¨èã</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Â© 2026 Soul Universe Â· éé­è·å ´ç³»å</div>
+
+<script>
+const SOULS = {
+  INFJ:'å®è­·æ°´é­', ENFJ:'å¼è·¯è±é­', INFP:'æåå¤¢è', ENFP:'å½©è¹é¢¨é­',
+  INTJ:'æåå»ºç¯å¸«', ENTJ:'å¾éé·¹é­', INTP:'è¿·å®®æè', ENTP:'é¢¶é¢¨è¾¯å£«',
+  ISFJ:'æº«å·¢è­·è¡', ESFJ:'æé½è¯ç¹«è', ISFP:'éè¬ç«é­', ESFP:'èå°åé­',
+  ISTJ:'ç£ç³å®å', ESTJ:'éµåºå°è»', ISTP:'æ²é»åå®¢', ESTP:'éé»çé­'
+};
+const TYPES = ['INFJ','ENFJ','INFP','ENFP','INTJ','ENTJ','INTP','ENTP',
+               'ISFJ','ESFJ','ISFP','ESFP','ISTJ','ESTJ','ISTP','ESTP'];
+
+const LINKS = {
+  standard: {
+    'INFJ-INFJ': 'https://drive.google.com/uc?export=download&id=10K0db7UV9sJP-AR_44VtGaumIDaOFyEC',
+    'INFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1BI4H6eYd8XunkJsMrxgc-bTPdeuQmZRo',
+    'INFJ-INFP': 'https://drive.google.com/uc?export=download&id=1imMnGwIzbOnP7uHhnodyJKkySpmAxBh3',
+    'INFJ-ENFP': 'https://drive.google.com/uc?export=download&id=11QVfhvXCCwamrye4IQHX_UtGrjUqBTF8',
+    'INFJ-INTJ': 'https://drive.google.com/uc?export=download&id=150evM-dEbQMYz4dVC-VBQe-wXMR61pFp',
+    'INFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1TMrxCSygOx21GPAIGTUeXaR_aJMLkSEe',
+    'INFJ-INTP': 'https://drive.google.com/uc?export=download&id=1PsHxu5DwiPchgnsnkLFlsLb0NIkyj2t0',
+    'INFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1NlxOBrr-ZcvS5G4fkyYktNaTuLeDhcM4',
+    'INFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1r6fW13kIRmkI3k1R4D8lSvlagvm-DgBA',
+    'INFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1yXEpDDCCCOjdKuD4P_oEn9KmdedixsXU',
+    'INFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1hHGCFZYBB_isyBNtl7ICloEZPyfCsas_',
+    'INFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1VTlcOwYWdwmkSLLPtuCkubX3WlX8IRSs',
+    'INFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=12TctMvfsaKoSfJeM0HQhkoGL4YFyMeIX',
+    'INFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1shqC2ruWub8jdHrZ9ZBnWoNxIRZX6OCP',
+    'INFJ-ISTP': 'https://drive.google.com/uc?export=download&id=13T4wPcvqq4oPLQzUhaX8c6-4wSskn6Ni',
+    'INFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1Q26F-H1KBCIDqgfcyAWddnXXfKIeR2tb',
+    'ENFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1ZqzoNILqkdy_skPI6ESqyNpqFg_koD_8',
+    'ENFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1SUMvfHlxHoHtTtc8G1U4UFjijAoDF46P',
+    'ENFJ-INFP': 'https://drive.google.com/uc?export=download&id=15Th3dVl0aAGle2SQAxIJ5Al9iLLUzTOg',
+    'ENFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1XNnphPHU5yaksgQczMyhljHp7nEj16tb',
+    'ENFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1pUxM8TtIAaB2UcNH8hrZn6l1iFlhyYjj',
+    'ENFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1195fCuA36qXEBAz0Pps9ORTm1sd-s3fD',
+    'ENFJ-INTP': 'https://drive.google.com/uc?export=download&id=1SlWHvYxX-ti-6a3FYVyL4gGFIRkYIKfb',
+    'ENFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1QQqPquzn3H5BXrsIe1W-6yPGzP8cBVMY',
+    'ENFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1TUTv1XOBCZsHGUbOCVGTk9JnzkY9vEOm',
+    'ENFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1E9POr_C5YTQevvkUN44c409zCL0UIthe',
+    'ENFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1g5-0HiKtHRFF1atPBV5UTZa4NCsre2Eg',
+    'ENFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1O57rlvpMPpIJZHjKAxc_VIr_RqTfTQGu',
+    'ENFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1oK-A_g8ipfDl-gcv9an6nLNw_yD2FpsH',
+    'ENFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1lq8nFOFAgZ3-MYQDEH7BoSO_k2kbEVPs',
+    'ENFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1w8DxHBw7mN0YG4aZpccc_THnUlzHNqbZ',
+    'ENFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1zEGl2VXMt2-bsQ04W8dEOVGUZGwxznft',
+    'INFP-INFJ': 'https://drive.google.com/uc?export=download&id=1fVJ3uiuyCypp8aEew3rg4N1RJ2qucCgr',
+    'INFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1gdVL4ShlRIAG_3n_m4XDsnaNafNm5xFd',
+    'INFP-INFP': 'https://drive.google.com/uc?export=download&id=1x85UeDasqj-N4lUa_8CbOaTm4RUYZazJ',
+    'INFP-ENFP': 'https://drive.google.com/uc?export=download&id=14QJBotzHfJEnZ0icUzmdmApMLm-ScTh6',
+    'INFP-INTJ': 'https://drive.google.com/uc?export=download&id=1ngq7GquQnolJtsKgBduue4VbTYmak78J',
+    'INFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1grG1Dyr3W7tndXpAOJglCwbvtGRlfW2J',
+    'INFP-INTP': 'https://drive.google.com/uc?export=download&id=1Bi3FEXoYhj3kjjBzyjgRpA-X6UhDcM34',
+    'INFP-ENTP': 'https://drive.google.com/uc?export=download&id=1FhCSTiHKO_mf8CrsR_YgAnly7kY9gcch',
+    'INFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1CqS2tlK4elzYpvbuPvL-DGs_3BKIb1Ui',
+    'INFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1g93D8xnZREg5ZZMS0FsV0YyKPJlRBOIH',
+    'INFP-ISFP': 'https://drive.google.com/uc?export=download&id=16A9LqkOOtX5K5KHzAloSnCB5et2BQb00',
+    'INFP-ESFP': 'https://drive.google.com/uc?export=download&id=1nVJu89XQDauH2n63di7J22kipNGHCtjg',
+    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1Xx09vGKYbx8wZmbdoQX3yGoUA1O2BONB',
+    'INFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1fjNe3zgGyGfoPztxpGlBCbsEgNvJTqUH',
+    'INFP-ISTP': 'https://drive.google.com/uc?export=download&id=1LpyYmtsbaE6LCL2QufjhDY2MKDkpoop-',
+    'INFP-ESTP': 'https://drive.google.com/uc?export=download&id=1Ql6VThav6tvds8yzPU4LTzg6n1nwbMLf',
+    'ENFP-INFJ': 'https://drive.google.com/uc?export=download&id=1CyIp6Zt98RLvXe5aur_qnZIOJHjYJ8bF',
+    'ENFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1QGWHlPGnhRpoGvPt1DQ7uNlPBoITMORS',
+    'ENFP-INFP': 'https://drive.google.com/uc?export=download&id=1_08na5w72Zsv7F6DzHZpGvmzGAQJdC9_',
+    'ENFP-ENFP': 'https://drive.google.com/uc?export=download&id=16aEFikncds33FqF7_WidkN_Zdg9ncmWS',
+    'ENFP-INTJ': 'https://drive.google.com/uc?export=download&id=1h2Cofwl7ErUMZffwuZ4nbGG_R_5_d0_7',
+    'ENFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1JchfRHB6efTFn9RsReeSbSqhSxfMwPbo',
+    'ENFP-INTP': 'https://drive.google.com/uc?export=download&id=1fe1agnw5hZ6JRLPUcCQtfsNOwpRocsOd',
+    'ENFP-ENTP': 'https://drive.google.com/uc?export=download&id=1Aw56fev56FZNa8HxdQhsWj-p_wpo39Hh',
+    'ENFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1c26YelH8mm3ipGMp4x85956MZCvDgdmh',
+    'ENFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1x9P1YQ_plwKDmr5FR9PEAZvWDuTocXeD',
+    'ENFP-ISFP': 'https://drive.google.com/uc?export=download&id=1gocfmv_Cml8zy4NSgXRqtq0Qm91jAv4U',
+    'ENFP-ESFP': 'https://drive.google.com/uc?export=download&id=14Qh4tq3MGYrlLuZcT_5gR638TBJh1_zc',
+    'ENFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1uVR6l5GDb4Ehp2HVUHf5dXa-jcLXlRWj',
+    'ENFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1fb7MFJVpjxC483QB5P5_TCopxYxUQykX',
+    'ENFP-ISTP': 'https://drive.google.com/uc?export=download&id=1NlTc2iQ7zNjJhLrNHrAVfmiFTUR1xcjC',
+    'ENFP-ESTP': 'https://drive.google.com/uc?export=download&id=1IUrH5oZQcG5Jd_k8z-uTXSik6lL03KZa',
+    'INTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1IznK7WNtP5ED8PMDuZTikUC_hBap6j37',
+    'INTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1iNdWKjl8fmy4Gew93FyYiQ2Bfw5ipl-a',
+    'INTJ-INFP': 'https://drive.google.com/uc?export=download&id=1yBIlGMp8qmp8KXN8kUN9-h30ichgD42E',
+    'INTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1EUzQgVGyR8N3AR4Q1JFe7PJFCM75LDtc',
+    'INTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1NKd_t193alzgi8NWIOMqCLdTImtkSup-',
+    'INTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1x1-c7QQmXLusoVM4Fsu4Ap8ncuS3Zo0R',
+    'INTJ-INTP': 'https://drive.google.com/uc?export=download&id=1ONXAMdkXoOd2_i3xt7-XcG4aWXjLGzvH',
+    'INTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1FOWYySpttigXj2JPLr5dv-9U00LB7QcX',
+    'INTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=17GcpiS80kXEJISG1as31p8T9gS-GMPk5',
+    'INTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1vgUHuZmtLRHy5CIW4Avt3MBgp-YLAFC9',
+    'INTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1_YoxQbXTpvZSnK-0nfkE_LW0gI79t018',
+    'INTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1ZQmCg9ioE_sL278nueMs0PAECtBYIZrZ',
+    'INTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1aZesIEmCCU4le_vePicPnapmwLmVu7xa',
+    'INTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1H8uhiI15syT2579-QvuLYdGos50wQsdj',
+    'INTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1n7HkHV52lA2dvbQDUnRkCccQ0aydYYJL',
+    'INTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1_gaoquhEG5PAoJjJQ_OL4KDYLkAbCKM4',
+    'ENTJ-INFJ': 'https://drive.google.com/uc?export=download&id=15wYzlnv4PJlCAaTTAZf_V-neEl6iabh2',
+    'ENTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=12cINYvvhg1xVbc1xzfKwy_B6t5VA3570',
+    'ENTJ-INFP': 'https://drive.google.com/uc?export=download&id=12wQIAE4r3JzebZ26Q0r9_OdoSc26CQjG',
+    'ENTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1TA9JUsCwtAQDUhmIHoSYCQoJmoJyZEib',
+    'ENTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1Vu11l0QMAQCvz_UmoLii4qisnigA2XLo',
+    'ENTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1C7E8E9Z17kFqlqNS_44m1uih44ReMVUk',
+    'ENTJ-INTP': 'https://drive.google.com/uc?export=download&id=14FxUTiX3hlvpR_E1WKa6Ymb_M1K_x1wh',
+    'ENTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1ZZMUOZHfd1WQt9POC40roRhdW_gJCx8V',
+    'ENTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1EvyKRZBitXB-bMpm-LQEX7qdHvWJcf-I',
+    'ENTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1eL9tVmCQpeBYaWexyl2NNhe-m6v0wC-H',
+    'ENTJ-ISFP': 'https://drive.google.com/uc?export=download&id=17Td-Iy6IFnuu2HwAeVytlRBApnE46Bti',
+    'ENTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1Cb6s2fxPZ8AKZM0c8-9j4LmnhAqd5btr',
+    'ENTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1Fk0vgg5peZHZTAa3WzcJOTFwDnI73XeO',
+    'ENTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=145WIJLV2Ah2QjuKx7-I2LsykefZTwnLx',
+    'ENTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1ovhPgnJlFVKAMLXBeWoRo6hidVsTWX0k',
+    'ENTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1CV2lfnD6R8VI3Xz3i3196ZoskFK31fMx',
+    'INTP-INFJ': 'https://drive.google.com/uc?export=download&id=1_d72ncl27APEZE4czMWivToaEWDAeUUU',
+    'INTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1eks9rjQrb38R-T4uRIhdhF62viuqlW5a',
+    'INTP-INFP': 'https://drive.google.com/uc?export=download&id=1Q-IxsVrB3GZ5OyTECSMYMnrj2wcoi7C9',
+    'INTP-ENFP': 'https://drive.google.com/uc?export=download&id=1xV4t4l-isWgJIs-oCymrQVT7dvbCQvVj',
+    'INTP-INTJ': 'https://drive.google.com/uc?export=download&id=1ubF6U7XiOR0KbUxthmCT7DyfsewUa1V_',
+    'INTP-ENTJ': 'https://drive.google.com/uc?export=download&id=17kk3zUHE3rKYDFWdmaSQCyry1mbGO_zG',
+    'INTP-INTP': 'https://drive.google.com/uc?export=download&id=19KD9xNGMky613VvP__gIfEeGwr099YHO',
+    'INTP-ENTP': 'https://drive.google.com/uc?export=download&id=1BZyOkvvfEcDQZAbIcETuXSLUOulFkqiR',
+    'INTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1ltmrxKlxnPv3gSld84gzOK4yCzAHP0Sm',
+    'INTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1TZB86oIBPILykh-7XgWtYzH5RdsJegDs',
+    'INTP-ISFP': 'https://drive.google.com/uc?export=download&id=1x8TPXhLn-U8Pgg-WuCTLwDV6GItLuPO6',
+    'INTP-ESFP': 'https://drive.google.com/uc?export=download&id=1rPHkASWKXtIeqNaBj2d3Tw45sYDKVybx',
+    'INTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1Cru6uCIRXDlVvbSSbyGOKvIIoNIz1_2T',
+    'INTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1mRdFVzAYfBxCjFQirlzv3068cZpZNKEB',
+    'INTP-ISTP': 'https://drive.google.com/uc?export=download&id=1LNqoWIwYMKBfzh0LI2OjRVnDOFHPOjf8',
+    'INTP-ESTP': 'https://drive.google.com/uc?export=download&id=1f3MX79o1Fg9oBwLTy9S-pQC6bs0Bkxmh',
+    'ENTP-INFJ': 'https://drive.google.com/uc?export=download&id=1J6YZlfVfhsxotBVlZgDIoxMs1IHgBPG1',
+    'ENTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1avpUaWbtyXNEfilLbNjAOYHeECl7RsrI',
+    'ENTP-INFP': 'https://drive.google.com/uc?export=download&id=170o5_NKHVezkUStkAFUd180WLSKcIBVZ',
+    'ENTP-ENFP': 'https://drive.google.com/uc?export=download&id=1e3QXriF_4ZdUx5WTulRrQjQV4TqN_vEW',
+    'ENTP-INTJ': 'https://drive.google.com/uc?export=download&id=1fl_005bSaeqaqROozHD0h-PDNToZz6gH',
+    'ENTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1bthn265yKX9TvyJeMpN0riLy8admn9bH',
+    'ENTP-INTP': 'https://drive.google.com/uc?export=download&id=10OA7ZQWh4Mkyl1TdOQoHIXZy80dhRlL8',
+    'ENTP-ENTP': 'https://drive.google.com/uc?export=download&id=1xpct3Jf3j0tMfcsEjcrXHErLAN2BOhJW',
+    'ENTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1d7NOYxIC1ZjmY6Wc_a7f36JPzZgaJYK8',
+    'ENTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1AjUywRoe0w9bhvepgQx5YKsdlk0ZBdBP',
+    'ENTP-ISFP': 'https://drive.google.com/uc?export=download&id=1vl3HwC36Mbohvj9Ezwb0ri0FiyTWEz0y',
+    'ENTP-ESFP': 'https://drive.google.com/uc?export=download&id=1oFkTBKLv_A8qmFyEKZDrCsn8tv_Mn4ZS',
+    'ENTP-ISTJ': 'https://drive.google.com/uc?export=download&id=19tfF85tPZzSmPXzxI6R4aBLzeysDADbs',
+    'ENTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1QFGoLhD_R461x5S9OsGVjPhxN_DitErv',
+    'ENTP-ISTP': 'https://drive.google.com/uc?export=download&id=18Sp2ALMLG33s4Es_BsN-x5wCcaub4J_-',
+    'ENTP-ESTP': 'https://drive.google.com/uc?export=download&id=1nrgxGrqpoCWV-cTBBJhmFImgCUTkjtI9',
+    'ISFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1PJlde227d-EM_BbNBuCAehTV1Dy9Qwir',
+    'ISFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1dYS5P0OTM_DgvjVGKEIZVQrs6lfDbMxM',
+    'ISFJ-INFP': 'https://drive.google.com/uc?export=download&id=1brefXvGl9vyAAbrpqWg3Kr2TB0df7Wpm',
+    'ISFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1wWZ-kXtg9N7j4RWhJY0ZoxAsU6H0Yq8u',
+    'ISFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1JJ0XVIvYUev46KY882xRpqSvvnEmG2WJ',
+    'ISFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1pAFWS2_rk9e5N5UNZdRZa9RUpLT5cxLG',
+    'ISFJ-INTP': 'https://drive.google.com/uc?export=download&id=1FLE44jswioKew-3L6D5kCqfq0fbHUPIS',
+    'ISFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1De9RxxJ7sUCadhuPrPJbt56HwjFYLrLN',
+    'ISFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1NfYsLoClz5GBe51i9Fr0OYFzvFp-rNQ_',
+    'ISFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1pG3KXA7Tn_OosB575njikTzu-1xuBpfD',
+    'ISFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1FKl6ftYSwvla8NDAxZvzBQT6GxZ1xbwO',
+    'ISFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1dkvhJ-IjFyi2ss7Y0jXx-xJHiv4A6gqt',
+    'ISFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1pWa2B0B6fThSltw32hTUQHdVHLeqoMmB',
+    'ISFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1HePIHaHqF8pNcCny9eYsnWA46jVf5Bku',
+    'ISFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1WFvGbMKfBliUZUKDNHmA24iG3hskoc7x',
+    'ISFJ-ESTP': 'https://drive.google.com/uc?export=download&id=15i7LFnUrzRBR5rYPula4pD1vcnE2HiC6',
+    'ESFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1oanfj_WKHg9zoxFJxPuSfAwMEJedG_ko',
+    'ESFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1V87j-zqq8OOmd08Gl4IPNiOck_ZGvnDM',
+    'ESFJ-INFP': 'https://drive.google.com/uc?export=download&id=1YzrpjZNp1qik1Xj0sArPwYTZVgFZ5Pn4',
+    'ESFJ-ENFP': 'https://drive.google.com/uc?export=download&id=18a0wiz_yktHsq_p03RBK6Jr80XwTU_T_',
+    'ESFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1HO10FyXq0ylZcyP3ENndo8nIlwBF2dWz',
+    'ESFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1QjrhaQkok1hhZbvC69M_n0l50OtrJfYf',
+    'ESFJ-INTP': 'https://drive.google.com/uc?export=download&id=1kKC9loNKpuv1BNL2K9YjZ1B0bz0_OGTH',
+    'ESFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1u8B4eVeNCz6mSMExxyMUlKAjESJUfnZb',
+    'ESFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1RSPyIM2APGJzl0AniMTEw5PQfypcmVDX',
+    'ESFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1EatSgd_FhhlzEv_ONBJOKR_2QenTQHAN',
+    'ESFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1oaZTTJHFA1NHSTzL_jXQJiv6Twa85ebx',
+    'ESFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1ItpuxcAvMPsjloXFq_JHUsQP2i1hJ7kZ',
+    'ESFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1ee-hUf8WfYSfd8MbWcbkISuWkU2QzbXT',
+    'ESFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1xMjIOuEEHGMXxZVw5chxbZBAMxt7_01c',
+    'ESFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1lbDyGsJdSCFdW-AYEh981ERIYCKxswO5',
+    'ESFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1LzyJGu886t3w3YJ4F1sFo5eD_OtwfnrP',
+    'ISFP-INFJ': 'https://drive.google.com/uc?export=download&id=1a5ecyyjUJQRu9wSIK33FCJTM7v1FtF_4',
+    'ISFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1QmWStacHOxHD5SDISSW7GuJNUi6j8M3K',
+    'ISFP-INFP': 'https://drive.google.com/uc?export=download&id=1xiV_LC1c_A1wHEZXh-ux4XpvT6917WZC',
+    'ISFP-ENFP': 'https://drive.google.com/uc?export=download&id=1MBnQWHsphQypbGB40LHAZ0OdN6aw67TZ',
+    'ISFP-INTJ': 'https://drive.google.com/uc?export=download&id=1BgjswHn0DFuy9Uhnv1YK3jsonc3UiD7_',
+    'ISFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1ojv9paaJIhK6edZRzZpi1aH8KdZ8vBst',
+    'ISFP-INTP': 'https://drive.google.com/uc?export=download&id=1RgyfsCW_6Hsfd7-ilFQsinoPmCRGRald',
+    'ISFP-ENTP': 'https://drive.google.com/uc?export=download&id=165hZj_9OwiwJNT7QScXArLQK476z8AyU',
+    'ISFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1eo03HaLRwWLWBqihdpDAhk7SGSDYyLug',
+    'ISFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1dNlSPhL7-e6FzXcq1e_WhGFNqRbWrxHc',
+    'ISFP-ISFP': 'https://drive.google.com/uc?export=download&id=1fyfENZ8nouhudy6Ki6RzENu4FWaNmTYj',
+    'ISFP-ESFP': 'https://drive.google.com/uc?export=download&id=1ulMSLVym77veEf2Yu__Ms-6-TkxdFFka',
+    'ISFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1s2Hovhj8Tcjbz3HHUj_o4X6nSuFy-79p',
+    'ISFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1mOxd_UC27piXMYEzlxkBsfrQ8cjZ-oLh',
+    'ISFP-ISTP': 'https://drive.google.com/uc?export=download&id=1kga3yBzQrwd85FPRRGzZdXHv47yrBvQ6',
+    'ISFP-ESTP': 'https://drive.google.com/uc?export=download&id=1Rm3tQbe5FiJCGOqiTaf-w4CoROupc3fM',
+    'ESFP-INFJ': 'https://drive.google.com/uc?export=download&id=1dSUxxMrRNwNVckP2BPnqidyPb9suT8f7',
+    'ESFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1m82Zu_kz0PJCMZkqVR_ETMVB_9wkXClM',
+    'ESFP-INFP': 'https://drive.google.com/uc?export=download&id=1VuKwiuH6QGVnuwMB2-IjwszKYbGvKhiO',
+    'ESFP-ENFP': 'https://drive.google.com/uc?export=download&id=1-aXIT_1HRHzAHYOJPYN9RLeSUv6Se-5t',
+    'ESFP-INTJ': 'https://drive.google.com/uc?export=download&id=1QfuGLVL0n6k4sRnj09rHv8tIRrELIxsR',
+    'ESFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1DTQBIkLgvslrioTJGfMPVB2n2fP3ajbr',
+    'ESFP-INTP': 'https://drive.google.com/uc?export=download&id=1HbRU_b6LTFAiBKjl3nd72ilZrFnUXU70',
+    'ESFP-ENTP': 'https://drive.google.com/uc?export=download&id=1UgxfPcSh3lw9xrFUAJWS4861mTT2dmj9',
+    'ESFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1BHCcuMfZgXJbD0ISMyfL2aWXpGqe3tOW',
+    'ESFP-ESFJ': 'https://drive.google.com/uc?export=download&id=14vgDQPcShmIlaZ5PVuM4eXAT-oY3-qIC',
+    'ESFP-ISFP': 'https://drive.google.com/uc?export=download&id=1Wv-NoUCWFCncjnKOsL7LLAGDZkBFThVX',
+    'ESFP-ESFP': 'https://drive.google.com/uc?export=download&id=1Hafzx53LjwO0Seay6AYd1KeL8Kpsr4NB',
+    'ESFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1BkbxT8JC6ljQW9IqHJn7Hr2K1Br3dg7u',
+    'ESFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1ZS02zwlYDI_bm9TZxB3YvZzgPRWS4pIE',
+    'ESFP-ISTP': 'https://drive.google.com/uc?export=download&id=17j08lp0AI8XJDK7BGBL0-SFkkCnkQbT7',
+    'ESFP-ESTP': 'https://drive.google.com/uc?export=download&id=1J504rAai9_5eTYM5Vo8atz-jnrrj77zu',
+    'ISTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1IYoA3xl5fmrYRxUjjE7-KhP-rIgriFYi',
+    'ISTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1OKutn0mdvNh25l3TZscCur_3PukfNLOo',
+    'ISTJ-INFP': 'https://drive.google.com/uc?export=download&id=1Kj8QoaNfy-rODuihRza2tHilucH-j6fy',
+    'ISTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1oNwg-ULmnPFtRWCgF6N-Ym3sA91k5-ny',
+    'ISTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1ughz2FpYTlV590Vk0MU_-hhQq4NLOC9M',
+    'ISTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1iVsD8LJmaBCfYBeTlWdql61ZUYj_6Bin',
+    'ISTJ-INTP': 'https://drive.google.com/uc?export=download&id=1Je_bIqz0s37mf7R-txMaGwmXD3rMeNs-',
+    'ISTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1s5hJMP2UVyK60LwJWuHX7FfrUQA1XWZh',
+    'ISTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1ilPVkGp80PXrI2orXTahzx_AeSxTicbA',
+    'ISTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=10lZZ6G3S9XB9dy82MCadPjdWfsRttRcc',
+    'ISTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1mb2WJmUViOWH5-1uCPt2sP73TH7ar_Ch',
+    'ISTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1WCc0xRLdoRvcHf731EVn-NmERMnSv_pw',
+    'ISTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1EPMJPh6LshLo27Ntpsp_YdFufPOosVU_',
+    'ISTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1syU7xdEv5UoYMF8XwyUCSI9G0iJVmEgU',
+    'ISTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1istpS6yTyiRJPLZKfoDDhtpGP7UmRfzw',
+    'ISTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1WvahO8UpqlZcBZa75ZE7enmUWCJd675P',
+    'ESTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1PjXVUpYl6uFjrdQcmQYR50u7gC_k7MUb',
+    'ESTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1OTiLBI4og6jQUqnuCr47oDqFOljcK6If',
+    'ESTJ-INFP': 'https://drive.google.com/uc?export=download&id=1Lq7IgV7lYUeZctMai6G-pmjBbvB9eRAc',
+    'ESTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1Khxn8FwuClNWFbuWcHSaSbPK6SV2YIwq',
+    'ESTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1U4EaYeaxpP54RIcG0SEQwkmJ_AwKCgW0',
+    'ESTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1SpcQlPZe7Sy1uGyfS-iA3DMMaDiiHa6J',
+    'ESTJ-INTP': 'https://drive.google.com/uc?export=download&id=11Q_Iw0DqktwMXxd6KS0ODJrBMlnS7fkn',
+    'ESTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1IhprDYSjtUsJHiNys4mqmTNJX9Mr-TkE',
+    'ESTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1BY9R2M9j3c2l9MYq2Cg1NnVHdUlimbW-',
+    'ESTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1iUju7oCK1Qt27fh66o69naiCeF3wn52Z',
+    'ESTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1o6uZymndrK1NE-2CD5wyq7xv30BShzOv',
+    'ESTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1pTgCJz4mF0GV0IGCYbAWEM-ZvqA81EtP',
+    'ESTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=17WVE5jKRbVCln0_KBoNLTjM3EeiVb2vc',
+    'ESTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1jq4Ofcg6ssbABE-1EUaNx8JaMjmiZBRk',
+    'ESTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1gCUCFn87xk96pqLUBoP7ouwmx8C8fhic',
+    'ESTJ-ESTP': 'https://drive.google.com/uc?export=download&id=11gyjgWFrhYz4PmU6eQjZ4gB8KzSq3bet',
+    'ISTP-INFJ': 'https://drive.google.com/uc?export=download&id=10MTL1XHc5lTGFDAXKrH0JluKMjWynezo',
+    'ISTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1Kp5e4QLcGurHqtikq281nGokbpZZotqn',
+    'ISTP-INFP': 'https://drive.google.com/uc?export=download&id=1zhqqtpq0oT-8N4yXqnYSo5eJiTFdAmvL',
+    'ISTP-ENFP': 'https://drive.google.com/uc?export=download&id=1STd3A8WcF9JFGl82XmPnJt-mehDgOFk7',
+    'ISTP-INTJ': 'https://drive.google.com/uc?export=download&id=1jBBToVvRHFB6lERXnRRGgyreLFXz9ORR',
+    'ISTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1oRRtOaPYzjSnz_nXNcnOvipOL1RJDcLT',
+    'ISTP-INTP': 'https://drive.google.com/uc?export=download&id=17oVezPG4DTt03XOcL1553d3cNDspraEV',
+    'ISTP-ENTP': 'https://drive.google.com/uc?export=download&id=1YQtmWG-WHcrvthrcHfbhf8qq07fDE1pH',
+    'ISTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1iLebiznCAA5VF0xTB552o0sK0FNByBRY',
+    'ISTP-ESFJ': 'https://drive.google.com/uc?export=download&id=12QV8WhXH5AUp5yJr-3wZpb9jqKip2hbi',
+    'ISTP-ISFP': 'https://drive.google.com/uc?export=download&id=14h4omujJaa7A4eVDin6steS3fob6xowe',
+    'ISTP-ESFP': 'https://drive.google.com/uc?export=download&id=1KnpMxiIfctDB2TVyNnbglQ-MSqO9-m5x',
+    'ISTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1QD2rfHT_3zjrGKc6R1O1i7MnwB39ELmX',
+    'ISTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1v43ZBTG5pf3StBrSVVkOf5pW7BTUMiMA',
+    'ISTP-ISTP': 'https://drive.google.com/uc?export=download&id=1qw_ZwKNahqdX5xlciY2Gxw45D7uBfAVO',
+    'ISTP-ESTP': 'https://drive.google.com/uc?export=download&id=1yJWv5JBns0GHl55Rry2Kpn5MKgO_Vtsr',
+    'ESTP-INFJ': 'https://drive.google.com/uc?export=download&id=1czEz7-mhpC3bXCf3n4O0IJ7H-q5b3m99',
+    'ESTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1d5JPNpFrX3yVnzHiFjdfKw0412UCte1-',
+    'ESTP-INFP': 'https://drive.google.com/uc?export=download&id=1rKUxNCoa8dTlIiVtxU4ToQIhLOok7YZQ',
+    'ESTP-ENFP': 'https://drive.google.com/uc?export=download&id=1TgsHdC_AJgozr-XrQ6VmYCi3iR3SI-Ur',
+    'ESTP-INTJ': 'https://drive.google.com/uc?export=download&id=1eZDdIXJPw0rYsqTeYSjAXaqCxLNT_OUN',
+    'ESTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1Ln3kG6NjL7NNoksL6Pr_As7Xn9wb73iS',
+    'ESTP-INTP': 'https://drive.google.com/uc?export=download&id=17PbYfISnHtfi9whD9kJw8GmJDPZ6C_D0',
+    'ESTP-ENTP': 'https://drive.google.com/uc?export=download&id=1wn_0KLYj82WfEuL0KMGlz02jsAaBJnwn',
+    'ESTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1BNqHfWx7uh5zjJnKJcYlilB-ODxt-ngj',
+    'ESTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1PaLej31aTDOLiAdTqOmFubIaBhWWS3sr',
+    'ESTP-ISFP': 'https://drive.google.com/uc?export=download&id=1SuvWbO3FPgXRCe6AL3z0nAzsKOxNizYF',
+    'ESTP-ESFP': 'https://drive.google.com/uc?export=download&id=1D8ocxHe7GaXDE5qKx91hhPXrimNC90If',
+    'ESTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1qX3K6_NeC20EdAuoixRH9foJXlbKmS3d',
+    'ESTP-ESTJ': 'https://drive.google.com/uc?export=download&id=14fDZdoJZiKYW88TWdmFGojLvaIKNSGML',
+    'ESTP-ISTP': 'https://drive.google.com/uc?export=download&id=1SNZuWOosRNfWxVO5iTPtMhfpfALjW9No',
+    'ESTP-ESTP': 'https://drive.google.com/uc?export=download&id=1aqSuJg-ZKaMeGIYbibRqk5u6BDnVwIQF'
+  },
+  pro: {
+    'INFJ-INFJ': 'https://drive.google.com/uc?export=download&id=14NlBo5ktI7ZVgo-cRJA3cpwRr3YI--fP',
+    'INFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1FmBh8VPNjZNRunwGmHzcU-FiOcldsS8B',
+    'INFJ-INFP': 'https://drive.google.com/uc?export=download&id=1PWMVkUaLMrZaHtbP7pblcjR_qvWVX9UL',
+    'INFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1fAIk-vv0Ks1i3RUD6MAdfa-4L0gBc1G4',
+    'INFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1dk24vpHKNcbSh8dsuJMHoQdMq2cDfLlO',
+    'INFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=150NM_lTWGdQmvgN-ZefumRZ2wTyi4dn3',
+    'INFJ-INTP': 'https://drive.google.com/uc?export=download&id=1guUV2mzh3_pk7pauGwjyJZ3KHPKt2E8k',
+    'INFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1QE45RlJnTNetV4Go6ivPSZYYGMCVEFcU',
+    'INFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=13ux4J4mj_oCcTS_toLJNsdeOlfCrJwlh',
+    'INFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1oi1BJxfhqYVhS8LGcs_Ik5f-RBLp8ggA',
+    'INFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1nW4p4Jfcn1CHqGL9DReZMjKiV5oFjykz',
+    'INFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1D0AzYOF06VeSkzQeMv_zvTkWIKBOWMF6',
+    'INFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=19Kjrv0qvfx6KW7sBdeQNdPlkDiSaM0C9',
+    'INFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1yB4vJyDuYbjH_waoZdT2OnT5_r_-miwu',
+    'INFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1-jCsFhe6Vr6SiY4ky7rg3THeEHO3TiPj',
+    'INFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1d1sr7CsbuRjV11t_H06-l53EA4KKNO3M',
+    'ENFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1wx6R_aJOXfa4WWstJizDPr6_z4QXIdGk',
+    'ENFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=10wrhN-47415IhrM019nVjYllvPWg_tyv',
+    'ENFJ-INFP': 'https://drive.google.com/uc?export=download&id=1-XMk-icZUsW-PmVCM1_iriMC0NqTcwbf',
+    'ENFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1AzknL_jToL65cpQEFBLPDShlBMeG0Kp5',
+    'ENFJ-INTJ': 'https://drive.google.com/uc?export=download&id=10XFahUbmYOerxVWDSJ93f5XKGqVWavdH',
+    'ENFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1r_R62f87n-9atFNlrmFNSwRwoT7NSX8z',
+    'ENFJ-INTP': 'https://drive.google.com/uc?export=download&id=1PkG-vIq_DbQF0Xxh3iHGQOfQEFr1r5d0',
+    'ENFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1ug5J5wx1UDe3PB8ZNzC2zcBgZngmbsJf',
+    'ENFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1hERezUuTgw0Ks1JJybP1tTA5cFJIGlC-',
+    'ENFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1B0c_x6xynBd15uHmtJMPDCW0QMdSzQk2',
+    'ENFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1Vil1Fr1qHRzrlMcN94ExkQX6W3U3WSrh',
+    'ENFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1qOFPGSMBMEvqv4tidbfFYIabVcibZ24F',
+    'ENFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1EZ5nVrNAGg5xaRldMf2s1mDyoq5Fb0--',
+    'ENFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1gl_6DpX2UmMSySDDhVMjZgI_glG2_rkn',
+    'ENFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1rvv9g9a0qhNEOpiS181KcWmh1AzhxhXz',
+    'ENFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1xvahHRGuKAqCF_3PI_a7vd9rbt3uD7V1',
+    'INFP-INFJ': 'https://drive.google.com/uc?export=download&id=1KfmrDVgoETgAeYTpDkCLl6pxlZEsppCX',
+    'INFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1qNaWBzKWJ1Y6N8DXN7hBfK0Aj7iRpUEu',
+    'INFP-INFP': 'https://drive.google.com/uc?export=download&id=1Cbw-QFysQ23s6-FF4BRTxgnj02Tsqhmy',
+    'INFP-ENFP': 'https://drive.google.com/uc?export=download&id=13Af70Cdc1Qbk6xAw8axonlkzZ36zDL74',
+    'INFP-INTJ': 'https://drive.google.com/uc?export=download&id=1jMF8yNmLk9MINv_gS8Q4xLdV9Klre9Zu',
+    'INFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1cy6XSnJrzDBoFJYfLdg-dQUWVmouKVmc',
+    'INFP-INTP': 'https://drive.google.com/uc?export=download&id=1NHrsNAdSpL35VhEDHCYSMk12JUReR-OZ',
+    'INFP-ENTP': 'https://drive.google.com/uc?export=download&id=1hCtu7e5Gsh-cDLal0R-Yvxs7Fv6A0qLK',
+    'INFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1G3t1eC7RNaEX9_nPfq48oZJJAy2PObu6',
+    'INFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1CqwQ5wP8djIxbwIZweRPYab1LYLhgS7z',
+    'INFP-ISFP': 'https://drive.google.com/uc?export=download&id=1NhxUhbfbjPGR0xOMfhPUDkcXOVyMvRhF',
+    'INFP-ESFP': 'https://drive.google.com/uc?export=download&id=1NJl8Ln9wG0YtL2FUAcsJXXuQVTOGCvKs',
+    'INFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1pGLIoEipXkAb1YMFLuO2n9EdIICeKkAg',
+    'INFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1PlMev7w79JtbMVXZTIEVu5kE_l052TmH',
+    'INFP-ISTP': 'https://drive.google.com/uc?export=download&id=1p91kTO4b1SC8S1jtuZg4hxshQH12aJyT',
+    'INFP-ESTP': 'https://drive.google.com/uc?export=download&id=1B6T5ALJ6IHNwGcRVHOED4gzWbsYzw6eQ',
+    'ENFP-INFJ': 'https://drive.google.com/uc?export=download&id=1QoPY5kUoGtKrkvlmfWrNtcQnaujY5C8S',
+    'ENFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1iOyUxvx6j_py06WwSwgIgBLs_xlP95ou',
+    'ENFP-INFP': 'https://drive.google.com/uc?export=download&id=1BWtF9SDKv5spOovli-cZgV3Lbjqqf8kq',
+    'ENFP-ENFP': 'https://drive.google.com/uc?export=download&id=1yNNrLwFFclgW8tLgHe6YQeo8GeyZ0zHW',
+    'ENFP-INTJ': 'https://drive.google.com/uc?export=download&id=1wYM-AyO71YXY14F5xkguYSeBZyVnQ-Wr',
+    'ENFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1ue9wNkho-7nMbxtVdga0370pFCxeDT0X',
+    'ENFP-INTP': 'https://drive.google.com/uc?export=download&id=1AgLEkV5gzTVkPcRD7rdkCD2nBLMQKzIM',
+    'ENFP-ENTP': 'https://drive.google.com/uc?export=download&id=16eiFLhcb-AQ1Dkc8igvRxKNx5dHOoxHI',
+    'ENFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1Ni0ZhalYzvzIObWHKusmXYK2a0cyD3VQ',
+    'ENFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1khW_Q2cFwUfisi4-q8Un8vI53JmAOoXt',
+    'ENFP-ISFP': 'https://drive.google.com/uc?export=download&id=1qK29_Z6sTQbydqq3aFNoqr_nzFP-GF5F',
+    'ENFP-ESFP': 'https://drive.google.com/uc?export=download&id=1LO_dKLspN76BG3cEhq2AWu0Bs7iFm4CG',
+    'ENFP-ISTJ': 'https://drive.google.com/uc?export=download&id=15I3-t2bGL6Pee7lQ82jvAmcOWHVMWW6y',
+    'ENFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1Bbaqay9G_62GXg2MK1sVC_uZr4JyyHQF',
+    'ENFP-ISTP': 'https://drive.google.com/uc?export=download&id=1ypNryGOc7cq5eYI3gaN46W4GgRPcDL-c',
+    'ENFP-ESTP': 'https://drive.google.com/uc?export=download&id=1iQGMwQXhDeqafZYLpx0Z093Q6ATea96V',
+    'INTJ-INFJ': 'https://drive.google.com/uc?export=download&id=19PElKf-qUHmcpVSAZV76TZBX28uFzhYx',
+    'INTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1bN90z8Dv7Pl99ToLwwPfPLZrE2-hlS_Q',
+    'INTJ-INFP': 'https://drive.google.com/uc?export=download&id=164ktdRLDkEWCzto1eg1fWJ0jcT_-BbvZ',
+    'INTJ-ENFP': 'https://drive.google.com/uc?export=download&id=13L113TgGTfuWefdBYX4mj39ldF3RWJop',
+    'INTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1cmsoddB08cVpqSzDH_yt_P43zjhVu-PS',
+    'INTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1vMgtKnRpMAXDoPR6D3NeVRQIeVf83D5v',
+    'INTJ-INTP': 'https://drive.google.com/uc?export=download&id=1BcF8hGFHGMr_9zrOl974xgxwkdwX9I0d',
+    'INTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1EfNdNXHAvJeVIFf9CcsvgReCAoNZBg66',
+    'INTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1JnY8GN8Udvk6Vpd6Pl7dJIU348k2GX07',
+    'INTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1suxeAZ31Nfa1Cp-hqx7fbZiMT4oTdvrC',
+    'INTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1l0jiEwPsEaltkTALpftdPkjqhoRyrkqR',
+    'INTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1-bgzT6NkgbkzW5F0YGqF7kjctZpV0O4M',
+    'INTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1_lqpT9F2SMbvvl7BqahQHVroPRBKXnY1',
+    'INTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1omqM-G7qACXz05Y-nkKOfRX_9elAphT_',
+    'INTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1s6krXdNP4vQS6JpkUNyIxFh7wQqQ4ReJ',
+    'INTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1cKrjQgrJ2GcQxQDeCO_EsRaQWQmeBQ7z',
+    'ENTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1pISOtHpJcwaB1_UFVrXF6FDXRVTLda5-',
+    'ENTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1xT-2K6FIdLI_-9BKQA8fAjTrsyyV71_i',
+    'ENTJ-INFP': 'https://drive.google.com/uc?export=download&id=1hizU6GJFoUi3AC9AkZWu7vIKHAI1BfKQ',
+    'ENTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1mh4djZxd4cVaj-jxAkZa1H6y_Q2VOa-F',
+    'ENTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1YPnhTbmnng-BOgfHU1Yjhe2jPAFXikbi',
+    'ENTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1wWLBO3otCPIJC8uVY-fhfUuMTfsNq52H',
+    'ENTJ-INTP': 'https://drive.google.com/uc?export=download&id=11fEumqR19zyhyEfvL2G7xfyoL-R062Pv',
+    'ENTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1sOhSIJ9A_AEg4cCSwz3arxu2Ic1LGD1K',
+    'ENTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1U2wEqojd5lzl4p-_AjB9vu6uVz2IF2qj',
+    'ENTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1glMu05Sbgci3F4lRcl6jOlalxUVYQAw7',
+    'ENTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1dcdcYD4OQlwRB8EMFIYlf394QKXaguiT',
+    'ENTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1fEprY1aSGt7DMxm-1h7uN7mi03EbY4iM',
+    'ENTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1iHtx-MezmgwLALOqGHdyv54CaQTdUtCI',
+    'ENTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1D1zzefdtTARqLy52nOd_j28s8XcvVmmx',
+    'ENTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1pY4C77b3-R1zQgD6DObwdY5nLLX-RFz5',
+    'ENTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1Oz8TIdxbnIdcb3uCCcWnpgfJk2yRbi9L',
+    'INTP-INFJ': 'https://drive.google.com/uc?export=download&id=124BPKBZLVR_ok8zBSup28c60-2DLQ_DN',
+    'INTP-ENFJ': 'https://drive.google.com/uc?export=download&id=134d3BNkCR-JMdsrL8MxrEfFIFJKgr0EP',
+    'INTP-INFP': 'https://drive.google.com/uc?export=download&id=1Hy_eCtFqgxwKJzn7piRMr3aJf1hxtH0T',
+    'INTP-ENFP': 'https://drive.google.com/uc?export=download&id=1gFylO99e4QezjbYoXjDIAB2UkEYXW3EY',
+    'INTP-INTJ': 'https://drive.google.com/uc?export=download&id=1CA8m8eKIX5DtMOUIxkHBgdYP_xo_RD3V',
+    'INTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1msEfCNTsFjO3ZWz50NHdLmGWJsLT91Po',
+    'INTP-INTP': 'https://drive.google.com/uc?export=download&id=1Y3oO6LTKuoVZtINNd-jVLrNVZkG51d7O',
+    'INTP-ENTP': 'https://drive.google.com/uc?export=download&id=1sC4FlZkIkdwTPzV6dbFmsiulMpd2upqc',
+    'INTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1DX_U1__Zuh4kHKaRdq0kH4PtgmzU0v0y',
+    'INTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1Vd5vnXhd7w0zYzd7SQsqfzM4uVNWTdfR',
+    'INTP-ISFP': 'https://drive.google.com/uc?export=download&id=1GXjZ7RzmKoABUEZbH4V1Mhy3g5VA7lM4',
+    'INTP-ESFP': 'https://drive.google.com/uc?export=download&id=1sa29tRNRtfYvSQOaP9zcBn8rH-CygbCA',
+    'INTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1dcDXhxJd1uuaeJSzLeDb95Zqg0yDMDsx',
+    'INTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1hZrVOk0tPBst_TZfTtq423b_uYBUba7A',
+    'INTP-ISTP': 'https://drive.google.com/uc?export=download&id=1TX-sG9_LUbZlYSFgBu41Y3Rsyoh7HzxO',
+    'INTP-ESTP': 'https://drive.google.com/uc?export=download&id=1qHMqaDYYvcsQ8tVDEVxZzSniLP6AvKHQ',
+    'ENTP-INFJ': 'https://drive.google.com/uc?export=download&id=1HPO-I7BffRPcB3bkiqmjzc-zM_GYMc9B',
+    'ENTP-ENFJ': 'https://drive.google.com/uc?export=download&id=142u2Smr_zbG4lDGnHPXzrKwJA-2vXDIt',
+    'ENTP-INFP': 'https://drive.google.com/uc?export=download&id=14gspzUof8lQD8ZumyqKJQ0V2tmDnLqwE',
+    'ENTP-ENFP': 'https://drive.google.com/uc?export=download&id=1mhl3ZyxJPCRatZTRtBtcAFteqfKS0S-0',
+    'ENTP-INTJ': 'https://drive.google.com/uc?export=download&id=1Y_j0y8-GKTusZp9mDpe4ZijAU9LAG9jI',
+    'ENTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1R4oWegsgJvWCnGAvi5tttFqWC0SfoVp1',
+    'ENTP-INTP': 'https://drive.google.com/uc?export=download&id=1qLd0KXPX5KrYfNn-MwPdTSKOIEj2IXhj',
+    'ENTP-ENTP': 'https://drive.google.com/uc?export=download&id=1OgYCYdg6bjU6m7ibWr-nPNDb1r-TWATX',
+    'ENTP-ISFJ': 'https://drive.google.com/uc?export=download&id=10lRXnWJDQDxXfhcPm6TRAXtJJC6zYEHQ',
+    'ENTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1petFDyLBzyevfoFNsn9qBZ64UNoAqxYc',
+    'ENTP-ISFP': 'https://drive.google.com/uc?export=download&id=16SDG_OLBXmz9AoxKkhE6bHhOE7ERbG55',
+    'ENTP-ESFP': 'https://drive.google.com/uc?export=download&id=1hr01kekgkGjg5K-6YXBNW3PlMJMGTnXD',
+    'ENTP-ISTJ': 'https://drive.google.com/uc?export=download&id=UDYWuBRae3llJjVFgz2xExr_ouOFeIZDY',
+    'ENTP-ESTJ': 'https://drive.google.com/uc?export=download&id=11hefmqpJY4lAI0Lr4toXxx-srQ0b5El0',
+    'ENTP-ISTP': 'https://drive.google.com/uc?export=download&id=1_7pqjunGoZ4Pc2Vk5KtvYdw55I1a5SvP',
+    'ENTP-ESTP': 'https://drive.google.com/uc?export=download&id=1jIKmUAZPyKlrm5Vo9OJ7ECGR1ftpzz7g',
+    'ISFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1RZS1vKLH-7lRyaEYRvtE6LIFiALO6nQp',
+    'ISFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1RsTYATVwP3ZDFjUhW71XwrCwPpaevkOV',
+    'ISFJ-INFP': 'https://drive.google.com/uc?export=download&id=1UKn6JNRXAt9DD1gG9O0VC8h8Ks6aqbU5',
+    'ISFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1tYfRrRw34ddlW80U0bDpuEHra-gtOF4u',
+    'ISFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1s1Kku2FA8a5iamXqoCW4akxcFbaYfGnT',
+    'ISFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1To0lqUcZYAC80bM9hCz5GKp3ovYktQxY',
+    'ISFJ-INTP': 'https://drive.google.com/uc?export=download&id=1Tp8r0PXfgg6Feri_RuuoNu8jy_08eAhG',
+    'ISFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1tmCg8tlMZMWDbK1mwS4MAPPjfvArlkFs',
+    'ISFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=13rG4KX3aAfLIZgbmE3QELGp0BpT6F1Fh',
+    'ISFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1VSSzK0avQx8oNyzI_6cbJmsIg7XMOYT2',
+    'ISFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1juhYb2wLzT4zZ-tnyI6au74uP1LdHy7A',
+    'ISFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1WBgmFD9uNyakACooLFgtcm9Uulcbbbxb',
+    'ISFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1S8gIBudRkns4RMWLcxMEJfCUvu_wV5lV',
+    'ISFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=14HhQPo4_Qsj2Qpaph3KICAluk-_MXgtu',
+    'ISFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1KUUzjse3DwjJQG6fDxFqdSdQwymlTtG-',
+    'ISFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1ZlEl951LYTgvt8dXvoGvC0Nu_WALOT61',
+    'ESFJ-INFJ': 'https://drive.google.com/uc?export=download&id=1wnudJAO9InioL2XZrAaA_T0Q-dWkcpqx',
+    'ESFJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1pFPvAXOlAf4Jm-9l3sIDMEwqKMFDl2d',
+    'ESFJ-INFP': 'https://drive.google.com/uc?export=download&id=167k1cobXK3GOIf85sU3_nd_x8dmY99vU',
+    'ESFJ-ENFP': 'https://drive.google.com/uc?export=download&id=1c6f4HxEaKsEZfOqj34r2pyIJ8hiGBghO',
+    'ESFJ-INTJ': 'https://drive.google.com/uc?export=download&id=1-vXNvIKK71x9Apqobxf28GmNchytFByK',
+    'ESFJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1uiQCPu6p6nnRgub5WwyspKuZ1bwSkite',
+    'ESFJ-INTP': 'https://drive.google.com/uc?export=download&id=1K_lysMZm-xvUVjNNgTdoia1la2d6wnBK',
+    'ESFJ-ENTP': 'https://drive.google.com/uc?export=download&id=1mJMRmUGqsOQoTWn0ke79k6YQtaX9KJVc',
+    'ESFJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1YUQt9dq0Nmqf0eFm5Cj2ptL5aeSJ6863',
+    'ESFJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1DX0B-7VTgZd8vSJJRe3KdLVn_XRaK9EZ',
+    'ESFJ-ISFP': 'https://drive.google.com/uc?export=download&id=1c2oAtrOoJm6zaeqTMSuZHfxLvLG-fhLF',
+    'ESFJ-ESFP': 'https://drive.google.com/uc?export=download&id=1Hu9_6ZyYg05FxDnvDztvqsqZr4oPlmw9',
+    'ESFJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1vET1J4sn3xBxjLCfI-tm5vemPviQovik',
+    'ESFJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1J-3GlVNyzL7Say8pantXNXrzpiAisLZu',
+    'ESFJ-ISTP': 'https://drive.google.com/uc?export=download&id=1XTaDDg4IclDo14b2Etzx0Howi0xdI-Pc',
+    'ESFJ-ESTP': 'https://drive.google.com/uc?export=download&id=1o8pf2sCFSt5yf-M7FuqLzAa-RUVoFhuN',
+    'ISFP-INFJ': 'https://drive.google.com/uc?export=download&id=1B-FJ9HFzR3lj9RNVM9dahWNGJ2OlTzM4',
+    'ISFP-ENFJ': 'https://drive.google.com/uc?export=download&id=14uwvKBa0D6ZlkJ0Ct6n6dXgapXVwmeDw',
+    'ISFP-INFP': 'https://drive.google.com/uc?export=download&id=1s6QFPCXSv2h7T1Cj7ywB2VNZCGDGJSgs',
+    'ISFP-ENFP': 'https://drive.google.com/uc?export=download&id=1OE8492MLCenVjIjOxRGXHU3R0dqCXZCD',
+    'ISFP-INTJ': 'https://drive.google.com/uc?export=download&id=11KWGOKO-eZIGx5U49PxovL-Nl-_5qm9j',
+    'ISFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1tmpiwdBuqMo1OeAKptfB0ci3ZInzJ2f3',
+    'ISFP-INTP': 'https://drive.google.com/uc?export=download&id=1XTu-VWYaWdzgak-jTsLXaexNw80KdbNe',
+    'ISFP-ENTP': 'https://drive.google.com/uc?export=download&id=1J8xSdIKjm0JfUsEqeZyToN5n_6oryyUw',
+    'ISFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1iNm7N1h2PWPy29kjAGKsGdMALGwk2wDs',
+    'ISFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1GD_tdNbsMKe4CL2WT9Q0sVe-jWP1nhn-',
+    'ISFP-ISFP': 'https://drive.google.com/uc?export=download&id=1rgohfSORMYGfp3G2Cfr4zACL80wxJw_k',
+    'ISFP-ESFP': 'https://drive.google.com/uc?export=download&id=1tvCnEVqYjukVbgET8exLJcdO56UPZYNg',
+    'ISFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1hKKR8MJlxICkJ9VpgKTSwEYD_I25wstj',
+    'ISFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1tRtz54C1dXTO0PmlSFnhF9XcbkqTBaU9',
+    'ISFP-ISTP': 'https://drive.google.com/uc?export=download&id=1zIr7MQzvvNtqKjEA7QFDs5g2R2LCHeI3',
+    'ISFP-ESTP': 'https://drive.google.com/uc?export=download&id=1y1EqNi2WFTnsKoq2ywd8iZUhNeXuO061',
+    'ESFP-INFJ': 'https://drive.google.com/uc?export=download&id=1EUEvTGbgVrJX6VfyVI5wo1UE2lT0cvGr',
+    'ESFP-ENFJ': 'https://drive.google.com/uc?export=download&id=1y8arj-w3lrdqgIroko3SPiARhGFz7Cou',
+    'ESFP-INFP': 'https://drive.google.com/uc?export=download&id=1MiEEDju04HWz0TCkoX0l0VqBcHYr5h6j',
+    'ESFP-ENFP': 'https://drive.google.com/uc?export=download&id=1gYzna6DzbQ1qwvfXvkyj1RXzu9lcjYOQ',
+    'ESFP-INTJ': 'https://drive.google.com/uc?export=download&id=10M0CFg_PW8ul0WznP7NZwyO2CQAhpx19',
+    'ESFP-ENTJ': 'https://drive.google.com/uc?export=download&id=1xk_3jgWaIZUcG-RO-BPwr51oXNQmu6rM',
+    'ESFP-INTP': 'https://drive.google.com/uc?export=download&id=1HAzdAI-63ijPj_VNxb0t46L8PcByJG6Y',
+    'ESFP-ENTP': 'https://drive.google.com/uc?export=download&id=1NezHVh__EbLPKzy5XcwOwZH9ECkDNJpU',
+    'ESFP-ISFJ': 'https://drive.google.com/uc?export=download&id=1mfB6CCsorCfcb2gafVTnSOXpD__KBPJK',
+    'ESFP-ESFJ': 'https://drive.google.com/uc?export=download&id=1jVzfq-DfQhhLW1sFvM53oe2Si_CNuQAn',
+    'ESFP-ISFP': 'https://drive.google.com/uc?export=download&id=1tDwWmTkLEVsZoZzWaIw50fWi2ULpluwg',
+    'ESFP-ESFP': 'https://drive.google.com/uc?export=download&id=1IAhnKb74OoTfsI2mwZIZWj2G5g7Pg7bQ',
+    'ESFP-ISTJ': 'https://drive.google.com/uc?export=download&id=1DmMFZL0DGi6GMqFyxJ7-OWxwWVd13MiI',
+    'ESFP-ESTJ': 'https://drive.google.com/uc?export=download&id=1nfW_DUDvFzAQNbnyzNv18jPCTJW3NhA8',
+    'ESFP-ISTP': 'https://drive.google.com/uc?export=download&id=1fyLGzaOlCSPyJZNa83jD6nXnOtFVoseY',
+    'ESFP-ESTP': 'https://drive.google.com/uc?export=download&id=1F6ngt09Zf7Zi09DRj59gB_F53skiBdUi',
+    'ISTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1zWWEabE-WaSWayabSe8KY1_2W2lp0U2t',
+    'ISTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1yvOLGHldEx6tbKq7kfdbIQUDNi8Mu3-D',
+    'ISTJ-INFP': 'https://drive.google.com/uc?export=download&id=1we2rTjjwWFbrma_bO9hYk-AzBsEcMVyO',
+    'ISTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1HbrXCWbwIVEEqvvY2Hf5Co8lrVZHNWLu',
+    'ISTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1ScrNhLwF36aHHLzKeYetSY5f-YqMD6N5',
+    'ISTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1R25nilADMwgeTmlY_Nsx3FJZmrOVbFZY',
+    'ISTJ-INTP': 'https://drive.google.com/uc?export=download&id=1kuZHzqYSogAjAHg7sU1kfDgCes9I9nzD',
+    'ISTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1_wxcHnwXOG7k7Rc0SfuQnyOq_ngrvkKJ',
+    'ISTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1lrCXIa43pqlStA8_-MV-kkOxQjq9ZE8W',
+    'ISTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1dFyN8rec0NcS7crkSuKPcs0fLAfUSgWV',
+    'ISTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1aw1A7xWa3hraDuMASJPlHQaljTRkD1Mp',
+    'ISTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1zMIue1FttkfURUZZU2goCQML7yPaJ-je',
+    'ISTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1r-NQUF3oeAHz8WFGiGEfVENyTOLcvPxD',
+    'ISTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1stnv2zdu9QWKISVLzVT8JQB53u6bzTbb',
+    'ISTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1JkekpKadgWaNP4AjqC4mWpSLyYP4MlWr',
+    'ISTJ-ESTP': 'https://drive.google.com/uc?export=download&id=141hyy_jPgwDn3pxggiElGWrdFlShbqtt',
+    'ESTJ-INFJ': 'https://drive.google.com/uc?export=download&id=1F8PEHsbh3bxMkPBrnX3DljgzViTVpSc5',
+    'ESTJ-ENFJ': 'https://drive.google.com/uc?export=download&id=1G0KueUfZBDDWuF85iZCBqEwttF4xCpRK',
+    'ESTJ-INFP': 'https://drive.google.com/uc?export=download&id=1eyPnQRsHxC9IHJqZuVrlQtZkMf8Qe8Yc',
+    'ESTJ-ENFP': 'https://drive.google.com/uc?export=download&id=1BrVG9bbRzoq0lrgq77yDyUsFgM4GYyAI',
+    'ESTJ-INTJ': 'https://drive.google.com/uc?export=download&id=1g_-5hNDJGHab1es1mNnx7UD5DIpWUqFV',
+    'ESTJ-ENTJ': 'https://drive.google.com/uc?export=download&id=1e0E2c6cWiVz8a2vT_d17nzbNoFoQBS_-',
+    'ESTJ-INTP': 'https://drive.google.com/uc?export=download&id=1zI-3fa0nkT2ugc4I0HWGD2eu3Ga5rw0-',
+    'ESTJ-ENTP': 'https://drive.google.com/uc?export=download&id=1uYLCYlRXAX30OOlYazHGO5imcyOkGs-J',
+    'ESTJ-ISFJ': 'https://drive.google.com/uc?export=download&id=1Nhcww61p-tSEmgvgUC-yy7vV4rQLudAL',
+    'ESTJ-ESFJ': 'https://drive.google.com/uc?export=download&id=1iVAO7eGAM6o2eA9cHx9xGjgSj4qOa9Pt',
+    'ESTJ-ISFP': 'https://drive.google.com/uc?export=download&id=1B6SQHsBKy8JXXsAp0whyK6CUJ5ACKyBg',
+    'ESTJ-ESFP': 'https://drive.google.com/uc?export=download&id=1S3slGI8JS2wCDKwMShryKpA--N9qUzJ6',
+    'ESTJ-ISTJ': 'https://drive.google.com/uc?export=download&id=1In06RdMouV-fwLfLc0YXtNX7NRxUVOMm',
+    'ESTJ-ESTJ': 'https://drive.google.com/uc?export=download&id=1Eacm9uU2ZO2a7QOvt2PQsovbrKgLKozA',
+    'ESTJ-ISTP': 'https://drive.google.com/uc?export=download&id=1Y-FQYYvGkG8RwkdPowz3e8LQKvHv6xa7',
+    'ESTJ-ESTP': 'https://drive.google.com/uc?export=download&id=1V5x6uDwATezRGhGbHB0LG7iE9PXONtkI',
+    'ISTP-INFJ': 'https://drive.google.com/uc?export=download&id=1fj0dfltXL9LKLbZDWFhawFsICDBZ2Mdu',
+    'ISTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1vlQ6L8Sr_oDfgtgAaZALnPmvD_2JXvo0',
+    'ISTP-INFP': 'https://drive.google.com/uc?export=download&id=15DvIVD7Iyh_nnzNHcnl2JO2X_5ibbMnM',
+    'ISTP-ENFP': 'https://drive.google.com/uc?export=download&id=1FdGSlegi_-eUgJWqSpwJl10OweSJzhWH',
+    'ISTP-INTJ': 'https://drive.google.com/uc?export=download&id=1zFQIvLRlnwVkvr72DO7yNttU3gY4Wg2b',
+    'ISTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1feRBmXCpx49_cc6HU1bjDwkA9hzHEt68',
+    'ISTP-INTP': 'https://drive.google.com/uc?export=download&id=1LkuVk6XgPWFeRVANuI3FMuReta_ju7Fz',
+    'ISTP-ENTP': 'https://drive.google.com/uc?export=download&id=12PPJOVPCROGk-a1PNAG_boRLk1tT1ufS',
+    'ISTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1--BSP32bungTZgBL7aQ4UHYMSoY-jo0O',
+    'ISTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1GmoGr531eyxukfkW4EAw5BsCix8jrS1J',
+    'ISTP-ISFP': 'https://drive.google.com/uc?export=download&id=1VT09DFQQe-LCDmMhoCLz34vwSzXNo2eF',
+    'ISTP-ESFP': 'https://drive.google.com/uc?export=download&id=1gSRv-xmMNale_8RTLrbITzyz8XLlxZLd',
+    'ISTP-ISTJ': 'https://drive.google.com/uc?export=download&id=13kf0eVWDXr-9djazvkoiL_PKYUz_Vlt8',
+    'ISTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1ABKkiTPth-pD8z1M8tLK168q_BCc8HZs',
+    'ISTP-ISTP': 'https://drive.google.com/uc?export=download&id=1Zry1LPZCepyn1o6UHnVicXfBDXhmaT5q',
+    'ISTP-ESTP': 'https://drive.google.com/uc?export=download&id=1gIJru0haB0nGt-5fbFZgbMjcbk2oBxL-',
+    'ESTP-INFJ': 'https://drive.google.com/uc?export=download&id=1j5OpdZkGzWZ5-135E5Eh3oNNruMRvQJk',
+    'ESTP-ENFJ': 'https://drive.google.com/uc?export=download&id=1I8lsLKksRykUsbtinhy_MhSphyiQeoHA',
+    'ESTP-INFP': 'https://drive.google.com/uc?export=download&id=1dAKia8H3sSK4SM04vjz6Fqn-6QSNsdTv',
+    'ESTP-ENFP': 'https://drive.google.com/uc?export=download&id=1TdQg5vYKDHzdhFi21VjsqY-RRGwwQlyH',
+    'ESTP-INTJ': 'https://drive.google.com/uc?export=download&id=1Vas-wYCC1LT4uE2hIMWufUWkTuRweR0s',
+    'ESTP-ENTJ': 'https://drive.google.com/uc?export=download&id=1Ertw_6RqcoXSjXKLnX0BztpcBgp3zOQi',
+    'ESTP-INTP': 'https://drive.google.com/uc?export=download&id=1V_9oDzUKKzytg-sqg4e_IRuxut1uRmLI',
+    'ESTP-ENTP': 'https://drive.google.com/uc?export=download&id=1CuTfrO4rOLXZReR4goDA2B-Xopb7nmDL',
+    'ESTP-ISFJ': 'https://drive.google.com/uc?export=download&id=1m8s2RZvL0L81Ab69bb5kXeSP1R36N06S',
+    'ESTP-ESFJ': 'https://drive.google.com/uc?export=download&id=1_Wg3cSWM2bxpivW-gdI3UnGZBf7ULF1A',
+    'ESTP-ISFP': 'https://drive.google.com/uc?export=download&id=1g7zkZCKFUil-4HZwWGmLzm-CfsTkFe8D',
+    'ESTP-ESFP': 'https://drive.google.com/uc?export=download&id=1jh65OE6lm4H1Yn0LWV0ihakn3tGSIYIH',
+    'ESTP-ISTJ': 'https://drive.google.com/uc?export=download&id=1pGvxd6iq0Ydq18bMDxEdeWBCrh6D0ELm',
+    'ESTP-ESTJ': 'https://drive.google.com/uc?export=download&id=1EyfIcIPAcMj9ZhWs0QE53rIw7SCoAlIE',
+    'ESTP-ISTP': 'https://drive.google.com/uc?export=download&id=19QpadmGGgaNiMeiN-h8ai2gbUdVpfWbA',
+    'ESTP-ESTP': 'https://drive.google.com/uc?export=download&id=1-5RNEXEQc4ZxDKoGHD5FUz_JzYndd5Dk'
+  },
+  relief: {
+    'INFJ': 'https://drive.google.com/uc?export=download&id=15j-BRngO-afG7O9lG6qrALlSxRAzSwRG',
+    'ENFJ': 'https://drive.google.com/uc?export=download&id=1v-QooWMi5mNhTa95yIiB2Z_10XG0EDAp',
+    'INFP': 'https://drive.google.com/uc?export=download&id=12ymFejsss7gHB43X_5JvhYHi7rYW54Wa',
+    'ENFP': 'https://drive.google.com/uc?export=download&id=19NuB688VOAffu__yNjj05puGHuEtrHk_',
+    'INTJ': 'https://drive.google.com/uc?export=download&id=1lu1hrDjcGF2kdsO6FRBaHiCJg8s41QC8',
+    'ENTJ': 'https://drive.google.com/uc?export=download&id=1yMG02IHN8bw1BMTYab9uJkgJn2lieve_',
+    'INTP': 'https://drive.google.com/uc?export=download&id=1oIs2F4iRSszLeGO-QbgYdM869qbWjrBz',
+    'ENTP': 'https://drive.google.com/uc?export=download&id=1YPowxzKa_b86yHOstPAAp_n0mxdJA-uy',
+    'ISFJ': 'https://drive.google.com/uc?export=download&id=1y25o06wf98UdjVlBJCZqUM0FEOTsl5GZ',
+    'ESFJ': 'https://drive.google.com/uc?export=download&id=1WRiOakOxP80TnzUmviFfTspw3mbKYpvV',
+    'ISFP': 'https://drive.google.com/uc?export=download&id=1ODA3hu2wwmT7hv0wYZgjnnraPvFgXBG0',
+    'ESFP': 'https://drive.google.com/uc?export=download&id=18mGlgtCDug_rnLjygFouToNlesg4YFo7',
+    'ISTJ': 'https://drive.google.com/uc?export=download&id=16WGOr99MlMPBxVEeaSrZRENP6bXqgrcW',
+    'ESTJ': 'https://drive.google.com/uc?export=download&id=1XL2pzVmYgs9_qe11t2j5Ov-So8h8q5GD',
+    'ISTP': 'https://drive.google.com/uc?export=download&id=1ksybizB01A5j6pCOYhqVRGrZLYz2oIt2',
+    'ESTP': 'https://drive.google.com/uc?export=download&id=1VH5Njfhvh_Q7FBaoscLJeg9i06vDQPRJ'
+  }
+};
+
+// ââ åµæ¸¬è³¼è²·æ¹æ¡ ââââââââââââââââââââââââââââââââââââââââââ
+const params = new URLSearchParams(window.location.search);
+const productParam = (params.get('product') || 'standard').toLowerCase();
+let productType = 'standard';
+if(productParam.includes('pro')) productType = 'pro';
+else if(productParam.includes('relief') || productParam.includes('stress')) productType = 'relief';
+else if(productParam.includes('bundle')) productType = 'bundle';
+
+// ââ æ¹æ¡æ¨ç±¤ ââââââââââââââââââââââââââââââââââââââââââââââ
+const badgeEl = document.getElementById('product-badge');
+const badgeMap = {
+  relief:   ['badge-relief',  'è·å ´ç´å£æå NT$160'],
+  standard: ['badge-standard','è·å ´æºéæå æ¨æºç NT$320'],
+  pro:      ['badge-pro',     'è·å ´æºéæå Proç NT$480'],
+  bundle:   ['badge-bundle',  'å¨åç NT$640 Â· ä¸åä¸']
+};
+const [badgeClass, badgeText] = badgeMap[productType] || badgeMap.standard;
+badgeEl.className = 'product-badge ' + badgeClass;
+badgeEl.textContent = badgeText;
+
+// ââ èª¿æ´ Step 1 èªªæ ââââââââââââââââââââââââââââââââââââââ
+if(productType === 'relief'){
+  document.getElementById('step-you-sub').textContent = 'é¸æä½ ç MBTI é¡åï¼ä¸è¼ä½ çè·å ´ç´å£æå';
+}
+
+// ââ å»ºç« MBTI æé ââââââââââââââââââââââââââââââââââââââââ
+function makeGrid(containerId, role){
+  const container = document.getElementById(containerId);
+  TYPES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'mbti-btn';
+    btn.dataset.type = t;
+    btn.innerHTML = `<span class="code">${t}</span><span class="soul">${SOULS[t]}</span>`;
+    btn.addEventListener('click', () => selectType(role, t, btn));
+    container.appendChild(btn);
+  });
+}
+makeGrid('you-grid', 'you');
+makeGrid('them-grid', 'them');
+
+let selectedYou = null, selectedThem = null;
+
+function selectType(role, type, btn){
+  const grid = document.getElementById(role === 'you' ? 'you-grid' : 'them-grid');
+  grid.querySelectorAll('.mbti-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  if(role === 'you'){
+    selectedYou = type;
+    if(productType \!== 'relief'){
+      const step2 = document.getElementById('step-them');
+      step2.style.display = 'block';
+      step2.classList.remove('disabled');
+      selectedThem = null;
+      document.getElementById('them-grid').querySelectorAll('.mbti-btn').forEach(b => b.classList.remove('selected'));
+      document.getElementById('download-area').classList.remove('show');
+    } else {
+      showDownload();
+    }
+  } else {
+    selectedThem = type;
+    showDownload();
+  }
+}
+
+function showDownload(){
+  const area = document.getElementById('download-area');
+  const linksEl = document.getElementById('dl-links');
+  const comboEl = document.getElementById('dl-combo');
+  const soulEl  = document.getElementById('dl-soul');
+
+  linksEl.innerHTML = '';
+
+  if(productType === 'relief'){
+    const url = LINKS.relief[selectedYou];
+    comboEl.textContent = selectedYou + ' Â· ' + SOULS[selectedYou];
+    soulEl.textContent  = 'è·å ´ç´å£æå';
+    if(\!url || url.startsWith('PLACEHOLDER')){
+      linksEl.innerHTML = '<div class="pending-notice">æ­¤åèç PDF å³å°ä¸ç·ï¼è«ç¨åæè¯ç¹« air6030i@gmail.com</div>';
+    } else {
+      linksEl.innerHTML = `<a href="${url}" class="btn-download btn-dl-relief" target="_blank"><span class="btn-dl-label">ä¸è¼è·å ´ç´å£æå</span><span class="btn-dl-size">PDF Â· NT$160</span></a>`;
+    }
+  } else {
+    const key = selectedYou + '-' + selectedThem;
+    comboEl.textContent = selectedYou + ' Ã ' + selectedThem;
+    soulEl.textContent  = SOULS[selectedYou] + ' Ã ' + SOULS[selectedThem];
+    const stdUrl = LINKS.standard[key];
+    const proUrl = LINKS.pro[key];
+
+    const makeBtn = (url, cls, label, price) => {
+      if(\!url || url.startsWith('PLACEHOLDER')){
+        return `<div class="pending-notice">${label} PDF å³å°ä¸ç·</div>`;
+      }
+      return `<a href="${url}" class="btn-download ${cls}" target="_blank"><span class="btn-dl-label">ä¸è¼ ${label}</span><span class="btn-dl-size">PDF Â· NT$${price}</span></a>`;
+    };
+
+    if(productType === 'standard'){
+      linksEl.innerHTML = makeBtn(stdUrl,'btn-dl-standard','è·å ´æºéæå æ¨æºç','320');
+    } else if(productType === 'pro'){
+      linksEl.innerHTML = makeBtn(proUrl,'btn-dl-pro','è·å ´æºéæå Proç','480');
+    } else if(productType === 'bundle'){
+      const relUrl = LINKS.relief[selectedYou];
+      linksEl.innerHTML =
+        makeBtn(relUrl,'btn-dl-relief','è·å ´ç´å£æå','160') +
+        makeBtn(stdUrl,'btn-dl-standard','è·å ´æºéæå æ¨æºç','320') +
+        makeBtn(proUrl,'btn-dl-pro','è·å ´æºéæå Proç','480');
+    }
+  }
+  area.classList.add('show');
+  area.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+function toggleFaq(btn){
+  const answer = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('open');
+  document.querySelectorAll('.faq-q.open').forEach(q => {
+    q.classList.remove('open');
+    q.nextElementSibling.classList.remove('open');
+  });
+  if(\!isOpen){ btn.classList.add('open'); answer.classList.add('open'); }
+}
+</script>
+</body>
+</html>
