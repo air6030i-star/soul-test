@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>éé­æä¾¶ Â· åå¾ä½ çææç´å£æå</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dk:#100820;--dk2:#1a1030;--dk3:#221440;
+  --purple:#7b4fa6;--purple2:#9b6fc6;--rose:#c0608f;
+  --lavender:#c490d1;--deep:#2d1b69;
+  --txt:#f0e8f8;--muted:#9070b0;--muted2:#5a3a7a;
+  --serif:'Noto Serif TC',Georgia,serif;
+  --sans:'Noto Sans TC',sans-serif;
+}
+body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:100vh;line-height:1.8}
+
+/* ââ HEADER ââ */
+.header{background:linear-gradient(160deg,#1a0a30 0%,#100820 60%,#2d0a1a 100%);padding:40px 24px 36px;text-align:center;border-bottom:1px solid rgba(196,144,209,.2)}
+.header-badge{display:inline-block;border:1px solid rgba(196,144,209,.35);border-radius:20px;padding:5px 18px;margin-bottom:16px;font-size:11px;color:var(--lavender);letter-spacing:.18em;font-family:var(--sans)}
+.header h1{font-size:clamp(20px,4vw,32px);font-weight:300;color:#fff;letter-spacing:.1em;line-height:1.6;margin-bottom:8px}
+.header h1 span{color:var(--lavender)}
+.header-sub{font-size:13px;color:var(--muted);letter-spacing:.06em;font-family:var(--sans)}
+
+/* ââ MAIN ââ */
+.main{max-width:680px;margin:0 auto;padding:40px 24px 60px}
+
+/* ââ STEP CARD ââ */
+.step-card{background:var(--dk2);border-radius:16px;padding:32px 28px;border:1px solid rgba(196,144,209,.12);margin-bottom:24px}
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-size:12px;font-weight:700;margin-bottom:12px}
+.step-title{font-size:17px;font-weight:500;color:#fff;margin-bottom:6px;font-family:var(--sans)}
+.step-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.8;font-family:var(--sans)}
+
+/* ââ ç¢åæ¨ç±¤ ââ */
+.product-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;margin-bottom:24px;font-size:14px;font-weight:500;font-family:var(--sans)}
+.badge-relief{background:rgba(192,96,143,.1);color:var(--rose);border:1px solid rgba(192,96,143,.3)}
+
+/* ââ MBTI é¸æå¨ ââ */
+.picker-label{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)}
+.mbti-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
+.mbti-btn{padding:10px 4px;border:1px solid rgba(196,144,209,.15);border-radius:8px;background:transparent;cursor:pointer;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.4;transition:all .2s;text-align:center}
+.mbti-btn .code{font-size:13px;font-weight:700;display:block;color:var(--txt);margin-bottom:2px}
+.mbti-btn .soul{font-size:9px;color:var(--muted)}
+.mbti-btn:hover{border-color:var(--lavender);background:rgba(196,144,209,.06)}
+.mbti-btn.selected{border-color:var(--lavender);background:rgba(196,144,209,.12)}
+.mbti-btn.selected .code{color:var(--lavender)}
+
+/* ââ ä¸è¼å ââ */
+.download-area{display:none;background:linear-gradient(135deg,rgba(123,79,166,.08),rgba(192,96,143,.06));border:1px solid rgba(196,144,209,.25);border-radius:14px;padding:28px 24px;text-align:center;margin-top:8px}
+.download-area.show{display:block}
+.download-type{font-size:15px;font-weight:500;color:var(--lavender);margin-bottom:4px;letter-spacing:.08em;font-family:var(--sans)}
+.download-soul{font-size:12px;color:var(--muted);margin-bottom:20px;font-family:var(--sans)}
+.btn-download{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;border-radius:10px;text-decoration:none;font-size:14px;font-family:var(--sans);border:none;cursor:pointer;transition:all .2s;width:100%}
+.btn-dl-relief{background:linear-gradient(135deg,var(--rose),#a04070);color:#fff;font-weight:700}
+.btn-download:hover{opacity:.9;transform:translateY(-1px);box-shadow:0 4px 16px rgba(192,96,143,.3)}
+.btn-dl-label{font-weight:600}
+.btn-dl-size{font-size:11px;opacity:.75}
+.download-note{font-size:11px;color:var(--muted);margin-top:16px;line-height:1.8}
+
+/* ââ FAQ ââ */
+.faq-section{background:var(--dk2);border-top:1px solid rgba(196,144,209,.1);padding:56px 24px 64px}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:40px}
+.faq-tag{display:inline-block;background:rgba(196,144,209,.1);color:var(--lavender);font-size:11px;letter-spacing:.18em;padding:4px 14px;border-radius:20px;margin-bottom:14px;font-family:var(--sans)}
+.faq-title{font-size:clamp(20px,3.5vw,28px);font-weight:300;color:#fff;letter-spacing:.08em;margin-bottom:8px}
+.faq-sub{font-size:13px;color:var(--muted);font-family:var(--sans)}
+.faq-sub a{color:var(--lavender);text-decoration:none}
+.faq-group{margin-bottom:32px}
+.faq-group-label{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted);margin-bottom:12px;padding-left:4px;font-family:var(--sans)}
+.faq-item{background:var(--dk3);border-radius:12px;margin-bottom:10px;border:1px solid rgba(196,144,209,.1);overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:12px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--txt);transition:background .2s}
+.faq-q:hover{background:rgba(196,144,209,.05)}
+.faq-arrow{font-size:16px;color:var(--lavender);transition:transform .25s;flex-shrink:0}
+.faq-q.open .faq-arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s}
+.faq-a.open{max-height:400px;padding:0 20px 20px}
+.faq-a p{font-size:13px;line-height:1.9;color:var(--muted)}
+.faq-a a{color:var(--lavender);text-decoration:none}
+.faq-link{display:inline-block;margin-top:12px;background:rgba(196,144,209,.08);border:1px solid rgba(196,144,209,.2);color:var(--lavender);padding:10px 18px;border-radius:8px;font-size:13px;text-decoration:none;transition:background .2s;font-family:var(--sans)}
+.faq-link:hover{background:rgba(196,144,209,.15)}
+
+.footer{text-align:center;padding:24px;font-size:11px;color:var(--muted2);letter-spacing:.06em;font-family:var(--sans)}
+
+@media(max-width:480px){
+  .mbti-grid{grid-template-columns:repeat(4,1fr);gap:5px}
+  .mbti-btn{padding:8px 2px}
+  .mbti-btn .code{font-size:12px}
+  .mbti-btn .soul{display:none}
+  .step-card{padding:24px 18px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-badge">SOUL RELATIONSHIP Â· éé­æä¾¶</div>
+  <h1>æè¬ä½ çè³¼è²·<br><span>ä½ çææç´å£æåæ­£å¨ç­ä½  â¦</span></h1>
+  <p class="header-sub">é¸æä½ ç MBTI åèï¼ç«å³åå¾å°å±¬ PDF</p>
+</div>
+
+<div class="main">
+
+  <div style="text-align:center;margin-bottom:28px">
+    <div class="product-badge badge-relief">ð ææç´å£æå Â· ä½ çå°å±¬ç</div>
+  </div>
+
+  <!-- STEP 1ï¼ä½ çé¡å -->
+  <div class="step-card" id="step-you">
+    <div class="step-num">1</div>
+    <div class="step-title">ä½ æ¯åªç¨®éé­ï¼</div>
+    <div class="step-sub">é¸æä½ ç MBTI é¡åï¼ç«å³åå¾ä½ çææç´å£æå</div>
+    <div class="mbti-grid" id="you-grid"></div>
+  </div>
+
+  <!-- ä¸è¼å -->
+  <div class="download-area" id="download-area">
+    <div class="download-type" id="dl-type">â</div>
+    <div class="download-soul" id="dl-soul">â</div>
+    <a class="btn-download btn-dl-relief" id="dl-btn" href="#" target="_blank" rel="noopener">
+      <span class="btn-dl-label">ð¥ ä¸è¼ææç´å£æå PDF</span>
+      <span class="btn-dl-size">é»æç«å³ä¸è¼</span>
+    </a>
+    <div class="download-note">
+      PDF ä¸è¼å¾å¯æ°¸ä¹ä¿å­ Â· å»ºè­°å²å­å°é²ç«¯åä»½<br>
+      æä»»ä½åé¡è«è¯ç¹« air6030i@gmail.com
+    </div>
+  </div>
+
+  <!-- FAQ mini -->
+  <div style="margin-top:32px">
+    <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">å¸¸è¦åé¡</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">ä¸è¼å¾æä¸éï¼</strong><br>è«ç¢ºèªè£ç½®æå®è£ PDF é±è®å¨ï¼Adobe Reader æææ©å§å»ºï¼ã</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">é¸é¯ MBTI äºï¼</strong><br>ç´æ¥éæ°é¸æå³å¯ï¼é é¢æèªåæ´æ°ã</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans)"><strong style="color:var(--txt)">æ³äºè§£æ´å¤åèï¼</strong><br>é¸å¥½èªå·±çåèå¾ï¼ä¹å¯ä»¥çè¦½ä¼´ä¾¶çåèçæ¬ä½çºåèã</div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<div class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header">
+      <div class="faq-tag">FAQ</div>
+      <h2 class="faq-title">å¸¸è¦åé¡</h2>
+      <p class="faq-sub">æ¾ä¸å°ç­æ¡ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð¥ ä¸è¼ç¸é</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>è²·å®ä¹å¾æéº¼ä¸è¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>è³¼è²·æåå¾ï¼ä½ ææ¶å° Gumroad å¯ä¾çæ¶æä¿¡ãé»éä¿¡ä¸­çãView contentãæéï¼é²å¥æ¬é é¢å¾é¸æä½ ç MBTI åèï¼å³å¯ç«å³ä¸è¼å°å±¬ PDFã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>æä¸ç¢ºå®èªå·±ç MBTI æéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a">
+          <p>å¯ä»¥åååè²»æ¸¬é©ç¢ºèªèªå·±çåèï¼ååä¾ä¸è¼ãæ¸¬é©åªéè¦ç´ 10 åéã</p>
+          <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">ð åè²» MBTI æ¸¬é©ï¼16Personalitiesï¼</a>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>ä¸è¼é£çµæä¸éæéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>è«åç¢ºèªç¶²è·¯é£ç·æ­£å¸¸ãè¥ä½¿ç¨ææ©ï¼å»ºè­°æ¹ç¨ Chrome æ Safari çè¦½å¨ãè¥ä»ç¡æ³ä½¿ç¨ï¼è«å¯ä¿¡è³ air6030i@gmail.comï¼24 å°æå§åè¦ã</p></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð ç¢åç¸é</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>ææç´å£æååå«ä»éº¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>éæ¯å°çºä½ ç MBTI åèéèº«è¨­è¨çæææ¥æåï¼åå«ï¼ä½ çæææ ¸å¿çé»åæãæå®¹æè¸©é·çéä¿å°é·ãä¸åç«å³å¯ç¨çæç·èªæå·¥å·ï¼ä»¥åçµ¦ä½ ä»æå°±è½èªªçè©±ã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>è³¼è²·å¾å¯ä»¥ä¸è¼å¶ä»åèåï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>å¯ä»¥ï¼æ¬é é¢å¯ä»¥èªç±é¸æä»»ä½ MBTI åèä¸è¼ï¼ä¸åéå¶ãå¦æä½ æ³äºè§£ä¼´ä¾¶ææåçåèï¼æ­¡è¿ä¸èµ·ä¸è¼ä¾å°ç§ã</p></div>
+      </div>
+    </div>
+    <div class="faq-group">
+      <div class="faq-group-label">ð° ä»æ¬¾èéæ¬¾</div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>æ¯æ´åªäºä»æ¬¾æ¹å¼ï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>éé Gumroad å¹³å°ä»æ¬¾ï¼æ¯æ´ä¿¡ç¨å¡ï¼VisaãMastercardãAmerican Expressï¼å PayPalã</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>å¯ä»¥éæ¬¾åï¼</span><span class="faq-arrow">â¾</span></button>
+        <div class="faq-a"><p>æä¾ <strong>30 å¤©éæ¬¾ä¿è­</strong>ãè«å¯ä¿¡è³ air6030i@gmail.com ä¸¦èªªæè³¼è²·æ¥æèè¨å®ç·¨èã</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">Â© 2026 Soul Universe Â· éé­æä¾¶ç³»å</div>
+
+<script>
+const SOULS = {
+  INFJ:'å®è­·æ°´é­', ENFJ:'å¼è·¯è±é­', INFP:'æåå¤¢è', ENFP:'å½©è¹é¢¨é­',
+  INTJ:'æåå»ºç¯å¸«', ENTJ:'å¾éé·¹é­', INTP:'è¿·å®®æè', ENTP:'é¢¶é¢¨è¾¯å£«',
+  ISFJ:'æº«å·¢è­·è¡', ESFJ:'æé½è¯ç¹«è', ISFP:'éè¬ç«é­', ESFP:'èå°åé­',
+  ISTJ:'ç£ç³å®å', ESTJ:'éµåºå°è»', ISTP:'æ²é»åå®¢', ESTP:'éé»çé­'
+};
+const TYPES = ['INFJ','ENFJ','INFP','ENFP','INTJ','ENTJ','INTP','ENTP',
+               'ISFJ','ESFJ','ISFP','ESFP','ISTJ','ESTJ','ISTP','ESTP'];
+
+// ââ Google Drive ä¸è¼é£çµ ââ
+const LINKS = {
+  'INFJ': 'https://drive.google.com/uc?export=download&id=1-qjyS0nthlBzOf1SaQj0GE_dtZGCgMFk',
+  'ENFJ': 'https://drive.google.com/uc?export=download&id=1T4EmVgjDLjeKf0UwcIhI2uW24WnSeOAU',
+  'INFP': 'https://drive.google.com/uc?export=download&id=1NifrF_QKBgT9x-NlyU19Fer-UEgsFlC7',
+  'ENFP': 'https://drive.google.com/uc?export=download&id=1Jk2a5A6g5MqfFliN4TYycMyNjhRXw-zC',
+  'INTJ': 'https://drive.google.com/uc?export=download&id=13672NuceZkgYEiLZBzd426OCIwJynm8d',
+  'ENTJ': 'https://drive.google.com/uc?export=download&id=1h6ZVOTDizItcBCjo_jtt8yhujfW5dJ_d',
+  'INTP': 'https://drive.google.com/uc?export=download&id=1J_dRqYhqVF6A0WAuGVfTCl2sYMdaFH5U',
+  'ENTP': 'https://drive.google.com/uc?export=download&id=1MAOIDMGXeS5tRjRkIvTb-50ObOX4iEcG',
+  'ISFJ': 'https://drive.google.com/uc?export=download&id=17apElKA7ADw99EJJT0cG81IxZE0XYAT2',
+  'ESFJ': 'https://drive.google.com/uc?export=download&id=168BWmPPVpE0k_Onpezf1G41v48miksqW',
+  'ISFP': 'https://drive.google.com/uc?export=download&id=14ujPbDVqI2O8jZSLL5_yriKqMOMLCNu_',
+  'ESFP': 'https://drive.google.com/uc?export=download&id=1QNVpgruFMhbyv23hwFAQCGe4n62nMLKm',
+  'ISTJ': 'https://drive.google.com/uc?export=download&id=1SFBiBp9GNyAM0nGpzPVAL4vcClvDfWui',
+  'ESTJ': 'https://drive.google.com/uc?export=download&id=14sUV7Clny0kmD7c7Ulm0K_YBex2W79o9',
+  'ISTP': 'https://drive.google.com/uc?export=download&id=1kEzz56BYrumvFzwFmZWibbBkEDvtvzEh',
+  'ESTP': 'https://drive.google.com/uc?export=download&id=1PX9sS88MBhfPUf9HLeYS30xz0gY3UfVj'
+};
+
+let selectedType = null;
+
+function buildGrid() {
+  const grid = document.getElementById('you-grid');
+  TYPES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'mbti-btn';
+    btn.dataset.type = t;
+    btn.innerHTML = `<span class="code">${t}</span><span class="soul">${SOULS[t]}</span>`;
+    btn.addEventListener('click', () => selectType(t));
+    grid.appendChild(btn);
+  });
+}
+
+function selectType(type) {
+  selectedType = type;
+  document.querySelectorAll('#you-grid .mbti-btn').forEach(b => {
+    b.classList.toggle('selected', b.dataset.type === type);
+  });
+  showDownload(type);
+}
+
+function showDownload(type) {
+  const area = document.getElementById('download-area');
+  document.getElementById('dl-type').textContent = type + ' Â· ' + SOULS[type];
+  document.getElementById('dl-soul').textContent = 'ä½ çææç´å£æåï¼å°å±¬ç';
+  const btn = document.getElementById('dl-btn');
+  btn.href = LINKS[type] || '#';
+  area.classList.add('show');
+}
+
+function toggleFaq(btn) {
+  btn.classList.toggle('open');
+  const ans = btn.nextElementSibling;
+  ans.classList.toggle('open');
+}
+
+buildGrid();
+</script>
+</body>
+</html>
