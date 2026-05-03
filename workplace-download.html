@@ -806,7 +806,7 @@ function selectType(role, type, btn){
   btn.classList.add('selected');
   if(role === 'you'){
     selectedYou = type;
-    if(productType \!== 'relief'){
+    if(productType !== 'relief'){
       const step2 = document.getElementById('step-them');
       step2.style.display = 'block';
       step2.classList.remove('disabled');
@@ -834,7 +834,7 @@ function showDownload(){
     const url = LINKS.relief[selectedYou];
     comboEl.textContent = selectedYou + ' · ' + SOULS[selectedYou];
     soulEl.textContent  = '職場紓壓手冊';
-    if(\!url || url.startsWith('PLACEHOLDER')){
+    if(!url || url.startsWith('PLACEHOLDER')){
       linksEl.innerHTML = '<div class="pending-notice">此型號的 PDF 即將上線，請稍候或聯繫 air6030i@gmail.com</div>';
     } else {
       linksEl.innerHTML = `<a href="${url}" class="btn-download btn-dl-relief" target="_blank"><span class="btn-dl-label">下載職場紓壓手冊</span><span class="btn-dl-size">PDF · NT$160</span></a>`;
@@ -847,7 +847,7 @@ function showDownload(){
     const proUrl = LINKS.pro[key];
 
     const makeBtn = (url, cls, label, price) => {
-      if(\!url || url.startsWith('PLACEHOLDER')){
+      if(!url || url.startsWith('PLACEHOLDER')){
         return `<div class="pending-notice">${label} PDF 即將上線</div>`;
       }
       return `<a href="${url}" class="btn-download ${cls}" target="_blank"><span class="btn-dl-label">下載 ${label}</span><span class="btn-dl-size">PDF · NT$${price}</span></a>`;
@@ -876,7 +876,7 @@ function toggleFaq(btn){
     q.classList.remove('open');
     q.nextElementSibling.classList.remove('open');
   });
-  if(\!isOpen){ btn.classList.add('open'); answer.classList.add('open'); }
+  if(!isOpen){ btn.classList.add('open'); answer.classList.add('open'); }
 }
 </script>
 </body>
