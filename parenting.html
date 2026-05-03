@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈魂親子｜MBTI 親子溝通指南 · Soul Universe</title>
-<meta name="description" content="用 MBTI 人格密碼讀懂孩子的世界。256 種親子組合指南，直接給你對話腳本，不再跟孩子雞同鴨講。">
+<title>éé­è¦ªå­ï½MBTI è¦ªå­æºéæå Â· Soul Universe</title>
+<meta name="description" content="ç¨ MBTI äººæ ¼å¯ç¢¼è®æå­©å­çä¸çã256 ç¨®è¦ªå­çµåæåï¼ç´æ¥çµ¦ä½ å°è©±è³æ¬ï¼ä¸åè·å­©å­éåé´¨è¬ã">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
@@ -19,7 +19,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--dk);color:var(--txt);font-family:var(--serif);line-height:1.8}
 
-/* ── Navbar ─────────────────────────────────────────────────────────────── */
+/* ââ Navbar âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(26,13,6,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(212,136,42,.12)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{font-size:20px}
@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0d06!important;padding:8px 20px;border-radius:24px;font-weight:700!important;font-size:13px!important;transition:box-shadow .2s!important}
 .nav-cta:hover{box-shadow:0 4px 20px rgba(212,136,42,.5)!important}
 
-/* ── Series Dropdown ─────────────────────────────────────────────────────── */
+/* ââ Series Dropdown âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .nav-series{position:relative}
 .nav-series-btn{color:var(--muted);font-size:14px;font-family:var(--sans);letter-spacing:.08em;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .2s;background:none;border:none;padding:0}
 .nav-series-btn:hover{color:var(--txt)}
@@ -47,11 +47,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .nav-series-item.current .nav-series-item-title{color:var(--gold)}
 .nav-series-divider{height:1px;background:rgba(212,136,42,.1);margin:6px 0}
 
-/* ── Hero ───────────────────────────────────────────────────────────────── */
+/* ââ Hero âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 6vw 80px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(212,136,42,.1) 0%,transparent 70%)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(212,136,42,.4);border-radius:24px;padding:6px 18px;font-size:12px;color:var(--gold);letter-spacing:.18em;margin-bottom:28px;font-family:var(--sans)}
-.hero-badge::before{content:'👨‍👩‍👧';font-size:14px}
+.hero-badge::before{content:'ð¨âð©âð§';font-size:14px}
 .hero h1{font-size:clamp(28px,5vw,56px);font-weight:300;letter-spacing:.1em;line-height:1.4;margin-bottom:16px;color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:600px;line-height:2.0;margin-bottom:40px;font-family:var(--sans)}
@@ -65,7 +65,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .hero-stat-num{font-size:32px;font-weight:700;color:var(--gold);display:block;letter-spacing:.05em}
 .hero-stat-label{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.12em;margin-top:4px}
 
-/* ── Know Your Type ─────────────────────────────────────────────────────── */
+/* ââ Know Your Type âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .know-type-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--accent);font-family:var(--sans);letter-spacing:.08em;border:1px solid rgba(224,122,90,.3);border-radius:20px;padding:6px 18px;transition:all .2s;background:none}
 .know-type-toggle:hover{background:rgba(224,122,90,.08);border-color:var(--accent)}
 .know-type-toggle .arrow{transition:transform .25s;display:inline-block}
@@ -79,10 +79,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .type-btn:hover{background:rgba(212,136,42,.12);border-color:var(--gold);color:var(--gold)}
 .type-btn.active{background:rgba(212,136,42,.18);border-color:var(--gold);color:var(--gold)}
 
-/* ── Divider ────────────────────────────────────────────────────────────── */
+/* ââ Divider ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
 
-/* ── Section shared ─────────────────────────────────────────────────────── */
+/* ââ Section shared âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 section{padding:80px 6vw}
 .section-badge{display:inline-block;border:1px solid rgba(212,136,42,.35);border-radius:20px;padding:5px 16px;font-size:11px;color:var(--gold);letter-spacing:.18em;font-family:var(--sans);margin-bottom:16px}
 .section-title{font-size:clamp(22px,3.5vw,36px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:8px}
@@ -90,7 +90,7 @@ section{padding:80px 6vw}
 .section-header{text-align:center;margin-bottom:56px}
 .section-header .divider{margin:16px auto 0}
 
-/* ── Pain ───────────────────────────────────────────────────────────────── */
+/* ââ Pain âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .pain{background:var(--dk2)}
 .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:960px;margin:0 auto}
 .pain-card{background:var(--dk3);border:1px solid rgba(212,136,42,.12);border-radius:12px;padding:28px;transition:border-color .2s}
@@ -100,14 +100,14 @@ section{padding:80px 6vw}
 .pain-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 .pain-quote{font-size:13px;color:rgba(212,136,42,.8);font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid rgba(212,136,42,.12)}
 
-/* ── How ────────────────────────────────────────────────────────────────── */
+/* ââ How ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;max-width:900px;margin:0 auto}
 .how-step{text-align:center}
 .how-step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0d06;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .how-step-title{font-size:15px;color:#fff;font-weight:700;margin-bottom:8px;font-family:var(--sans)}
 .how-step-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 
-/* ── Products ───────────────────────────────────────────────────────────── */
+/* ââ Products âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .products{background:var(--dk2)}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto}
 .product-card{background:var(--dk3);border:1px solid rgba(212,136,42,.15);border-radius:14px;padding:28px 24px;position:relative;transition:transform .2s,box-shadow .2s}
@@ -121,7 +121,7 @@ section{padding:80px 6vw}
 .product-desc{font-size:13px;color:var(--muted);font-family:var(--sans);line-height:1.9;margin-bottom:20px}
 .product-features{list-style:none;margin-bottom:24px}
 .product-features li{font-size:12.5px;color:var(--txt);font-family:var(--sans);padding:5px 0;border-bottom:1px solid rgba(212,136,42,.08);display:flex;align-items:flex-start;gap:8px;line-height:1.7}
-.product-features li::before{content:'✦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
+.product-features li::before{content:'â¦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
 .product-btn{display:block;text-align:center;padding:11px;border-radius:28px;font-family:var(--sans);font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.06em;transition:all .2s}
 .product-btn-outline{border:1px solid rgba(212,136,42,.5);color:var(--gold)}
 .product-btn-outline:hover{background:rgba(212,136,42,.1)}
@@ -135,7 +135,7 @@ section{padding:80px 6vw}
 .combo-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-family:var(--sans)}
 .combo-price{font-size:36px;font-weight:700;color:var(--gold);letter-spacing:.03em}
 
-/* ── Parenting Style Section ─────────────────────────────────────────────── */
+/* ââ Parenting Style Section âââââââââââââââââââââââââââââââââââââââââââââââ */
 .parenting{background:var(--dk)}
 .parenting-selector{max-width:700px;margin:0 auto}
 .parenting-note{font-size:13px;color:var(--muted);font-family:var(--sans);text-align:center;margin-bottom:20px}
@@ -156,7 +156,7 @@ section{padding:80px 6vw}
 .parenting-upsell{margin-top:16px;font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center}
 .parenting-upsell a{color:var(--gold);text-decoration:none}
 
-/* ── Test Teaser ────────────────────────────────────────────────────────── */
+/* ââ Test Teaser ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .test-teaser{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center}
 .test-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:760px;margin:0 auto 40px}
 .test-card{background:var(--dk3);border:1px solid rgba(224,122,90,.2);border-radius:14px;padding:32px 28px;text-align:left;transition:border-color .2s,transform .2s}
@@ -173,7 +173,7 @@ section{padding:80px 6vw}
 .test-skip-note{font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center;margin-top:10px}
 .test-skip-note a{color:var(--accent);text-decoration:none;border-bottom:1px dashed rgba(224,122,90,.4)}
 
-/* ── Testimonials ───────────────────────────────────────────────────────── */
+/* ââ Testimonials âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .preview{background:var(--dk2)}
 .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:900px;margin:0 auto}
 .preview-card{background:var(--dk3);border:1px solid rgba(212,136,42,.1);border-radius:12px;padding:24px}
@@ -183,17 +183,17 @@ section{padding:80px 6vw}
 .preview-author{font-size:12px;color:var(--muted);font-family:var(--sans);display:flex;align-items:center;gap:8px}
 .preview-type-badge{background:rgba(212,136,42,.15);color:var(--gold);padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
 
-/* ── FAQ ────────────────────────────────────────────────────────────────── */
+/* ââ FAQ ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .faq{background:var(--dk)}
 .faq-list{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(212,136,42,.12);padding:20px 0}
 .faq-q{font-size:15px;color:#fff;font-family:var(--sans);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;line-height:1.7}
-.faq-q::after{content:'＋';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
+.faq-q::after{content:'ï¼';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
 .faq-a{font-size:13.5px;color:var(--muted);font-family:var(--sans);line-height:2.1;margin-top:12px;display:none}
 .faq-item.open .faq-a{display:block}
 
-/* ── Series Section ─────────────────────────────────────────────────────── */
+/* ââ Series Section âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .series-section{background:var(--dk2);padding:60px 6vw}
 .series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
 .series-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--dk3);border:1px solid rgba(212,136,42,.12);border-radius:12px;padding:20px 18px;text-decoration:none;transition:border-color .2s,transform .18s}
@@ -206,13 +206,13 @@ section{padding:80px 6vw}
 .series-card-badge{font-size:10px;color:var(--accent);font-family:var(--sans);border:1px solid rgba(224,122,90,.3);border-radius:10px;padding:2px 8px;align-self:flex-start;margin-top:2px}
 .series-card.current .series-card-badge{color:var(--gold);border-color:rgba(212,136,42,.4)}
 
-/* ── Final CTA ──────────────────────────────────────────────────────────── */
+/* ââ Final CTA ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .final-cta{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center;padding:100px 6vw}
 .final-cta h2{font-size:clamp(22px,3.5vw,40px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:16px}
 .final-cta p{font-size:15px;color:var(--muted);font-family:var(--sans);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
 .final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
-/* ── Footer ─────────────────────────────────────────────────────────────── */
+/* ââ Footer âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48px 6vw 32px;text-align:center}
 .footer-logo{font-size:16px;color:var(--gold);letter-spacing:.2em;margin-bottom:16px}
 .footer-tagline{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:28px}
@@ -221,7 +221,7 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:11px;color:var(--muted2);font-family:var(--sans);letter-spacing:.06em}
 
-/* ── Free Parenting Report Section ─────────────────────────────────────── */
+/* ââ Free Parenting Report Section âââââââââââââââââââââââââââââââââââââââ */
 .free-report{background:var(--dk2)}
 .free-report-selector{max-width:860px;margin:0 auto}
 .free-report-note{font-size:13px;color:var(--muted);font-family:var(--sans);margin-bottom:16px;letter-spacing:.06em}
@@ -258,7 +258,7 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
 .free-report-upsell a{color:var(--gold);text-decoration:none}
 .free-report-upsell a:hover{text-decoration:underline}
 
-/* ── Responsive ─────────────────────────────────────────────────────────── */
+/* ââ Responsive âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 @media(max-width:600px){
   .nav-links .nav-link-hide{display:none}
   .hero-stats{gap:28px}
@@ -268,84 +268,84 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
   .free-report-type-grid{grid-template-columns:repeat(4,1fr)}
 }
 </style>
-<!-- EmailJS SDK：用於發送父母教養迷你報告到用戶信箱 -->
+<!-- EmailJS SDKï¼ç¨æ¼ç¼éç¶æ¯æé¤è¿·ä½ å ±åå°ç¨æ¶ä¿¡ç®± -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body>
 
-<!-- ── Navbar ── -->
+<!-- ââ Navbar ââ -->
 <nav>
-  <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-logo">
-    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">✦</span>
-    <span class="nav-logo-text">靈魂宇宙</span>
+  <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-logo">
+    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">â¦</span>
+    <span class="nav-logo-text">éé­å®å®</span>
   </a>
   <div class="nav-links">
-    <a href="#products" class="nav-link-hide">產品</a>
-    <a href="#parenting" class="nav-link-hide">教養風格</a>
-    <a href="#test" class="nav-link-hide">免費測驗</a>
+    <a href="#products" class="nav-link-hide">ç¢å</a>
+    <a href="#parenting" class="nav-link-hide">æé¤é¢¨æ ¼</a>
+    <a href="#test" class="nav-link-hide">åè²»æ¸¬é©</a>
     <div class="nav-series nav-link-hide">
-      <button class="nav-series-btn">靈魂系列 <span class="nav-series-arrow">▾</span></button>
+      <button class="nav-series-btn">éé­ç³»å <span class="nav-series-arrow">â¾</span></button>
       <div class="nav-series-dropdown">
-        <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-series-item">
-          <span class="nav-series-item-icon">🧬</span>
+        <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-series-item">
+          <span class="nav-series-item-icon">ð§¬</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂測驗</div>
-            <div class="nav-series-item-sub">免費 MBTI 人格測驗</div>
+            <div class="nav-series-item-title">éé­æ¸¬é©</div>
+            <div class="nav-series-item-sub">åè²» MBTI äººæ ¼æ¸¬é©</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="靈魂親子-銷售頁.html" class="nav-series-item current">
-          <span class="nav-series-item-icon">👨‍👩‍👧</span>
+        <a href="https://air6030i-star.github.io/soul-test/parenting.html" class="nav-series-item current">
+          <span class="nav-series-item-icon">ð¨âð©âð§</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂親子 ← 你在這</div>
-            <div class="nav-series-item-sub">親子溝通指南</div>
+            <div class="nav-series-item-title">éé­è¦ªå­ â ä½ å¨é</div>
+            <div class="nav-series-item-sub">è¦ªå­æºéæå</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="../../03_MBTI職場關係/職場網站/index.html" class="nav-series-item">
-          <span class="nav-series-item-icon">⚔️</span>
+        <a href="https://air6030i-star.github.io/soul-test/workplace.html" class="nav-series-item">
+          <span class="nav-series-item-icon">âï¸</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂職場</div>
-            <div class="nav-series-item-sub">職場溝通指南</div>
+            <div class="nav-series-item-title">éé­è·å ´</div>
+            <div class="nav-series-item-sub">è·å ´æºéæå</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="../../04_MBTI朋友情侶關係/情感網站/index.html" class="nav-series-item">
-          <span class="nav-series-item-icon">💕</span>
+        <a href="https://air6030i-star.github.io/soul-test/couple.html" class="nav-series-item">
+          <span class="nav-series-item-icon">ð</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂情感</div>
-            <div class="nav-series-item-sub">情侶 &amp; 友情溝通指南</div>
+            <div class="nav-series-item-title">éé­ææ</div>
+            <div class="nav-series-item-sub">æä¾¶ &amp; åææºéæå</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="../../05_心靈避風港/soul-haven-v2_2.html" class="nav-series-item">
-          <span class="nav-series-item-icon">🌊</span>
+        <a href="#" class="nav-series-item">
+          <span class="nav-series-item-icon">ð</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">心靈避風港</div>
-            <div class="nav-series-item-sub">找回內在穩定中心</div>
+            <div class="nav-series-item-title">å¿éé¿é¢¨æ¸¯</div>
+            <div class="nav-series-item-sub">æ¾åå§å¨ç©©å®ä¸­å¿</div>
           </div>
         </a>
       </div>
     </div>
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-cta">免費測驗 →</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-cta">åè²»æ¸¬é© â</a>
   </div>
 </nav>
 
-<!-- ── Hero ── -->
+<!-- ââ Hero ââ -->
 <section class="hero">
-  <div class="hero-badge">靈魂宇宙 · 親子系列</div>
-  <h1>你愛他<br>但你們就是說不通<br>是因為你們的<em>大腦</em>根本不同</h1>
-  <p class="hero-sub">MBTI 親子溝通指南，256 種組合<br>讀懂孩子的秘密語言，今天就能用</p>
+  <div class="hero-badge">éé­å®å® Â· è¦ªå­ç³»å</div>
+  <h1>ä½ æä»<br>ä½ä½ åå°±æ¯èªªä¸é<br>æ¯å çºä½ åç<em>å¤§è¦</em>æ ¹æ¬ä¸å</h1>
+  <p class="hero-sub">MBTI è¦ªå­æºéæåï¼256 ç¨®çµå<br>è®æå­©å­çç§å¯èªè¨ï¼ä»å¤©å°±è½ç¨</p>
   <div class="hero-btns">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-primary">⚡ 免費測驗我的型號</a>
-    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-primary">â¡ åè²»æ¸¬é©æçåè</a>
+    <a href="#products" class="btn-secondary">ð ç´æ¥é¸è³¼æå</a>
   </div>
   <button class="know-type-toggle" id="knowTypeToggle" onclick="toggleKnowType()">
-    ✓ 已知道自己的型號，直接選 <span class="arrow">▾</span>
+    â å·²ç¥éèªå·±çåèï¼ç´æ¥é¸ <span class="arrow">â¾</span>
   </button>
   <div class="know-type-panel" id="knowTypePanel">
     <div class="know-type-inner">
-      <div class="know-type-label">選擇你的 MBTI 型號，直接跳到教養風格分析</div>
+      <div class="know-type-label">é¸æä½ ç MBTI åèï¼ç´æ¥è·³å°æé¤é¢¨æ ¼åæ</div>
       <div class="type-grid">
         <button class="type-btn" onclick="selectType('INTJ')">INTJ</button>
         <button class="type-btn" onclick="selectType('INTP')">INTP</button>
@@ -369,162 +369,162 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="hero-stat-num">256</span>
-      <div class="hero-stat-label">種親子組合</div>
+      <div class="hero-stat-label">ç¨®è¦ªå­çµå</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">8</span>
-      <div class="hero-stat-label">題快速測驗</div>
+      <div class="hero-stat-label">é¡å¿«éæ¸¬é©</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">17</span>
-      <div class="hero-stat-label">頁 Pro 深度報告</div>
+      <div class="hero-stat-label">é  Pro æ·±åº¦å ±å</div>
     </div>
   </div>
 </section>
 
-<!-- ── Pain Points ── -->
+<!-- ââ Pain Points ââ -->
 <section class="pain" id="pain">
   <div class="section-header">
-    <div class="section-badge">你是不是也遇過</div>
-    <h2 class="section-title">這三種親子困境</h2>
+    <div class="section-badge">ä½ æ¯ä¸æ¯ä¹éé</div>
+    <h2 class="section-title">éä¸ç¨®è¦ªå­å°å¢</h2>
     <div class="divider"></div>
   </div>
   <div class="pain-grid">
     <div class="pain-card">
-      <div class="pain-icon">😰</div>
-      <div class="pain-title">說了一百遍，他還是不聽</div>
-      <p class="pain-text">你已經解釋得很清楚了，但孩子就是不照做。他不是故意的，他只是用不同的方式接收訊息。</p>
-      <p class="pain-quote">「我不知道還能怎麼說，他就是聽不進去。」</p>
+      <div class="pain-icon">ð°</div>
+      <div class="pain-title">èªªäºä¸ç¾éï¼ä»éæ¯ä¸è½</div>
+      <p class="pain-text">ä½ å·²ç¶è§£éå¾å¾æ¸æ¥äºï¼ä½å­©å­å°±æ¯ä¸ç§åãä»ä¸æ¯ææçï¼ä»åªæ¯ç¨ä¸åçæ¹å¼æ¥æ¶è¨æ¯ã</p>
+      <p class="pain-quote">ãæä¸ç¥ééè½æéº¼èªªï¼ä»å°±æ¯è½ä¸é²å»ãã</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">💔</div>
-      <div class="pain-title">你越靠近，他越退縮</div>
-      <p class="pain-text">你想關心他，他卻說「你不了解我」。不是你關心得不夠，是你用錯了他能感受到愛的方式。</p>
-      <p class="pain-quote">「我做了這麼多，他感覺不到嗎？」</p>
+      <div class="pain-icon">ð</div>
+      <div class="pain-title">ä½ è¶é è¿ï¼ä»è¶éç¸®</div>
+      <p class="pain-text">ä½ æ³éå¿ä»ï¼ä»å»èªªãä½ ä¸äºè§£æããä¸æ¯ä½ éå¿å¾ä¸å¤ ï¼æ¯ä½ ç¨é¯äºä»è½æåå°æçæ¹å¼ã</p>
+      <p class="pain-quote">ãæåäºééº¼å¤ï¼ä»æè¦ºä¸å°åï¼ã</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">🌊</div>
-      <div class="pain-title">每次衝突之後你都很自責</div>
-      <p class="pain-text">你不是壞父母，你只是不知道那個當下要說什麼。下次衝突前，你需要的是一個可以直接用的腳本。</p>
-      <p class="pain-quote">「事後我都後悔自己說了那些話。」</p>
+      <div class="pain-icon">ð</div>
+      <div class="pain-title">æ¯æ¬¡è¡çªä¹å¾ä½ é½å¾èªè²¬</div>
+      <p class="pain-text">ä½ ä¸æ¯å£ç¶æ¯ï¼ä½ åªæ¯ä¸ç¥éé£åç¶ä¸è¦èªªä»éº¼ãä¸æ¬¡è¡çªåï¼ä½ éè¦çæ¯ä¸åå¯ä»¥ç´æ¥ç¨çè³æ¬ã</p>
+      <p class="pain-quote">ãäºå¾æé½å¾æèªå·±èªªäºé£äºè©±ãã</p>
     </div>
   </div>
 </section>
 
-<!-- ── How it works ── -->
+<!-- ââ How it works ââ -->
 <section id="how">
   <div class="section-header">
-    <div class="section-badge">三步驟</div>
-    <h2 class="section-title">開始改變你們的關係</h2>
+    <div class="section-badge">ä¸æ­¥é©</div>
+    <h2 class="section-title">éå§æ¹è¢ºd½ åçéä¿</h2>
     <div class="divider"></div>
   </div>
   <div class="how-grid">
     <div class="how-step">
       <div class="how-step-num">1</div>
-      <div class="how-step-title">確認你們的型號</div>
-      <p class="how-step-text">8 題快速測驗找出你的 MBTI 型號，或直接在首頁選擇已知型號。孩子的型號可以根據他的行為特徵來判斷</p>
+      <div class="how-step-title">ç¢ºèªä½ åçåè</div>
+      <p class="how-step-text">8 é¡å¿«éæ¸¬é©æ¾åºä½ ç MBTI åèï¼æç´æ¥å¨é¦é é¸æå·²ç¥åèãå­©å­çåèå¯ä»¥æ ¹æä»çè¡çºç¹å¾µä¾å¤æ·</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">2</div>
-      <div class="how-step-title">選擇你的親子組合</div>
-      <p class="how-step-text">在 256 種親子組合中找到你們的那一本，每一本都是針對這個組合專門撰寫，不是通用模板</p>
+      <div class="how-step-title">é¸æä½ çè¦ªå­çµå</div>
+      <p class="how-step-text">å¨ 256 ç¨®è¦ªå­çµåä¸­æ¾å°ä½ åçé£ä¸æ¬ï¼æ¯ä¸æ¬é½æ¯éå°éåçµåå°éæ°å¯«ï¼ä¸æ¯éç¨æ¨¡æ¿</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">3</div>
-      <div class="how-step-title">直接套用對話腳本</div>
-      <p class="how-step-text">報告裡有舊說法 vs 新說法的腳本對照，今晚就能換一種方式跟孩子說話，明天就有不同的回應</p>
+      <div class="how-step-title">ç´æ¥å¥ç¨å°è©±è³æ¬</div>
+      <p class="how-step-text">å ±åè£¡æèèªªæ³ vs æ°èªªæ³çè³æ¬å°ç§ï¼ä»æå°±è½æä¸ç¨®æ¹å¼è·å­©å­èªªè©±ï¼æå¤©å°±æä¸åçåæ</p>
     </div>
   </div>
 </section>
 
-<!-- ── Products ── -->
+<!-- ââ Products ââ -->
 <section class="products" id="products">
   <div class="section-header">
-    <div class="section-badge">產品方案</div>
-    <h2 class="section-title">選擇你需要的深度</h2>
-    <p class="section-sub">每種組合都有獨立的指南，不是通用模板</p>
+    <div class="section-badge">ç¢åæ¹æ¡</div>
+    <h2 class="section-title">é¸æä½ éè¦çæ·±åº¦</h2>
+    <p class="section-sub">æ¯ç¨®çµåé½æç¨ç«çæåï¼ä¸æ¯éç¨æ¨¡æ¿</p>
     <div class="divider"></div>
   </div>
   <div class="products-grid">
     <!-- Tier 1 -->
     <div class="product-card">
-      <div class="product-tier">入門 · 父母紓壓手冊</div>
+      <div class="product-tier">å¥é Â· ç¶æ¯ç´å£æå</div>
       <div class="product-price"><sup>US$</sup>5</div>
-      <div class="product-usd">約 NT$160</div>
-      <p class="product-desc">先從讀懂自己開始。16 種父母型號各一本，8 頁，揭開你的教養焦慮從哪裡來。</p>
+      <div class="product-usd">ç´ NT$160</div>
+      <p class="product-desc">åå¾è®æèªå·±éå§ã16 ç¨®ç¶æ¯åèåä¸æ¬ï¼8 é ï¼æ­éä½ çæé¤ç¦æ®å¾åªè£¡ä¾ã</p>
       <ul class="product-features">
-        <li>你的教養壓力觸發點與真正根源</li>
-        <li>解析你的天生教養本能</li>
-        <li>你最容易在孩子面前失控的情境</li>
-        <li>3 個立即可用的情緒急救法</li>
+        <li>ä½ çæé¤å£åè§¸ç¼é»èçæ­£æ ¹æº</li>
+        <li>è§£æä½ çå¤©çæé¤æ¬è½</li>
+        <li>ä½ æå®¹æå¨å­©å­é¢åå¤±æ§çæå¢</li>
+        <li>3 åç«å³å¯ç¨çæç·æ¥ææ³</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/jcgxj" target="_blank" class="product-btn product-btn-outline">選購紓壓手冊 →</a>
+      <a href="https://airwave553.gumroad.com/l/jcgxj" target="_blank" class="product-btn product-btn-outline">é¸è³¼ç´å£æå â</a>
     </div>
     <!-- Tier 2 -->
     <div class="product-card featured">
-      <div class="product-featured-badge">⭐ 最多人選</div>
-      <div class="product-tier">標準版 · 親子組合指南</div>
+      <div class="product-featured-badge">â­ æå¤äººé¸</div>
+      <div class="product-tier">æ¨æºç Â· è¦ªå­çµåæå</div>
       <div class="product-price"><sup>US$</sup>10</div>
-      <div class="product-usd">約 NT$320</div>
-      <p class="product-desc">你 × 孩子的專屬組合指南。256 種配對，8 頁，直接告訴你孩子的秘密語言是什麼、要怎麼說進去。</p>
+      <div class="product-usd">ç´ NT$320</div>
+      <p class="product-desc">ä½  Ã å­©å­çå°å±¬çµåæåã256 ç¨®éå°ï¼8 é ï¼ç´æ¥åè¨´ä½ å­©å­çç§å¯èªè¨æ¯ä»éº¼ãè¦æéº¼èªªé²å»ã</p>
       <ul class="product-features">
-        <li>孩子的思維模式與秘密語言解碼</li>
-        <li>3 個典型衝突引爆點分析與對策</li>
-        <li>對話腳本：說錯版 vs 靈魂密碼版</li>
-        <li>七日親子溝通練習計畫</li>
+        <li>å­©å­çæç¶­æ¨¡å¼èç§å¯èªè¨è§£ç¢¼</li>
+        <li>3 åå¸åè¡çªå¼çé»åæèå°ç­</li>
+        <li>å°è©±è³æ¬ï¼èªªé¯ç vs éé­å¯ç¢¼ç</li>
+        <li>ä¸æ¥è¦ªå­æºéç·´ç¿è¨ç«</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/fravkk" target="_blank" class="product-btn product-btn-fill">選購標準版 →</a>
+      <a href="https://airwave553.gumroad.com/l/fravkk" target="_blank" class="product-btn product-btn-fill">é¸è³¼æ¨æºç â</a>
     </div>
     <!-- Tier 3 -->
     <div class="product-card">
-      <div class="product-tier">Pro 版 · 完整分析</div>
+      <div class="product-tier">Pro ç Â· å®æ´åæ</div>
       <div class="product-price"><sup>US$</sup>15</div>
-      <div class="product-usd">約 NT$480</div>
-      <p class="product-desc">17 頁深度報告，含 64 型子類型、親子靈魂相容度五維圖，以及四週完整行動系統。</p>
+      <div class="product-usd">ç´ NT$480</div>
+      <p class="product-desc">17 é æ·±åº¦å ±åï¼å« 64 åå­é¡åãè¦ªå­éé­ç¸å®¹åº¦äºç¶­åï¼ä»¥ååé±å®æ´è¡åç³»çµ±ã</p>
       <ul class="product-features">
-        <li>父母天賦與教養盲點深度解析</li>
-        <li>壓力下孩子的真實狀態揭秘</li>
-        <li>親子靈魂相容度 5 維圖</li>
-        <li>3 個高壓情境急救腳本</li>
-        <li>四週完整親子行動系統</li>
-        <li>父母自我反思題 × 行動卡</li>
+        <li>ç¶æ¯å¤©è³¦èæé¤ç²é»æ·±åº¦è§£æ</li>
+        <li>å£åä¸å­©å­ççå¯¦çææ­ç§</li>
+        <li>è¦ªå­éé­ç¸å®¹åº¦ 5 ç¶­å</li>
+        <li>3 åé«å£æå¢æ¥æè³æ¬</li>
+        <li>åé±å®æ´è¦ªå­è¡åç³»çµ±</li>
+        <li>ç¶æ¯èªæåæé¡ Ã è¡åå¡</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/jajxl" target="_blank" class="product-btn product-btn-outline">選購 Pro 版 →</a>
+      <a href="https://airwave553.gumroad.com/l/jajxl" target="_blank" class="product-btn product-btn-outline">é¸è³¼ Pro ç â</a>
     </div>
   </div>
   <!-- Combo -->
   <div class="product-combo" style="position:relative;border-color:rgba(212,136,42,.55);box-shadow:0 0 32px rgba(212,136,42,.1)">
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:14px 14px 0 0"></div>
-    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0d06;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">🔥 最高CP值 · 最多人選</div>
+    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#1a0d06;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">ð¥ æé«CPå¼ Â· æå¤äººé¸</div>
     <div class="combo-left" style="margin-top:6px">
-      <h3>全包組合方案</h3>
-      <p>紓壓手冊 + 標準版指南 + Pro 完整分析報告</p>
+      <h3>å¨åçµåæ¹æ¡</h3>
+      <p>ç´å£æå + æ¨æºçæå + Pro å®æ´åæå ±å</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$5 紓壓手冊</span>
-        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$10 標準版</span>
-        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$15 Pro版</span>
+        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$5 ç´å£æå</span>
+        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$10 æ¨æºç</span>
+        <span style="background:rgba(212,136,42,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$15 Proç</span>
       </div>
-      <span class="combo-save" style="margin-top:10px;display:inline-block">省 US$10 · 等於白送紓壓手冊</span>
+      <span class="combo-save" style="margin-top:10px;display:inline-block">ç US$10 Â· ç­æ¼ç½éç´å£æå</span>
     </div>
     <div class="combo-right">
-      <div class="combo-original">原價 US$30</div>
+      <div class="combo-original">åå¹ US$30</div>
       <div class="combo-price">US$20</div>
-      <div class="product-usd">約 NT$640</div>
-      <a href="https://airwave553.gumroad.com/l/qedach" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">立即選購全包方案 →</a>
+      <div class="product-usd">ç´ NT$640</div>
+      <a href="https://airwave553.gumroad.com/l/qedach" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">ç«å³é¸è³¼å¨åæ¹æ¡ â</a>
     </div>
   </div>
 </section>
 
-<!-- ── Free Parenting Report Section ── -->
+<!-- ââ Free Parenting Report Section ââ -->
 <section class="free-report" id="parenting">
   <div class="section-header">
-    <div class="section-badge">教養風格 · 免費領取</div>
-    <h2 class="section-title">你天生是哪一種父母？</h2>
-    <p class="section-sub">選擇你的 MBTI 型號，免費取得你的父母教養風格迷你報告<br>直接寄送到你的 Email 信箱</p>
+    <div class="section-badge">æé¤é¢¨æ ¼ Â· åè²»é å</div>
+    <h2 class="section-title">ä½ å¤©çæ¯åªä¸ç¨®ç¶æ¯ï¼</h2>
+    <p class="section-sub">é¸æä½ ç MBTI åèï¼åè²»åå¾ä½ çç¶æ¯æé¤é¢¨æ ¼è¿·ä½ å ±å<br>ç´æ¥å¯éå°ä½ ç Email ä¿¡ç®±</p>
     <div class="divider"></div>
   </div>
   <div class="free-report-selector">
-    <p class="free-report-note">第一步：點選你的型號 →</p>
+    <p class="free-report-note">ç¬¬ä¸æ­¥ï¼é»é¸ä½ çåè â</p>
     <div class="free-report-type-grid">
       <button class="frtype-btn" onclick="showFreeReport('INTJ',this)">INTJ</button>
       <button class="frtype-btn" onclick="showFreeReport('INTP',this)">INTP</button>
@@ -548,20 +548,20 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
       <div class="free-report-type-title" id="frResultTitle"></div>
       <div class="free-report-type-subtitle" id="frResultSubtitle"></div>
 
-      <!-- 預覽：前2個清晰，其餘模糊 -->
+      <!-- é è¦½ï¼å2åæ¸æ°ï¼å¶é¤æ¨¡ç³ -->
       <div class="free-report-preview-grid" id="frPreviewList"></div>
 
-      <!-- Email 輸入區 -->
+      <!-- Email è¼¸å¥å -->
       <div class="free-report-email-gate" id="freeReportEmailGate">
-        <div class="free-report-email-gate-title">✦ 輸入 Email，免費取得你的完整教養風格報告</div>
-        <div class="free-report-email-gate-sub">包含完整天賦優勢 + 最容易踩的教養盲點<br>直接寄到你的信箱，永久保存</div>
+        <div class="free-report-email-gate-title">â¦ è¼¸å¥ Emailï¼åè²»åå¾ä½ çå®æ´æé¤é¢¨æ ¼å ±å</div>
+        <div class="free-report-email-gate-sub">åå«å®æ´å¤©è³¦åªå¢ + æå®¹æè¸©çæé¤ç²é»<br>ç´æ¥å¯å°ä½ çä¿¡ç®±ï¼æ°¸ä¹ä¿å­</div>
         <div class="free-report-email-row">
           <input class="free-report-email-input" type="email" id="freeReportEmailInput" placeholder="your@email.com" />
-          <button class="free-report-email-btn" id="freeReportEmailBtn" onclick="sendParentingEmail()">免費領取 →</button>
+          <button class="free-report-email-btn" id="freeReportEmailBtn" onclick="sendParentingEmail()">åè²»é å â</button>
         </div>
       </div>
 
-      <!-- 送出後：成功訊息 -->
+      <!-- éåºå¾ï¼æåè¨æ¯ -->
       <div class="free-report-sent-msg" id="freeReportSentMsg"></div>
       <div class="free-report-full" id="frFullResults">
         <div class="free-report-traits-full" id="frResultTraitsFull"></div>
@@ -571,233 +571,233 @@ footer{background:var(--dk);border-top:1px solid rgba(212,136,42,.1);padding:48p
       <div style="margin-top:20px;background:rgba(212,136,42,0.06);border:1px solid rgba(212,136,42,0.2);border-radius:12px;padding:16px 18px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
           <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">免費報告（剛才領的）</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 你的教養天賦優勢<br>✦ 你最容易踩的盲點<br>✦ 你一個人的人格分析</div>
+            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">åè²»å ±åï¼åæé çï¼</div>
+            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">â¦ ä½ çæé¤å¤©è³¦åªå¢<br>â¦ ä½ æå®¹æè¸©çç²é»<br>â¦ ä½ ä¸åäººçäººæ ¼åæ</div>
           </div>
           <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">完整指南（US$10）</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 你 × 孩子的衝突根源<br>✦ 孩子的思維怎麼運作<br>✦ 今天就能用的對話腳本</div>
+            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">å®æ´æåï¼US$10ï¼</div>
+            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">â¦ ä½  Ã å­©å­çè¡çªæ ¹æº<br>â¦ å­©å­çæç¶­æéº¼éä½<br>â¦ ä»å¤©å°±è½ç¨çå°è©±è³æ¬</div>
           </div>
         </div>
-        <a href="#products" style="display:block;text-align:center;font-size:13px;color:var(--gold);font-weight:700;text-decoration:none;font-family:var(--sans)">查看完整親子指南 →</a>
+        <a href="#products" style="display:block;text-align:center;font-size:13px;color:var(--gold);font-weight:700;text-decoration:none;font-family:var(--sans)">æ¥çå®æ´è¦ªå­æå â</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── Test Teaser ── -->
+<!-- ââ Test Teaser ââ -->
 <section class="test-teaser" id="test">
   <div class="section-header">
-    <div class="section-badge">免費測驗</div>
-    <h2 class="section-title">還不確定自己是哪型？先測驗</h2>
-    <p class="section-sub">找出你的 MBTI 型號 + 64型子類型，直接對應你的親子溝通指南</p>
+    <div class="section-badge">åè²»æ¸¬é©</div>
+    <h2 class="section-title">éä¸ç¢ºå®èªå·±æ¯åªåï¼åæ¸¬é©</h2>
+    <p class="section-sub">æ¾åºä½ ç MBTI åè + 64åå­é¡åï¼ç´æ¥å°æä½ çè¦ªå­æºéæå</p>
     <div class="divider"></div>
   </div>
   <div class="test-cards">
     <div class="test-card">
-      <div class="test-card-icon">🧭</div>
-      <div class="test-card-badge">MBTI 人格測驗</div>
-      <div class="test-card-title">找出你的父母人格型號</div>
-      <p class="test-card-text">情境式選擇題，精準測出你的 MBTI 人格型號，完成後直接對應可購買的親子組合指南。同時解鎖 64 型靈魂密碼。</p>
-      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
+      <div class="test-card-icon">ð§­</div>
+      <div class="test-card-badge">MBTI äººæ ¼æ¸¬é©</div>
+      <div class="test-card-title">æ¾åºä½ çç¶æ¯äººæ ¼åè</div>
+      <p class="test-card-text">æå¢å¼é¸æé¡ï¼ç²¾æºæ¸¬åºä½ ç MBTI äººæ ¼åèï¼å®æå¾ç´æ¥å°æå¯è³¼è²·çè¦ªå­çµåæåãåæè§£é 64 åéé­å¯ç¢¼ã</p>
+      <div class="test-card-time">ç´ <span>2 åé</span> Â· åè²»</div>
     </div>
     <div class="test-card">
-      <div class="test-card-icon">🎯</div>
-      <div class="test-card-badge">孩子型號辨識</div>
-      <div class="test-card-title">根據孩子的行為找出他的型號</div>
-      <p class="test-card-text">不需要讓孩子自己測驗。8 題行為觀察題，根據你對孩子的日常觀察，推測他最可能的 MBTI 型號</p>
-      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
+      <div class="test-card-icon">ð¯</div>
+      <div class="test-card-badge">å­©å­åèè¾¨è­</div>
+      <div class="test-card-title">æ ¹æå­©å­çè¡çºæ¾åºä»çåè</div>
+      <p class="test-card-text">ä¸éè¦è®å­©å­èªå·±æ¸¬é©ã8 é¡è¡çºè§å¯é¡ï¼æ ¹æä½ å°å­©å­çæ¥å¸¸è§å¯ï¼æ¨æ¸¬ä»æå¯è½ç MBTI åè</p>
+      <div class="test-card-time">ç´ <span>2 åé</span> Â· åè²»</div>
     </div>
   </div>
-  <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-accent">開始免費測驗 →</a>
-  <p class="test-or">或者</p>
-  <p class="test-skip-note">已知道自己的型號？<a href="#parenting" onclick="document.getElementById('knowTypeToggle').click();return false;">直接選型號，跳過測驗 →</a></p>
+  <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-accent">éå§åè²»æ¸¬é© â</a>
+  <p class="test-or">æè</p>
+  <p class="test-skip-note">å·²ç¥éèªå·±çåèï¼<a href="#parenting" onclick="document.getElementById('knowTypeToggle').click();return false;">ç´æ¥é¸åèï¼è·³éæ¸¬é© â</a></p>
 </section>
 
-<!-- ── Testimonials ── -->
+<!-- ââ Testimonials ââ -->
 <section class="preview" id="preview">
   <div class="section-header">
-    <div class="section-badge">讀者反饋</div>
-    <h2 class="section-title">他們說這份指南幫了什麼</h2>
+    <div class="section-badge">è®èåé¥</div>
+    <h2 class="section-title">ä»åèªªéä»½æåå¹«äºä»éº¼</h2>
     <div class="divider"></div>
   </div>
   <div class="preview-grid">
     <div class="preview-card">
-      <div class="preview-stars">★★★★★</div>
-      <p class="preview-quote">「看到第二頁我就哭了。它說中了我和兒子之間每一個卡住的點，而且給了我可以直接用的話。以前我以為是我太嚴格，<em>原來是我們的大腦運作方式不一樣</em>。」</p>
+      <div class="preview-stars">âââââ</div>
+      <p class="preview-quote">ãçå°ç¬¬äºé æå°±å­äºãå®èªªä¸­äºæååå­ä¹éæ¯ä¸åå¡ä½çé»ï¼èä¸çµ¦äºæå¯ä»¥ç´æ¥ç¨çè©±ãä»¥åæä»¥çºæ¯æå¤ªå´æ ¼ï¼<em>åä¾æ¯æåçå¤§è¦éä½æ¹å¼ä¸ä¸æ¨£</em>ãã</p>
       <div class="preview-author">
         <span class="preview-type-badge">INFJ</span>
-        孩子型號 ESTP · 兒子 9 歲
+        å­©å­åè ESTP Â· åå­ 9 æ­²
       </div>
     </div>
     <div class="preview-card">
-      <div class="preview-stars">★★★★★</div>
-      <p class="preview-quote">「買了 Pro 版，裡面的四週行動計畫讓我有具體的事情可以做。第二週開始女兒會主動跟我說學校的事了，<em>以前她從來不說</em>。」</p>
+      <div class="preview-stars">âââââ</div>
+      <p class="preview-quote">ãè²·äº Pro çï¼è£¡é¢çåé±è¡åè¨ç«è®ææå·é«çäºæå¯ä»¥åãç¬¬äºé±éå§å¥³åæä¸»åè·æèªªå­¸æ ¡çäºäºï¼<em>ä»¥åå¥¹å¾ä¾ä¸èªª</em>ãã</p>
       <div class="preview-author">
         <span class="preview-type-badge">ESTJ</span>
-        孩子型號 INFP · 女兒 13 歲
+        å­©å­åè INFP Â· å¥³å 13 æ­²
       </div>
     </div>
     <div class="preview-card">
-      <div class="preview-stars">★★★★★</div>
-      <p class="preview-quote">「對話腳本那頁太實用了。我把舊說法和新說法列印出來貼在冰箱上，現在每次要開口前我都先想一秒，<em>這個改變讓我們的衝突少了一半</em>。」</p>
+      <div class="preview-stars">âââââ</div>
+      <p class="preview-quote">ãå°è©±è³æ¬é£é å¤ªå¯¦ç¨äºãææèèªªæ³åæ°èªªæ³åå°åºä¾è²¼å¨å°ç®±ä¸ï¼ç¾å¨æ¯æ¬¡è¦éå£åæé½åæ³ä¸ç§ï¼<em>éåæ¹è®è®æåçè¡çªå°äºä¸å</em>ãã</p>
       <div class="preview-author">
         <span class="preview-type-badge">ISFJ</span>
-        孩子型號 ENTJ · 兒子 15 歲
+        å­©å­åè ENTJ Â· åå­ 15 æ­²
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── FAQ ── -->
+<!-- ââ FAQ ââ -->
 <section class="faq" id="faq">
   <div class="section-header">
-    <div class="section-badge">常見問題</div>
-    <h2 class="section-title">你可能想知道的事</h2>
+    <div class="section-badge">å¸¸è¦åé¡</div>
+    <h2 class="section-title">ä½ å¯è½æ³ç¥éçäº</h2>
     <div class="divider"></div>
   </div>
   <div class="faq-list">
     <div class="faq-item">
-      <div class="faq-q">孩子太小，我不確定他是哪個型號，怎麼辦？</div>
-      <p class="faq-a">沒關係。測驗區塊有「孩子型號辨識」工具，根據你對孩子日常行為的觀察來推測型號。一般建議孩子 7 歲以上觀察較為準確，但更小的孩子也能從行為特徵中找到線索。如果買錯了，我們也有型號更換服務，聯絡我們就好。</p>
+      <div class="faq-q">å­©å­å¤ªå°ï¼æä¸ç¢ºå®ä»æ¯åªååèï¼æéº¼è¾¦ï¼</div>
+      <p class="faq-a">æ²éä¿ãæ¸¬é©åå¡æãå­©å­åèè¾¨è­ãå·¥å·ï¼æ ¹æä½ å°å­©å­æ¥å¸¸è¡çºçè§å¯ä¾æ¨æ¸¬åèãä¸è¬å»ºè­°å­©å­ 7 æ­²ä»¥ä¸è§å¯è¼çºæºç¢ºï¼ä½æ´å°çå­©å­ä¹è½å¾è¡çºç¹å¾µä¸­æ¾å°ç·ç´¢ãå¦æè²·é¯äºï¼æåä¹æåèæ´ææåï¼è¯çµ¡æåå°±å¥½ã</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">標準版和 Pro 版有什麼差別？</div>
-      <p class="faq-a">標準版（8頁）是「讀懂工具」，告訴你孩子的思維邏輯、你們的衝突在哪、怎麼說才能說進去，適合想快速了解的父母。Pro 版（17頁）是「改變工具」，多了親子靈魂相容度五維圖、父母天賦與盲點深度分析、三個高壓情境急救腳本，以及四週完整行動計畫，適合想真正改變這段親子關係的人。</p>
+      <div class="faq-q">æ¨æºçå Pro çæä»éº¼å·®å¥ï¼</div>
+      <p class="faq-a">æ¨æºçï¼8é ï¼æ¯ãè®æå·¥å·ãï¼åè¨´ä½ å­©å­çæç¶­éè¼¯ãä½ åçè¡çªå¨åªãæéº¼èªªæè½èªªé²å»ï¼é©åæ³å¿«éäºè§£çç¶æ¯ãPro çï¼17é ï¼æ¯ãæ¹è®å·¥å·ãï¼å¤äºè¦ªå­éé­ç¸å®¹åº¦äºç¶­åãç¶æ¯å¤©è³¦èç²é»æ·±åº¦åæãä¸åé«å£æå¢æ¥æè³æ¬ï¼ä»¥ååé±å®æ´è¡åè¨ç«ï¼é©åæ³çæ­£æ¹è®éæ®µè¦ªå­éä¿çäººã</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">測驗只有 8 題，夠準確嗎？</div>
-      <p class="faq-a">夠。我們的 8 題測驗針對 MBTI 四個維度各設計 2 題親子情境題，能有效區分主要人格傾向。如果結果讓你存疑，可以直接在首頁選擇你認為更符合的型號。</p>
+      <div class="faq-q">æ¸¬é©åªæ 8 é¡ï¼å¤ æºç¢ºåï¼</div>
+      <p class="faq-a">å¤ ãæåç 8 é¡æ¸¬é©éå° MBTI ååç¶­åº¦åè¨­è¨ 2 é¡è¦ªå­æå¢é¡ï¼è½ææååä¸»è¦äººæ ¼å¾åãå¦æçµæè®ä½ å­çï¼å¯ä»¥ç´æ¥å¨é¦é é¸æä½ èªçºæ´ç¬¦åçåèã</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">購買後怎麼取得 PDF？</div>
-      <p class="faq-a">透過 Gumroad 購買，付款成功後會自動寄送下載連結到你的 Email，通常不超過 5 分鐘。檔案會有你的名字和 Email 浮水印，是你專屬的版本。</p>
+      <div class="faq-q">è³¼è²·å¾æéº¼åå¾ PDFï¼</div>
+      <p class="faq-a">éé Gumroad è³¼è²·ï¼ä»æ¬¾æåå¾æèªåå¯éä¸è¼é£çµå°ä½ ç Emailï¼éå¸¸ä¸è¶é 5 åéãæªæ¡ææä½ çåå­å Email æµ®æ°´å°ï¼æ¯ä½ å°å±¬ççæ¬ã</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">孩子也需要讀才有用嗎？</div>
-      <p class="faq-a">不需要。指南是寫給父母讀的，設計方向是「如果只有你一個人改變說話方式，這段關係就會往前走」。你不能要求孩子改，但你可以改變你說話的方式，讓孩子更能感受到你的愛與意圖。</p>
+      <div class="faq-q">å­©å­ä¹éè¦è®ææç¨åï¼</div>
+      <p class="faq-a">ä¸éè¦ãæåæ¯å¯«çµ¦ç¶æ¯è®çï¼è¨­è¨æ¹åæ¯ãå¦æåªæä½ ä¸åäººæ¹è®èªªè©±æ¹å¼ï¼éæ®µéä¿å°±æå¾åèµ°ããä½ ä¸è½è¦æ±å­©å­æ¹ï¼ä½ä½ å¯ä»¥æ¹è®ä½ èªªè©±çæ¹å¼ï¼è®å­©å­æ´è½æåå°ä½ çæèæåã</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">這是占星或算命嗎？</div>
-      <p class="faq-a">不是。MBTI 是基於榮格認知功能理論的人格分類工具，靈魂親子系列的對話腳本設計參考了 NVC（非暴力溝通）、薩提爾溝通模型和依附理論研究。我們不預測未來，我們給你可以現在就用的溝通方式。</p>
+      <div class="faq-q">éæ¯å ææç®å½åï¼</div>
+      <p class="faq-a">ä¸æ¯ãMBTI æ¯åºæ¼æ¦®æ ¼èªç¥åè½çè«çäººæ ¼åé¡å·¥å·ï¼éé­è¦ªå­ç³»åçå°è©±è³æ¬è¨­è¨åèäº NVCï¼éæ´åæºéï¼ãè©æç¾æºéæ¨¡ååä¾éçè«ç ç©¶ãæåä¸é æ¸¬æªä¾ï¼æåçµ¦ä½ å¯ä»¥ç¾å¨å°±ç¨çæºéæ¹å¼ã</p>
     </div>
   </div>
 </section>
 
-<!-- ── Final CTA ── -->
+<!-- ââ Final CTA ââ -->
 <section class="final-cta">
-  <h2>你已經很努力了<br>現在給自己一個更好用的工具</h2>
-  <p>今天拿到你的對話腳本，今晚的對話就不一樣了</p>
+  <h2>ä½ å·²ç¶å¾åªåäº<br>ç¾å¨çµ¦èªå·±ä¸åæ´å¥½ç¨çå·¥å·</h2>
+  <p>ä»å¤©æ¿å°ä½ çå°è©±è³æ¬ï¼ä»æçå°è©±å°±ä¸ä¸æ¨£äº</p>
   <div class="final-cta-btns">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-accent">⚡ 先免費測驗型號</a>
-    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-accent">â¡ ååè²»æ¸¬é©åè</a>
+    <a href="#products" class="btn-secondary">ð ç´æ¥é¸è³¼æå</a>
   </div>
 </section>
 
-<!-- ── Series Navigation ── -->
+<!-- ââ Series Navigation ââ -->
 <section class="series-section">
   <div class="section-header" style="margin-bottom:36px">
-    <div class="section-badge">靈魂宇宙系列</div>
-    <h2 class="section-title">還有哪些系列適合你？</h2>
-    <p class="section-sub">親子之外，靈魂宇宙也幫你解讀職場、心靈與更多人生場景</p>
+    <div class="section-badge">éé­å®å®ç³»å</div>
+    <h2 class="section-title">éæåªäºç³»åé©åä½ ï¼</h2>
+    <p class="section-sub">è¦ªå­ä¹å¤ï¼éé­å®å®ä¹å¹«ä½ è§£è®è·å ´ãå¿éèæ´å¤äººçå ´æ¯</p>
     <div class="divider"></div>
   </div>
   <div class="series-grid">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="series-card">
-      <span class="series-card-icon">🧬</span>
-      <div class="series-card-title">靈魂測驗</div>
-      <p class="series-card-desc">免費 MBTI 測驗，精準找出你的人格密碼，是所有系列的起點</p>
-      <span class="series-card-badge">免費</span>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="series-card">
+      <span class="series-card-icon">ð§¬</span>
+      <div class="series-card-title">éé­æ¸¬é©</div>
+      <p class="series-card-desc">åè²» MBTI æ¸¬é©ï¼ç²¾æºæ¾åºä½ çäººæ ¼å¯ç¢¼ï¼æ¯ææç³»åçèµ·é»</p>
+      <span class="series-card-badge">åè²»</span>
     </a>
     <div class="series-card current">
-      <span class="series-card-icon">👨‍👩‍👧</span>
-      <div class="series-card-title">靈魂親子</div>
-      <p class="series-card-desc">讀懂孩子的秘密語言，256 種親子組合，直接給你對話腳本</p>
-      <span class="series-card-badge">你在這裡</span>
+      <span class="series-card-icon">ð¨âð©âð§</span>
+      <div class="series-card-title">éé­è¦ªå­</div>
+      <p class="series-card-desc">è®æå­©å­çç§å¯èªè¨ï¼256 ç¨®è¦ªå­çµåï¼ç´æ¥çµ¦ä½ å°è©±è³æ¬</p>
+      <span class="series-card-badge">ä½ å¨éè£¡</span>
     </div>
-    <a href="../../03_MBTI職場關係/職場網站/index.html" class="series-card">
-      <span class="series-card-icon">⚔️</span>
-      <div class="series-card-title">靈魂職場</div>
-      <p class="series-card-desc">破解職場溝通困境，256 種組合，讀懂主管同事的大腦邏輯</p>
-      <span class="series-card-badge">溝通指南</span>
+    <a href="https://air6030i-star.github.io/soul-test/workplace.html" class="series-card">
+      <span class="series-card-icon">âï¸</span>
+      <div class="series-card-title">éé­è·å ´</div>
+      <p class="series-card-desc">ç ´è§£è·å ´æºéå°å¢ï¼256 ç¨®çµåï¼è®æä¸»ç®¡åäºçå¤§è¦éè¼¯</p>
+      <span class="series-card-badge">æºéæå</span>
     </a>
-    <a href="../../05_心靈避風港/soul-haven-v2_2.html" class="series-card">
-      <span class="series-card-icon">🌊</span>
-      <div class="series-card-title">心靈避風港</div>
-      <p class="series-card-desc">教養壓力排解不了？回到內在找到穩定中心，真正充電</p>
-      <span class="series-card-badge">療癒系列</span>
+    <a href="#" class="series-card">
+      <span class="series-card-icon">ð</span>
+      <div class="series-card-title">å¿éé¿é¢¨æ¸¯</div>
+      <p class="series-card-desc">æé¤å£åæè§£ä¸äºï¼åå°å§å¨æ¾å°ç©©å®ä¸­å¿ï¼çæ­£åé»</p>
+      <span class="series-card-badge">ççç³»å</span>
     </a>
   </div>
 </section>
 
-<!-- ── Footer ── -->
+<!-- ââ Footer ââ -->
 <footer>
-  <div class="footer-logo">👨‍👩‍👧 靈魂親子 · Soul Universe</div>
+  <div class="footer-logo">ð¨âð©âð§ éé­è¦ªå­ Â· Soul Universe</div>
   <p class="footer-tagline">The quiet voice within is my loudest guide.</p>
   <div class="footer-links">
-    <a href="#products">親子指南</a>
-    <a href="#parenting">教養風格</a>
-    <a href="../../01_MBTI測試網頁及資料/index.html">免費測驗</a>
-    <a href="https://airwave553.gumroad.com" target="_blank">Gumroad 商店</a>
-    <a href="../../05_心靈避風港/soul-haven-v2_2.html">靈魂避風港</a>
+    <a href="#products">è¦ªå­æå</a>
+    <a href="#parenting">æé¤é¢¨æ ¼</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html">åè²»æ¸¬é©</a>
+    <a href="https://airwave553.gumroad.com" target="_blank">Gumroad ååº</a>
+    <a href="#">éé­é¿é¢¨æ¸¯</a>
   </div>
-  <p class="footer-copy">© 2026 Soul Universe · 靈魂宇宙 · All rights reserved.</p>
+  <p class="footer-copy">Â© 2026 Soul Universe Â· éé­å®å® Â· All rights reserved.</p>
 </footer>
 
 <script>
-// ── Parenting style data ──────────────────────────────────────────────────
+// ââ Parenting style data ââââââââââââââââââââââââââââââââââââââââââââââââââ
 const PARENTING = {
-  INTJ:{title:'INTJ 策略型父母',subtitle:'以長遠眼光培養孩子的獨立思考',
-    traits:['清晰設立界限與規則','重視孩子的邏輯能力','尊重孩子需要獨處的時間','長期規劃孩子的發展路徑'],
-    blind:'你最容易忽略的是<em>情感連結的當下表達</em>。孩子有時需要的不是最優解，而是一個擁抱和「我知道你很難過」。學會在給建議之前，先讓孩子感受到被看見。'},
-  INTP:{title:'INTP 探索型父母',subtitle:'和孩子一起保持對世界的好奇心',
-    traits:['鼓勵孩子自由探索和提問','容忍孩子的差異與獨特性','一起鑽研孩子感興趣的事','不強迫孩子走既定路線'],
-    blind:'你最容易忽略的是<em>日常結構與規律的重要性</em>。孩子在穩定的作息中才能安心，而不是每天在彈性中漂浮。試著為孩子建立一個可預測的框架，讓他有安全感去探索。'},
-  ENTJ:{title:'ENTJ 教練型父母',subtitle:'幫孩子設定高標準、走向卓越',
-    traits:['積極幫孩子規劃成就路徑','培養孩子的目標感與責任心','推動孩子突破舒適圈','樹立強大的榜樣形象'],
-    blind:'你最容易忽略的是<em>給孩子空間失敗和只是「存在」的權利</em>。孩子有時需要一個不評判的父母，而不是一個教練。試著學會在孩子不需要被推動的時候，只是陪著他。'},
-  ENTP:{title:'ENTP 啟發型父母',subtitle:'點燃孩子的創造力與思辨能力',
-    traits:['激發孩子的好奇心與想像力','鼓勵孩子挑戰既有規則','善於把學習變成有趣的對話','讓孩子敢於表達不同意見'],
-    blind:'你最容易忽略的是<em>一致性與紀律的執行</em>。孩子需要你說到做到，而不是規則每次都可以被辯論。試著在某些核心界限上保持穩定，讓孩子知道哪些是不能妥協的。'},
-  INFJ:{title:'INFJ 洞察型父母',subtitle:'深刻理解孩子內心世界的引路人',
-    traits:['天生能感知孩子的情緒狀態','用意義感和價值觀引導孩子','給孩子深度的傾聽與理解','幫孩子看見自己的獨特天賦'],
-    blind:'你最容易忽略的是<em>設定清晰界限和放手讓孩子承擔後果</em>。你的洞察力有時會讓你過度保護孩子，讓他少了成長需要的挫折。學會說「這是你的選擇，我相信你能處理」。'},
-  INFP:{title:'INFP 陪伴型父母',subtitle:'尊重孩子個性，給他最大的情感空間',
-    traits:['完全尊重孩子的情感與個性','給孩子充分的創意表達空間','溫柔陪伴孩子度過低潮','從不強迫孩子成為他不是的樣子'],
-    blind:'你最容易忽略的是<em>紀律與規則的一致執行</em>。對孩子太過溫柔有時會讓他缺少結構感，不知道界限在哪。試著在重要的事情上溫柔但堅定，讓孩子有可以依靠的框架。'},
-  ENFJ:{title:'ENFJ 引領型父母',subtitle:'積極塑造孩子品格的溫暖領袖',
-    traits:['積極投入孩子的成長每個面向','幫孩子建立豐富的社交連結','以身作則，言行一致','對孩子的需求高度敏感回應'],
-    blind:'你最容易忽略的是<em>給孩子足夠的自主空間</em>。你的熱情有時會變成過度介入，讓孩子覺得喘不過氣。試著問孩子「你需要我幫忙，還是只要我聽你說？」'},
-  ENFP:{title:'ENFP 玩伴型父母',subtitle:'讓家充滿笑聲與活力的快樂製造者',
-    traits:['和孩子一起笑、一起瘋','帶給孩子豐富的情感體驗','激發孩子的熱情與創造力','讓孩子感受到被愛是輕鬆自然的'],
-    blind:'你最容易忽略的是<em>日常紀律與長期一致性</em>。孩子需要一個可預測的父母，而不是只有好玩的時候才在。試著在情緒高漲的時候也保持界限，讓孩子有安全感。'},
-  ISTJ:{title:'ISTJ 穩定型父母',subtitle:'提供可靠結構與清晰規則的守護者',
-    traits:['建立清晰可預測的家庭規則','言出必行，從不食言','以責任感和自律為榜樣','給孩子穩定且安全的成長環境'],
-    blind:'你最容易忽略的是<em>靈活性與情感表達</em>。孩子有時需要你打破規則，說一句「今天特別，因為我愛你」。試著讓孩子感受到規則之外，還有一個柔軟的你。'},
-  ISFJ:{title:'ISFJ 守護型父母',subtitle:'無微不至守護家庭的溫柔力量',
-    traits:['細膩照顧孩子生活的每個細節','讓孩子在家感到絕對的安全感','記住孩子說過的每一件小事','默默為孩子做一切需要做的事'],
-    blind:'你最容易忽略的是<em>讓孩子學習獨立與承擔後果</em>。你的照顧有時會讓孩子少了鍛鍊自己的機會。試著讓孩子做一些「剛好有點難」的事，相信他能做到。'},
-  ESTJ:{title:'ESTJ 管理型父母',subtitle:'建立明確秩序、培養責任感的父母',
-    traits:['建立清晰的家規與獎懲制度','培養孩子的時間管理與責任感','讓孩子知道界限在哪裡','以實際行動展示什麼是負責任'],
-    blind:'你最容易忽略的是<em>傾聽孩子的感受而不是立刻給解方</em>。孩子有時說「我很難過」不是要你解決問題，而是要你說「我知道，這真的很不容易」。先同理，再建議。'},
-  ESFJ:{title:'ESFJ 和諧型父母',subtitle:'打造溫暖有愛家庭氣氛的連結者',
-    traits:['積極維護家庭的和諧與凝聚力','對孩子的情緒需求極度敏感','讓孩子感受到被愛與被重視','透過家庭傳統建立歸屬感'],
-    blind:'你最容易忽略的是<em>讓孩子學習處理衝突和不適</em>。你對和諧的渴望有時會讓你替孩子擋掉所有不舒服，但孩子需要練習面對困難。試著讓孩子有機會自己解決問題。'},
-  ISTP:{title:'ISTP 實作型父母',subtitle:'和孩子一起動手、冷靜解決問題',
-    traits:['和孩子一起做、一起修、一起探索','在孩子崩潰時保持冷靜的定錨','教孩子實際的技能和解決方法','給孩子足夠的空間和自主'],
-    blind:'你最容易忽略的是<em>主動表達情感和建立語言上的親密感</em>。孩子需要聽到你說「我為你驕傲」、「我愛你」，而不只是感受到你在場。試著把心裡的感受說出來。'},
-  ISFP:{title:'ISFP 藝術型父母',subtitle:'尊重孩子獨特性，培養美感與創造力',
-    traits:['不評判地接受孩子的每個樣子','培養孩子對美、音樂、自然的感受力','給孩子充分的創作自由','用陪伴而非言語傳達愛'],
-    blind:'你最容易忽略的是<em>給孩子引導與結構</em>。孩子在完全自由的環境中有時會感到迷失，不知道方向在哪。試著溫柔地為孩子指出一條路，而不只是陪他走。'},
-  ESTP:{title:'ESTP 冒險型父母',subtitle:'帶孩子體驗、行動、挑戰的快樂父母',
-    traits:['帶孩子去體驗豐富的現實世界','在孩子遇到危機時迅速行動','教孩子勇氣與解決問題的魄力','讓孩子知道失敗了也能站起來'],
-    blind:'你最容易忽略的是<em>耐心與細膩的情緒陪伴</em>。孩子有時只是需要你慢下來，什麼都不做地陪著他。試著在孩子情緒崩潰時，先停止解決問題，讓他感覺到你在這裡。'},
-  ESFP:{title:'ESFP 活力型父母',subtitle:'讓孩子感受生命喜悅的快樂製造者',
-    traits:['讓孩子感受到生命是有趣的','情感豐富，給孩子大量的愛與肯定','活在當下，帶孩子享受每個時刻','善於讀懂孩子的情緒並立即回應'],
-    blind:'你最容易忽略的是<em>一致性與長期計畫的執行</em>。孩子需要知道明天和下週會怎樣，而不是每天都是即興發揮。試著為孩子建立一些固定的節奏，讓他有安全感。'}
+  INTJ:{title:'INTJ ç­ç¥åç¶æ¯',subtitle:'ä»¥é·é ç¼åå¹é¤å­©å­çç¨ç«æè',
+    traits:['æ¸æ°è¨­ç«çéèè¦å','éè¦å­©å­çéè¼¯è½å','å°éå­©å­éè¦ç¨èçæé','é·æè¦åå­©å­çç¼å±è·¯å¾'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>ææé£çµçç¶ä¸è¡¨é</em>ãå­©å­ææéè¦çä¸æ¯æåªè§£ï¼èæ¯ä¸åææ±åãæç¥éä½ å¾é£éããå­¸æå¨çµ¦å»ºè­°ä¹åï¼åè®å­©å­æåå°è¢«çè¦ã'},
+  INTP:{title:'INTP æ¢ç´¢åç¶æ¯',subtitle:'åå­©å­ä¸èµ·ä¿æå°ä¸ççå¥½å¥å¿',
+    traits:['é¼åµå­©å­èªç±æ¢ç´¢åæå','å®¹å¿å­©å­çå·®ç°èç¨ç¹æ§','ä¸èµ·é½ç å­©å­æèè¶£çäº','ä¸å¼·è¿«å­©å­èµ°æ¢å®è·¯ç·'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>æ¥å¸¸çµæ§èè¦å¾çéè¦æ§</em>ãå­©å­å¨ç©©å®çä½æ¯ä¸­æè½å®å¿ï¼èä¸æ¯æ¯å¤©å¨å½æ§ä¸­æ¼æµ®ãè©¦èçºå­©å­å»ºç«ä¸åå¯é æ¸¬çæ¡æ¶ï¼è®ä»æå®å¨æå»æ¢ç´¢ã'},
+  ENTJ:{title:'ENTJ æç·´åç¶æ¯',subtitle:'å¹«å­©å­è¨­å®é«æ¨æºãèµ°ååè¶',
+    traits:['ç©æ¥µå¹«å­©å­è¦åæå°±è·¯å¾','å¹é¤å­©å­çç®æ¨æèè²¬ä»»å¿','æ¨åå­©å­çªç ´èé©å','æ¨¹ç«å¼·å¤§çæ¦æ¨£å½¢è±¡'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>çµ¦å­©å­ç©ºéå¤±æååªæ¯ãå­å¨ãçæ¬å©</em>ãå­©å­ææéè¦ä¸åä¸è©å¤çç¶æ¯ï¼èä¸æ¯ä¸åæç·´ãè©¦èå­¸æå¨å­©å­ä¸éè¦è¢«æ¨åçæåï¼åªæ¯éªèä»ã'},
+  ENTP:{title:'ENTP åç¼åç¶æ¯',subtitle:'é»çå­©å­çåµé åèæè¾¨è½å',
+    traits:['æ¿ç¼å­©å­çå¥½å¥å¿èæ³åå','é¼åµå­©å­ææ°æ¢æè¦å','åæ¼æå­¸ç¿è®ææè¶£çå°è©±','è®å­©å­æ¢æ¼è¡¨éä¸åæè¦'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>ä¸è´æ§èç´å¾çå·è¡</em>ãå­©å­éè¦ä½ èªªå°åå°ï¼èä¸æ¯è¦åæ¯æ¬¡é½å¯ä»¥è¢«è¾¯è«ãè©¦èå¨æäºæ ¸å¿çéä¸ä¿æç©©å®ï¼è®å­©å­ç¥éåªäºæ¯ä¸è½å¦¥åçã'},
+  INFJ:{title:'INFJ æ´å¯åç¶æ¯',subtitle:'æ·±å»çè§£å­©å­å§å¿ä¸ççå¼è·¯äºº',
+    traits:['å¤©çè½æç¥å­©å­çæç·çæ','ç¨æç¾©æåå¹å¼è§å¼å°å­©å­','çµ¦å­©å­æ·±åº¦çå¾è½èçè§£','å¹«å­©å­çè¦èªå·±çç¨ç¹å¤©è³¦'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>è¨­å®æ¸æ°çéåæ¾æè®å­©å­æ¿æå¾æ</em>ãä½ çæ´å¯åæææè®ä½ éåº¦ä¿è­·å­©å­ï¼è®ä»å°äºæé·éè¦çæ«æãå­¸æèªªãéæ¯ä½ çé¸æï¼æç¸ä¿¡ä½ è½èçãã'},
+  INFP:{title:'INFP éªä¼´åç¶æ¯',subtitle:'å°éå­©å­åæ§ï¼çµ¦ä»æå¤§çææç©ºé',
+    traits:['å®å¨å°éå­©å­çææèåæ§','çµ¦å­©å­ååçåµæè¡¨éç©ºé','æº«æéªä¼´å­©å­åº¦éä½æ½®','å¾ä¸å¼·è¿«å­©å­æçºä»ä¸æ¯çæ¨£å­'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>ç´å¾èè¦åçä¸è´å·è¡</em>ãå°å­©å­å¤ªéæº«ææææè®ä»ç¼ºå°çµæ§æï¼ä¸ç¥éçéå¨åªãè©¦èå¨éè¦çäºæä¸æº«æä½å å®ï¼è®å­©å­æå¯ä»¥ä¾é çæ¡æ¶ã'},
+  ENFJ:{title:'ENFJ å¼é åç¶æ¯',subtitle:'ç©æ¥µå¡é å­©å­åæ ¼çæº«æé è¢',
+    traits:['ç©æ¥µæå¥å­©å­çæé·æ¯åé¢å','å¹«å­©å­å»ºç«è±å¯çç¤¾äº¤é£çµ','ä»¥èº«ä½åï¼è¨è¡ä¸è´','å°å­©å­çéæ±é«åº¦ææåæ'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>çµ¦å­©å­è¶³å¤ çèªä¸»ç©ºé</em>ãä½ çç±ææææè®æéåº¦ä»å¥ï¼è®å­©å­è¦ºå¾åä¸éæ°£ãè©¦èåå­©å­ãä½ éè¦æå¹«å¿ï¼éæ¯åªè¦æè½ä½ èªªï¼ã'},
+  ENFP:{title:'ENFP ç©ä¼´åç¶æ¯',subtitle:'è®å®¶åæ»¿ç¬è²èæ´»åçå¿«æ¨è£½é è',
+    traits:['åå­©å­ä¸èµ·ç¬ãä¸èµ·ç','å¸¶çµ¦å­©å­è±å¯çææé«é©','æ¿ç¼å­©å­çç±æèåµé å','è®å­©å­æåå°è¢«ææ¯è¼é¬èªç¶ç'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>æ¥å¸¸ç´å¾èé·æä¸è´æ§</em>ãå­©å­éè¦ä¸åå¯é æ¸¬çç¶æ¯ï¼èä¸æ¯åªæå¥½ç©çæåæå¨ãè©¦èå¨æç·é«æ¼²çæåä¹ä¿æçéï¼è®å­©å­æå®å¨æã'},
+  ISTJ:{title:'ISTJ ç©©å®åç¶æ¯',subtitle:'æä¾å¯é çµæ§èæ¸æ°è¦åçå®è­·è',
+    traits:['å»ºç«æ¸æ°å¯é æ¸¬çå®¶åº­è¦å','è¨åºå¿è¡ï¼å¾ä¸é£è¨','ä»¥è²¬ä»»æåèªå¾çºæ¦æ¨£','çµ¦å­©å­ç©©å®ä¸å®å¨çæé·ç°å¢'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>éæ´»æ§èææè¡¨é</em>ãå­©å­ææéè¦ä½ æç ´è¦åï¼èªªä¸å¥ãä»å¤©ç¹å¥ï¼å çºææä½ ããè©¦èè®å­©å­æåå°è¦åä¹å¤ï¼éæä¸åæè»çä½ ã'},
+  ISFJ:{title:'ISFJ å®è­·åç¶æ¯',subtitle:'ç¡å¾®ä¸è³å®è­·å®¶åº­çæº«æåé',
+    traits:['ç´°è©ç§é¡§å­©å­çæ´»çæ¯åç´°ç¯','è®å­©å­å¨å®¶æå°çµå°çå®å¨æ','è¨ä½å­©å­èªªéçæ¯ä¸ä»¶å°äº','é»é»çºå­©å­åä¸åéè¦åçäº'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>è®å­©å­å­¸ç¿ç¨ç«èæ¿æå¾æ</em>ãä½ çç§é¡§æææè®å­©å­å°äºééèªå·±çæ©æãè©¦èè®å­©å­åä¸äºãåå¥½æé»é£ãçäºï¼ç¸ä¿¡ä»è½åå°ã'},
+  ESTJ:{title:'ESTJ ç®¡çåç¶æ¯',subtitle:'å»ºç«æç¢ºç§©åºãå¹é¤è²¬ä»»æçç¶æ¯',
+    traits:['å»ºç«æ¸æ°çå®¶è¦èçæ²å¶åº¦','å¹é¤å­©å­çæéç®¡çèè²¬ä»»æ','è®å­©å­ç¥éçéå¨åªè£¡','ä»¥å¯¦éè¡åå±ç¤ºä»éº¼æ¯è² è²¬ä»»'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>å¾è½å­©å­çæåèä¸æ¯ç«å»çµ¦è§£æ¹</em>ãå­©å­ææèªªãæå¾é£éãä¸æ¯è¦ä½ è§£æ±ºåé¡ï¼èæ¯è¦ä½ èªªãæç¥éï¼éççå¾ä¸å®¹æããååçï¼åå»ºè­°ã'},
+  ESFJ:{title:'ESFJ åè«§åç¶æ¯',subtitle:'æé æº«æææå®¶åº­æ°£æ°çé£çµè',
+    traits:['ç©æ¥µç¶­è­·å®¶åº­çåè«§èåèå','å°å­©å­çæç·éæ±æ¥µåº¦ææ','è®å­©å­æåå°è¢«æèè¢«éè¦','ééå®¶åº­å³çµ±å»ºç«æ­¸å±¬æ'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>è®å­©å­å­¸ç¿èçè¡çªåä¸é©</em>ãä½ å°åè«§çæ¸´ææææè®ä½ æ¿å­©å­ææææä¸èæï¼ä½å­©å­éè¦ç·´ç¿é¢å°å°é£ãè©¦èè®å­©å­ææ©æèªå·±è§£æ±ºåé¡ã'},
+  ISTP:{title:'ISTP å¯¦ä½åç¶æ¯',subtitle:'åå­©å­ä¸èµ·åæãå·éè§£æ±ºåé¡',
+    traits:['åå­©å­ä¸èµ·åãä¸èµ·ä¿®ãä¸èµ·æ¢ç´¢','å¨å­©å­å´©æ½°æä¿æå·éçå®é¨','æå­©å­å¯¦éçæè½åè§£æ±ºæ¹æ³','çµ¦å­©å­è¶³å¤ çç©ºéåèªä¸»'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>ä¸»åè¡¨éææåå»ºç«èªè¨ä¸çè¦ªå¯æ</em>ãå­©å­éè¦è½å°ä½ èªªãæçºä½ é©å²ãããææä½ ãï¼èä¸åªæ¯æåå°ä½ å¨å ´ãè©¦èæå¿è£¡çæåèªªåºä¾ã'},
+  ISFP:{title:'ISFP èè¡åç¶æ¯',subtitle:'å°éå­©å­ç¨ç¹æ§ï¼å¹é¤ç¾æèåµé å',
+    traits:['ä¸è©å¤å°æ¥åå­©å­çæ¯åæ¨£å­','å¹é¤å­©å­å°ç¾ãé³æ¨ãèªç¶çæåå','çµ¦å­©å­ååçåµä½èªç±','ç¨éªä¼´èéè¨èªå³éæ'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>çµ¦å­©å­å¼å°èçµæ§</em>ãå­©å­å¨å®å¨èªç±çç°å¢ä¸­ææææå°è¿·å¤±ï¼ä¸ç¥éæ¹åå¨åªãè©¦èæº«æå°çºå­©å­æåºä¸æ¢è·¯ï¼èä¸åªæ¯éªä»èµ°ã'},
+  ESTP:{title:'ESTP åéªåç¶æ¯',subtitle:'å¸¶å­©å­é«é©ãè¡åãææ°çå¿«æ¨ç¶æ¯',
+    traits:['å¸¶å­©å­å»é«é©è±å¯çç¾å¯¦ä¸ç','å¨å­©å­éå°å±æ©æè¿éè¡å','æå­©å­åæ°£èè§£æ±ºåé¡çé­å','è®å­©å­ç¥éå¤±æäºä¹è½ç«èµ·ä¾'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>èå¿èç´°è©çæç·éªä¼´</em>ãå­©å­ææåªæ¯éè¦ä½ æ¢ä¸ä¾ï¼ä»éº¼é½ä¸åå°éªèä»ãè©¦èå¨å­©å­æç·å´©æ½°æï¼ååæ­¢è§£æ±ºåé¡ï¼è®ä»æè¦ºå°ä½ å¨éè£¡ã'},
+  ESFP:{title:'ESFP æ´»ååç¶æ¯',subtitle:'è®å­©å­æåçå½åæçå¿«æ¨è£½é è',
+    traits:['è®å­©å­æåå°çå½æ¯æè¶£ç','ææè±å¯ï¼çµ¦å­©å­å¤§éçæèè¯å®','æ´»å¨ç¶ä¸ï¼å¸¶å­©å­äº«åæ¯åæå»','åæ¼è®æå­©å­çæç·ä¸¦ç«å³åæ'],
+    blind:'ä½ æå®¹æå¿½ç¥çæ¯<em>ä¸è´æ§èé·æè¨ç«çå·è¡</em>ãå­©å­éè¦ç¥éæå¤©åä¸é±æææ¨£ï¼èä¸æ¯æ¯å¤©é½æ¯å³èç¼æ®ãè©¦èçºå­©å­å»ºç«ä¸äºåºå®çç¯å¥ï¼è®ä»æå®å¨æã'}
 };
 
-// ── Know Your Type toggle ────────────────────────────────────────────────
+// ââ Know Your Type toggle ââââââââââââââââââââââââââââââââââââââââââââââââ
 function toggleKnowType(){
   const btn = document.getElementById('knowTypeToggle');
   const panel = document.getElementById('knowTypePanel');
@@ -823,7 +823,7 @@ function selectType(type){
   }, 400);
 }
 
-// ── Parenting style display ──────────────────────────────────────────────
+// ââ Parenting style display ââââââââââââââââââââââââââââââââââââââââââââââ
 function showParenting(type, btn){
   document.querySelectorAll('.ptype-btn').forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
@@ -841,8 +841,8 @@ function showParenting(type, btn){
   result.classList.add('visible');
 }
 
-// ── Free Parenting Report ─────────────────────────────────────────────────
-// EmailJS 設定（與職場系列共用）：
+// ââ Free Parenting Report âââââââââââââââââââââââââââââââââââââââââââââââââ
+// EmailJS è¨­å®ï¼èè·å ´ç³»åå±ç¨ï¼ï¼
 const PR_SERVICE_ID  = 'service_mmdj828';
 const PR_TEMPLATE_ID = 'template_i4xb21t';
 const PR_PUBLIC_KEY  = 'uqPSWLUWlR4FT915U';
@@ -851,100 +851,100 @@ try { emailjs.init({ publicKey: PR_PUBLIC_KEY }); } catch(e) {}
 
 const PARENTING_FREE = {
   INTJ: {
-    title: 'INTJ 父母 · 戰略守護者',
-    subtitle: '你天生擅長為孩子規劃長遠未來，但有時忘了問他真正想要什麼',
-    traits: ['為孩子制定清晰長遠的成長計畫', '邏輯分析力強，能給孩子明確的方向', '高標準激發孩子的自律與潛能', '不輕易妥協，教出有原則的孩子'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>容易用邏輯回應孩子的情緒，以為「講道理」就夠了。孩子有時候需要的不是答案，而是一個被理解的抱抱。'
+    title: 'INTJ ç¶æ¯ Â· æ°ç¥å®è­·è',
+    subtitle: 'ä½ å¤©çæé·çºå­©å­è¦åé·é æªä¾ï¼ä½ææå¿äºåä»çæ­£æ³è¦ä»éº¼',
+    traits: ['çºå­©å­å¶å®æ¸æ°é·é çæé·è¨ç«', 'éè¼¯åæåå¼·ï¼è½çµ¦å­©å­æç¢ºçæ¹å', 'é«æ¨æºæ¿ç¼å­©å­çèªå¾èæ½è½', 'ä¸è¼æå¦¥åï¼æåºæååçå­©å­'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å®¹æç¨éè¼¯åæå­©å­çæç·ï¼ä»¥çºãè¬éçãå°±å¤ äºãå­©å­ææåéè¦çä¸æ¯ç­æ¡ï¼èæ¯ä¸åè¢«çè§£çæ±æ±ã'
   },
   INTP: {
-    title: 'INTP 父母 · 探索引導者',
-    subtitle: '你天生是孩子最好的思考夥伴，帶他發現世界的邏輯與美',
-    traits: ['激發孩子的好奇心與探索精神', '不強迫，給孩子充足思考空間', '能用孩子聽得懂的方式解釋複雜道理', '尊重孩子的個體差異與獨特想法'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>情感表達較含蓄，孩子可能感受不到你有多愛他。試著多說出口，而不是只用行動代替語言。'
+    title: 'INTP ç¶æ¯ Â· æ¢ç´¢å¼å°è',
+    subtitle: 'ä½ å¤©çæ¯å­©å­æå¥½çæèå¤¥ä¼´ï¼å¸¶ä»ç¼ç¾ä¸ççéè¼¯èç¾',
+    traits: ['æ¿ç¼å­©å­çå¥½å¥å¿èæ¢ç´¢ç²¾ç¥', 'ä¸å¼·è¿«ï¼çµ¦å­©å­åè¶³æèç©ºé', 'è½ç¨å­©å­è½å¾æçæ¹å¼è§£éè¤ééç', 'å°éå­©å­çåé«å·®ç°èç¨ç¹æ³æ³'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>ææè¡¨éè¼å«èï¼å­©å­å¯è½æåä¸å°ä½ æå¤æä»ãè©¦èå¤èªªåºå£ï¼èä¸æ¯åªç¨è¡åä»£æ¿èªè¨ã'
   },
   ENTJ: {
-    title: 'ENTJ 父母 · 指揮型領袖',
-    subtitle: '你天生能幫孩子建立目標感，但要注意別讓孩子覺得不達標就失去你的愛',
-    traits: ['幫孩子建立清晰的目標與執行力', '效率高，能快速判斷什麼對孩子最好', '敢於設定高標準，激發孩子突破自我', '給孩子強大的安全感與方向感'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>容易把「期望」說成「命令」，讓孩子感到窒息。給他一點犯錯的空間，失敗也是成長的一部分。'
+    title: 'ENTJ ç¶æ¯ Â· ææ®åé è¢',
+    subtitle: 'ä½ å¤©çè½å¹«å­©å­å»ºç«ç®æ¨æï¼ä½è¦æ³¨æå¥è®å­©å­è¦ºå¾ä¸éæ¨å°±å¤±å»ä½ çæ',
+    traits: ['å¹«å­©å­å»ºç«æ¸æ°çç®æ¨èå·è¡å', 'æçé«ï¼è½å¿«éå¤æ·ä»éº¼å°å­©å­æå¥½', 'æ¢æ¼è¨­å®é«æ¨æºï¼æ¿ç¼å­©å­çªç ´èªæ', 'çµ¦å­©å­å¼·å¤§çå®å¨æèæ¹åæ'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å®¹ææãææãèªªæãå½ä»¤ãï¼è®å­©å­æå°çªæ¯ãçµ¦ä»ä¸é»ç¯é¯çç©ºéï¼å¤±æä¹æ¯æé·çä¸é¨åã'
   },
   ENTP: {
-    title: 'ENTP 父母 · 激發創意家',
-    subtitle: '你讓孩子的世界充滿了想像力，他永遠不知道下一個驚喜是什麼',
-    traits: ['帶著孩子用不同角度看世界', '鼓勵孩子質疑和創新，不怕打破常規', '辯論式溝通激發孩子獨立思考', '讓孩子從小習慣面對變化'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>有時想法太多，孩子跟不上你的節奏。給他穩定的日常慣例，讓他有安全感落地。'
+    title: 'ENTP ç¶æ¯ Â· æ¿ç¼åµæå®¶',
+    subtitle: 'ä½ è®å­©å­çä¸çåæ»¿äºæ³ååï¼ä»æ°¸é ä¸ç¥éä¸ä¸åé©åæ¯ä»éº¼',
+    traits: ['å¸¶èå­©å­ç¨ä¸åè§åº¦çä¸ç', 'é¼åµå­©å­è³ªçååµæ°ï¼ä¸ææç ´å¸¸è¦', 'è¾¯è«å¼æºéæ¿ç¼å­©å­ç¨ç«æè', 'è®å­©å­å¾å°ç¿æ£é¢å°è®å'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>æææ³æ³å¤ªå¤ï¼å­©å­è·ä¸ä¸ä½ çç¯å¥ãçµ¦ä»ç©©å®çæ¥å¸¸æ£ä¾ï¼è®ä»æå®å¨æè½å°ã'
   },
   INFJ: {
-    title: 'INFJ 父母 · 靈魂守護者',
-    subtitle: '你能看見孩子靈魂深處的需要，是他最默契的傾聽者',
-    traits: ['直覺感應孩子的情緒，主動回應', '用深度對話讓孩子感到被完全理解', '培養孩子的同理心與內在價值觀', '給孩子一個充滿愛與意義感的成長環境'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>容易把孩子的情緒當成自己的責任，過度保護。讓他學習自己處理挫折，是你能給他最大的禮物之一。'
+    title: 'INFJ ç¶æ¯ Â· éé­å®è­·è',
+    subtitle: 'ä½ è½çè¦å­©å­éé­æ·±èçéè¦ï¼æ¯ä»æé»å¥çå¾è½è',
+    traits: ['ç´è¦ºææå­©å­çæç·ï¼ä¸»ååæ', 'ç¨æ·±åº¦å°è©±è®å­©å­æå°è¢«å®å¨çè§£', 'å¹é¤å­©å­çåçå¿èå§å¨å¹å¼è§', 'çµ¦å­©å­ä¸ååæ»¿æèæç¾©æçæé·ç°å¢'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å®¹ææå­©å­çæç·ç¶æèªå·±çè²¬ä»»ï¼éåº¦ä¿è­·ãè®ä»å­¸ç¿èªå·±èçæ«æï¼æ¯ä½ è½çµ¦ä»æå¤§çç¦®ç©ä¹ä¸ã'
   },
   INFP: {
-    title: 'INFP 父母 · 理想守夢人',
-    subtitle: '你讓孩子相信夢想值得追求，世界可以更美好',
-    traits: ['無條件接受孩子的獨特性與創造力', '培養孩子豐富的情感世界與同理心', '給孩子自由空間發展自我', '用故事和想像帶孩子探索內心'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>面對衝突容易退讓或沉默，孩子反而無所適從。適度的界線其實是一種愛，不是傷害。'
+    title: 'INFP ç¶æ¯ Â· çæ³å®å¤¢äºº',
+    subtitle: 'ä½ è®å­©å­ç¸ä¿¡å¤¢æ³å¼å¾è¿½æ±ï¼ä¸çå¯ä»¥æ´ç¾å¥½',
+    traits: ['ç¡æ¢ä»¶æ¥åå­©å­çç¨ç¹æ§èåµé å', 'å¹é¤å­©å­è±å¯çææä¸çèåçå¿', 'çµ¦å­©å­èªç±ç©ºéç¼å±èªæ', 'ç¨æäºåæ³åå¸¶å­©å­æ¢ç´¢å§å¿'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>é¢å°è¡çªå®¹æéè®ææ²é»ï¼å­©å­åèç¡æé©å¾ãé©åº¦ççç·å¶å¯¦æ¯ä¸ç¨®æï¼ä¸æ¯å·å®³ã'
   },
   ENFJ: {
-    title: 'ENFJ 父母 · 感召型陪伴者',
-    subtitle: '你天生能看到孩子的潛能，並讓他相信自己可以做到',
-    traits: ['強大的情感感染力，讓孩子充滿自信', '善於傾聽並給孩子恰到好處的鼓勵', '幫助孩子建立良好的人際關係', '以身作則，是孩子的最佳榜樣'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>太在乎孩子的感受，容易妥協界線。記得照顧好自己，耗盡的父母無法給孩子真正的愛。'
+    title: 'ENFJ ç¶æ¯ Â· æå¬åéªä¼´è',
+    subtitle: 'ä½ å¤©çè½çå°å­©å­çæ½è½ï¼ä¸¦è®ä»ç¸ä¿¡èªå·±å¯ä»¥åå°',
+    traits: ['å¼·å¤§çææææåï¼è®å­©å­åæ»¿èªä¿¡', 'åæ¼å¾è½ä¸¦çµ¦å­©å­æ°å°å¥½èçé¼åµ', 'å¹«å©å­©å­å»ºç«è¯å¥½çäººééä¿', 'ä»¥èº«ä½åï¼æ¯å­©å­çæä½³æ¦æ¨£'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å¤ªå¨ä¹å­©å­çæåï¼å®¹æå¦¥åçç·ãè¨å¾ç§é¡§å¥½èªå·±ï¼èç¡çç¶æ¯ç¡æ³çµ¦å­©å­çæ­£çæã'
   },
   ENFP: {
-    title: 'ENFP 父母 · 熱情探險家',
-    subtitle: '和你在一起，孩子的童年永遠充滿驚喜和笑聲',
-    traits: ['讓孩子感受到無條件的愛與接納', '創意十足，把學習變成有趣的冒險', '鼓勵孩子勇於嘗試，不怕失敗', '培養孩子樂觀開放的人生態度'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>容易因為情緒起伏影響一致性，孩子需要穩定的規則。試著在熱情之外，多一點日常的結構與規律。'
+    title: 'ENFP ç¶æ¯ Â· ç±ææ¢éªå®¶',
+    subtitle: 'åä½ å¨ä¸èµ·ï¼å­©å­çç«¥å¹´æ°¸é åæ»¿é©ååç¬è²',
+    traits: ['è®å­©å­æåå°ç¡æ¢ä»¶çæèæ¥ç´', 'åµæåè¶³ï¼æå­¸ç¿è®ææè¶£çåéª', 'é¼åµå­©å­åæ¼åè©¦ï¼ä¸æå¤±æ', 'å¹é¤å­©å­æ¨è§éæ¾çäººçæåº¦'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å®¹æå çºæç·èµ·ä¼å½±é¿ä¸è´æ§ï¼å­©å­éè¦ç©©å®çè¦åãè©¦èå¨ç±æä¹å¤ï¼å¤ä¸é»æ¥å¸¸ççµæ§èè¦å¾ã'
   },
   ISTJ: {
-    title: 'ISTJ 父母 · 穩定守則者',
-    subtitle: '你給孩子最大的禮物是「安全感」——可以預測、可以依賴',
-    traits: ['建立清晰的家規與日常慣例', '言出必行，讓孩子學會責任感', '耐心細心，把該做的事做到位', '給孩子穩定可靠的成長環境'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>對規則的堅持有時讓孩子感到窒息。容許他在安全範圍內多一點彈性，也許會發現他比你想像的更有能力。'
+    title: 'ISTJ ç¶æ¯ Â· ç©©å®å®åè',
+    subtitle: 'ä½ çµ¦å­©å­æå¤§çç¦®ç©æ¯ãå®å¨æãââå¯ä»¥é æ¸¬ãå¯ä»¥ä¾è³´',
+    traits: ['å»ºç«æ¸æ°çå®¶è¦èæ¥å¸¸æ£ä¾', 'è¨åºå¿è¡ï¼è®å­©å­å­¸æè²¬ä»»æ', 'èå¿ç´°å¿ï¼æè©²åçäºåå°ä½', 'çµ¦å­©å­ç©©å®å¯é çæé·ç°å¢'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å°è¦åçå æææè®å­©å­æå°çªæ¯ãå®¹è¨±ä»å¨å®å¨ç¯åå§å¤ä¸é»å½æ§ï¼ä¹è¨±æç¼ç¾ä»æ¯ä½ æ³åçæ´æè½åã'
   },
   ISFJ: {
-    title: 'ISFJ 父母 · 溫柔守護者',
-    subtitle: '你是孩子最溫暖的避風港，永遠記得他說過的每一件小事',
-    traits: ['細心觀察孩子的每個細節與需求', '給孩子充分的情感支持與安全感', '耐心聆聽，讓孩子願意說出心裡話', '默默付出，用行動表達深深的愛'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>太習慣替孩子解決問題，反而讓他少了練習獨立的機會。有時候放手，比保護更有愛。'
+    title: 'ISFJ ç¶æ¯ Â· æº«æå®è­·è',
+    subtitle: 'ä½ æ¯å­©å­ææº«æçé¿é¢¨æ¸¯ï¼æ°¸é è¨å¾ä»èªªéçæ¯ä¸ä»¶å°äº',
+    traits: ['ç´°å¿è§å¯å­©å­çæ¯åç´°ç¯èéæ±', 'çµ¦å­©å­ååçæææ¯æèå®å¨æ', 'èå¿èè½ï¼è®å­©å­é¡æèªªåºå¿è£¡è©±', 'é»é»ä»åºï¼ç¨è¡åè¡¨éæ·±æ·±çæ'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å¤ªç¿æ£æ¿å­©å­è§£æ±ºåé¡ï¼åèè®ä»å°äºç·´ç¿ç¨ç«çæ©æãææåæ¾æï¼æ¯ä¿è­·æ´ææã'
   },
   ESTJ: {
-    title: 'ESTJ 父母 · 組織管理者',
-    subtitle: '你把家當成一個有秩序的系統，孩子在其中學會了規則與效率',
-    traits: ['建立高效的家庭規則與期望', '直接清晰，孩子永遠知道界線在哪', '培養孩子的責任感與執行力', '以結果導向，教導孩子如何完成目標'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>容易把「標準」放在「感受」前面，孩子可能覺得達不到你的期待就不夠好。定期告訴他你愛他本來的樣子。'
+    title: 'ESTJ ç¶æ¯ Â· çµç¹ç®¡çè',
+    subtitle: 'ä½ æå®¶ç¶æä¸åæç§©åºçç³»çµ±ï¼å­©å­å¨å¶ä¸­å­¸æäºè¦åèæç',
+    traits: ['å»ºç«é«æçå®¶åº­è¦åèææ', 'ç´æ¥æ¸æ°ï¼å­©å­æ°¸é ç¥éçç·å¨åª', 'å¹é¤å­©å­çè²¬ä»»æèå·è¡å', 'ä»¥çµæå°åï¼æå°å­©å­å¦ä½å®æç®æ¨'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å®¹ææãæ¨æºãæ¾å¨ãæåãåé¢ï¼å­©å­å¯è½è¦ºå¾éä¸å°ä½ çæå¾å°±ä¸å¤ å¥½ãå®æåè¨´ä»ä½ æä»æ¬ä¾çæ¨£å­ã'
   },
   ESFJ: {
-    title: 'ESFJ 父母 · 照顧型連結者',
-    subtitle: '你讓家充滿溫暖與連結，孩子在你身邊感受到完整的愛',
-    traits: ['對孩子的情緒變化極度敏感', '善於創造家庭儀式與溫暖記憶', '讓孩子感受到強烈的歸屬感', '擅長調解衝突，維持家庭和諧'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>太在意孩子是否開心，有時避免必要的衝突或規則。孩子需要學習處理不舒服的感受，這也是你能教給他的。'
+    title: 'ESFJ ç¶æ¯ Â· ç§é¡§åé£çµè',
+    subtitle: 'ä½ è®å®¶åæ»¿æº«æèé£çµï¼å­©å­å¨ä½ èº«éæåå°å®æ´çæ',
+    traits: ['å°å­©å­çæç·è®åæ¥µåº¦ææ', 'åæ¼åµé å®¶åº­åå¼èæº«æè¨æ¶', 'è®å­©å­æåå°å¼·ççæ­¸å±¬æ', 'æé·èª¿è§£è¡çªï¼ç¶­æå®¶åº­åè«§'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å¤ªå¨æå­©å­æ¯å¦éå¿ï¼ææé¿åå¿è¦çè¡çªæè¦åãå­©å­éè¦å­¸ç¿èçä¸èæçæåï¼éä¹æ¯ä½ è½æçµ¦ä»çã'
   },
   ISTP: {
-    title: 'ISTP 父母 · 實踐型引導者',
-    subtitle: '你教孩子用雙手和雙眼認識世界，而不只是書本上的理論',
-    traits: ['帶孩子動手做，從實踐中學習', '冷靜穩定，孩子緊張時你是定海神針', '尊重孩子的自主空間與探索欲望', '教孩子面對現實、解決問題'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>情感表達較少，孩子可能難以感受到你的愛。偶爾說出「我以你為傲」，比你想像的更有力量。'
+    title: 'ISTP ç¶æ¯ Â· å¯¦è¸åå¼å°è',
+    subtitle: 'ä½ æå­©å­ç¨éæåéç¼èªè­ä¸çï¼èä¸åªæ¯æ¸æ¬ä¸ççè«',
+    traits: ['å¸¶å­©å­åæåï¼å¾å¯¦è¸ä¸­å­¸ç¿', 'å·éç©©å®ï¼å­©å­ç·å¼µæä½ æ¯å®æµ·ç¥é', 'å°éå­©å­çèªä¸»ç©ºéèæ¢ç´¢æ¬²æ', 'æå­©å­é¢å°ç¾å¯¦ãè§£æ±ºåé¡'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>ææè¡¨éè¼å°ï¼å­©å­å¯è½é£ä»¥æåå°ä½ çæãå¶ç¾èªªåºãæä»¥ä½ çºå²ãï¼æ¯ä½ æ³åçæ´æåéã'
   },
   ISFP: {
-    title: 'ISFP 父母 · 溫柔感知者',
-    subtitle: '你用溫柔的眼光看見孩子的美，讓他覺得被完整接納',
-    traits: ['對孩子的感受有高度同理與包容', '給孩子充分的自由和創造空間', '不強迫，讓孩子按自己的節奏成長', '以真實的愛代替過多的言語'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>避免衝突的本能讓你有時難以設下必要的界線。孩子需要的不只是接納，也需要清楚知道什麼是不行的。'
+    title: 'ISFP ç¶æ¯ Â· æº«ææç¥è',
+    subtitle: 'ä½ ç¨æº«æçç¼åçè¦å­©å­çç¾ï¼è®ä»è¦ºå¾è¢«å®æ´æ¥ç´',
+    traits: ['å°å­©å­çæåæé«åº¦åçèåå®¹', 'çµ¦å­©å­ååçèªç±ååµé ç©ºé', 'ä¸å¼·è¿«ï¼è®å­©å­æèªå·±çç¯å¥æé·', 'ä»¥çå¯¦çæä»£æ¿éå¤çè¨èª'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>é¿åè¡çªçæ¬è½è®ä½ ææé£ä»¥è¨­ä¸å¿è¦ççç·ãå­©å­éè¦çä¸åªæ¯æ¥ç´ï¼ä¹éè¦æ¸æ¥ç¥éä»éº¼æ¯ä¸è¡çã'
   },
   ESTP: {
-    title: 'ESTP 父母 · 行動冒險家',
-    subtitle: '你把孩子帶進真實世界，教他怎麼活、不只是怎麼想',
-    traits: ['帶孩子體驗豐富的生活冒險', '應對突發狀況冷靜、機智', '用行動而非言語傳遞愛', '教孩子面對挑戰的勇氣和靈活性'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>專注當下的天性讓你有時忽略孩子的情感深度需求。偶爾慢下來，問問他「最近心裡在想什麼？」'
+    title: 'ESTP ç¶æ¯ Â· è¡ååéªå®¶',
+    subtitle: 'ä½ æå­©å­å¸¶é²çå¯¦ä¸çï¼æä»æéº¼æ´»ãä¸åªæ¯æéº¼æ³',
+    traits: ['å¸¶å­©å­é«é©è±å¯ççæ´»åéª', 'æå°çªç¼çæ³å·éãæ©æº', 'ç¨è¡åèéè¨èªå³éæ', 'æå­©å­é¢å°ææ°çåæ°£åéæ´»æ§'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å°æ³¨ç¶ä¸çå¤©æ§è®ä½ ææå¿½ç¥å­©å­çæææ·±åº¦éæ±ãå¶ç¾æ¢ä¸ä¾ï¼ååä»ãæè¿å¿è£¡å¨æ³ä»éº¼ï¼ã'
   },
   ESFP: {
-    title: 'ESFP 父母 · 歡樂創造者',
-    subtitle: '和你在一起，孩子的每一天都是值得期待的舞台',
-    traits: ['讓孩子感受到生活的活力與喜悅', '直覺理解孩子的情緒需求', '創造充滿笑聲的家庭記憶', '讓孩子感到被愛、被珍視、被看見'],
-    blind: '⚠️ <strong>你的教養盲點：</strong>太享受當下有時讓長期計畫落空，孩子需要你多一點的一致性和結構感。有趣的父母 + 穩定的規則 = 最完整的愛。'
+    title: 'ESFP ç¶æ¯ Â· æ­¡æ¨åµé è',
+    subtitle: 'åä½ å¨ä¸èµ·ï¼å­©å­çæ¯ä¸å¤©é½æ¯å¼å¾æå¾çèå°',
+    traits: ['è®å­©å­æåå°çæ´»çæ´»åèåæ', 'ç´è¦ºçè§£å­©å­çæç·éæ±', 'åµé åæ»¿ç¬è²çå®¶åº­è¨æ¶', 'è®å­©å­æå°è¢«æãè¢«çè¦ãè¢«çè¦'],
+    blind: 'â ï¸ <strong>ä½ çæé¤ç²é»ï¼</strong>å¤ªäº«åç¶ä¸ææè®é·æè¨ç«è½ç©ºï¼å­©å­éè¦ä½ å¤ä¸é»çä¸è´æ§åçµæ§æãæè¶£çç¶æ¯ + ç©©å®çè¦å = æå®æ´çæã'
   }
 };
 
@@ -960,22 +960,22 @@ function showFreeReport(type, btn){
   document.getElementById('frResultTitle').textContent = d.title;
   document.getElementById('frResultSubtitle').textContent = d.subtitle;
 
-  // 預覽：前2個清晰，後2個模糊
+  // é è¦½ï¼å2åæ¸æ°ï¼å¾2åæ¨¡ç³
   const previewEl = document.getElementById('frPreviewList');
   previewEl.innerHTML = d.traits.map((t, i) =>
     `<div class="trait-preview-tag${i >= 2 ? ' blurred' : ''}">${t}</div>`
   ).join('');
 
-  // 完整結果（隱藏，送出後才顯示）
+  // å®æ´çµæï¼é±èï¼éåºå¾æé¡¯ç¤ºï¼
   document.getElementById('frResultTraitsFull').innerHTML = d.traits.map(t =>
     `<div class="trait-preview-tag">${t}</div>`
   ).join('');
   document.getElementById('frResultBlind').innerHTML = d.blind;
 
-  // 重置狀態
+  // éç½®çæ
   document.getElementById('freeReportEmailInput').value = '';
   document.getElementById('freeReportEmailBtn').disabled = false;
-  document.getElementById('freeReportEmailBtn').textContent = '免費領取 →';
+  document.getElementById('freeReportEmailBtn').textContent = 'åè²»é å â';
   document.getElementById('freeReportEmailGate').style.display = 'block';
   document.getElementById('freeReportSentMsg').classList.remove('show');
   document.getElementById('frFullResults').classList.remove('show');
@@ -992,13 +992,13 @@ function revealParentingResults(email, success){
   const sentEl = document.getElementById('freeReportSentMsg');
   if(success){
     sentEl.innerHTML =
-      '✅ 完整教養風格報告已寄到 <strong>' + email + '</strong>！<br>'
-      + '<span style="font-size:13px;opacity:.85">上方顯示部分天賦，完整內容 + 盲點分析在信箱裡 📩</span><br>'
-      + '<span style="font-size:11px;opacity:.6">沒看到？請檢查垃圾信件夾</span>';
+      'â å®æ´æé¤é¢¨æ ¼å ±åå·²å¯å° <strong>' + email + '</strong>ï¼<br>'
+      + '<span style="font-size:13px;opacity:.85">ä¸æ¹é¡¯ç¤ºé¨åå¤©è³¦ï¼å®æ´å§å®¹ + ç²é»åæå¨ä¿¡ç®±è£¡ ð©</span><br>'
+      + '<span style="font-size:11px;opacity:.6">æ²çå°ï¼è«æª¢æ¥åå¾ä¿¡ä»¶å¤¾</span>';
   } else {
     sentEl.innerHTML =
-      '✅ 你的教養風格報告如下<br>'
-      + '<span style="font-size:12px;opacity:.7">（信箱通知暫時無法送達，完整結果顯示如下）</span>';
+      'â ä½ çæé¤é¢¨æ ¼å ±åå¦ä¸<br>'
+      + '<span style="font-size:12px;opacity:.7">ï¼ä¿¡ç®±éç¥æ«æç¡æ³ééï¼å®æ´çµæé¡¯ç¤ºå¦ä¸ï¼</span>';
     document.getElementById('frFullResults').classList.add('show');
   }
   sentEl.classList.add('show');
@@ -1011,7 +1011,7 @@ function sendParentingEmail(){
 
   if(!email || !email.includes('@')){
     emailInput.style.borderColor = '#e05050';
-    emailInput.placeholder = '請輸入有效的 Email';
+    emailInput.placeholder = 'è«è¼¸å¥ææç Email';
     setTimeout(() => {
       emailInput.style.borderColor = '';
       emailInput.placeholder = 'your@email.com';
@@ -1022,25 +1022,25 @@ function sendParentingEmail(){
   const d = PARENTING_FREE[currentParentingType];
 
   btn.disabled = true;
-  btn.textContent = '寄送中…';
+  btn.textContent = 'å¯éä¸­â¦';
 
   const traitsText = d.traits.map((t, i) => `${i+1}. ${t}`).join('\n');
   const blindText = d.blind.replace(/<[^>]+>/g, '');
-  const msgBody = '【' + currentParentingType + '】 ' + d.title
-    + '\n\n教養天賦：\n' + traitsText
-    + '\n\n教養盲點：\n' + blindText
-    + '\n\n用戶 Email：' + email;
+  const msgBody = 'ã' + currentParentingType + 'ã ' + d.title
+    + '\n\næé¤å¤©è³¦ï¼\n' + traitsText
+    + '\n\næé¤ç²é»ï¼\n' + blindText
+    + '\n\nç¨æ¶ Emailï¼' + email;
 
   const templateParams = {
     to_email:     email,
-    from_name:    '靈魂親子 Soul Universe',
+    from_name:    'éé­è¦ªå­ Soul Universe',
     reply_to:     email,
     type_code:    currentParentingType,
     soul_name:    d.title,
     jobs_list:    traitsText,
     strength:     blindText,
     message:      msgBody,
-    report_title: '靈魂親子 · 父母教養風格報告'
+    report_title: 'éé­è¦ªå­ Â· ç¶æ¯æé¤é¢¨æ ¼å ±å'
   };
 
   fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -1064,7 +1064,7 @@ function sendParentingEmail(){
   .catch(() => revealParentingResults(email, false));
 }
 
-// ── FAQ accordion ────────────────────────────────────────────────────────
+// ââ FAQ accordion ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -1074,7 +1074,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// ── Series dropdown (click toggle) ──────────────────────────────────────
+// ââ Series dropdown (click toggle) ââââââââââââââââââââââââââââââââââââââ
 const seriesBtn = document.querySelector('.nav-series-btn');
 const seriesNav = document.querySelector('.nav-series');
 if(seriesBtn){
@@ -1087,7 +1087,7 @@ if(seriesBtn){
   });
 }
 
-// ── Smooth nav active highlight ──────────────────────────────────────────
+// ââ Smooth nav active highlight ââââââââââââââââââââââââââââââââââââââââââ
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
