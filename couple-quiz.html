@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>靈魂情感測驗 · 你在愛情裡是哪一型？| 靈魂宇宙</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700;900&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    :root{
+      --rose:#d0609a;--rose2:#b03878;--rose-light:#fde8f2;--rose-mid:#e880b2;
+      --bg:#1e0a18;--bg2:#2a1225;--card:rgba(192,96,143,0.07);
+      --card-border:rgba(192,96,143,0.2);--txt:#f5eaf0;
+      --muted:rgba(245,234,240,0.45);
+      --sans:'Noto Sans TC',system-ui,sans-serif;
+      --serif:'Noto Serif TC',Georgia,serif;
+    }
+    html,body{background:var(--bg);color:var(--txt);font-family:var(--serif);min-height:100%;overflow-x:hidden}
+    body{padding-top:64px}
+    a{color:inherit;text-decoration:none}
+
+    /* ── Nav ── */
+    nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(30,10,24,.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(192,96,143,.15)}
+    .nav-logo-mark{font-size:15px;color:var(--rose-mid)}
+    .nav-logo-text{font-size:15px;color:var(--rose-mid);letter-spacing:.18em;font-weight:500;font-family:var(--sans);margin-left:6px}
+    .nav-back{font-size:13px;color:var(--muted);font-family:var(--sans);transition:color .2s;display:flex;align-items:center;gap:6px}
+    .nav-back:hover{color:var(--txt)}
+
+    /* ── Star background ── */
+    .stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+    .star{position:absolute;border-radius:50%;background:white;animation:twinkle var(--d) var(--dl) ease-in-out infinite}
+    @keyframes twinkle{0%,100%{opacity:var(--op);transform:scale(1)}50%{opacity:.9;transform:scale(1.6)}}
+
+    /* ── Quiz container ── */
+    .quiz-wrap{position:relative;z-index:1;min-height:calc(100vh - 64px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:40px 20px 80px}
+
+    /* ── Intro screen ── */
+    .intro{text-align:center;max-width:500px;animation:fadeUp .6s ease both}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+    .intro-icon{font-size:52px;margin-bottom:20px}
+    .intro-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(192,96,143,.3);border-radius:999px;font-size:12px;font-family:var(--sans);color:var(--rose-mid);letter-spacing:.08em;margin-bottom:20px}
+    .intro-title{font-size:clamp(26px,5vw,36px);font-weight:900;line-height:1.25;margin-bottom:14px;letter-spacing:.04em}
+    .intro-title em{font-style:normal;color:var(--rose-mid)}
+    .intro-sub{font-size:15px;color:var(--muted);line-height:1.75;font-family:var(--sans);margin-bottom:32px}
+    .intro-meta{display:flex;gap:24px;justify-content:center;margin-bottom:36px;flex-wrap:wrap}
+    .intro-meta-item{display:flex;align-items:center;gap:6px;font-size:13px;font-family:var(--sans);color:var(--muted)}
+    .intro-meta-item span{color:var(--rose-mid)}
+    .btn-start{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:16px 40px;background:linear-gradient(135deg,var(--rose),var(--rose2));color:white;border:none;border-radius:16px;font-size:17px;font-weight:700;font-family:var(--sans);cursor:pointer;letter-spacing:.04em;transition:all .2s}
+    .btn-start:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 10px 30px rgba(192,96,143,.35)}
+
+    /* ── Progress bar ── */
+    .progress-wrap{width:100%;max-width:560px;margin-bottom:28px}
+    .progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+    .progress-label{font-size:12px;font-family:var(--sans);color:var(--muted);letter-spacing:.06em}
+    .progress-num{font-size:12px;font-family:var(--sans);color:var(--rose-mid);font-weight:700}
+    .progress-track{height:4px;background:rgba(192,96,143,.15);border-radius:999px;overflow:hidden}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--rose-mid));border-radius:999px;transition:width .4s ease}
+
+    /* ── Question card ── */
+    .q-card{width:100%;max-width:560px;background:rgba(42,18,37,.7);border:1px solid var(--card-border);border-radius:24px;padding:32px 28px;backdrop-filter:blur(8px);animation:fadeUp .4s ease both}
+    .q-num{font-size:11px;font-family:var(--sans);color:var(--rose-mid);letter-spacing:.14em;font-weight:700;margin-bottom:14px}
+    .q-text{font-size:clamp(17px,3.5vw,21px);font-weight:700;line-height:1.55;margin-bottom:28px;letter-spacing:.02em}
+    .q-options{display:flex;flex-direction:column;gap:12px}
+    .q-opt{display:flex;align-items:flex-start;gap:14px;padding:16px 18px;background:var(--card);border:1.5px solid var(--card-border);border-radius:14px;cursor:pointer;transition:all .2s;text-align:left;font-family:var(--sans);font-size:15px;line-height:1.6;color:var(--txt);font-weight:400}
+    .q-opt:hover{border-color:var(--rose-mid);background:rgba(192,96,143,.12)}
+    .q-opt.selected{border-color:var(--rose);background:rgba(208,96,154,.18)}
+    .q-opt-letter{flex-shrink:0;width:26px;height:26px;border-radius:8px;background:rgba(192,96,143,.15);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--rose-mid);margin-top:1px;transition:all .2s}
+    .q-opt.selected .q-opt-letter{background:var(--rose);color:white}
+    .q-opt-text{flex:1}
+
+    /* ── Nav buttons ── */
+    .q-nav{width:100%;max-width:560px;display:flex;justify-content:space-between;align-items:center;margin-top:20px}
+    .btn-prev{padding:10px 20px;background:transparent;border:1px solid var(--card-border);border-radius:10px;font-size:14px;font-family:var(--sans);color:var(--muted);cursor:pointer;transition:all .2s}
+    .btn-prev:hover{border-color:var(--rose-mid);color:var(--txt)}
+    .btn-prev:disabled{opacity:.3;cursor:default}
+    .btn-next{padding:12px 28px;background:linear-gradient(135deg,var(--rose),var(--rose2));color:white;border:none;border-radius:12px;font-size:15px;font-weight:700;font-family:var(--sans);cursor:pointer;transition:all .2s;opacity:.4;pointer-events:none}
+    .btn-next.active{opacity:1;pointer-events:auto}
+    .btn-next.active:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+    /* ── Result screen ── */
+    .result{width:100%;max-width:580px;animation:fadeUp .6s ease both}
+    .result-top{text-align:center;margin-bottom:32px}
+    .result-icon{font-size:48px;margin-bottom:16px}
+    .result-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border:1px solid rgba(192,96,143,.3);border-radius:999px;font-size:12px;font-family:var(--sans);color:var(--rose-mid);letter-spacing:.08em;margin-bottom:16px}
+    .result-type{font-size:clamp(44px,10vw,72px);font-weight:900;line-height:1;margin-bottom:8px;background:linear-gradient(135deg,var(--rose-mid),#f4a0c4,var(--rose));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .result-soul-title{font-size:clamp(18px,4vw,24px);font-weight:700;color:var(--txt);margin-bottom:12px;letter-spacing:.04em}
+    .result-love-title{font-size:13px;font-family:var(--sans);color:var(--rose-mid);letter-spacing:.1em;margin-bottom:20px}
+    .result-desc{font-size:15px;line-height:1.8;color:rgba(245,234,240,.8);font-family:var(--sans);margin-bottom:28px;text-align:left;background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:20px}
+
+    .result-traits{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:28px}
+    .trait-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:14px 16px}
+    .trait-label{font-size:11px;font-family:var(--sans);color:var(--rose-mid);letter-spacing:.1em;font-weight:700;margin-bottom:4px}
+    .trait-text{font-size:13px;font-family:var(--sans);color:var(--txt);line-height:1.5}
+
+    .result-cta{background:linear-gradient(135deg,rgba(208,96,154,.15),rgba(176,56,120,.1));border:1px solid rgba(192,96,143,.35);border-radius:20px;padding:24px;text-align:center;margin-bottom:20px}
+    .result-cta-title{font-size:16px;font-weight:700;margin-bottom:6px}
+    .result-cta-sub{font-size:13px;font-family:var(--sans);color:var(--muted);line-height:1.6;margin-bottom:20px}
+    .btn-get-guide{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:linear-gradient(135deg,var(--rose),var(--rose2));color:white;border:none;border-radius:14px;font-size:16px;font-weight:700;font-family:var(--sans);cursor:pointer;letter-spacing:.04em;transition:all .2s;text-decoration:none}
+    .btn-get-guide:hover{filter:brightness(1.08);transform:translateY(-2px);box-shadow:0 10px 28px rgba(192,96,143,.35)}
+    .btn-retry{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;background:transparent;border:1px solid var(--card-border);border-radius:12px;font-size:14px;font-family:var(--sans);color:var(--muted);cursor:pointer;transition:all .2s;margin-top:10px}
+    .btn-retry:hover{border-color:var(--rose-mid);color:var(--txt)}
+
+    /* ── Dimension bars ── */
+    .dim-bars{margin-bottom:28px}
+    .dim-bar-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+    .dim-bar-label{font-size:12px;font-family:var(--sans);width:20px;text-align:center;font-weight:700;color:var(--rose-mid)}
+    .dim-bar-track{flex:1;height:8px;background:rgba(192,96,143,.1);border-radius:999px;overflow:hidden}
+    .dim-bar-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--rose-mid));border-radius:999px;transition:width .8s ease .2s}
+    .dim-bar-label-r{font-size:12px;font-family:var(--sans);width:20px;text-align:center;color:var(--muted)}
+
+    @media(max-width:400px){
+      .q-card{padding:24px 18px}
+      .result-traits{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- Stars -->
+<div class="stars" id="stars"></div>
+
+<!-- Nav -->
+<nav>
+  <a href="https://air6030i-star.github.io/soul-test/couple.html" class="nav-logo">
+    <span class="nav-logo-mark">✦</span>
+    <span class="nav-logo-text">靈魂宇宙</span>
+  </a>
+  <a href="https://air6030i-star.github.io/soul-test/couple.html" class="nav-back">← 返回情感指南</a>
+</nav>
+
+<!-- Main -->
+<div class="quiz-wrap" id="quizWrap">
+
+  <!-- Intro -->
+  <div class="intro" id="introScreen">
+    <div class="intro-icon">💕</div>
+    <div class="intro-badge">✦ 靈魂情感系列 · 免費測驗</div>
+    <h1 class="intro-title">你在愛情裡<br>是哪一型靈魂？</h1>
+    <p class="intro-sub">10 道情境題，測出你在感情中的真實模式<br>結果告訴你：你怎麼愛、怎麼被愛、怎麼吵架又怎麼和好</p>
+    <div class="intro-meta">
+      <div class="intro-meta-item"><span>📝</span> 10 道題目</div>
+      <div class="intro-meta-item"><span>⏱</span> 約 3 分鐘</div>
+      <div class="intro-meta-item"><span>🔮</span> 16 種結果</div>
+    </div>
+    <button class="btn-start" onclick="startQuiz()">開始測驗 →</button>
+  </div>
+
+  <!-- Question area (hidden initially) -->
+  <div id="questionArea" style="display:none;width:100%;max-width:560px">
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label">MBTI 情感測驗</span>
+        <span class="progress-num" id="progressNum">1 / 10</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill" style="width:10%"></div>
+      </div>
+    </div>
+    <div class="q-card" id="qCard">
+      <div class="q-num" id="qNum">Q 01</div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-options" id="qOptions"></div>
+    </div>
+    <div class="q-nav">
+      <button class="btn-prev" id="btnPrev" onclick="prevQ()" disabled>← 上一題</button>
+      <button class="btn-next" id="btnNext" onclick="nextQ()">下一題 →</button>
+    </div>
+  </div>
+
+  <!-- Result (hidden initially) -->
+  <div class="result" id="resultScreen" style="display:none"></div>
+
+</div>
+
+<script>
+// ── Stars ──
+(function(){
+  const s=document.getElementById('stars');
+  for(let i=0;i<55;i++){
+    const d=document.createElement('div');
+    const sz=Math.random()*2+0.5;
+    d.className='star';
+    d.style.cssText=`left:${Math.random()*100}%;top:${Math.random()*100}%;width:${sz}px;height:${sz}px;--op:${.1+Math.random()*.4};--d:${3+Math.random()*5}s;--dl:${Math.random()*4}s`;
+    s.appendChild(d);
+  }
+})();
+
+// ── Questions ──
+// dim: EI (0=I,1=E) | SN (0=S,1=N) | TF (0=T,1=F) | JP (0=J,1=P) | sub_AO (0=A,1=O) | sub_HC (0=H,1=C)
+const QUESTIONS = [
+  {
+    q:"和伴侶吵架之後，你通常需要什麼？",
+    a:["先獨處一下，需要一段時間沉澱才能開口","馬上說清楚，不想讓空氣繼續這樣僵著"],
+    dim:"EI" // 0=I, 1=E
+  },
+  {
+    q:"你心目中理想的兩人週末是？",
+    a:["在家窩著，各做各的事，偶爾互動就夠了","出去走走，探索新地方或一起體驗新事物"],
+    dim:"EI"
+  },
+  {
+    q:"你覺得「真正了解一個人」是什麼感覺？",
+    a:["記得他的生活細節：喜歡吃什麼、習慣怎樣","懂得他為什麼是這樣的人，了解他內心深處的東西"],
+    dim:"SN" // 0=S, 1=N
+  },
+  {
+    q:"感情遇到問題時，你更想討論的是？",
+    a:["「你那天具體說了什麼、做了什麼」——把事情說清楚","「這件事背後代表什麼」——我們之間的深層模式"],
+    dim:"SN"
+  },
+  {
+    q:"伴侶來找你訴苦，你的本能是？",
+    a:["幫他分析情況、給出建議，讓問題得到解決","先陪著他，讓他感覺被接住比解決問題更重要"],
+    dim:"TF" // 0=T, 1=F
+  },
+  {
+    q:"吵架的時候，你更難受的是？",
+    a:["問題一直沒被解決，還是懸在那裡","對方說話的方式傷到你，或者感情的溫度降了"],
+    dim:"TF"
+  },
+  {
+    q:"對於兩個人的計劃，你傾向？",
+    a:["提前討論好、有清楚的安排，這樣才有安全感","隨興一點，臨時決定也可以，不想被計劃綁住"],
+    dim:"JP" // 0=J, 1=P
+  },
+  {
+    q:"對方臨時改變了你們說好的約會，你的感覺是？",
+    a:["有點不舒服，說好的事情說改就改讓你不太安心","還好，甚至有點期待新的安排，反正隨遇而安"],
+    dim:"JP"
+  },
+  {
+    q:"感情中需要做決定時（去留、表白、重大選擇），你通常？",
+    a:["很快就有直覺，決定了就行動，不太後悔","需要多想幾輪，確認了才能放心行動"],
+    dim:"AO" // 0=A, 1=O
+  },
+  {
+    q:"在感情中，你更傾向？",
+    a:["主動表達感受和需求，把心裡的話說出來","保留一些空間，不急著全盤托出，讓關係慢慢升溫"],
+    dim:"HC" // 0=H, 1=C
+  }
+];
+
+// ── Soul data (simplified for results) ──
+const LOVE_DATA = {
+  INFJ:{ title:"守護水魂",love:"深度連結型",desc:"你在感情裡是一個深度投入、全情付出的人。你的直覺極為準確，往往比對方更早知道這段關係的走向。你需要的不只是陪伴，而是真正被理解。一旦感覺不被看見，你會慢慢退縮、關上自己的門。",strength:"高度共情、洞察人心、忠誠深情",blind:"容易過度犧牲、悶著不說、對關係期待太高"},
+  ENFJ:{ title:"引路花魂",love:"溫暖引導型",desc:"你天生懂得照顧人，在感情裡往往是主動付出的那一個。你對伴侶的需求敏感，能讓對方感到被珍視。但你也需要對方偶爾反過來照顧你，而不是只接受你的付出。",strength:"溫暖主動、善於溝通、讓對方感到特別",blind:"太想讓對方滿意、壓抑自己的需求"},
+  INFP:{ title:"月光夢魂",love:"靈魂共鳴型",desc:"你在感情裡追求的是靈魂的碰撞。表面看起來安靜，內心其實充滿對愛的想像和期待。你很挑剔，不只是要找一個人陪，而是要找到真正懂你那份獨特的人。",strength:"感情純粹、忠誠、深度共情",blind:"容易過度理想化、難以開口說需求"},
+  ENFP:{ title:"自由火花",love:"熱情探索型",desc:"你的愛充滿活力和創意，讓人和你在一起永遠不無聊。你渴望真實連結而非表面的和諧。但長期的穩定和日常的瑣碎有時會讓你感到窒息，你需要在關係裡保有自己的空間和成長感。",strength:"熱情洋溢、讓感情充滿新鮮感、情感真誠",blind:"容易衝動、長跑時可能失去耐心"},
+  INTJ:{ title:"孤星設計師",love:"策略深情型",desc:"你不輕易進入一段關係，但一旦選擇了，就是深思熟慮後的決定。你用行動而非語言來愛，但那些行動是真實而有份量的。你需要一個尊重你空間、不需要你時刻表達情感的伴侶。",strength:"可靠、深思熟慮、用行動表達承諾",blind:"難以言說情感、對伴侶要求高"},
+  ENTJ:{ title:"靈魂將領",love:"主導護衛型",desc:"你在感情裡有強烈的方向感，你知道你要什麼、不要什麼。你的愛是有力量的、是保護性的。但你需要學會讓伴侶也有主導的空間，不是每件事都需要你來決定。",strength:"強大可靠、直接表達、有規劃有目標",blind:"容易忽略對方的情感需求、控制感太強"},
+  INTP:{ title:"量子觀察者",love:"安靜分析型",desc:"你的愛很安靜，但很深。你不擅長主動說「我愛你」，但你願意為對方研究任何你不懂的事。你需要一個能接受你沉默、不強迫你時刻表達的伴侶。",strength:"忠誠、理性冷靜、會為對方找最好的解法",blind:"情感表達少、容易被當作不在乎"},
+  ENTP:{ title:"宇宙辯論家",love:"刺激思辨型",desc:"你愛得聰明又刺激，讓人和你在一起永遠有話說。你用辯論的方式表達尊重，但伴侶可能不這樣覺得。你需要一個夠強的對手，才能真正欣賞你。",strength:"有趣、思維開闊、感情充滿張力",blind:"有時把感情變成競爭、難以妥協"},
+  ISFJ:{ title:"溫巢守護者",love:"細節照顧型",desc:"你是感情裡最可靠的那一個。你記得所有重要的日子，你知道對方喜歡什麼，你用無數個小動作讓對方感到被愛。你只希望對方也能偶爾看見你默默付出的一切。",strength:"體貼入微、穩定可靠、記住所有細節",blind:"太容易委屈自己、難以開口說自己的需求"},
+  ESFJ:{ title:"社群暖心者",love:"主動維繫型",desc:"你在感情裡是主動的、溫暖的、讓對方感到被在乎的。你很在意兩個人的關係是否和諧，有時甚至在真正問題還沒被解決之前就先想辦法讓氣氛好起來。",strength:"主動付出、善於維繫關係氣氛、重視承諾",blind:"太在乎對方感受而忽略自己、衝突逃避"},
+  ISFP:{ title:"沉默藝術靈魂",love:"靜默陪伴型",desc:"你的愛是安靜的、是體貼的、是用行動說話的。你不喜歡大聲宣告，但你的存在本身就讓對方感到溫暖。你需要一個懂得欣賞靜默的伴侶，而不是要你時刻表達情感的人。",strength:"真誠、有品味、善用行動表達愛",blind:"難以言說需求、容易被誤解為冷淡"},
+  ESFP:{ title:"喜悅光芒",love:"活力陪伴型",desc:"和你在一起永遠有生命力。你把每個當下都過得很飽滿，讓對方感覺人生因為你而更有趣。你需要在感情裡有足夠的自由度，也需要對方真的和你一起「在」當下。",strength:"熱情、讓感情充滿活力、善於製造美好回憶",blind:"衝突逃避、有時忽略長遠規劃"},
+  ISTJ:{ title:"現實守門人",love:"穩定承諾型",desc:"你是感情裡最踏實的那種人。你說了的話你會做到，你的承諾是真實的。你不擅長浪漫的語言，但你的可靠本身就是最長情的告白。",strength:"穩定、守信、為關係承擔責任",blind:"情感表達方式比較直接、不擅長製造驚喜"},
+  ESTJ:{ title:"秩序執行者",love:"主動負責型",desc:"你在感情裡是那個把關係管理得清清楚楚的人。你重視承諾，也重視效率。你的愛很有力，但有時候對方需要的不是效率，而是你放下清單、好好陪著他。",strength:"負責任、說到做到、給關係安全感",blind:"太注重「對錯」而忽略「感受」"},
+  ISTP:{ title:"沉默工匠",love:"解決問題型",desc:"你的愛很低調，但很紮實。當對方有問題，你已經在想辦法解決了，而不是說一堆安慰的話。你需要一個不強迫你大量語言溝通的伴侶，給你空間你就給回實際的支撐。",strength:"冷靜可靠、用行動解決問題、不製造不必要的麻煩",blind:"難以主動表達情感、有時讓對方感到疏遠"},
+  ESTP:{ title:"現實冒險家",love:"行動冒險型",desc:"你在感情裡活在當下，充滿熱情和直接。你不喜歡繞彎子，有什麼說什麼。你讓人和你在一起感覺很真實、很刺激，但偶爾也需要多一些對對方長期情感需求的關注。",strength:"直接、充滿活力、讓感情不無聊",blind:"有時衝動行事、不擅長處理情緒性議題"}
+};
+
+// ── State ──
+let current = 0;
+let answers = new Array(10).fill(null);
+
+function startQuiz(){
+  document.getElementById('introScreen').style.display='none';
+  document.getElementById('questionArea').style.display='block';
+  renderQ();
+}
+
+function renderQ(){
+  const q = QUESTIONS[current];
+  document.getElementById('qNum').textContent = `Q ${String(current+1).padStart(2,'0')}`;
+  document.getElementById('qText').textContent = q.q;
+  document.getElementById('progressNum').textContent = `${current+1} / 10`;
+  document.getElementById('progressFill').style.width = `${(current+1)/10*100}%`;
+
+  const opts = document.getElementById('qOptions');
+  opts.innerHTML='';
+  ['A','B'].forEach((letter,i)=>{
+    const btn=document.createElement('button');
+    btn.className='q-opt'+(answers[current]===i?' selected':'');
+    btn.innerHTML=`<div class="q-opt-letter">${letter}</div><div class="q-opt-text">${q.a[i]}</div>`;
+    btn.onclick=()=>selectOpt(i);
+    opts.appendChild(btn);
+  });
+
+  document.getElementById('btnPrev').disabled = current===0;
+  const next=document.getElementById('btnNext');
+  next.textContent = current===9 ? '查看結果 ✦' : '下一題 →';
+  next.classList.toggle('active', answers[current]!==null);
+
+  // Animate card
+  const card=document.getElementById('qCard');
+  card.style.animation='none';
+  card.offsetHeight;
+  card.style.animation='fadeUp .35s ease both';
+}
+
+function selectOpt(idx){
+  answers[current]=idx;
+  document.querySelectorAll('.q-opt').forEach((b,i)=>{
+    b.classList.toggle('selected',i===idx);
+  });
+  document.getElementById('btnNext').classList.add('active');
+}
+
+function nextQ(){
+  if(answers[current]===null) return;
+  if(current<9){ current++; renderQ(); }
+  else showResult();
+}
+
+function prevQ(){
+  if(current>0){ current--; renderQ(); }
+}
+
+function calcMBTI(){
+  let E=0,I=0,S=0,N=0,T=0,F=0,J=0,P=0;
+  QUESTIONS.forEach((q,i)=>{
+    const a=answers[i];
+    if(q.dim==='EI'){ if(a===0)I++;else E++; }
+    if(q.dim==='SN'){ if(a===0)S++;else N++; }
+    if(q.dim==='TF'){ if(a===0)T++;else F++; }
+    if(q.dim==='JP'){ if(a===0)J++;else P++; }
+  });
+  return {
+    type:`${E>=I?'E':'I'}${N>=S?'N':'S'}${T>=F?'T':'F'}${J>=P?'J':'P'}`,
+    scores:{E,I,S,N,T,F,J,P}
+  };
+}
+
+function calcSubtype(){
+  const aoAns=answers[8]; // 0=A, 1=O
+  const hcAns=answers[9]; // 0=H, 1=C
+  return `${aoAns===0?'A':'O'}${hcAns===0?'H':'C'}`;
+}
+
+const SUBTYPE_LABELS={AH:'果斷·溫暖',AC:'果斷·高冷',OH:'糾結·溫暖',OC:'糾結·高冷'};
+
+function showResult(){
+  document.getElementById('questionArea').style.display='none';
+  const rs=document.getElementById('resultScreen');
+  rs.style.display='block';
+
+  const {type,scores}=calcMBTI();
+  const subtype=calcSubtype();
+  const data=LOVE_DATA[type]||{title:'獨特靈魂',love:'深度連結型',desc:'你在感情裡有著獨特的愛的方式。',strength:'真誠、忠誠',blind:'需要更多自我探索'};
+
+  // Dimension scores for bars
+  const dims=[
+    {l:'E',r:'I',lv:scores.E,rv:scores.I},
+    {l:'N',r:'S',lv:scores.N,rv:scores.S},
+    {l:'F',r:'T',lv:scores.F,rv:scores.T},
+    {l:'J',r:'P',lv:scores.J,rv:scores.P}
+  ];
+
+  const dominant=type.split('').map((c,i)=>{
+    const pairs=[['E','I'],['N','S'],['T','F'],['J','P']];
+    const pair=pairs[i];
+    const a=scores[pair[0]],b=scores[pair[1]];
+    const pct=Math.round(a/(a+b||1)*100);
+    return {c,pct,pair};
+  });
+
+  rs.innerHTML=`
+    <div class="result-top">
+      <div class="result-icon">💕</div>
+      <div class="result-badge">✦ 你的靈魂情感型號</div>
+      <div class="result-type">${type}</div>
+      <div class="result-soul-title">${data.title}</div>
+      <div class="result-love-title">${data.love} · ${SUBTYPE_LABELS[subtype]||''}</div>
+    </div>
+
+    <div class="result-desc">${data.desc}</div>
+
+    <div class="result-traits">
+      <div class="trait-card">
+        <div class="trait-label">💪 感情優勢</div>
+        <div class="trait-text">${data.strength}</div>
+      </div>
+      <div class="trait-card">
+        <div class="trait-label">🔍 容易踩的雷</div>
+        <div class="trait-text">${data.blind}</div>
+      </div>
+    </div>
+
+    <div class="dim-bars">
+      ${dominant.map(d=>`
+        <div class="dim-bar-row">
+          <div class="dim-bar-label">${d.pair[0]}</div>
+          <div class="dim-bar-track">
+            <div class="dim-bar-fill" style="width:${d.pct}%"></div>
+          </div>
+          <div class="dim-bar-label-r">${d.pair[1]}</div>
+        </div>
+      `).join('')}
+    </div>
+
+    <div class="result-cta">
+      <div class="result-cta-title">想更深入了解 ${type} 在感情裡的模式？</div>
+      <div class="result-cta-sub">你的專屬情感指南包含：你的型號在愛情中的完整解析、最容易踩的關係地雷、以及今晚就能用的溝通工具。</div>
+      <a href="https://air6030i-star.github.io/soul-test/couple-download.html" class="btn-get-guide">
+        ✦ 取得我的 ${type} 情感指南
+      </a>
+    </div>
+
+    <button class="btn-retry" onclick="retryQuiz()">↺ 重新測驗</button>
+  `;
+
+  // Animate bars after render
+  setTimeout(()=>{
+    rs.querySelectorAll('.dim-bar-fill').forEach(b=>{ const w=b.style.width; b.style.width='0'; setTimeout(()=>b.style.width=w,50); });
+  },100);
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function retryQuiz(){
+  current=0;
+  answers=new Array(10).fill(null);
+  document.getElementById('resultScreen').style.display='none';
+  document.getElementById('questionArea').style.display='block';
+  renderQ();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
