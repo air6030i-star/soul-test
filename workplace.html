@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>靈魂職場｜MBTI 職場溝通指南 · Soul Universe</title>
-<meta name="description" content="用 MBTI 人格密碼破解職場困境。256 種職場組合指南，直接給你對話腳本，不再跟主管同事雞同鴨講。">
+<title>éé­è·å ´ï½MBTI è·å ´æºéæå Â· Soul Universe</title>
+<meta name="description" content="ç¨ MBTI äººæ ¼å¯ç¢¼ç ´è§£è·å ´å°å¢ã256 ç¨®è·å ´çµåæåï¼ç´æ¥çµ¦ä½ å°è©±è³æ¬ï¼ä¸åè·ä¸»ç®¡åäºéåé´¨è¬ã">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<!-- EmailJS SDK：用於發送職業報告到用戶信箱 -->
-<!-- 設定說明：1) 至 https://www.emailjs.com/ 免費註冊  2) 建立 Email Service（連結 Gmail）  3) 建立 Email Template  4) 把下方三個 PLACEHOLDER 替換為你的實際 ID -->
+<!-- EmailJS SDKï¼ç¨æ¼ç¼éè·æ¥­å ±åå°ç¨æ¶ä¿¡ç®± -->
+<!-- è¨­å®èªªæï¼1) è³ https://www.emailjs.com/ åè²»è¨»å  2) å»ºç« Email Serviceï¼é£çµ Gmailï¼  3) å»ºç« Email Template  4) æä¸æ¹ä¸å PLACEHOLDER æ¿æçºä½ çå¯¦é ID -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--dk);color:var(--txt);font-family:var(--serif);line-height:1.8}
 
-/* ── Navbar ────────────────────────────────────────────────────────────── */
+/* ââ Navbar ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(12,15,26,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,168,32,.12)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{font-size:20px}
@@ -33,11 +33,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a!important;padding:8px 20px;border-radius:24px;font-weight:700!important;font-size:13px!important;transition:box-shadow .2s!important}
 .nav-cta:hover{box-shadow:0 4px 20px rgba(232,168,32,.5)!important}
 
-/* ── Hero ───────────────────────────────────────────────────────────────── */
+/* ââ Hero âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 6vw 80px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(232,168,32,.08) 0%,transparent 70%)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(232,168,32,.4);border-radius:24px;padding:6px 18px;font-size:12px;color:var(--gold);letter-spacing:.18em;margin-bottom:28px;font-family:var(--sans)}
-.hero-badge::before{content:'⚔️';font-size:14px}
+.hero-badge::before{content:'âï¸';font-size:14px}
 .hero h1{font-size:clamp(28px,5vw,56px);font-weight:300;letter-spacing:.1em;line-height:1.4;margin-bottom:16px;color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:600px;line-height:2.0;margin-bottom:40px;font-family:var(--sans)}
@@ -51,7 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .hero-stat-num{font-size:32px;font-weight:700;color:var(--gold);display:block;letter-spacing:.05em}
 .hero-stat-label{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.12em;margin-top:4px}
 
-/* ── Know Your Type Quick Selector ─────────────────────────────────────── */
+/* ââ Know Your Type Quick Selector âââââââââââââââââââââââââââââââââââââââ */
 .know-type-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--teal);font-family:var(--sans);letter-spacing:.08em;border:1px solid rgba(0,196,160,.3);border-radius:20px;padding:6px 18px;transition:all .2s;background:none}
 .know-type-toggle:hover{background:rgba(0,196,160,.08);border-color:var(--teal)}
 .know-type-toggle .arrow{transition:transform .25s;display:inline-block}
@@ -65,10 +65,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .type-btn:hover{background:rgba(232,168,32,.12);border-color:var(--gold);color:var(--gold)}
 .type-btn.active{background:rgba(232,168,32,.18);border-color:var(--gold);color:var(--gold)}
 
-/* ── Divider ────────────────────────────────────────────────────────────── */
+/* ââ Divider ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
 
-/* ── Section shared ─────────────────────────────────────────────────────── */
+/* ââ Section shared âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 section{padding:80px 6vw}
 .section-badge{display:inline-block;border:1px solid rgba(232,168,32,.35);border-radius:20px;padding:5px 16px;font-size:11px;color:var(--gold);letter-spacing:.18em;font-family:var(--sans);margin-bottom:16px}
 .section-title{font-size:clamp(22px,3.5vw,36px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:8px}
@@ -76,7 +76,7 @@ section{padding:80px 6vw}
 .section-header{text-align:center;margin-bottom:56px}
 .section-header .divider{margin:16px auto 0}
 
-/* ── Pain Section ───────────────────────────────────────────────────────── */
+/* ââ Pain Section âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .pain{background:var(--dk2)}
 .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:960px;margin:0 auto}
 .pain-card{background:var(--dk3);border:1px solid rgba(232,168,32,.12);border-radius:12px;padding:28px;transition:border-color .2s}
@@ -86,14 +86,14 @@ section{padding:80px 6vw}
 .pain-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 .pain-quote{font-size:13px;color:rgba(232,168,32,.8);font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid rgba(232,168,32,.12)}
 
-/* ── How it works ───────────────────────────────────────────────────────── */
+/* ââ How it works âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;max-width:900px;margin:0 auto}
 .how-step{text-align:center;position:relative}
 .how-step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .how-step-title{font-size:15px;color:#fff;font-weight:700;margin-bottom:8px;font-family:var(--sans)}
 .how-step-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 
-/* ── Products ───────────────────────────────────────────────────────────── */
+/* ââ Products âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .products{background:var(--dk2)}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto}
 .product-card{background:var(--dk3);border:1px solid rgba(232,168,32,.15);border-radius:14px;padding:28px 24px;position:relative;transition:transform .2s,box-shadow .2s}
@@ -107,7 +107,7 @@ section{padding:80px 6vw}
 .product-desc{font-size:13px;color:var(--muted);font-family:var(--sans);line-height:1.9;margin-bottom:20px}
 .product-features{list-style:none;margin-bottom:24px}
 .product-features li{font-size:12.5px;color:var(--txt);font-family:var(--sans);padding:5px 0;border-bottom:1px solid rgba(232,168,32,.08);display:flex;align-items:flex-start;gap:8px;line-height:1.7}
-.product-features li::before{content:'✦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
+.product-features li::before{content:'â¦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
 .product-btn{display:block;text-align:center;padding:11px;border-radius:28px;font-family:var(--sans);font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.06em;transition:all .2s}
 .product-btn-outline{border:1px solid rgba(232,168,32,.5);color:var(--gold)}
 .product-btn-outline:hover{background:rgba(232,168,32,.1)}
@@ -121,7 +121,7 @@ section{padding:80px 6vw}
 .combo-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-family:var(--sans)}
 .combo-price{font-size:36px;font-weight:700;color:var(--gold);letter-spacing:.03em}
 
-/* ── Free Careers Section ───────────────────────────────────────────────── */
+/* ââ Free Careers Section âââââââââââââââââââââââââââââââââââââââââââââââââ */
 .careers{background:var(--dk)}
 .careers-selector{max-width:700px;margin:0 auto}
 .careers-note{font-size:13px;color:var(--muted);font-family:var(--sans);text-align:center;margin-bottom:20px}
@@ -142,7 +142,7 @@ section{padding:80px 6vw}
 .careers-upsell{margin-top:16px;font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center}
 .careers-upsell a{color:var(--gold);text-decoration:none}
 
-/* ── Careers Email Gate ─────────────────────────────────────────────────── */
+/* ââ Careers Email Gate âââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .careers-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:16px}
 .career-preview-tag{background:rgba(0,196,160,.08);border:1px solid rgba(0,196,160,.2);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--txt);font-family:var(--sans);text-align:center}
 .career-preview-tag.blurred{filter:blur(5px);opacity:.35;user-select:none;pointer-events:none}
@@ -161,7 +161,7 @@ section{padding:80px 6vw}
 .careers-full{display:none}
 .careers-full.show{display:block}
 
-/* ── Test Teaser ────────────────────────────────────────────────────────── */
+/* ââ Test Teaser ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .test-teaser{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center}
 .test-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:760px;margin:0 auto 40px}
 .test-card{background:var(--dk3);border:1px solid rgba(0,196,160,.2);border-radius:14px;padding:32px 28px;text-align:left;transition:border-color .2s,transform .2s}
@@ -178,7 +178,7 @@ section{padding:80px 6vw}
 .test-skip-note{font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center;margin-top:10px}
 .test-skip-note a{color:var(--teal);text-decoration:none;border-bottom:1px dashed rgba(0,196,160,.4)}
 
-/* ── Testimonials / Preview ─────────────────────────────────────────────── */
+/* ââ Testimonials / Preview âââââââââââââââââââââââââââââââââââââââââââââââ */
 .preview{background:var(--dk2)}
 .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:900px;margin:0 auto}
 .preview-card{background:var(--dk3);border:1px solid rgba(232,168,32,.1);border-radius:12px;padding:24px}
@@ -187,23 +187,23 @@ section{padding:80px 6vw}
 .preview-author{font-size:12px;color:var(--muted);font-family:var(--sans);display:flex;align-items:center;gap:8px}
 .preview-type-badge{background:rgba(232,168,32,.15);color:var(--gold);padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
 
-/* ── FAQ ────────────────────────────────────────────────────────────────── */
+/* ââ FAQ ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .faq{background:var(--dk)}
 .faq-list{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(232,168,32,.12);padding:20px 0}
 .faq-q{font-size:15px;color:#fff;font-family:var(--sans);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;line-height:1.7}
-.faq-q::after{content:'＋';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
+.faq-q::after{content:'ï¼';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
 .faq-a{font-size:13.5px;color:var(--muted);font-family:var(--sans);line-height:2.1;margin-top:12px;display:none}
 .faq-item.open .faq-a{display:block}
 
-/* ── Final CTA ──────────────────────────────────────────────────────────── */
+/* ââ Final CTA ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .final-cta{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center;padding:100px 6vw}
 .final-cta h2{font-size:clamp(22px,3.5vw,40px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:16px}
 .final-cta p{font-size:15px;color:var(--muted);font-family:var(--sans);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
 .final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
-/* ── Footer ─────────────────────────────────────────────────────────────── */
+/* ââ Footer âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48px 6vw 32px;text-align:center}
 .footer-logo{font-size:16px;color:var(--gold);letter-spacing:.2em;margin-bottom:16px}
 .footer-tagline{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:28px}
@@ -212,7 +212,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:11px;color:var(--muted2);font-family:var(--sans);letter-spacing:.06em}
 
-/* ── Series Nav Dropdown ────────────────────────────────────────────────── */
+/* ââ Series Nav Dropdown ââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .nav-series{position:relative}
 .nav-series-btn{color:var(--muted);font-size:14px;font-family:var(--sans);letter-spacing:.08em;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .2s;background:none;border:none;padding:0}
 .nav-series-btn:hover{color:var(--txt)}
@@ -229,7 +229,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .nav-series-item.current .nav-series-item-title{color:var(--gold)}
 .nav-series-divider{height:1px;background:rgba(232,168,32,.1);margin:6px 0}
 
-/* ── Series Section ─────────────────────────────────────────────────────── */
+/* ââ Series Section âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 .series-section{background:var(--dk2);padding:60px 6vw}
 .series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
 .series-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--dk3);border:1px solid rgba(232,168,32,.12);border-radius:12px;padding:20px 18px;text-decoration:none;transition:border-color .2s,transform .18s}
@@ -242,7 +242,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .series-card-badge{font-size:10px;color:var(--teal);font-family:var(--sans);border:1px solid rgba(0,196,160,.3);border-radius:10px;padding:2px 8px;align-self:flex-start;margin-top:2px}
 .series-card.current .series-card-badge{color:var(--gold);border-color:rgba(232,168,32,.4)}
 
-/* ── Responsive ─────────────────────────────────────────────────────────── */
+/* ââ Responsive âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
 @media(max-width:600px){
   .nav-links .nav-link-hide{display:none}
   .hero-stats{gap:28px}
@@ -254,80 +254,80 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 </head>
 <body>
 
-<!-- ── Navbar ── -->
+<!-- ââ Navbar ââ -->
 <nav>
-  <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-logo">
-    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">✦</span>
-    <span class="nav-logo-text">靈魂宇宙</span>
+  <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-logo">
+    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">â¦</span>
+    <span class="nav-logo-text">éé­å®å®</span>
   </a>
   <div class="nav-links">
-    <a href="#products" class="nav-link-hide">產品</a>
-    <a href="#careers" class="nav-link-hide">適合職業</a>
-    <a href="#test" class="nav-link-hide">免費測驗</a>
+    <a href="#products" class="nav-link-hide">ç¢å</a>
+    <a href="#careers" class="nav-link-hide">é©åè·æ¥­</a>
+    <a href="#test" class="nav-link-hide">åè²»æ¸¬é©</a>
     <!-- Series dropdown -->
     <div class="nav-series nav-link-hide">
-      <button class="nav-series-btn">靈魂系列 <span class="nav-series-arrow">▾</span></button>
+      <button class="nav-series-btn">é¥hé­ç³»å <span class="nav-series-arrow">â¾</span></button>
       <div class="nav-series-dropdown">
-        <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-series-item">
-          <span class="nav-series-item-icon">🧬</span>
+        <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-series-item">
+          <span class="nav-series-item-icon">ð§¬</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂測驗</div>
-            <div class="nav-series-item-sub">免費 MBTI 人格測驗</div>
+            <div class="nav-series-item-title">éé­æ¸¬é©</div>
+            <div class="nav-series-item-sub">åè²» MBTI äººæ ¼æ¸¬é©</div>
           </div>
         </a>
-        <a href="../../02_MBTI親子關係/親子網站/靈魂親子-銷售頁.html" class="nav-series-item">
-          <span class="nav-series-item-icon">👨‍👩‍👧</span>
+        <a href="https://air6030i-star.github.io/soul-test/parenting.html" class="nav-series-item">
+          <span class="nav-series-item-icon">ð¨âð©âð§</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂親子</div>
-            <div class="nav-series-item-sub">親子溝通指南</div>
-          </div>
-        </a>
-        <div class="nav-series-divider"></div>
-        <a href="index.html" class="nav-series-item current">
-          <span class="nav-series-item-icon">⚔️</span>
-          <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂職場 ← 你在這</div>
-            <div class="nav-series-item-sub">職場溝通指南</div>
+            <div class="nav-series-item-title">éé­è¦ªå­</div>
+            <div class="nav-series-item-sub">è¦ªå­æºéæå</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="../../04_MBTI朋友情侶關係/情感網站/index.html" class="nav-series-item">
-          <span class="nav-series-item-icon">💕</span>
+        <a href="https://air6030i-star.github.io/soul-test/workplace.html" class="nav-series-item current">
+          <span class="nav-series-item-icon">âï¸</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">靈魂情感</div>
-            <div class="nav-series-item-sub">情侶 &amp; 友情溝通指南</div>
+            <div class="nav-series-item-title">éé­è·å ´ â ä½ å¨é</div>
+            <div class="nav-series-item-sub">è·å ´æºéæå</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
-        <a href="../../05_心靈避風港/soul-haven-v2_2.html" class="nav-series-item">
-          <span class="nav-series-item-icon">🌊</span>
+        <a href="https://air6030i-star.github.io/soul-test/couple.html" class="nav-series-item">
+          <span class="nav-series-item-icon">ð</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">心靈避風港</div>
-            <div class="nav-series-item-sub">找回內在穩定中心</div>
+            <div class="nav-series-item-title">éé­ææ</div>
+            <div class="nav-series-item-sub">æä¾¶ &amp; åææºéæå</div>
+          </div>
+        </a>
+        <div class="nav-series-divider"></div>
+        <a href="#" class="nav-series-item">
+          <span class="nav-series-item-icon">ð</span>
+          <div class="nav-series-item-text">
+            <div class="nav-series-item-title">å¿éé¿é¢¨æ¸¯</div>
+            <div class="nav-series-item-sub">æ¾åå§å¨ç©©å®ä¸­å¿</div>
           </div>
         </a>
       </div>
     </div>
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="nav-cta">開始測驗 →</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-cta">éå§æ¸¬é© â</a>
   </div>
 </nav>
 
-<!-- ── Hero ── -->
+<!-- ââ Hero ââ -->
 <section class="hero">
-  <div class="hero-badge">靈魂宇宙 · 職場系列</div>
-  <h1>你們說不通<br>不是因為誰的錯<br>是因為你們的<em>大腦</em>根本不同</h1>
-  <p class="hero-sub">MBTI 職場溝通指南，256種組合，給你<br>量身定製的對話腳本，今天就能用</p>
+  <div class="hero-badge">éé­å®å® Â· è·å ´ç³»å</div>
+  <h1>ä½ åèªªä¸é<br>ä¸æ¯å çºèª°çé¯<br>æ¯å çºä½ åç<em>å¤§è¦</em>æ ¹æ¬ä¸å</h1>
+  <p class="hero-sub">MBTI è·å ´æºéæåï¼256ç¨®çµåï¼çµ¦ä½ <br>éèº«å®è£½çå°è©±è³æ¬ï¼ä»å¤©å°±è½ç¨</p>
   <div class="hero-btns">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-primary">⚡ 免費測驗我的型號</a>
-    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-primary">â¡ åè²»æ¸¬é©æçåè</a>
+    <a href="#products" class="btn-secondary">ð ç´æ¥é¸è³¼æå</a>
   </div>
   <!-- Know-your-type quick selector -->
   <button class="know-type-toggle" id="knowTypeToggle" onclick="toggleKnowType()">
-    ✓ 已知道自己的型號，直接選 <span class="arrow">▾</span>
+    â å·²ç¥éèªå·±çåèï¼ç´æ¥é¸ <span class="arrow">â¾</span>
   </button>
   <div class="know-type-panel" id="knowTypePanel">
     <div class="know-type-inner">
-      <div class="know-type-label">選擇你的 MBTI 型號，直接跳到適合的資源</div>
+      <div class="know-type-label">é¸æä½ ç MBTI åèï¼ç´æ¥è·³å°é©åçè³æº</div>
       <div class="type-grid">
         <button class="type-btn" onclick="selectType('INTJ')">INTJ</button>
         <button class="type-btn" onclick="selectType('INTP')">INTP</button>
@@ -351,664 +351,239 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="hero-stat-num">256</span>
-      <div class="hero-stat-label">種職場組合</div>
+      <div class="hero-stat-label">ç¨®è·å ´çµå</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">8</span>
-      <div class="hero-stat-label">題快速測驗</div>
+      <div class="hero-stat-label">é¡å¿«éæ¸¬é©</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">64</span>
-      <div class="hero-stat-label">型人格密碼</div>
+      <div class="hero-stat-label">åäººæ ¼å¯ç¢¼</div>
     </div>
   </div>
 </section>
 
-<!-- ── Pain Points ── -->
+<!-- ââ Pain Points ââ -->
 <section class="pain" id="pain">
   <div class="section-header">
-    <div class="section-badge">你是不是也遇過</div>
-    <h2 class="section-title">這三種職場困境</h2>
+    <div class="section-badge">ä½ æ¯ä¸æ¯ä¹éé</div>
+    <h2 class="section-title">éä¸ç¨®è·å ´å°å¢</h2>
     <div class="divider"></div>
   </div>
   <div class="pain-grid">
     <div class="pain-card">
-      <div class="pain-icon">😤</div>
-      <div class="pain-title">主管的每句話都讓你窒息</div>
-      <p class="pain-text">他說要「主動積極」，你明明每件事都認真做了，他就是看不見。你不是不努力，你只是語言不對。</p>
-      <p class="pain-quote">「我都盡力了，但他還是覺得我不夠。」</p>
+      <div class="pain-icon">ð¤</div>
+      <div class="pain-title">ä¸»ç®¡çæ¯å¥è©±é½è®ä½ çªæ¯</div>
+      <p class="pain-text">ä»èªªè¦ãä¸»åç©æ¥µãï¼ä½ æææ¯ä»¶äºé½èªçåäºï¼ä»å°±æ¯çä¸è¦ãä½ ä¸æ¯ä¸åªåï¼ä½ åªæ¯èªè¨ä¸å°ã</p>
+      <p class="pain-quote">ãæé½ç¡åäºï¼ä½ä»éæ¯è¦ºå¾æä¸å¤ ãã</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">🔇</div>
-      <div class="pain-title">你的想法從來說不進去</div>
-      <p class="pain-text">開會時你有很好的方案，但對方三句話就否定你。不是你的想法不好，是你用錯了他能接受的頻道。</p>
-      <p class="pain-quote">「我說了，但感覺他根本沒在聽。」</p>
+      <div class="pain-icon">ð</div>
+      <div class="pain-title">ä½ çæ³æ³å¾ä¾èªªä¸é²å»</div>
+      <p class="pain-text">éææä½ æå¾å¥½çæ¹æ¡ï¼ä½å°æ¹ä¸å¥è©±å°±å¦å®ä½ ãä¸æ¯ä½ çæ³æ³ä¸å¥½ï¼æ¯ä½ ç¨é¯äºä»è½æ¥åçé »éã</p>
+      <p class="pain-quote">ãæèªªäºï¼ä½æè¦ºä»æ ¹æ¬æ²å¨è½ãã</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">💣</div>
-      <div class="pain-title">每次衝突之後都不知道怎麼修復</div>
-      <p class="pain-text">氣消了，但關係卡著。你不知道要說什麼，怕又踩雷。你需要的不是道歉，是一句能打開對話的話。</p>
-      <p class="pain-quote">「吵完之後，我們就開始假裝沒事。」</p>
+      <div class="pain-icon">ð£</div>
+      <div class="pain-title">æ¯æ¬¡è¡çªä¹å¾é½ä¸ç¥éæéº¼ä¿®å¾©</div>
+      <p class="pain-text">æ°£æ¶äºï¼ä½¢éä¿å¡èãä½ ä¸ç¥éè¦èªªä»éº¼ï¼æåè¸©é·ãä½ éè¦çä¸æ¯éæ­ï¼æ¯ä¸å¥è½æéå°è©±çè©±ã</p>
+      <p class="pain-quote">ãåµå®ä¹å¾ï¼æåå°±éå§åè£æ²äºãã</p>
     </div>
   </div>
 </section>
 
-<!-- ── How it works ── -->
+<!-- ââ How it works ââ -->
 <section id="how">
   <div class="section-header">
-    <div class="section-badge">三步驟</div>
-    <h2 class="section-title">開始改變你的職場關係</h2>
+    <div class="section-badge">ä¸æ­¥é©</div>
+    <h2 class="section-title">éå§æ¹è®ä½ çè·å ´éä¿</h2>
     <div class="divider"></div>
   </div>
   <div class="how-grid">
     <div class="how-step">
       <div class="how-step-num">1</div>
-      <div class="how-step-title">確認你們的型號</div>
-      <p class="how-step-text">8 題快速測驗找出你的 MBTI 型號，或直接在首頁選擇你已知的型號，立刻跳過測驗</p>
+      <div class="how-step-title">ç¢ºèªä½ åçåè</div>
+      <p class="how-step-text">8 é¡å¿«éæ¸¬é©æ¾åºä½ ç MBTI åèï¼æç´æ¥å¨é¦é é¸æä½ å·²ç¥çåèï¼ç«å»è·³éæ¸¬é©</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">2</div>
-      <div class="how-step-title">選擇你的組合指南</div>
-      <p class="how-step-text">在 256 種組合中選出你和對方的組合，取得量身定製的分析報告</p>
+      <div class="how-step-title">é¸æä½ ççµåæå</div>
+      <p class="how-step-text">å¨ 256 ç¨®çµåä¸­é¸åºä½ åå°æ¹ççµåï¼åå¾éèº«å®è£½çåæå ±å</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">3</div>
-      <div class="how-step-title">直接套用對話腳本</div>
-      <p class="how-step-text">不用再想「這句話要怎麼說」，直接複製報告裡的腳本，今天就能用在明天的會議</p>
+      <div class="how-step-title">ç´æ¥å¥ç¨å°è©±è³æ¬</div>
+      <p class="how-step-text">ä¸ç¨åæ³ãéå¥è©±è¦æéº¼èªªãï¼ç´æ¥è¤è£½å ±åè£¡çè³æ¬ï¼ä»å¤©å°±è½ç¨å¨æå¤©çæè­°</p>
     </div>
   </div>
 </section>
 
-<!-- ── Products ── -->
+<!-- ââ Products ââ -->
 <section class="products" id="products">
   <div class="section-header">
-    <div class="section-badge">產品方案</div>
-    <h2 class="section-title">選擇你需要的深度</h2>
-    <p class="section-sub">每種組合都有獨立的指南，不是通用模板</p>
+    <div class="section-badge">ç¢åæ¹æ¡</div>
+    <h2 class="section-title">é¸æä½ éè¦çæ·±åº¦</h2>
+    <p class="section-sub">æ¯ç¨®çµåé½æç¨ç«çæåï¼ä¸æ¯éç¨æ¨¡æ¿</p>
     <div class="divider"></div>
   </div>
   <div class="products-grid">
     <!-- Tier 1 -->
     <div class="product-card">
-      <div class="product-tier">入門 · 紓壓手冊</div>
+      <div class="product-tier">å¥é Â· ç´å£æå</div>
       <div class="product-price"><sup>US$</sup>5</div>
-      <div class="product-usd">約 NT$160</div>
-      <p class="product-desc">先讀懂你自己。16種人格各一本，8頁，揭開你在職場中的情緒模式與隱形壓力源。</p>
+      <div class="product-usd">ç´ NT$160</div>
+      <p class="product-desc">åè®æä½ èªå·±ã16ç¨®äººæ ¼åä¸æ¬ï¼8é ï¼æ­éä½ å¨è·å ´ä¸­çæç·æ¨¡å¼èé±å½¢å£åæºã</p>
       <ul class="product-features">
-        <li>你的職場壓力觸發點與真正根源</li>
-        <li>別人覺得你奇怪的 3 個行為密碼</li>
-        <li>你最容易踩到自己的 5 個雷</li>
-        <li>立即可用的情緒調節技巧</li>
+        <li>ä½ çè·å ´å£åè§¸ç¼é»èçæ­£æ ¹æº</li>
+        <li>å¥äººè¦ºå¾ä½ å¥æªç 3 åè¡çºå¯ç¢¼</li>
+        <li>ä½ æå®¹æè¸©å°èªå·±ç 5 åé·</li>
+        <li>ç«å³å¯ç¨çæç·èª¿ç¯æå·§</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/eigywp" target="_blank" class="product-btn product-btn-outline">選購紓壓手冊 →</a>
+      <a href="https://airwave553.gumroad.com/l/eigywp" target="_blank" class="product-btn product-btn-outline">é¸è³¼ç´å£æå â</a>
     </div>
     <!-- Tier 2 -->
     <div class="product-card featured">
-      <div class="product-featured-badge">⭐ 最多人選</div>
-      <div class="product-tier">標準版 · 組合指南</div>
+      <div class="product-featured-badge">â­ æå¤äººé¸</div>
+      <div class="product-tier">æ¨æºç Â· çµåæå</div>
       <div class="product-price"><sup>US$</sup>10</div>
-      <div class="product-usd">約 NT$320</div>
-      <p class="product-desc">你 × 對方的專屬組合指南。256種配對，10頁，直接告訴你為什麼話說不進去、要怎麼說。</p>
+      <div class="product-usd">ç´ NT$320</div>
+      <p class="product-desc">ä½  Ã å°æ¹çå°å±¬çµåæåã256ç¨®éå°ï¼10é ï¼ç´æ¥åè¨´ä½ çºä»éº¼è©±èªªä¸é²å»ãè¦æéº¼èªªã</p>
       <ul class="product-features">
-        <li>對方的思維邏輯完整解析</li>
-        <li>3 個典型衝突場景拆解與對策</li>
-        <li>對話腳本：舊說法 vs 靈魂密碼版</li>
-        <li>7 日職場實踐計畫</li>
+        <li>å°æ¹çæç¶­éè¼¯å®æ´è§£æ</li>
+        <li>3 åå¸åè¡çªå ´æ¯æè§£èå°ç­</li>
+        <li>å°è©±è³æ¬ï¼èèªªæ³ vs éé­å¯ç¢¼ç</li>
+        <li>7 æ¥è·å ´å¯¦è¸è¨ç«</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/ogfxwh" target="_blank" class="product-btn product-btn-fill">選購標準版 →</a>
+      <a href="https://airwave553.gumroad.com/l/ogfxwh" target="_blank" class="product-btn product-btn-fill">é¸è³¼æ¨æºç â</a>
     </div>
     <!-- Tier 3 -->
     <div class="product-card">
-      <div class="product-tier">Pro 版 · 完整分析</div>
+      <div class="product-tier">Pro ç Â· å®æ´åæ</div>
       <div class="product-price"><sup>US$</sup>15</div>
-      <div class="product-usd">約 NT$480</div>
-      <p class="product-desc">15頁以上深度報告。從 64 型子類型出發，給你在主管、下屬、同事三種角色下的完整行動方案。</p>
+      <div class="product-usd">ç´ NT$480</div>
+      <p class="product-desc">15é ä»¥ä¸æ·±åº¦å ±åãå¾ 64 åå­é¡ååºç¼ï¼çµ¦ä½ å¨ä¸»ç®¡ãä¸å±¬ãåäºä¸ç¨®è§è²ä¸çå®æ´è¡åæ¹æ¡ã</p>
       <ul class="product-features">
-        <li>你的 64 型子類型解析（OH/OL/CH/CL）</li>
-        <li>三種職場角色分析（主管·下屬·同事）</li>
-        <li>3 個高壓衝突場景 + 當下避雷策略</li>
-        <li>對話腳本 + 七日職場實踐路線圖</li>
-        <li>你最容易踩的 5 個陷阱與出路</li>
+        <li>ä½ ç 64 åå­é¡åè§£æï¼OH/OL/CH/CLï¼</li>
+        <li>ä¸ç¨®è·å ´è§è²åæï¼ä¸»ç®¡Â·ä¸å±¬Â·åäºï¼</li>
+        <li>3 åé«å£è¡çªå ´æ¯ + ç¶ä¸é¿é·ç­ç¥</li>
+        <li>å°è©±è³æ¬ + ä¸æ¥è·å ´å¯¦è¸è·¯ç·å</li>
+        <li>ä½ æå®¹æè¸©ç 5 åé·é±èåºè·¯</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/ptqenn" target="_blank" class="product-btn product-btn-outline">選購 Pro 版 →</a>
+      <a href="https://airwave553.gumroad.com/l/ptqenn" target="_blank" class="product-btn product-btn-outline">é¸è³¼ Pro ç â</a>
     </div>
   </div>
   <!-- Combo -->
   <div class="product-combo" style="position:relative;border-color:rgba(232,168,32,.55);box-shadow:0 0 32px rgba(232,168,32,.1)">
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:14px 14px 0 0"></div>
-    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">🔥 最高CP值 · 最多人選</div>
+    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">ð¥ æé«CPå¼ Â· æå¤äººé¸</div>
     <div class="combo-left" style="margin-top:6px">
-      <h3>全包組合方案</h3>
-      <p>紓壓手冊 + 標準版指南 + Pro 完整分析報告</p>
+      <h3>å¨åçµåæ¹æ¡</h3>
+      <p>ç´å£æå + æ¨æºçæå + Pro å®æ´åæå ±å</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$5 紓壓手冊</span>
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$10 標準版</span>
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$15 Pro版</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$5 ç´å£æå</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$10 æ¨æºç</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$15 Pro ç</span>
       </div>
-      <span class="combo-save" style="margin-top:10px;display:inline-block">省 US$10 · 等於白送紓壓手冊</span>
+      <span class="combo-save" style="margin-top:10px;display:inline-block">r US$10 Â· ç¶æ¼ç½éï¹å£æå</span>
     </div>
     <div class="combo-right">
-      <div class="combo-original">原價 US$30</div>
+      <div class="combo-original">åå¹ US$30</div>
       <div class="combo-price">US$20</div>
-      <div class="product-usd" style="text-align:right">約 NT$640</div>
-      <a href="https://airwave553.gumroad.com/l/nodgkv" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">立即選購全包方案 →</a>
+      <div class="product-usd" style="text-align:right">ç´ NT$640</div>
+      <a href="https://airwave553.gumroad.com/l/nodgkv" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">æå³é¸è³¼å¨åæ¹æ¡ â</a>
     </div>
   </div>
 </section>
 
-<!-- ── Free Careers Section ── -->
+<!-- ââ Free Careers Section ââ -->
 <section class="careers" id="careers">
   <div class="section-header">
-    <div class="section-badge">免費領取</div>
-    <h2 class="section-title">你的人格最適合哪些職業？</h2>
-    <p class="section-sub">選擇你的 MBTI 型號，免費取得完整職業方向報告<br>直接寄送到你的 Email 信箱</p>
-    <div class="divider"></div>
-  </div>
-  <div class="careers-selector">
-    <p class="careers-note">第一步：點選你的型號 →</p>
-    <div class="careers-type-grid" id="careersTypeGrid">
-      <button class="ctype-btn" onclick="showCareers('INTJ',this)">INTJ</button>
-      <button class="ctype-btn" onclick="showCareers('INTP',this)">INTP</button>
-      <button class="ctype-btn" onclick="showCareers('ENTJ',this)">ENTJ</button>
-      <button class="ctype-btn" onclick="showCareers('ENTP',this)">ENTP</button>
-      <button class="ctype-btn" onclick="showCareers('INFJ',this)">INFJ</button>
-      <button class="ctype-btn" onclick="showCareers('INFP',this)">INFP</button>
-      <button class="ctype-btn" onclick="showCareers('ENFJ',this)">ENFJ</button>
-      <button class="ctype-btn" onclick="showCareers('ENFP',this)">ENFP</button>
-      <button class="ctype-btn" onclick="showCareers('ISTJ',this)">ISTJ</button>
-      <button class="ctype-btn" onclick="showCareers('ISFJ',this)">ISFJ</button>
-      <button class="ctype-btn" onclick="showCareers('ESTJ',this)">ESTJ</button>
-      <button class="ctype-btn" onclick="showCareers('ESFJ',this)">ESFJ</button>
-      <button class="ctype-btn" onclick="showCareers('ISTP',this)">ISTP</button>
-      <button class="ctype-btn" onclick="showCareers('ISFP',this)">ISFP</button>
-      <button class="ctype-btn" onclick="showCareers('ESTP',this)">ESTP</button>
-      <button class="ctype-btn" onclick="showCareers('ESFP',this)">ESFP</button>
-    </div>
-
-    <!-- 結果區 -->
-    <div class="careers-result" id="careersResult">
-      <div class="careers-type-title" id="cResultTitle"></div>
-      <div class="careers-type-subtitle" id="cResultSubtitle"></div>
-
-      <!-- 預覽：前3個職業顯示，其餘模糊 -->
-      <div class="careers-preview-grid" id="cPreviewList"></div>
-
-      <!-- Email 輸入區 -->
-      <div class="careers-email-gate" id="careersEmailGate">
-        <div class="careers-email-gate-title">✦ 輸入 Email，免費取得你的完整職業報告</div>
-        <div class="careers-email-gate-sub">包含 8 個最適合職業方向 + 天賦優勢分析<br>直接寄到你的信箱，永久保存</div>
-        <div class="careers-email-row">
-          <input class="careers-email-input" type="email" id="careersEmailInput" placeholder="your@email.com" />
-          <button class="careers-email-btn" id="careersEmailBtn" onclick="sendCareersEmail()">免費領取 →</button>
-        </div>
-      </div>
-
-      <!-- 送出後：成功訊息 + 完整結果顯示 -->
-      <div class="careers-sent-msg" id="careersSentMsg">
-        ✅ 完整報告已寄到你的信箱！以下是你的結果：
-      </div>
-      <div class="careers-full" id="cFullResults">
-        <div class="careers-list" id="cResultList"></div>
-        <p class="careers-strength" id="cResultStrength"></p>
-      </div>
-
-      <div style="margin-top:20px;background:rgba(232,168,32,0.06);border:1px solid rgba(232,168,32,0.2);border-radius:12px;padding:16px 18px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
-          <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">免費報告（剛才領的）</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 最適合你的職業方向<br>✦ 你的職場天賦優勢<br>✦ 你一個人的人格分析</div>
-          </div>
-          <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">完整指南（US$10）</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 你 × 對方的衝突根源<br>✦ 三角色攻略：主管/同事/下屬<br>✦ 今天就能用的對話腳本</div>
-          </div>
-        </div>
-        <a href="#products" style="display:block;text-align:center;font-size:13px;color:var(--gold);font-weight:700;text-decoration:none;font-family:var(--sans)">查看完整職場指南 →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Test Teaser ── -->
-<section class="test-teaser" id="test">
-  <div class="section-header">
-    <div class="section-badge">免費測驗</div>
-    <h2 class="section-title">還不確定自己是哪型？先測驗</h2>
-    <p class="section-sub">找出你的 MBTI 型號 + 64型子類型，直接對應你的職場溝通指南</p>
-    <div class="divider"></div>
-  </div>
-  <div class="test-cards">
-    <div class="test-card">
-      <div class="test-card-icon">🧭</div>
-      <div class="test-card-badge">MBTI 人格測驗</div>
-      <div class="test-card-title">找出你的職場人格型號</div>
-      <p class="test-card-text">情境式選擇題，精準測出你的 MBTI 人格型號，完成後直接對應可購買的職場組合指南。同時解鎖 64 型靈魂密碼。</p>
-      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
-    </div>
-    <div class="test-card">
-      <div class="test-card-icon">🎯</div>
-      <div class="test-card-badge">行業適配測驗</div>
-      <div class="test-card-title">找出最適合你的工作領域</div>
-      <p class="test-card-text">8 題工作偏好測驗，推薦最符合你天賦與節奏的行業，以及你在那個行業中的核心優勢</p>
-      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
-    </div>
-  </div>
-  <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-teal">開始免費測驗 →</a>
-  <p class="test-or">或者</p>
-  <p class="test-skip-note">已知道自己的型號？<a href="#careers" onclick="document.getElementById('knowTypeToggle').click();return false;">直接選型號，跳過測驗 →</a></p>
-</section>
-
-<!-- ── Social Proof / Preview quotes ── -->
-<section class="preview" id="preview">
-  <div class="section-header">
-    <div class="section-badge">讀者反饋</div>
-    <h2 class="section-title">他們說這份指南幫了什麼</h2>
-    <div class="divider"></div>
-  </div>
-  <div class="preview-grid">
-    <div class="preview-card">
-      <p class="preview-quote">「看到對話腳本那頁我直接截圖，明天開會就這樣說。以前跟主管的溝通讓我每天都在消耗能量，這份報告讓我知道<em>問題不是我</em>，只是頻道不對。」</p>
-      <div class="preview-author">
-        <span class="preview-type-badge">INFJ</span>
-        主管型號 ESTJ · 職場三年
-      </div>
-    </div>
-    <div class="preview-card">
-      <p class="preview-quote">「'三個高壓情境腳本'這個部分太精準了，我的情況就是情境二。以前我都說錯話，然後越解釋越糟，現在我知道要說什麼，<em>還知道為什麼這樣說有效</em>。」</p>
-      <div class="preview-author">
-        <span class="preview-type-badge">ENTJ</span>
-        同事型號 INFP · 新創公司
-      </div>
-    </div>
-    <div class="preview-card">
-      <p class="preview-quote">「我沒想到一份 PDF 可以講得這麼準。它說 ISFJ 在 ENTJ 主管底下最常見的誤解，就是我每天的狀態。那個描述讓我感覺<em>自己終於被看見了</em>。」</p>
-      <div class="preview-author">
-        <span class="preview-type-badge">ISFJ</span>
-        主管型號 ENTJ · 大型企業
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── FAQ ── -->
-<section class="faq" id="faq">
-  <div class="section-header">
-    <div class="section-badge">常見問題</div>
-    <h2 class="section-title">你可能想知道的事</h2>
-    <div class="divider"></div>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">我不確定對方是哪個型號，還能買嗎？</div>
-      <p class="faq-a">可以。你可以根據對方的行為特徵來猜測型號，或先購買自己型號的紓壓手冊（US$5），裡面有對照表幫你辨認對方可能的型號。買錯了我們也有型號更換服務，聯絡我們就好。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">標準版和 Pro 版有什麼差別？</div>
-      <p class="faq-a">標準版（10頁）是「診斷工具」，告訴你你們的組合是什麼、問題在哪、怎麼溝通，適合想快速了解的人。Pro版（15頁以上）是「行動工具」，多了 64 型子類型解析、三種職場角色的分析（你是主管/下屬/同事的方案各自不同）、高壓情境急救腳本，以及 7 日行動路線圖，適合想真正改變這段關係的人。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">測驗只有 8 題，夠準確嗎？</div>
-      <p class="faq-a">夠。我們的 8 題測驗針對 MBTI 四個維度各設計 2 題職場情境題，能有效區分主要人格傾向。對於已有一定自我認識的人，準確率與 60 題長測驗相當。如果結果讓你存疑，可以直接在首頁選擇你認為更符合的型號。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">購買後怎麼取得 PDF？</div>
-      <p class="faq-a">透過 Gumroad 購買，付款成功後會自動寄送下載連結到你的 Email，通常不超過 5 分鐘。檔案會有你的名字和 Email 浮水印，是你專屬的版本。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">這是占星或算命嗎？</div>
-      <p class="faq-a">不是。MBTI 是基於榮格認知功能理論的人格分類工具，靈魂職場系列的對話腳本設計參考了 NVC（非暴力溝通）、薩提爾溝通模型和 Gottman 關係研究。我們不預測未來，我們給你可以現在就用的溝通方式。</p>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">同事/主管也要讀才有用嗎？</div>
-      <p class="faq-a">不需要。指南的設計方向是「如果只有你一個人改變，也能讓這段關係往前走」。你不能強迫對方改，但你可以改變你說的方式，讓對方更能接收你想傳達的東西。</p>
-    </div>
-  </div>
-</section>
-
-<!-- ── Final CTA ── -->
-<section class="final-cta">
-  <h2>你已經受夠那段說不通的關係了</h2>
-  <p>今天拿到你的對話腳本，明天的對話就不一樣了</p>
-  <div class="final-cta-btns">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="btn-teal">⚡ 先免費測驗型號</a>
-    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
-  </div>
-</section>
-
-<!-- ── Series Navigation ── -->
-<section class="series-section">
-  <div class="section-header" style="margin-bottom:36px">
-    <div class="section-badge">靈魂宇宙系列</div>
-    <h2 class="section-title">還有哪些系列適合你？</h2>
-    <p class="section-sub">職場之外，靈魂宇宙也幫你解讀親子、情侶友情與更多人生場景</p>
-    <div class="divider"></div>
-  </div>
-  <div class="series-grid">
-    <a href="../../01_MBTI測試網頁及資料/index.html" class="series-card">
-      <span class="series-card-icon">🧬</span>
-      <div class="series-card-title">靈魂測驗</div>
-      <p class="series-card-desc">免費 MBTI 測驗，精準找出你的人格密碼，是所有系列的起點</p>
-      <span class="series-card-badge">免費</span>
-    </a>
-    <a href="../../02_MBTI親子關係/親子網站/靈魂親子-銷售頁.html" class="series-card">
-      <span class="series-card-icon">👨‍👩‍👧</span>
-      <div class="series-card-title">靈魂親子</div>
-      <p class="series-card-desc">解讀你與孩子之間的天生頻道，不再雞同鴨講，找回連結</p>
-      <span class="series-card-badge">溝通指南</span>
-    </a>
-    <div class="series-card current">
-      <span class="series-card-icon">⚔️</span>
-      <div class="series-card-title">靈魂職場</div>
-      <p class="series-card-desc">破解職場溝通困境，256 種組合，直接給你對話腳本</p>
-      <span class="series-card-badge">你在這裡</span>
-    </div>
-    <a href="../../04_MBTI朋友情侶關係/情感網站/index.html" class="series-card">
-      <span class="series-card-icon">💕</span>
-      <div class="series-card-title">靈魂情感</div>
-      <p class="series-card-desc">解碼你與另一半、好友之間的天生頻率，衝突不再、連結更深</p>
-      <span class="series-card-badge">情侶 &amp; 友情</span>
-    </a>
-  </div>
-</section>
-
-<!-- ── Footer ── -->
-<footer>
-  <div class="footer-logo">⚔️ 靈魂職場 · Soul Universe</div>
-  <p class="footer-tagline">The quiet voice within is my loudest guide.</p>
-  <div class="footer-links">
-    <a href="#products">職場指南</a>
-    <a href="#careers">適合職業</a>
-    <a href="../../01_MBTI測試網頁及資料/index.html">免費測驗</a>
-    <a href="https://airwave553.gumroad.com" target="_blank">Gumroad 商店</a>
-    <a href="../../05_心靈避風港/soul-haven-v2_2.html">靈魂避風港</a>
-  </div>
-  <p class="footer-copy">© 2026 Soul Universe · 靈魂宇宙 · All rights reserved.</p>
-</footer>
-
-<script>
-// ── Career data ──────────────────────────────────────────────────────────
-const CAREERS = {
-  INTJ:{title:'INTJ 戰略家',subtitle:'願景設計者 · 冷靜執行者',
-    jobs:['策略顧問','資料科學家','系統架構師','法律研究員','投資分析師','產品策略師','學術研究員','網路安全專家'],
-    strength:'你的天賦在於<em>看見別人看不見的模式</em>，並在混亂中建立清晰的系統。最適合需要長期規劃、獨立思考的高複雜度工作。'},
-  INTP:{title:'INTP 邏輯學家',subtitle:'理論建構者 · 系統思考者',
-    jobs:['軟體工程師','數學研究員','哲學教授','系統分析師','資訊安全研究員','AI 工程師','技術文件撰寫','精算師'],
-    strength:'你的天賦在於<em>拆解問題的底層邏輯</em>，把複雜的原理變成可理解的模型。最適合需要持續深挖的技術或學術型工作。'},
-  ENTJ:{title:'ENTJ 指揮官',subtitle:'天生領導者 · 目標驅動型',
-    jobs:['執行長','創業家','管理顧問','投資銀行家','律師','企業發展主管','政策制訂者','營運總監'],
-    strength:'你的天賦在於<em>把模糊的願景變成清晰的執行計畫</em>，並驅動團隊高效完成。最適合需要決策力與影響力的領導型職位。'},
-  ENTP:{title:'ENTP 辯論家',subtitle:'創意破局者 · 跨界連結者',
-    jobs:['創業家','行銷策略師','律師','產品設計師','風險投資人','廣告創意總監','科技記者','顧問'],
-    strength:'你的天賦在於<em>打破既有框架，找到別人沒想到的突破口</em>。最適合高度動態、需要創意解決問題的環境。'},
-  INFJ:{title:'INFJ 提倡者',subtitle:'洞察人心的理想主義者',
-    jobs:['心理諮商師','社會企業家','作家','人力資源顧問','培訓師','品牌故事策略師','非營利組織管理','教育工作者'],
-    strength:'你的天賦在於<em>理解人的內心需求，並把它轉化成有意義的行動</em>。最適合能讓你產生深度影響的工作，而不是流水線式的任務。'},
-  INFP:{title:'INFP 調停者',subtitle:'價值驅動的創意者',
-    jobs:['文案創作者','社工師','藝術家','UX 研究員','心理治療師','人文學科教師','插畫師','品牌文化規劃'],
-    strength:'你的天賦在於<em>把情感與價值觀轉化成真實可感受的作品或服務</em>。最適合有創作自由度，且能連結人與意義的工作。'},
-  ENFJ:{title:'ENFJ 主人公',subtitle:'激勵他人成長的領導者',
-    jobs:['企業培訓師','公關主任','人力資源主管','教師','生涯教練','品牌大使','社群行銷主管','非政府組織主管'],
-    strength:'你的天賦在於<em>感知他人的潛力並幫助他們成長</em>。最適合以人為核心的工作，讓你能同時影響個人與組織文化。'},
-  ENFP:{title:'ENFP 活動家',subtitle:'充滿感染力的創意探索者',
-    jobs:['行銷創意總監','品牌策略師','記者','生涯教練','社群媒體經理','產品行銷','公共演講者','活動策劃'],
-    strength:'你的天賦在於<em>點燃他人的熱情，並為每個計畫注入意義感</em>。最適合多元、快速變動、有機會連結人心的工作環境。'},
-  ISTJ:{title:'ISTJ 物流師',subtitle:'可靠穩健的系統守護者',
-    jobs:['會計師','稽核員','行政管理師','法律助理','品質控管','財務分析師','資料庫管理員','風險管理師'],
-    strength:'你的天賦在於<em>建立秩序、確保系統可靠運行</em>。最適合需要精確度高、流程嚴謹、責任明確的職位。'},
-  ISFJ:{title:'ISFJ 守護者',subtitle:'默默支撐組織的關鍵力量',
-    jobs:['護理師','行政助理','客服主管','社會工作者','特教老師','圖書館員','人事行政','產品測試工程師'],
-    strength:'你的天賦在於<em>細心照顧他人的需求，讓周圍的人感到安心</em>。最適合能看到你努力的中小型團隊，而不是大型官僚組織。'},
-  ESTJ:{title:'ESTJ 總經理',subtitle:'實事求是的執行者',
-    jobs:['企業主管','專案經理','法官','財務長','軍事指揮官','醫院行政主管','教育行政官員','稽核長'],
-    strength:'你的天賦在於<em>建立清晰規則、高效執行、讓團隊有秩序地運作</em>。最適合需要強力管理與問責機制的組織型角色。'},
-  ESFJ:{title:'ESFJ 執政官',subtitle:'凝聚人心的和諧推動者',
-    jobs:['業務主管','公關顧問','人事行政','活動規劃師','醫療行政','小學老師','客戶成功經理','品牌社群管理'],
-    strength:'你的天賦在於<em>讀懂人際動態，讓每個人都感受到被照顧</em>。最適合服務導向、高度人際互動的職位，在穩定的組織中最能發光。'},
-  ISTP:{title:'ISTP 鑑賞家',subtitle:'冷靜解決問題的實作者',
-    jobs:['機械工程師','工業設計師','外科醫師','資安分析師','飛行員','汽車技師','法醫科學家','嵌入式系統工程師'],
-    strength:'你的天賦在於<em>在高壓或複雜的實際情境中快速找到解法</em>。最適合有實際操作感、需要即時判斷的技術型工作。'},
-  ISFP:{title:'ISFP 探險家',subtitle:'感官細膩的創作者',
-    jobs:['平面設計師','攝影師','廚師','藝術治療師','室內設計師','服裝設計師','獸醫師','物理治療師'],
-    strength:'你的天賦在於<em>把對美與細節的感知，轉化成觸動人心的作品或體驗</em>。最適合有創作自主空間、不必每天開會的工作環境。'},
-  ESTP:{title:'ESTP 企業家',subtitle:'行動優先的現實主義者',
-    jobs:['業務員','創業家','緊急救援人員','股票交易員','活動統籌','房地產業務','運動員教練','談判專家'],
-    strength:'你的天賦在於<em>在混亂或高壓環境中立即行動，把機會轉化成結果</em>。最適合快速決策、現場應變的環境，不適合大量文書或靜態分析工作。'},
-  ESFP:{title:'ESFP 表演者',subtitle:'點亮現場的能量中心',
-    jobs:['演員','活動策劃','行銷業務','公關專員','幼兒教師','旅遊導覽','品牌推廣大使','社群媒體達人'],
-    strength:'你的天賦在於<em>創造讓人難忘的當下體驗，並讓周圍的人感到有活力</em>。最適合高度社交、需要即興應對、有台前曝光機會的工作。'}
-};
-
-// ── Know Your Type toggle ────────────────────────────────────────────────
-function toggleKnowType(){
-  const btn = document.getElementById('knowTypeToggle');
-  const panel = document.getElementById('knowTypePanel');
-  const isOpen = panel.classList.contains('open');
-  if(isOpen){
-    panel.classList.remove('open');
-    btn.classList.remove('open');
-  } else {
-    panel.classList.add('open');
-    btn.classList.add('open');
-  }
-}
-
-function selectType(type){
-  // Highlight button
-  document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
-  // Jump to careers section and show result
-  showCareers(type, null);
-  document.getElementById('careers').scrollIntoView({behavior:'smooth'});
-  // Also highlight in career grid
-  setTimeout(() => {
-    document.querySelectorAll('.ctype-btn').forEach(b => {
-      b.classList.toggle('active', b.textContent === type);
-    });
-  }, 400);
-}
-
-// ── Careers Email Gate ────────────────────────────────────────────────────
-// EmailJS 設定（請替換為你自己的 ID）：
-// 1. 到 https://emailjs.com 免費註冊
-// 2. Add New Service → 連結你的 Gmail
-// 3. Email Templates → 建立模板（見下方說明）
-// 4. 把以下三個值替換為你的實際 ID
-const EMAILJS_SERVICE_ID  = 'service_mmdj828';
-const EMAILJS_TEMPLATE_ID = 'template_i4xb21t';
-const EMAILJS_PUBLIC_KEY  = 'uqPSWLUWlR4FT915U';
-
-// EmailJS 模板變數說明（在 emailjs.com 建立模板時使用）：
-// {{to_email}}   — 收件者 email（用戶輸入）
-// {{type_code}}  — MBTI 型號，例如 INFJ
-// {{soul_name}}  — 靈魂名，例如 守護水魂
-// {{jobs_list}}  — 職業列表（換行分隔）
-// {{strength}}   — 天賦優勢說明
-
-let currentCareersType = null;
-
-try {
-  emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-} catch(e) {
-  console.warn('EmailJS init failed:', e);
-}
-
-// ── Careers display ───────────────────────────────────────────────────────
-function showCareers(type, btn){
-  // 更新按鈕狀態
-  document.querySelectorAll('.ctype-btn').forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-
-  const d = CAREERS[type];
-  if(!d) return;
-  currentCareersType = type;
-
-  // 標題
-  document.getElementById('cResultTitle').textContent = d.title;
-  document.getElementById('cResultSubtitle').textContent = d.subtitle;
-
-  // 預覽：前3個清晰，後5個模糊
-  const previewEl = document.getElementById('cPreviewList');
-  previewEl.innerHTML = d.jobs.map((j, i) =>
-    `<div class="career-preview-tag${i >= 3 ? ' blurred' : ''}">${j}</div>`
-  ).join('');
-
-  // 全部結果（隱藏，送出後才顯示）
-  document.getElementById('cResultList').innerHTML = d.jobs.map(j =>
-    `<div class="career-tag">${j}</div>`
-  ).join('');
-  document.getElementById('cResultStrength').innerHTML = d.strength;
-
-  // 重置 email 欄位與狀態
-  document.getElementById('careersEmailInput').value = '';
-  document.getElementById('careersEmailBtn').disabled = false;
-  document.getElementById('careersEmailBtn').textContent = '免費領取 →';
-  document.getElementById('careersEmailGate').style.display = 'block';
-  document.getElementById('careersSentMsg').classList.remove('show');
-  document.getElementById('cFullResults').classList.remove('show');
-
-  // 顯示結果卡
-  const result = document.getElementById('careersResult');
-  result.classList.remove('visible');
-  void result.offsetWidth;
-  result.classList.add('visible');
-  result.scrollIntoView({behavior:'smooth', block:'nearest'});
-}
-
-// ── 顯示送出後狀態（Email 成功→不顯示完整結果，失敗→顯示）──────────────
-function revealFullResults(email, success){
-  document.getElementById('careersEmailGate').style.display = 'none';
-  const sentEl = document.getElementById('careersSentMsg');
-  if(success){
-    // Email 成功：只顯示前3預覽，引導去信箱查看完整結果
-    sentEl.innerHTML =
-      '✅ 完整職業報告已寄到 <strong>' + email + '</strong>！<br>'
-      + '<span style="font-size:13px;opacity:.85">上方顯示前3個方向，完整8個職業 + 天賦分析在信箱裡 📩</span><br>'
-      + '<span style="font-size:11px;opacity:.6">沒看到？請檢查垃圾信件夾</span>';
-    // 不顯示 cFullResults，保持誘因去收信
-  } else {
-    // Email 失敗：才在頁面顯示完整結果，避免用戶白等
-    sentEl.innerHTML =
-      '✅ 你的職業分析結果如下<br>'
-      + '<span style="font-size:12px;opacity:.7">（信箱通知暫時無法送達，完整結果如下）</span>';
-    document.getElementById('cFullResults').classList.add('show');
-  }
-  sentEl.classList.add('show');
-}
-
-// ── 送出 Email ────────────────────────────────────────────────────────────
-function sendCareersEmail(){
-  const emailInput = document.getElementById('careersEmailInput');
-  const btn = document.getElementById('careersEmailBtn');
-  const email = emailInput.value.trim();
-
-  if(!email || !email.includes('@')){
-    emailInput.style.borderColor = '#e05050';
-    emailInput.placeholder = '請輸入有效的 Email';
-    setTimeout(() => {
-      emailInput.style.borderColor = '';
-      emailInput.placeholder = 'your@email.com';
-    }, 2000);
-    return;
-  }
-
-  if(!currentCareersType) return;
-  const d = CAREERS[currentCareersType];
-
-  btn.disabled = true;
-  btn.textContent = '寄送中…';
-
-  // 整理職業列表
-  const jobsList = d.jobs.map((j, i) => `${i+1}. ${j}`).join('\n');
-  // 移除 HTML 標籤
-  const strengthText = d.strength.replace(/<[^>]+>/g, '');
-
-  // 相容 EmailJS 預設模板變數（from_name / message / reply_to）
-  // 同時帶入自訂變數（type_code / soul_name / jobs_list / strength）
-  const msgBody = '【' + currentCareersType + '】 ' + d.title
-    + '\n\n適合職業：\n' + jobsList
-    + '\n\n天賦優勢：\n' + strengthText
-    + '\n\n用戶 Email：' + email;
-
-  const templateParams = {
-    to_email:     email,
-    from_name:    '靈魂職場 Soul Universe',
-    reply_to:     email,
-    type_code:    currentCareersType,
-    soul_name:    d.title,
-    jobs_list:    jobsList,
-    strength:     strengthText,
-    message:      msgBody,
-    report_title: '靈魂職場 · 職業方向報告'
-  };
-
-  // 用 fetch 直接呼叫 EmailJS REST API（比 SDK 更可靠）
-  const payload = {
-    service_id:     EMAILJS_SERVICE_ID,
-    template_id:    EMAILJS_TEMPLATE_ID,
-    user_id:        EMAILJS_PUBLIC_KEY,
-    template_params: templateParams
-  };
-
-  fetch('https://api.emailjs.com/api/v1.0/email/send', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-  .then(res => {
-    if(res.ok){
-      revealFullResults(email, true);
-    } else {
-      return res.text().then(errText => {
-        // 把錯誤顯示在頁面讓我們看到
-        console.error('EmailJS HTTP ' + res.status + ':', errText);
-        document.getElementById('careersEmailGate').querySelector('.careers-email-gate-title').textContent =
-          '⚠️ 錯誤 ' + res.status + '：' + errText;
-        btn.disabled = false;
-        btn.textContent = '免費領取 →';
-      });
-    }
-  })
-  .catch(err => {
-    console.error('Fetch error:', err);
-    revealFullResults(email, false);
-  });
-}
-
-// ── FAQ accordion ────────────────────────────────────────────────────────
-document.querySelectorAll('.faq-q').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if(!wasOpen) item.classList.add('open');
-  });
-});
-
-// ── Series dropdown (click toggle) ──────────────────────────────────────
-const seriesBtn = document.querySelector('.nav-series-btn');
-const seriesNav = document.querySelector('.nav-series');
-if(seriesBtn){
-  seriesBtn.addEventListener('click', e => {
-    e.stopPropagation();
-    seriesNav.classList.toggle('open');
-  });
-  document.addEventListener('click', e => {
-    if(!seriesNav.contains(e.target)) seriesNav.classList.remove('open');
-  });
-}
-
-// ── Smooth nav active highlight ──────────────────────────────────────
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(s => {
-    if(window.scrollY >= s.offsetTop - 100) current = s.id;
-  });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
-  });
-});
-</script>
-</body>
+    <div class="section-badge">åè²»é å</div>
+    <h2 class="section-title">ä½ çäººæ ¼æé©ååªäºèæ¥­ï¼</h2>
+    <p class="section-sub">é¸æä½ ç MBTI åèï¼åè²»åå¾å®æ´è·ß·ZçBG¢ÇF(ñÈûnÓ:¾¦"Û2óþºÄð½Àø(ñ¥Ø±ÍÌô¥Ù¥Èøð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÉÉÌµÍ±Ñ½Èø(ñÀ±ÍÌôÉÉÌµ¹½Ñû²³â¶¾òk¦î{¦ãöjz/¢f|Hð½Àø(ñ¥Ø±ÍÌôÉÉÌµÑåÁµÉ¥¥ôÉÉÍQåÁÉ¥ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %9Q(±Ñ¡¥Ì¤ù%9Q(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %9Q@±Ñ¡¥Ì¤ù%9Q@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ 9Q(±Ñ¡¥Ì¤ù9Q(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ 9Q@±Ñ¡¥Ì¤ù9Q@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %9(±Ñ¡¥Ì¤ù%9(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %9@±Ñ¡¥Ì¤ù%9@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ 9(±Ñ¡¥Ì¤ù9(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ 9@±Ñ¡¥Ì¤ù9@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %MQ(±Ñ¡¥Ì¤ù%MQ(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %M(±Ñ¡¥Ì¤ù%M(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ MQ(±Ñ¡¥Ì¤ùMQ(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ M(±Ñ¡¥Ì¤ùM(ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %MQ@±Ñ¡¥Ì¤ù%MQ@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ %M@±Ñ¡¥Ì¤ù%M@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ MQ@±Ñ¡¥Ì¤ùMQ@ð½ÕÑÑ½¸ø(ñÕÑÑ½¸±ÍÌôÑåÁµÑ¸½¹±¥¬ôÍ¡½Ý
+ÉÉÌ M@±Ñ¡¥Ì¤ùM@ð½ÕÑÑ½¸ø(ð½¥Øø((ð´´ÖCzs6 ´´ø(ñ¥Ø±ÍÌôÉÉÌµÉÍÕ±Ð¥ôÉÉÍIÍÕ±Ðø(ñ¥Ø±ÍÌôÉÉÌµÑåÁµÑ¥Ñ±¥ôIÍÕ±ÑQ¥Ñ±øð½¥Øø(ñ¥Ø±ÍÌôÉÉÌµÑåÁµÍÕÑ¥Ñ±¥ôIÍÕ±ÑMÕÑ¥Ñ±øð½¥Øø((ð´´¦C¢÷¾òk&4Ï/¢ß·¦¿ë¾ò3Û¦c¢Î(´´ø(ñ¥Ø±ÍÌôÉÉÌµÁÉÙ¥ÜµÉ¥¥ôAÉÙ¥Ý1¥ÍÐøð½¥Øø((ð´´µ¥°¢òã6 ´´ø(ñ¥Ø±ÍÌôÉÉÌµµ¥°µÑ¥ôÉÉÍµ¥±Ñø(ñ¥Ø±ÍÌôÉÉÌµµ¥°µÑµÑ¥Ñ±ûr¢òãµ¥³¾ò37¢Êï>[ú_öjº3VÓ¢ß·ÇF(ð½¥Øø(ñ¥Ø±ÍÌôÉÉÌµµ¥°µÑµÍÕû2B¬à/r¦§B#¢ß·ZçBD¬§¢Î«."z@ñÈûnÓ:¾"ÃöjþºÇ¾ò3Âãæþw¶`ð½¥Øø(ñ¥Ø±ÍÌôÉÉÌµµ¥°µÉ½Üø(ñ¥¹ÁÕÐ±ÍÌôÉÉÌµµ¥°µ¥¹ÁÕÐÑåÁôµ¥°¥ôÉÉÍµ¥±%¹ÁÕÐÁ±¡½±Èôå½ÕÉµ¥°¹½´¼ø(ñÕÑÑ½¸±ÍÌôÉÉÌµµ¥°µÑ¸¥ôÉÉÍµ¥±	Ñ¸½¹±¥¬ôÍ¹
+ÉÉÍµ¥° ¤û7¢Êï¦c>XHð½ÕÑÑ½¸ø(ð½¥Øø(ð½¥Øø((ð´´¦ëú3¾òk"C*¢¢+¼¬º3VÓÖCzs¦¿è´´ø(ñ¥Ø±ÍÌôÉÉÌµÍ¹ÐµµÍ¥ôÉÉÍM¹Ñ5Íø(rº3VÓÇF+ÞË¾"ÃöjþºÇ¾òîâ/b¿öjÖCzs¾òh(ð½¥Øø(ñ¥Ø±ÍÌôÉÉÌµÕ±°¥ôÕ±±IÍÕ±ÑÌø(ñ¥Ø±ÍÌôÉÉÌµ±¥ÍÐ¥ôIÍÕ±Ñ1¥ÍÐøð½¥Øø(ñÀ±ÍÌôÉÉÌµÍÑÉ¹Ñ ¥ôIÍÕ±ÑMÑÉ¹Ñ øð½Àø(ð½¥Øø((ñ¥ØÍÑå±ôµÉ¥¸µÑ½ÀèÈÁÁàí­É½Õ¹éÉ ÈÌÈ°ÄØà°ÌÈ°À¸ÀØ¤í½ÉÈèÅÁàÍ½±¥É ÈÌÈ°ÄØà°ÌÈ°À¸È¤í½ÉÈµÉ¥ÕÌèÄÉÁàíÁ¥¹èÄÙÁàÄáÁàø(ñ¥ØÍÑå±ô¥ÍÁ±äéÉ¥íÉ¥µÑµÁ±Ñµ½±Õµ¹ÌèÅÈÅÈíÀèÄÉÁàíµÉ¥¸µ½ÑÑ½´èÄÑÁàø(ñ¥Øø(ñ¥ØÍÑå±ô½¹ÐµÍ¥éèÄÅÁàí½±½ÈéÙÈ ´µ½±¤í½¹ÐµÝ¥¡ÐèÜÀÀí±ÑÑÈµÍÁ¥¹è¸Å´í½¹Ðµµ¥±äéÙÈ ´µÍ¹Ì¤íµÉ¥¸µ½ÑÑ½´èÙÁàû7¢ÊïÇF+¾ò#&o&7¦cj¾ò$ð½¥Øø(ñ¥ØÍÑå±ô½¹ÐµÍ¥éèÄÉÁàí½±½ÈéÙÈ ´µµÕÑ¤í½¹Ðµµ¥±äéÙÈ ´µÍ¹Ì¤í±¥¹µ¡¥¡ÐèÄ¸äûrr¦§B#öj¢ß·ZçBDñÈûröj¢ßÓ§¢Î«.ñÈûröâ/êëjêëó"z@ð½¥Øø(ð½¥Øø(ñ¥Øø(ñ¥ØÍÑå±ô½¹ÐµÍ¥éèÄÅÁàí½±½ÈéÙÈ ´µ½±¤í½¹ÐµÝ¥¡ÐèÜÀÀí±ÑÑÈµÍÁ¥¹è¸Å´í½¹Ðµµ¥±äéÙÈ ´µÍ¹Ì¤íµÉ¥¸µ½ÑÑ½´èÙÁàûº3VÓ26_¾ò!ULÄÃ¾ò$ð½¥Øø(ñ¥ØÍÑå±ô½¹ÐµÍ¥éèÄÉÁàí½±½ÈéÙÈ ´µµÕÑ¤í½¹Ðµµ¥±äéÙÈ ´µÍ¹Ì¤í±¥¹µ¡¥¡ÐèÄ¸äûrö\Â7Zçj¢wªçê@ñÈûrâ'¢K¢&ËRïV¾òkâïº¿B3ê,¿â/Æ°ñÈûrî+§ÂÇ¢÷R£jÂ7¢¦Ç¢Ïr°ð½¥Øø(ð½¥Øø(ð½¥Øø(ñ¡ÉôÁÉ½ÕÑÌÍÑå±ô¥ÍÁ±äé±½¬íÑáÐµ±¥¸é¹ÑÈí½¹ÐµÍ¥éèÄÍÁàí½±½ÈéÙÈ ´µ½±¤í½¹ÐµÝ¥¡ÐèÜÀÀíÑáÐµ½ÉÑ¥½¸é¹½¹í½¹Ðµµ¥±äéÙÈ ´µÍ¹Ì¤û~r/º3VÓ¢ßÓ26\Hð½ø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RR QÍÐQÍÈRR ´´ø(ñÍÑ¥½¸±ÍÌôÑÍÐµÑÍÈ¥ôÑÍÐø(ñ¥Ø±ÍÌôÍÑ¥½¸µ¡Èø(ñ¥Ø±ÍÌôÍÑ¥½¸µû7¢Êïâ³¦¦\ð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±û¦
+â7ëºk¢«ÞÇb¿N«z/¾ò#â³¦¦\ð½ Èø(ñÀ±ÍÌôÍÑ¥½¸µÍÕû&ûëöj5	Q$z/¢f|¬ØÓz/¶C¦{z/¾ò3nÓ:Â7'öj¢ßÓêw¦k26\ð½Àø(ñ¥Ø±ÍÌô¥Ù¥Èøð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉÌø(ñ¥Ø±ÍÌôÑÍÐµÉø(ñ¥Ø±ÍÌôÑÍÐµÉµ¥½¸ûÂ~´ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉµù5	Q$êëóâ³¦¦\ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉµÑ¥Ñ±û&ûëöj¢ßÓêëóz/¢f|ð½¥Øø(ñÀ±ÍÌôÑÍÐµÉµÑáÐûò?¦ãN¦3¾ò3Êûê[â³ëöj5	Q$êëóz/¢f¾ò3º3"Cú3nÓ:Â7'>¿¢Îó¢Êßj¢ßÓÖB#26_B3f¢¦:XØÐz/¦v#¦¶¾óð½Àø(ñ¥Ø±ÍÌôÑÍÐµÉµÑ¥µûÒñÍÁ¸øÈ"¦B`ð½ÍÁ¸ø
+Ü7¢Êìð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉø(ñ¥Ø±ÍÌôÑÍÐµÉµ¥½¸ûÂ~:¼ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉµû¢3·¦§¦7â³¦¦\ð½¥Øø(ñ¥Ø±ÍÌôÑÍÐµÉµÑ¥Ñ±û&ûër¦§B#öjÞös¦c~|ð½¥Øø(ñÀ±ÍÌôÑÍÐµÉµÑáÐøà¦3Þös?÷â³¦¦_¾ò3:£¢Zr²B#ö§¢Î¢"¾?j¢3·¾ò3î>+ör£¦
+/¢3·â·jãþ«.ð½Àø(ñ¥Ø±ÍÌôÑÍÐµÉµÑ¥µûÒñÍÁ¸øÈ"¦B`ð½ÍÁ¸ø
+Ü7¢Êìð½¥Øø(ð½¥Øø(ð½¥Øø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½½ÕÁ±µÅÕ¥è¹¡Ñµ°±ÍÌôÑ¸µÑ°û¦Z//7¢Êïâ³¦¦\Hð½ø(ñÀ±ÍÌôÑÍÐµ½Èû"[¢ð½Àø(ñÀ±ÍÌôÑÍÐµÍ­¥Àµ¹½ÑûÞË~¦O¢«ÞÇjz/¢f¾ò|ñ¡ÉôÉÉÌ½¹±¥¬ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ­¹½ÝQåÁQ½±¤¹±¥¬ ¤íÉÑÕÉ¸±ÍìûnÓ:¦ãz/¢f¾ò3¢ÞÏ¦;â³¦¦\Hð½øð½Àø(ð½ÍÑ¥½¸ø((ð´´RR M½¥°AÉ½½¼AÉÙ¥ÜÅÕ½ÑÌRR ´´ø(ñÍÑ¥½¸±ÍÌôÁÉÙ¥Ü¥ôÁÉÙ¥Üø(ñ¥Ø±ÍÌôÍÑ¥½¸µ¡Èø(ñ¥Ø±ÍÌôÍÑ¥½¸µû¢º¢>7¦,ð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±ûî[G¢ª«¦gî÷26_æ¯êî¦êðð½ Èø(ñ¥Ø±ÍÌô¥Ù¥Èøð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÉ¥ø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÉø(ñÀ±ÍÌôÁÉÙ¥ÜµÅÕ½Ñû3r/"ÃÂ7¢¦Ç¢Ïr³¦
+¦"GnÓ:"«r[¾ò3b;§¦Z/rÂÇ¦g¢¢ª«î&7¢Þâïºjêw¦k¢ºO"G¾?§¦÷r£Ú#¢_¢÷¦?¾ò3¦gî÷ÇF+¢ºO"G~¦Lñ´ûV?¦3â7b¿"Dð½´û¾ò3>«b¿¦ï¦Oâ7Â74ð½Àø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÕÑ¡½Èø(ñÍÁ¸±ÍÌôÁÉÙ¥ÜµÑåÁµù%9(ð½ÍÁ¸ø(âïºz/¢f|MQ(
+Ü¢ßÓâ'æÐ(ð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÉø(ñÀ±ÍÌôÁÉÙ¥ÜµÅÕ½Ñû0â'/¦®cO¢Ïr°¦g/¦£"«Êûê[ê¾ò3"GjÎÂÇb¿ê3î&7"G¦÷¢ª«¦2¿¢¦Ç¾ò3Ûú3¢Ú+¢¦/¢Ú+Î¾ò3>ûr£"G~¦O¢¢ª«î¦êó¾ò0ñ´û¦
+~¦O
+ëî¦êó¦g¢¢ª«r'V ð½´û4ð½Àø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÕÑ¡½Èø(ñÍÁ¸±ÍÌôÁÉÙ¥ÜµÑåÁµù9Q(ð½ÍÁ¸ø(B3ê/z/¢f|%9@
+ÜZÃ&×³>à(ð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÉø(ñÀ±ÍÌôÁÉÙ¥ÜµÅÕ½Ñû3"GÊKÏ"ÃâîôA>¿î¢²oú_¦g¦êóê[º¢ª¨%M(r 9Q(âïºêWâ/râã¢/j¢ª¢¾ò3ÂÇb¿"G¾?§j./¦
+/>?¢þÃ¢ºO"G¢èñ´û¢«ÞÇÖZó¢¯r/¢/êð½´û4ð½Àø(ñ¥Ø±ÍÌôÁÉÙ¥ÜµÕÑ¡½Èø(ñÍÁ¸±ÍÌôÁÉÙ¥ÜµÑåÁµù%M(ð½ÍÁ¸ø(âïºz/¢f|9Q(
+Üz/ò´(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RR DRR ´´ø(ñÍÑ¥½¸±ÍÌôÄ¥ôÄø(ñ¥Ø±ÍÌôÍÑ¥½¸µ¡Èø(ñ¥Ø±ÍÌôÍÑ¥½¸µûâã¢/V?¦0ð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±ûö>¿¢÷Ï~¦Ojê,ð½ Èø(ñ¥Ø±ÍÌô¥Ù¥Èøð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ±¥ÍÐø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄû"Gâ7ëºkÂ7Zçb¿N«/z/¢f¾ò3¦
+¢÷¢Êß^;¾ò|ð½¥Øø(ñÀ±ÍÌôÄµû>¿îö>¿îçNkÂ7Zçj¢3
+ë&çú×ú2sâ³z/¢f¾ò3"[#¢Îó¢Êß¢«ÞÇz/¢fjÒOO&/+¾ò!UL×¾ò'¾ò3¢¦vr'Â7¢£æ¯ö¢ú£¢ª7Â7Zç>¿¢÷jz/¢f¢Êß¦2¿ê"GGær'z/¢fnÓ>or7.g¾ò3¢¿Ö"GGÂÇ÷ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄû¢gê[&#J0AÉ¼&#r'î¦êóÞ»"¾ò|ð½¥Øø(ñÀ±ÍÌôÄµû¢gê[&#¾ò ÄÃ¦¾ò'b¿3¢¢ëZßÞß7¾ò3F+¢¢ÓööGjÖB#b¿î¦êóV?¦3r£N«;¦êóêw¦k¾ò3¦§B#Ïþ¯¦ê¢jêë	AÉ¿&#¾ò Ä×¦îâ+¾ò'b¿3¢3.WÞß7¾ò3kêØÐz/¶C¦{z/¢zCâ'¢»¢ßÓ¢K¢&Ëj"zC¾ò#öb¿âïº¿â/Æ°¿B3ê/jZç#B¢«â7B3¾ò'¦®cOVG¢Ïr³¾ò3î>(Ü^¢3.W¢Þ¿Þkr[¾ò3¦§B#Ïr¶Rç¢º+¦gº×¦^sþjêëð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄûâ³¦¦_>«r$à¦3¾ò3ê[ë^;¾ò|ð½¥Øø(ñÀ±ÍÌôÄµû"GGjà¦3â³¦¦_¦wÂ45	Q$no/Ú·êB¢¢·¢¢ È¦3¢ßÓ¦3¾ò3¢÷r'V#6"âï¢êëó
+ûBGÂ7ZóÞËr'âºk¢«"G¢ª7¢¶cjêë¾ò3ê[ë:¢"ØÀ¦3¦Vßâ³¦¦_nãVÛzsÖCzs¢ºOö¶cZG¾ò3>¿înÓ:r£¦[¦¦ãNö¢ª7
+ënÓ²B#jz/¢fð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄû¢Îó¢Êßú3;¦êó>[ú\A¾ò|ð½¥Øø(ñÀ±ÍÌôÄµû¦?¦8ÕµÉ½¢Îó¢Êß¾ò3îc²û"C*ú3r¢«.W¾¦â/¢ò'¦ÖC"Ãöjµ¥³¾ò3¦kâãâ7¢Ú¦8Ô"¦BcªS#rr'öjB7¶_J0µ¥°Ö»ÂÓ6Ã¾ò3b¿öÂ#Æ³j&#r³ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄû¦gb¿6b"[º_F÷^;¾ò|ð½¥Øø(ñÀ±ÍÌôÄµûâ7b¿	5	Q$b¿~ëZó»ó¢ª7~*¢÷B¢®[jêëó"¦{Þß¾ò3¦v#¦¶¢ßÓÎï"_jÂ7¢¦Ç¢Ïr³¢¢·¢¢#>¢ê9Y¾ò#¦v{jÓ*oêw¦k¾ò'¢Z§>C"ûêw¦k¢z/J0½ÑÑµ¸¦^sþS¦Û"GGâ7¦Câ³r«ú¾ò3"GGÖö>¿î>ûr£ÂÇR£jêw¦kZçò?ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÄµ¥Ñ´ø(ñ¥Ø±ÍÌôÄµÄûB3ê,¿âïºæ¢¢º&7r'R£^;¾ò|ð½¥Øø(ñÀ±ÍÌôÄµûâ7¦r¢26_j¢¢·¢¢#ZçBGb¿3zs>«r'öâ/êëRç¢º+¾ò3æ¢÷¢ºO¦gº×¦^sþú&7¢ÖÃ7öâ7¢÷òß¢þ¯Â7ZçRç¾ò3öö>¿îRç¢º+ö¢ª«jZçò?¾ò3¢ºOÂ7ZçnÓ¢÷:RÛöÏ
+Ï¦SjvÇ¢ÿð½Àø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RR ¥¹°
+QRR ´´ø(ñÍÑ¥½¸±ÍÌô¥¹°µÑø(ñ ÈûöÞËÚO>_¦
+º×¢ª«â7¦kj¦^sþêð½ Èø(ñÀûî+§.ÿ"ÃöjÂ7¢¦Ç¢Ïr³¾ò3b;§jÂ7¢¦ÇÂÇâ7â¢êð½Àø(ñ¥Ø±ÍÌô¥¹°µÑµÑ¹Ìø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½½ÕÁ±µÅÕ¥è¹¡Ñµ°±ÍÌôÑ¸µÑ°ûj#7¢Êïâ³¦¦_z/¢f|ð½ø(ñ¡ÉôÁÉ½ÕÑÌ±ÍÌôÑ¸µÍ½¹ÉäûÂ~NnÓ:¦ã¢Îó26\ð½ø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RR MÉ¥Ì9Ù¥Ñ¥½¸RR ´´ø(ñÍÑ¥½¸±ÍÌôÍÉ¥ÌµÍÑ¥½¸ø(ñ¥Ø±ÍÌôÍÑ¥½¸µ¡ÈÍÑå±ôµÉ¥¸µ½ÑÑ½´èÌÙÁàø(ñ¥Ø±ÍÌôÍÑ¥½¸µû¦v#¦¶ººgÎï"\ð½¥Øø(ñ È±ÍÌôÍÑ¥½¸µÑ¥Ñ±û¦
+r'N«êoÎï"_¦§B#ö¾ò|ð½ Èø(ñÀ±ÍÌôÍÑ¥½¸µÍÕû¢ßÓæ/[¾ò3¦v#¦¶ººgææ¯ö¢¢º¢«¶CúÛ>/¢"nÓkêëRÓf¼ð½Àø(ñ¥Ø±ÍÌô¥Ù¥Èøð½¥Øø(ð½¥Øø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉ¥ø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½½ÕÁ±µÅÕ¥è¹¡Ñµ°±ÍÌôÍÉ¥ÌµÉø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµ¥½¸ûÂ~°ð½ÍÁ¸ø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉµÑ¥Ñ±û¦v#¦¶â³¦¦\ð½¥Øø(ñÀ±ÍÌôÍÉ¥ÌµÉµÍû7¢Êì5	Q$â³¦¦_¾ò3Êûê[&ûëöjêëó¾ó¾ò3b¿&r'Îï"_j¢Öß¦îxð½Àø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµû7¢Êìð½ÍÁ¸ø(ð½ø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½ÁÉ¹Ñ¥¹¹¡Ñµ°±ÍÌôÍÉ¥ÌµÉø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµ¥½¸ûÂ~F£7Â~F§7Â~Fð½ÍÁ¸ø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉµÑ¥Ñ±û¦v#¦¶¢«¶@ð½¥Øø(ñÀ±ÍÌôÍÉ¥ÌµÉµÍû¢¢ºö¢"¶§¶Cæ/¦ZOj§R¦ï¦O¾ò3â77¦n{B3¦Ò£¢²o¾ò3&ûn{¦Ö@ð½Àø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµûêw¦k26\ð½ÍÁ¸ø(ð½ø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉÕÉÉ¹Ðø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµ¥½¸ûjS¾â<ð½ÍÁ¸ø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉµÑ¥Ñ±û¦v#¦¶¢ßÐð½¥Øø(ñÀ±ÍÌôÍÉ¥ÌµÉµÍûÓ¢¢ßÓêw¦knÃ¾ò0ÈÔØ¢»ÖB#¾ò3nÓ:ÖöÂ7¢¦Ç¢Ïr°ð½Àø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµûör£¦g¢ð½ÍÁ¸ø(ð½¥Øø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½½ÕÁ±¹¡Ñµ°±ÍÌôÍÉ¥ÌµÉø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµ¥½¸ûÂ~JTð½ÍÁ¸ø(ñ¥Ø±ÍÌôÍÉ¥ÌµÉµÑ¥Ñ±û¦v#¦¶|ð½¥Øø(ñÀ±ÍÌôÍÉ¥ÌµÉµÍû¢óö¢">â6+÷>/æ/¦ZOj§R¦ï:¾ò3¢wªâ77¦ÖCnÓÞÄð½Àø(ñÍÁ¸±ÍÌôÍÉ¥ÌµÉµûúØµÀì>/ð½ÍÁ¸ø(ð½ø(ð½¥Øø(ð½ÍÑ¥½¸ø((ð´´RR ½½ÑÈRR ´´ø(ñ½½ÑÈø(ñ¥Ø±ÍÌô½½ÑÈµ±½¼ûjS¾â<¦v#¦¶¢ßÐ
+ÜM½Õ°U¹¥ÙÉÍð½¥Øø(ñÀ±ÍÌô½½ÑÈµÑ±¥¹ùQ¡ÅÕ¥ÐÙ½¥Ý¥Ñ¡¥¸¥Ìµä±½ÕÍÐÕ¥¸ð½Àø(ñ¥Ø±ÍÌô½½ÑÈµ±¥¹­Ìø(ñ¡ÉôÁÉ½ÕÑÌû¢ßÓ26\ð½ø(ñ¡ÉôÉÉÌû¦§B#¢ß´ð½ø(ñ¡Éô¡ÑÑÁÌè¼½¥ÈØÀÌÁ¤µÍÑÈ¹¥Ñ¡Õ¹¥¼½Í½Õ°µÑÍÐ½½ÕÁ±µÅÕ¥è¹¡Ñµ°û7¢Êïâ³¦¦\ð½ø(ñ¡Éô¡ÑÑÁÌè¼½¥ÉÝÙÔÔÌ¹ÕµÉ½¹½´ÑÉÐô}±¹¬ùÕµÉ½Vê\ð½ø(ñ¡Éôû¦v#¦¶¦ÿ¦£â¼ð½ø(ð½¥Øø(ñÀ±ÍÌô½½ÑÈµ½Áäû
+¤ÈÀÈØM½Õ°U¹¥ÙÉÍ
+Ü¦v#¦¶ººd
+Ü±°É¥¡ÑÌÉÍÉÙ¸ð½Àø(ð½½½ÑÈø((ñÍÉ¥ÁÐø(¼¼RR 
+ÉÈÑRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )½¹ÍÐ
+IILôì(%9Q(éíÑ¥Ñ±è%9Q("ÃVºØ±ÍÕÑ¥Ñ±è¦cf¿¢¢·¢¢#¢
+Üß¦vs~ß¢3¢°(©½Ìél¶[V¦V<°¢ÎZgG¶ãºØ°ÎïÖÇzÛ/â¬°ÎWú/S¦ÛN°*W¢Î"zCâ¬°RN¶[Vâ¬°¶ã¢OS¦ÛN°ÚË¢Þ¿º'£Â#ºØt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûr/¢/"êër/â7¢/j¢ò<ð½´û¾ò3âr£Þßêâ·îë®/âfÃjÎïÖÇr¦§B#¦r¢¦Vßr¢?*6£®/w¢j¦®c¢¦nsêÞösô°(%9Q@éíÑ¥Ñ±è%9Q@¦
+?¢ò¿¶ãºØ±ÍÕÑ¥Ñ±èB¢®[îë/¢
+ÜÎïÖÇw¢¢°(©½Ìél¢î¦®SÞ¢/â¬°Vã¶ãS¦ÛN°NË¶ãVg: °ÎïÖÇ"zCâ¬°¢Î¢¢+º'£S¦ÛN°$Þ¢/â¬°*¢OZîÛJÃ¾¬°Êûº_â¬t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û.¢V?¦3jêWÆ¦
+?¢ò¼ð½´û¾ò3*+¢¦nsj:B¢º+"C>¿B¢j¢z/r¦§B#¦r¢2ê3ÞÇ2[j*¢O"[¶ã¢Oz/Þösô°(9Q(éíÑ¥Ñ±è9Q(2>»º`±ÍÕÑ¥Ñ±è§R¦cÂ;¢
+Ün»¢g¦¦.Wz,°(©½Ìél~ß¢3¦VÜ°&×·ºØ°ºB¦V<°*W¢Î¦*¢3ºØ°ú/â¬°ò·fóÆWâïº°Rÿ¶["Û¢¢¢°¦/â÷nt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û*+¢Î+j¦cf¿¢º+"CâfÃj~ß¢3¢¢#V¬ð½´û¾ò3â¦¦.Wrc¦j+¦®cV#º3"Cr¦§B#¦r¢Æë¶[*o¢"öÇ¦~ÿ*oj¦cÂ;z/¢ßö7ô°(9Q@éíÑ¥Ñ±è9Q@¢ú¿¢®[ºØ±ÍÕÑ¥Ñ±è&×?ÓÆ¢
+Ü¢Þ£V3¦ÖC¢°(©½Ìél&×·ºØ°¢3¦*ß¶[Vâ¬°ú/â¬°RN¢¢·¢¢#â¬°¦£¦j«*W¢Îêè°îF+&×?â÷n°G*¢¢c¢°¦V<t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û&OÓ^r'zÛ¾ò3&û"Ã"êëÊKÏ"ÃjªÓ>ð½´ûr¦§B#¦®cê.W/¦r¢&×?¢ÆëV?¦3jJÃô°(%9(éíÑ¥Ñ±è%9(>C¢±ÍÕÑ¥Ñ±èÒ{¾êëþjBÏâïú§¢°(©½ÌélþB¢®»Vâ¬°ûrò·ºØ°ösºØ°êë*o¢ÎêC¦V<°~ç¢¢Oâ¬°N&3Vê/¶[Vâ¬°¦v{"§ÖæSºB°Vg¢
+ËÞös¢t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûB¢êëjþ¦rÆ¾ò3â*+º¢ö'2["Cr'?ú§j¢3.Tð½´ûr¦§B#¢÷¢ºOöRRÞÇêöÇ¦~ÿjÞös¾ò3¢3â7b¿ÖÂÓÞkò?jîï.gô°(%9@éíÑ¥Ñ±è%9@¢ªÿs¢±ÍÕÑ¥Ñ±èçó¦¦.Wj&×?¢°(©½ÌélZ#&×ös¢°ûÞâ¬°¢^w¢OºØ°U`S¦ÛN°þBÊïfâ¬°êëZ¶ãGVgâ¬°>KV¯â¬°N&3Z2[¢?*t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û*+¢"çó¢¢ö'2["Cr¾>¿>_jösN"[r7.dð½´ûr¦§B#r'&×ös¢«RÇê¾ò3âS¢÷¦ÖCêë¢"?ú§jÞösô°(9(éíÑ¥Ñ±è9(âïêë°±ÍÕÑ¥Ñ±èþ.×î[êë"C¦Vßj¦cÂ;¢°(©½Ìélò·~ç¢¢Oâ¬°³¦^sâïîì°êë*o¢ÎêCâïº°Vgâ¬°RÚ¿VgÞÐ°N&3öü°ûú¢3¦*ßâïº°¦v{RÿêsÖæSâïºt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û~î[êëjöo*oâæ¯*§î[G"C¦VÜð½´ûr¦§B#îêë
+ëãþjÞös¾ò3¢ºOö¢÷B3föÇ¦~ÿ/êë¢"ÖæSZ2[ô°(9@éíÑ¥Ñ±è9@Òï.WºØ±ÍÕÑ¥Ñ±èîÿ~O*oj&×?:Ò¢°(©½Ìél¢3¦*ß&×?â÷n°N&3¶[Vâ¬°¢¢c¢°RÚ¿VgÞÐ°ûúªK¦®SÚOB°RN¢3¦*Ü°³ÇòS¢²o¢°Òï.W¶[*t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û¦î{î[êëjÇ¾ò3â
+ë¾?/¢¢#V¯Î£?ú§|ð½´ûr¦§B#kþ¯¦¢º+.Wr'¦r¦ÖCêëþjÞösJÃô°(%MQ(éíÑ¥Ñ±è%MQ(&§Öâ¬±ÍÕÑ¥Ñ±è>¿¦v¦§jÎïÖÇº#¢¶ß¢°(©½Ìélr¢¢#â¬°¢÷ãN°¢3RÿºBâ¬°ÎWú/*§B°N¢Î«:º°¢Ê.g"zCâ¬°¢ÎZgê¯ºBN°¦£¦j«ºBâ¬t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûîë®/§ê?ëþwÎïÖÇ>¿¦v¦/¢0ð½´ûr¦§B#¦r¢Êûëê¦®cÖ¢/jÓ¢²ç¢Ê³îïb;ëj¢ßö7ô°(%M(éíÑ¥Ñ±è%M(º#¢¶ß¢±ÍÕÑ¥Ñ±è¦îc¦îcR¿JCÖæSj¦^s¦6×*o¦<°(©½Ìél¢¶ßBâ¬°¢3Rÿ*§B°ºr7âïº°ûrÞös¢°&çVg¢â¬°r[nã¦£N°êëê/¢3Rü°RNâ³¢¦Þ¢/â¬t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûÒÃþ¦î[êëj¦rÆ¾ò3¢ºOF£r7jêë"Ãº'þð½´ûr¦§B#¢÷r/"Ãö*«*ojâ·Â?z/rc¦j+¾ò3¢3â7b¿z/ºckÖæSô°(MQ(éíÑ¥Ñ±èMQ(â÷ÚOB±ÍÕÑ¥Ñ±è¾ê/Æb¿j~ß¢3¢°(©½Ìélò·âïº°Â##ÚOB°ÎWº`°¢Ê.g¦VÜ°¢î7ê/2>»º`°¦¯¦f¢3Rÿâïº°Vg¢
+Ë¢3RÿºcN°¢÷ã¦VÜt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûîë®/âfÃ¢?&¦®cV#~ß¢3¢ºOrc¦j+r'§ê?rÃ¦/öpð½´ûr¦§B#¦r¢òß*oºB¢"V?¢Ê³¦"ÛjÖæSz/¢K¢&Ëô°(M(éíÑ¥Ñ±èM(~ßRÿº`±ÍÕÑ¥Ñ±èw¢kêëþjJ3¢®:£.W¢°(©½Ìél·.gâïº°³¦^s¦V<°êëê/¢3Rü°Òï.W¢?*â¬°¦¯f¢3Rü°Â?¶ã¢â¬°º"Û"C*ÚOB°N&3ûúºBt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û¢ºêë¦jo.W/¾ò3¢ºO¾?/êë¦÷>_"Ã¢¯¦ð½´ûr¦§B#r7.gÂ;BG¦®cêêë¦joêK.Wj¢ßö7¾ò3r£¦§ºkjÖæSâ·r¢÷fó'ô°(%MQ@éíÑ¥Ñ±è%MQ@¦FG¢Î{ºØ±ÍÕÑ¥Ñ±èß¦vs¢ÆëV?¦3j¾ös¢°(©½Ìél¦ÃÞ¢/â¬°Þ·¢¢·¢¢#â¬°[G¦¯â¬°¢Îº'"zCâ¬°¦o¢3N°Æ÷¢î+*â¬°ÎW¦¯G¶ãºØ°Ö3ò?ÎïÖÇÞ¢/â¬t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûr£¦®cO"[¢¦nsj¾¦joâ·þ¯¦&û"Ã¢ÎTð½´ûr¦§B#r'¾¦joN7ös¦r¢6Ïf"Zßj*¢Oz/Þösô°(%M@éíÑ¥Ñ±è%M@:¦j«ºØ±ÍÕÑ¥Ñ±èºcÒÃ¢§j&×ös¢°(©½ÌélæÏ¦v¢¢·¢¢#â¬°RwöÇâ¬°îkâ¬°¢^w¢OÊïfâ¬°º¢¢·¢¢#â¬°r7¢w¢¢·¢¢#â¬°6ã¦¯â¬°&§BÊïfâ¬t°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û*+Â7ú;¢"ÒÃ¾j~¾ò3¢ö'2["C¢ã.WêëþjösN"[¦®S¦¦\ð½´ûr¦§B#r'&×ös¢«âï¦ë¦ZOâ7þ¾?§¦Z/rjÞösJÃô°(MQ@éíÑ¥Ñ±èMQ@ò·ºØ±ÍÕÑ¥Ñ±è¢3.W«#j>û¾âïú§¢°(©½Ìél·.gN°&×·ºØ°Þ+VG>ÓêëN°¢
+£êbON°Òï.WÖÇÆ0°"ÿrÃR·.d°¦/.WNVgÞÐ°¢®"Â#ºØt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´ûr£Þßê"[¦®cOJÃâ·®/6Ï¢3.W¾ò3*+¦r¢ö'2["CÖCzpð½´ûr¦§B#þ¯¦Æë¶[>ûÓ'¢º+jJÃ¾ò3â7¦§B#¦?Znã"[¦vs/"zCÞösô°(M@éíÑ¥Ñ±èM@¢£òS¢±ÍÕÑ¥Ñ±è¦î{ê»>ûÓj¢÷¦?â·þ°(©½ÌélòSN°Òï.W¶[*°¢3¦*ß·.d°³¦^sÂ#N°æóKVgâ¬°^¦+Â;¢ô°N&3:£îöü°ûúªK¦®S¦Sêèt°(ÍÑÉ¹Ñ èöj§¢Îr£Zðñ´û&×¦¢ºOêë¦nþcjVÛâ/¦®S¦¦_¾ò3â¢ºOF£r7jêë"Ãr'Òï*lð½´ûr¦§B#¦®cêûê¦r¢6Ï¢"#'Â7r'>Ã&7nw'¦rjÞösô)ôì((¼¼RR -¹½Üe½ÕÈQåÁÑ½±RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )Õ¹Ñ¥½¸Ñ½±-¹½ÝQåÁ ¥ì(½¹ÍÐÑ¸ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ­¹½ÝQåÁQ½±¤ì(½¹ÍÐÁ¹°ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ­¹½ÝQåÁA¹°¤ì(½¹ÍÐ¥Í=Á¸ôÁ¹°¹±ÍÍ1¥ÍÐ¹½¹Ñ¥¹Ì ½Á¸¤ì(¥¡¥Í=Á¸¥ì(Á¹°¹±ÍÍ1¥ÍÐ¹Éµ½Ù ½Á¸¤ì(Ñ¸¹±ÍÍ1¥ÍÐ¹Éµ½Ù ½Á¸¤ì(ô±Íì(Á¹°¹±ÍÍ1¥ÍÐ¹ ½Á¸¤ì(Ñ¸¹±ÍÍ1¥ÍÐ¹ ½Á¸¤ì(ô)ô()Õ¹Ñ¥½¸Í±ÑQåÁ¡ÑåÁ¥ì(¼¼!¥¡±¥¡ÐÕÑÑ½¸(½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹ÑåÁµÑ¸¤¹½É ¡ôø¹±ÍÍ1¥ÍÐ¹Éµ½Ù Ñ¥Ù¤¤ì(Ù¹Ð¹ÑÉÐ¹±ÍÍ1¥ÍÐ¹ Ñ¥Ù¤ì(¼¼)ÕµÀÑ¼ÉÉÌÍÑ¥½¸¹Í¡½ÜÉÍÕ±Ð(Í¡½Ý
+ÉÉÌ¡ÑåÁ°¹Õ±°¤ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÌ¤¹ÍÉ½±±%¹Ñ½Y¥Ü¡í¡Ù¥½ÈèÍµ½½Ñ ô¤ì(¼¼±Í¼¡¥¡±¥¡Ð¥¸ÉÈÉ¥(ÍÑQ¥µ½ÕÐ  ¤ôøì(½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹ÑåÁµÑ¸¤¹½É ¡ôøì(¹±ÍÍ1¥ÍÐ¹Ñ½± Ñ¥Ù°¹ÑáÑ
+½¹Ñ¹ÐôôôÑåÁ¤ì(ô¤ì(ô°ÐÀÀ¤ì)ô((¼¼RR 
+ÉÉÌµ¥°ÑRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR (¼¼µ¥±)L¢¢·ºk¾ò#¢®/nÿ>o
+ëö¢«ÞÇj%¾ò'¾òh(¼¼Ä¸"À¡ÑÑÁÌè¼½µ¥±©Ì¹½´7¢Êï¢¢ï((¼¼È¸9ÜMÉÙ¥H¦ÖCöjµ¥°(¼¼Ì¸µ¥°QµÁ±ÑÌHîë®/¢vÿ¾ò#¢/â/Zç¢ª«b;¾ò$(¼¼Ð¸*+îâ/â'/ónÿ>o
+ëöj¾¦jl%)½¹ÍÐ5%1)M}MIY%
+}%ôÍÉÙ¥}µµ¨àÈàì)½¹ÍÐ5%1)M}Q5A1Q}%ôÑµÁ±Ñ}¤ÑáÈÅÐì)½¹ÍÐ5%1)M}AU	1%
+}-dôÕÅAM]1U]±HÑPäÄÕTì((¼¼µ¥±)L¢vÿ¢º+Vã¢ª«b;¾ò#r µ¥±©Ì¹½´îë®/¢vÿföÿR£¾ò'¾òh(¼¼ííÑ½}µ¥±õôPRÛîÛ¢µ¥³¾ò#R£"Û¢òã¾ò$(¼¼ííÑåÁ}½õôP5	Q$z/¢f¾ò3ú/%9((¼¼ííÍ½Õ±}¹µõôP¦v#¦¶B7¾ò3ú/º#¢¶ßÂÓ¦¶(¼¼íí©½Í}±¥ÍÑõôP¢ß·"_¢£¾ò#>o¢3"¦jS¾ò$(¼¼ííÍÑÉ¹Ñ¡õôP§¢Î«.¢ª«b8()±ÐÕÉÉ¹Ñ
+ÉÉÍQåÁô¹Õ±°ì()ÑÉäì(µ¥±©Ì¹¥¹¥Ð¡ìÁÕ±¥-äè5%1)M}AU	1%
+}-dô¤ì)ôÑ ¡¤ì(½¹Í½±¹ÝÉ¸ µ¥±)L¥¹¥Ð¥±è°¤ì)ô((¼¼RR 
+ÉÉÌ¥ÍÁ±äRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )Õ¹Ñ¥½¸Í¡½Ý
+ÉÉÌ¡ÑåÁ°Ñ¸¥ì(¼¼nÓZÃ2'¦"W.,(½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹ÑåÁµÑ¸¤¹½É ¡ôø¹±ÍÍ1¥ÍÐ¹Éµ½Ù Ñ¥Ù¤¤ì(¥¡Ñ¸¤Ñ¸¹±ÍÍ1¥ÍÐ¹ Ñ¥Ù¤ì((½¹ÍÐô
+IIMmÑåÁtì(¥ ¤ÉÑÕÉ¸ì(ÕÉÉ¹Ñ
+ÉÉÍQåÁôÑåÁì((¼¼¢g¦0(½Õµ¹Ð¹Ñ±µ¹Ñ	å% IÍÕ±ÑQ¥Ñ±¤¹ÑáÑ
+½¹Ñ¹Ðô¹Ñ¥Ñ±ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% IÍÕ±ÑMÕÑ¥Ñ±¤¹ÑáÑ
+½¹Ñ¹Ðô¹ÍÕÑ¥Ñ±ì((¼¼¦C¢÷¾òk&4Ï/âfÃ¾ò3ú0×/¢Î((½¹ÍÐÁÉÙ¥Ý°ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% AÉÙ¥Ý1¥ÍÐ¤ì(ÁÉÙ¥Ý°¹¥¹¹É!Q50ô¹©½Ì¹µÀ ¡¨°¤¤ôø(ñ¥Ø±ÍÌôÉÈµÁÉÙ¥ÜµÑí¤øôÌü±ÕÉÉèôøí©ôð½¥Øù(¤¹©½¥¸ ¤ì((¼¼£¦£ÖCzs¾ò#¦jÇ¢^?¾ò3¦ëú3&7¦¿ë¾ò$(½Õµ¹Ð¹Ñ±µ¹Ñ	å% IÍÕ±Ñ1¥ÍÐ¤¹¥¹¹É!Q50ô¹©½Ì¹µÀ¡¨ôø(ñ¥Ø±ÍÌôÉÈµÑøí©ôð½¥Øù(¤¹©½¥¸ ¤ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% IÍÕ±ÑMÑÉ¹Ñ ¤¹¥¹¹É!Q50ô¹ÍÑÉ¹Ñ ì((¼¼¦7ö¸µ¥°²ö7¢".,(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±%¹ÁÕÐ¤¹Ù±Õôì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±	Ñ¸¤¹¥Í±ô±Íì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±	Ñ¸¤¹ÑáÑ
+½¹Ñ¹Ðô7¢Êï¦c>XHì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±Ñ¤¹ÍÑå±¹¥ÍÁ±äô±½¬ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍM¹Ñ5Í¤¹±ÍÍ1¥ÍÐ¹Éµ½Ù Í¡½Ü¤ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% Õ±±IÍÕ±ÑÌ¤¹±ÍÍ1¥ÍÐ¹Éµ½Ù Í¡½Ü¤ì((¼¼¦¿ëÖCzs6(½¹ÍÐÉÍÕ±Ðô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍIÍÕ±Ð¤ì(ÉÍÕ±Ð¹±ÍÍ1¥ÍÐ¹Éµ½Ù Ù¥Í¥±¤ì(Ù½¥ÉÍÕ±Ð¹½ÍÑ]¥Ñ ì(ÉÍÕ±Ð¹±ÍÍ1¥ÍÐ¹ Ù¥Í¥±¤ì(ÉÍÕ±Ð¹ÍÉ½±±%¹Ñ½Y¥Ü¡í¡Ù¥½ÈèÍµ½½Ñ °±½¬è¹ÉÍÐô¤ì)ô((¼¼RR ¦¿ë¦ëú3./¾ò!µ¥°"C*Kâ7¦¿ëº3VÓÖCzs¾ò3ÇV_K¦¿ë¾ò'RRRRRRRRRRRRRR )Õ¹Ñ¥½¸ÉÙ±Õ±±IÍÕ±ÑÌ¡µ¥°°ÍÕÍÌ¥ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±Ñ¤¹ÍÑå±¹¥ÍÁ±äô¹½¹ì(½¹ÍÐÍ¹Ñ°ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍM¹Ñ5Í¤ì(¥¡ÍÕÍÌ¥ì(¼¼µ¥°"C*¾òk>«¦¿ë&4Ï¦C¢÷¾ò3òWÂ;:ïþºÇ~r/º3VÓÖCzp(Í¹Ñ°¹¥¹¹É!Q50ô(rº3VÓ¢ß·ÇF+ÞË¾"ÀñÍÑÉ½¹ø¬µ¥°¬ð½ÍÑÉ½¹û¾òñÈø(¬ñÍÁ¸ÍÑå±ô½¹ÐµÍ¥éèÄÍÁàí½Á¥Ñäè¸àÔûâ+Zç¦¿ë&4Ï/ZçBG¾ò3º3VÐã/¢ß´¬§¢Î"zCr£þºÇ¢Â~N¤ð½ÍÁ¸øñÈø(¬ñÍÁ¸ÍÑå±ô½¹ÐµÍ¥éèÄÅÁàí½Á¥Ñäè¸ØûÊKr/"Ã¾ò¢®/ª~zrûþîÛøð½ÍÁ¸øì(¼¼â7¦¿èÕ±±IÍÕ±ÑÏ¾ò3þw2¢ªcn:ïRÛþ(ô±Íì(¼¼µ¥°ÇV_¾òk&7r£¦¦v¦¿ëº3VÓÖCzs¾ò3¦ÿ7R£"Ûf÷¶$(Í¹Ñ°¹¥¹¹É!Q50ô(röj¢ß·"zCÖCzsâ,ñÈø(¬ñÍÁ¸ÍÑå±ô½¹ÐµÍ¥éèÄÉÁàí½Á¥Ñäè¸Üû¾ò#þºÇ¦k~j¯fÎW¦¦S¾ò3º3VÓÖCzsâ/¾ò$ð½ÍÁ¸øì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% Õ±±IÍÕ±ÑÌ¤¹±ÍÍ1¥ÍÐ¹ Í¡½Ü¤ì(ô(Í¹Ñ°¹±ÍÍ1¥ÍÐ¹ Í¡½Ü¤ì)ô((¼¼RR ¦èµ¥°RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )Õ¹Ñ¥½¸Í¹
+ÉÉÍµ¥° ¥ì(½¹ÍÐµ¥±%¹ÁÕÐô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±%¹ÁÕÐ¤ì(½¹ÍÐÑ¸ô½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±	Ñ¸¤ì(½¹ÍÐµ¥°ôµ¥±%¹ÁÕÐ¹Ù±Õ¹ÑÉ¥´ ¤ì((¥ µ¥°ñðµ¥°¹¥¹±ÕÌ  ¤¥ì(µ¥±%¹ÁÕÐ¹ÍÑå±¹½ÉÉ
+½±½ÈôÀÔÀÔÀì(µ¥±%¹ÁÕÐ¹Á±¡½±Èô¢®/¢òãr'V#jµ¥°ì(ÍÑQ¥µ½ÕÐ  ¤ôøì(µ¥±%¹ÁÕÐ¹ÍÑå±¹½ÉÉ
+½±½Èôì(µ¥±%¹ÁÕÐ¹Á±¡½±Èôå½ÕÉµ¥°¹½´ì(ô°ÈÀÀÀ¤ì(ÉÑÕÉ¸ì(ô((¥ ÕÉÉ¹Ñ
+ÉÉÍQåÁ¤ÉÑÕÉ¸ì(½¹ÍÐô
+IIMmÕÉÉ¹Ñ
+ÉÉÍQåÁtì((Ñ¸¹¥Í±ôÑÉÕì(Ñ¸¹ÑáÑ
+½¹Ñ¹Ðô¾¦â·ì((¼¼VÓB¢ß·"_¢ (½¹ÍÐ©½Í1¥ÍÐô¹©½Ì¹µÀ ¡¨°¤¤ôøí¤¬Åô¸í©õ¤¹©½¥¸ q¸¤ì(¼¼ï¦f!Q50¢gÆ(½¹ÍÐÍÑÉ¹Ñ¡QáÐô¹ÍÑÉ¹Ñ ¹ÉÁ± ¼ñmxùt¬ø½°¤ì((¼¼nãºäµ¥±)L¦C¢¢·¢vÿ¢º+Vã¾ò!É½µ}¹µ¼µÍÍ¼ÉÁ±å}Ñ¿¾ò$(¼¼B3fâÛ¢«¢¢¢º+Vã¾ò!ÑåÁ}½¼Í½Õ±}¹µ¼©½Í}±¥ÍÐ¼ÍÑÉ¹Ñ£¾ò$(½¹ÍÐµÍ	½äô@¬ÕÉÉ¹Ñ
+ÉÉÍQåÁ¬D¬¹Ñ¥Ñ±(¬q¹q»¦§B#¢ß·¾òiq¸¬©½Í1¥ÍÐ(¬q¹q»§¢Î«.¾òiq¸¬ÍÑÉ¹Ñ¡QáÐ(¬q¹q»R£"Øµ¥³¾òh¬µ¥°ì((½¹ÍÐÑµÁ±ÑAÉµÌôì(Ñ½}µ¥°èµ¥°°(É½µ}¹µè¦v#¦¶¢ßÐM½Õ°U¹¥ÙÉÍ°(ÉÁ±å}Ñ¼èµ¥°°(ÑåÁ}½èÕÉÉ¹Ñ
+ÉÉÍQåÁ°(Í½Õ±}¹µè¹Ñ¥Ñ±°(©½Í}±¥ÍÐè©½Í1¥ÍÐ°(ÍÑÉ¹Ñ èÍÑÉ¹Ñ¡QáÐ°(µÍÍèµÍ	½ä°(ÉÁ½ÉÑ}Ñ¥Ñ±è¦v#¦¶¢ßÐ
+Ü¢ß·ZçBGÇF((ôì((¼¼R Ñ nÓ:Fó>¬µ¥±)LIMPA'¾ò#¾PM,nÓ>¿¦v¾ò$(½¹ÍÐÁå±½ôì(ÍÉÙ¥}¥è5%1)M}MIY%
+}%°(ÑµÁ±Ñ}¥è5%1)M}Q5A1Q}%°(ÕÍÉ}¥è5%1)M}AU	1%
+}-d°(ÑµÁ±Ñ}ÁÉµÌèÑµÁ±ÑAÉµÌ(ôì((Ñ  ¡ÑÑÁÌè¼½Á¤¹µ¥±©Ì¹½´½Á¤½ØÄ¸À½µ¥°½Í¹°ì(µÑ¡½èA=MP°(¡ÉÌèì
+½¹Ñ¹ÐµQåÁèÁÁ±¥Ñ¥½¸½©Í½¸ô°(½äè)M=8¹ÍÑÉ¥¹¥ä¡Áå±½¤(ô¤(¹Ñ¡¸¡ÉÌôøì(¥¡ÉÌ¹½¬¥ì(ÉÙ±Õ±±IÍÕ±ÑÌ¡µ¥°°ÑÉÕ¤ì(ô±Íì(ÉÑÕÉ¸ÉÌ¹ÑáÐ ¤¹Ñ¡¸¡ÉÉQáÐôøì(¼¼*+¦2¿¢ª¦¿ër£¦¦v¢ºO"GGr/"À(½¹Í½±¹ÉÉ½È µ¥±)L!QQ@¬ÉÌ¹ÍÑÑÕÌ¬è°ÉÉQáÐ¤ì(½Õµ¹Ð¹Ñ±µ¹Ñ	å% ÉÉÍµ¥±Ñ¤¹ÅÕÉåM±Ñ½È ¹ÉÉÌµµ¥°µÑµÑ¥Ñ±¤¹ÑáÑ
+½¹Ñ¹Ðô(j¾â<¦2¿¢ª¬ÉÌ¹ÍÑÑÕÌ¬¾òh¬ÉÉQáÐì(Ñ¸¹¥Í±ô±Íì(Ñ¸¹ÑáÑ
+½¹Ñ¹Ðô7¢Êï¦c>XHì(ô¤ì(ô(ô¤(¹Ñ ¡ÉÈôøì(½¹Í½±¹ÉÉ½È Ñ ÉÉ½Èè°ÉÈ¤ì(ÉÙ±Õ±±IÍÕ±ÑÌ¡µ¥°°±Í¤ì(ô¤ì)ô((¼¼RR D½É¥½¸RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹ÄµÄ¤¹½É ¡Äôøì(Ä¹Ù¹Ñ1¥ÍÑ¹È ±¥¬° ¤ôøì(½¹ÍÐ¥Ñ´ôÄ¹ÁÉ¹Ñ±µ¹Ðì(½¹ÍÐÝÍ=Á¸ô¥Ñ´¹±ÍÍ1¥ÍÐ¹½¹Ñ¥¹Ì ½Á¸¤ì(½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹Äµ¥Ñ´¤¹½É ¡¤ôø¤¹±ÍÍ1¥ÍÐ¹Éµ½Ù ½Á¸¤¤ì(¥ ÝÍ=Á¸¤¥Ñ´¹±ÍÍ1¥ÍÐ¹ ½Á¸¤ì(ô¤ì)ô¤ì((¼¼RR MÉ¥ÌÉ½Á½Ý¸¡±¥¬Ñ½±¤RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )½¹ÍÐÍÉ¥Í	Ñ¸ô½Õµ¹Ð¹ÅÕÉåM±Ñ½È ¹¹ØµÍÉ¥ÌµÑ¸¤ì)½¹ÍÐÍÉ¥Í9Øô½Õµ¹Ð¹ÅÕÉåM±Ñ½È ¹¹ØµÍÉ¥Ì¤ì)¥¡ÍÉ¥Í	Ñ¸¥ì(ÍÉ¥Í	Ñ¸¹Ù¹Ñ1¥ÍÑ¹È ±¥¬°ôøì(¹ÍÑ½ÁAÉ½ÁÑ¥½¸ ¤ì(ÍÉ¥Í9Ø¹±ÍÍ1¥ÍÐ¹Ñ½± ½Á¸¤ì(ô¤ì(½Õµ¹Ð¹Ù¹Ñ1¥ÍÑ¹È ±¥¬°ôøì(¥ ÍÉ¥Í9Ø¹½¹Ñ¥¹Ì¡¹ÑÉÐ¤¤ÍÉ¥Í9Ø¹±ÍÍ1¥ÍÐ¹Éµ½Ù ½Á¸¤ì(ô¤ì)ô((¼¼RR Mµ½½Ñ ¹ØÑ¥Ù¡¥¡±¥¡ÐRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR )½¹ÍÐÍÑ¥½¹Ìô½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ÍÑ¥½¹m¥t¤ì)½¹ÍÐ¹Ù1¥¹­Ìô½Õµ¹Ð¹ÅÕÉåM±Ñ½É±° ¹¹Øµ±¥¹­Ì¤ì)Ý¥¹½Ü¹Ù¹Ñ1¥ÍÑ¹È ÍÉ½±°° ¤ôøì(±ÐÕÉÉ¹Ðôì(ÍÑ¥½¹Ì¹½É ¡Ìôøì(¥¡Ý¥¹½Ü¹ÍÉ½±±døôÌ¹½ÍÑQ½À´ÄÀÀ¤ÕÉÉ¹ÐôÌ¹¥ì(ô¤ì(¹Ù1¥¹­Ì¹½É ¡ôøì(¹ÍÑå±¹½±½Èô¹ÑÑÑÉ¥ÕÑ ¡É¤ôôô¬ÕÉÉ¹ÐüÙÈ ´µ½±¤èì(ô¤ì)ô¤ì(ð½ÍÉ¥ÁÐø(ð½½äø(ð½¡Ñµ°ú
 </html>
