@@ -27,13 +27,32 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
 /* ── MAIN ── */
 .main{max-width:680px;margin:0 auto;padding:40px 24px 60px}
 
+/* ── LICENSE GATE ── */
+#licenseGate{text-align:center}
+.gate-icon{font-size:48px;margin-bottom:20px}
+.gate-title{font-size:22px;font-weight:500;color:#fff;margin-bottom:8px;letter-spacing:.06em}
+.gate-sub{font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:32px;font-family:var(--sans)}
+.gate-sub strong{color:var(--lavender)}
+.gate-card{background:var(--dk2);border-radius:16px;padding:28px 24px;border:1px solid rgba(196,144,209,.15);margin-bottom:20px;text-align:left}
+.gate-label{font-size:12px;font-weight:600;letter-spacing:.1em;color:var(--muted);margin-bottom:10px;font-family:var(--sans)}
+.gate-input{width:100%;padding:14px 16px;background:var(--dk3);border:1px solid rgba(196,144,209,.2);border-radius:10px;color:var(--txt);font-size:15px;font-family:var(--sans);letter-spacing:.06em;outline:none;transition:border-color .2s}
+.gate-input:focus{border-color:var(--lavender)}
+.gate-input::placeholder{color:var(--muted2);font-size:13px;letter-spacing:.04em}
+.gate-hint{font-size:12px;color:var(--muted);line-height:1.8;margin-top:10px;font-family:var(--sans)}
+.gate-hint a{color:var(--lavender);text-decoration:none}
+.btn-verify{width:100%;margin-top:16px;padding:15px;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;font-family:var(--sans);cursor:pointer;letter-spacing:.04em;transition:all .2s}
+.btn-verify:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.btn-verify:disabled{opacity:.5;cursor:default;transform:none}
+.gate-error{display:none;margin-top:14px;padding:12px 16px;background:rgba(192,96,143,.1);border:1px solid rgba(192,96,143,.3);border-radius:10px;font-size:13px;color:#f0a0c0;font-family:var(--sans);line-height:1.7}
+.gate-help{font-size:13px;color:var(--muted);font-family:var(--sans);line-height:1.9}
+.gate-help strong{color:var(--txt)}
+
 /* ── STEP CARD ── */
 .step-card{background:var(--dk2);border-radius:16px;padding:32px 28px;border:1px solid rgba(196,144,209,.12);margin-bottom:24px}
 .step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--purple2));color:#fff;font-size:12px;font-weight:700;margin-bottom:12px}
 .step-title{font-size:17px;font-weight:500;color:#fff;margin-bottom:6px;font-family:var(--sans)}
 .step-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.8;font-family:var(--sans)}
 
-/* ── 產品標籤 ── */
 .product-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;margin-bottom:24px;font-size:14px;font-weight:500;font-family:var(--sans)}
 .badge-relief{background:rgba(192,96,143,.1);color:var(--rose);border:1px solid rgba(192,96,143,.3)}
 
@@ -97,44 +116,74 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
 <div class="header">
   <div class="header-badge">SOUL RELATIONSHIP · 靈魂情侶</div>
   <h1>感謝你的購買<br><span>你的情感紓壓手冊正在等你 ✦</span></h1>
-  <p class="header-sub">選擇你的 MBTI 型號，立即取得專屬 PDF</p>
+  <p class="header-sub">請輸入購買憑證，立即解鎖你的專屬 PDF</p>
 </div>
 
 <div class="main">
 
-  <div style="text-align:center;margin-bottom:28px">
-    <div class="product-badge badge-relief">💜 情感紓壓手冊 · 你的專屬版</div>
-  </div>
+  <!-- ── LICENSE GATE ── -->
+  <div id="licenseGate">
+    <div class="gate-card">
+      <div class="gate-label">🔐 輸入你的 Gumroad 授權碼</div>
+      <input
+        type="text"
+        id="licenseInput"
+        class="gate-input"
+        placeholder="XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX"
+        autocomplete="off"
+        autocorrect="off"
+        autocapitalize="characters"
+        spellcheck="false"
+      >
+      <div class="gate-hint">
+        購買後 Gumroad 會寄發收據信給你，<br>
+        點開信中的「<strong style="color:var(--lavender)">View content</strong>」即可找到授權碼。<br>
+        <br>找不到信？<a href="mailto:air6030i@gmail.com">聯絡 air6030i@gmail.com</a>
+      </div>
+      <button class="btn-verify" id="btnVerify" onclick="verifyLicense()">驗證並解鎖下載 →</button>
+      <div class="gate-error" id="gateError"></div>
+    </div>
 
-  <!-- STEP 1：你的類型 -->
-  <div class="step-card" id="step-you">
-    <div class="step-num">1</div>
-    <div class="step-title">你是哪種靈魂？</div>
-    <div class="step-sub">選擇你的 MBTI 類型，立即取得你的情感紓壓手冊</div>
-    <div class="mbti-grid" id="you-grid"></div>
-  </div>
-
-  <!-- 下載區 -->
-  <div class="download-area" id="download-area">
-    <div class="download-type" id="dl-type">—</div>
-    <div class="download-soul" id="dl-soul">—</div>
-    <a class="btn-download btn-dl-relief" id="dl-btn" href="#" target="_blank" rel="noopener">
-      <span class="btn-dl-label">📥 下載情感紓壓手冊 PDF</span>
-      <span class="btn-dl-size">點擊立即下載</span>
-    </a>
-    <div class="download-note">
-      PDF 下載後可永久保存 · 建議儲存到雲端備份<br>
-      有任何問題請聯繫 air6030i@gmail.com
+    <div class="gate-help">
+      <strong>還沒購買？</strong><br>
+      回到 <a href="https://air6030i-star.github.io/soul-test/couple.html" style="color:var(--lavender)">情感指南頁面</a> 選擇你需要的版本。
     </div>
   </div>
 
-  <!-- FAQ mini -->
-  <div style="margin-top:32px">
-    <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">常見問題</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">下載後打不開？</strong><br>請確認裝置有安裝 PDF 閱讀器（Adobe Reader 或手機內建）。</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">選錯 MBTI 了？</strong><br>直接重新選擇即可，頁面會自動更新。</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans)"><strong style="color:var(--txt)">想了解更多型號？</strong><br>選好自己的型號後，也可以瀏覽伴侶的型號版本作為參考。</div>
+  <!-- ── DOWNLOAD CONTENT (hidden until verified) ── -->
+  <div id="downloadContent" style="display:none">
+
+    <div style="text-align:center;margin-bottom:28px">
+      <div class="product-badge badge-relief">💜 情感紓壓手冊 · 你的專屬版</div>
+    </div>
+
+    <div class="step-card" id="step-you">
+      <div class="step-num">1</div>
+      <div class="step-title">你是哪種靈魂？</div>
+      <div class="step-sub">選擇你的 MBTI 類型，立即取得你的情感紓壓手冊</div>
+      <div class="mbti-grid" id="you-grid"></div>
+    </div>
+
+    <div class="download-area" id="download-area">
+      <div class="download-type" id="dl-type">—</div>
+      <div class="download-soul" id="dl-soul">—</div>
+      <a class="btn-download btn-dl-relief" id="dl-btn" href="#" target="_blank" rel="noopener">
+        <span class="btn-dl-label">📥 下載情感紓壓手冊 PDF</span>
+        <span class="btn-dl-size">點擊立即下載</span>
+      </a>
+      <div class="download-note">
+        PDF 下載後可永久保存 · 建議儲存到雲端備份<br>
+        有任何問題請聯繫 air6030i@gmail.com
+      </div>
+    </div>
+
+    <div style="margin-top:32px">
+      <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">常見問題</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">下載後打不開？</strong><br>請確認裝置有安裝 PDF 閱讀器（Adobe Reader 或手機內建）。</div>
+      <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">選錯 MBTI 了？</strong><br>直接重新選擇即可，頁面會自動更新。</div>
+    </div>
   </div>
+
 </div>
 
 <!-- FAQ -->
@@ -149,18 +198,18 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
       <div class="faq-group-label">📥 下載相關</div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>買完之後怎麼下載？</span><span class="faq-arrow">▾</span></button>
-        <div class="faq-a"><p>購買成功後，你會收到 Gumroad 寄來的收據信。點開信中的「View content」按鈕，進入本頁面後選擇你的 MBTI 型號，即可立即下載專屬 PDF。</p></div>
+        <div class="faq-a"><p>購買成功後，Gumroad 會寄發收據信給你。點開信中的「View content」按鈕，進入本頁面後輸入授權碼，即可解鎖選擇 MBTI 型號並下載 PDF。</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)"><span>授權碼在哪裡找？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>購買後 Gumroad 會寄信到你的 Email，信中有一個「View content」按鈕，點進去後可以看到授權碼（格式為 XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX）。若收不到信，請先確認垃圾郵件夾，或聯繫 air6030i@gmail.com。</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>我不確定自己的 MBTI 怎麼辦？</span><span class="faq-arrow">▾</span></button>
         <div class="faq-a">
-          <p>可以先做免費測驗確認自己的型號，再回來下載。測驗只需要約 10 分鐘。</p>
-          <a href="https://www.16personalities.com/ch" target="_blank" class="faq-link">👉 免費 MBTI 測驗（16Personalities）</a>
+          <p>可以先做我們的免費情感測驗確認型號，再回來輸入授權碼下載。</p>
+          <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" target="_blank" class="faq-link">🔮 免費情感型號測驗</a>
         </div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>下載連結打不開怎麼辦？</span><span class="faq-arrow">▾</span></button>
-        <div class="faq-a"><p>請先確認網路連線正常。若使用手機，建議改用 Chrome 或 Safari 瀏覽器。若仍無法使用，請寄信至 air6030i@gmail.com，24 小時內回覆。</p></div>
       </div>
     </div>
     <div class="faq-group">
@@ -171,7 +220,7 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
       </div>
       <div class="faq-item">
         <button class="faq-q" onclick="toggleFaq(this)"><span>購買後可以下載其他型號嗎？</span><span class="faq-arrow">▾</span></button>
-        <div class="faq-a"><p>可以！本頁面可以自由選擇任何 MBTI 型號下載，不受限制。如果你想了解伴侶或朋友的型號，歡迎一起下載來對照。</p></div>
+        <div class="faq-a"><p>可以！驗證授權碼後可以自由選擇任何 MBTI 型號下載，如果你想了解伴侶或朋友的型號，歡迎一起對照。</p></div>
       </div>
     </div>
     <div class="faq-group">
@@ -200,30 +249,90 @@ const SOULS = {
 const TYPES = ['INFJ','ENFJ','INFP','ENFP','INTJ','ENTJ','INTP','ENTP',
                'ISFJ','ESFJ','ISFP','ESFP','ISTJ','ESTJ','ISTP','ESTP'];
 
-// ── Google Drive 下載連結 ──
-const LINKS = {
-  'INFJ': 'https://drive.google.com/uc?export=download&id=1-qjyS0nthlBzOf1SaQj0GE_dtZGCgMFk',
-  'ENFJ': 'https://drive.google.com/uc?export=download&id=1T4EmVgjDLjeKf0UwcIhI2uW24WnSeOAU',
-  'INFP': 'https://drive.google.com/uc?export=download&id=1NifrF_QKBgT9x-NlyU19Fer-UEgsFlC7',
-  'ENFP': 'https://drive.google.com/uc?export=download&id=1Jk2a5A6g5MqfFliN4TYycMyNjhRXw-zC',
-  'INTJ': 'https://drive.google.com/uc?export=download&id=13672NuceZkgYEiLZBzd426OCIwJynm8d',
-  'ENTJ': 'https://drive.google.com/uc?export=download&id=1h6ZVOTDizItcBCjo_jtt8yhujfW5dJ_d',
-  'INTP': 'https://drive.google.com/uc?export=download&id=1J_dRqYhqVF6A0WAuGVfTCl2sYMdaFH5U',
-  'ENTP': 'https://drive.google.com/uc?export=download&id=1MAOIDMGXeS5tRjRkIvTb-50ObOX4iEcG',
-  'ISFJ': 'https://drive.google.com/uc?export=download&id=17apElKA7ADw99EJJT0cG81IxZE0XYAT2',
-  'ESFJ': 'https://drive.google.com/uc?export=download&id=168BWmPPVpE0k_Onpezf1G41v48miksqW',
-  'ISFP': 'https://drive.google.com/uc?export=download&id=14ujPbDVqI2O8jZSLL5_yriKqMOMLCNu_',
-  'ESFP': 'https://drive.google.com/uc?export=download&id=1QNVpgruFMhbyv23hwFAQCGe4n62nMLKm',
-  'ISTJ': 'https://drive.google.com/uc?export=download&id=1SFBiBp9GNyAM0nGpzPVAL4vcClvDfWui',
-  'ESTJ': 'https://drive.google.com/uc?export=download&id=14sUV7Clny0kmD7c7Ulm0K_YBex2W79o9',
-  'ISTP': 'https://drive.google.com/uc?export=download&id=1kEzz56BYrumvFzwFmZWibbBkEDvtvzEh',
-  'ESTP': 'https://drive.google.com/uc?export=download&id=1PX9sS88MBhfPUf9HLeYS30xz0gY3UfVj'
-};
+// Gumroad product permalink
+const PRODUCT = 'pakil';
 
-let selectedType = null;
+// ── 授權碼驗證 ──
+async function verifyLicense() {
+  const key = document.getElementById('licenseInput').value.trim();
+  const btn = document.getElementById('btnVerify');
+  const errBox = document.getElementById('gateError');
 
+  if (!key) {
+    showError('請輸入授權碼。');
+    return;
+  }
+
+  // Format check
+  const fmt = /^[A-Za-z0-9]{8}-[A-Za-z0-9]{8}-[A-Za-z0-9]{8}-[A-Za-z0-9]{8}$/;
+  if (!fmt.test(key)) {
+    showError('授權碼格式不對，應為 XXXXXXXX-XXXXXXXX-XXXXXXXX-XXXXXXXX，請重新確認。');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = '驗證中…';
+  errBox.style.display = 'none';
+
+  try {
+    const resp = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `product_permalink=${PRODUCT}&license_key=${encodeURIComponent(key)}&increment_uses_count=false`
+    });
+    const data = await resp.json();
+
+    if (data.success) {
+      // Valid purchase — unlock content
+      sessionStorage.setItem('soul_couple_verified', '1');
+      unlockContent();
+    } else {
+      showError('授權碼無效或已被停用。請確認你輸入的是購買 Gumroad 後收到的完整授權碼。<br>若持續有問題，請寄信到 air6030i@gmail.com。');
+      btn.disabled = false;
+      btn.textContent = '驗證並解鎖下載 →';
+    }
+  } catch(e) {
+    // Network error fallback — let through but log
+    showError('網路連線失敗，請確認網路後再試。若問題持續，請聯絡 air6030i@gmail.com。');
+    btn.disabled = false;
+    btn.textContent = '驗證並解鎖下載 →';
+  }
+}
+
+function showError(msg) {
+  const errBox = document.getElementById('gateError');
+  errBox.innerHTML = '⚠️ ' + msg;
+  errBox.style.display = 'block';
+}
+
+function unlockContent() {
+  document.getElementById('licenseGate').style.display = 'none';
+  document.getElementById('downloadContent').style.display = 'block';
+  buildGrid();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Check session on load
+window.addEventListener('DOMContentLoaded', () => {
+  if (sessionStorage.getItem('soul_couple_verified') === '1') {
+    unlockContent();
+  }
+  // Allow Enter key to submit
+  document.getElementById('licenseInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') verifyLicense();
+  });
+  // Auto-uppercase input
+  document.getElementById('licenseInput').addEventListener('input', function() {
+    const pos = this.selectionStart;
+    this.value = this.value.toUpperCase();
+    this.setSelectionRange(pos, pos);
+  });
+});
+
+// ── Download grid ──
 function buildGrid() {
   const grid = document.getElementById('you-grid');
+  if (grid.children.length > 0) return; // already built
   TYPES.forEach(t => {
     const btn = document.createElement('button');
     btn.className = 'mbti-btn';
@@ -234,8 +343,28 @@ function buildGrid() {
   });
 }
 
+function getLinks() {
+  return {
+    'INFJ': 'https://drive.google.com/uc?export=download&id=1-qjyS0nthlBzOf1SaQj0GE_dtZGCgMFk',
+    'ENFJ': 'https://drive.google.com/uc?export=download&id=1T4EmVgjDLjeKf0UwcIhI2uW24WnSeOAU',
+    'INFP': 'https://drive.google.com/uc?export=download&id=1NifrF_QKBgT9x-NlyU19Fer-UEgsFlC7',
+    'ENFP': 'https://drive.google.com/uc?export=download&id=1Jk2a5A6g5MqfFliN4TYycMyNjhRXw-zC',
+    'INTJ': 'https://drive.google.com/uc?export=download&id=13672NuceZkgYEiLZBzd426OCIwJynm8d',
+    'ENTJ': 'https://drive.google.com/uc?export=download&id=1h6ZVOTDizItcBCjo_jtt8yhujfW5dJ_d',
+    'INTP': 'https://drive.google.com/uc?export=download&id=1J_dRqYhqVF6A0WAuGVfTCl2sYMdaFH5U',
+    'ENTP': 'https://drive.google.com/uc?export=download&id=1MAOIDMGXeS5tRjRkIvTb-50ObOX4iEcG',
+    'ISFJ': 'https://drive.google.com/uc?export=download&id=17apElKA7ADw99EJJT0cG81IxZE0XYAT2',
+    'ESFJ': 'https://drive.google.com/uc?export=download&id=168BWmPPVpE0k_Onpezf1G41v48miksqW',
+    'ISFP': 'https://drive.google.com/uc?export=download&id=14ujPbDVqI2O8jZSLL5_yriKqMOMLCNu_',
+    'ESFP': 'https://drive.google.com/uc?export=download&id=1QNVpgruFMhbyv23hwFAQCGe4n62nMLKm',
+    'ISTJ': 'https://drive.google.com/uc?export=download&id=1SFBiBp9GNyAM0nGpzPVAL4vcClvDfWui',
+    'ESTJ': 'https://drive.google.com/uc?export=download&id=14sUV7Clny0kmD7c7Ulm0K_YBex2W79o9',
+    'ISTP': 'https://drive.google.com/uc?export=download&id=1kEzz56BYrumvFzwFmZWibbBkEDvtvzEh',
+    'ESTP': 'https://drive.google.com/uc?export=download&id=1PX9sS88MBhfPUf9HLeYS30xz0gY3UfVj'
+  };
+}
+
 function selectType(type) {
-  selectedType = type;
   document.querySelectorAll('#you-grid .mbti-btn').forEach(b => {
     b.classList.toggle('selected', b.dataset.type === type);
   });
@@ -247,17 +376,14 @@ function showDownload(type) {
   document.getElementById('dl-type').textContent = type + ' · ' + SOULS[type];
   document.getElementById('dl-soul').textContent = '你的情感紓壓手冊，專屬版';
   const btn = document.getElementById('dl-btn');
-  btn.href = LINKS[type] || '#';
+  btn.href = getLinks()[type] || '#';
   area.classList.add('show');
 }
 
 function toggleFaq(btn) {
   btn.classList.toggle('open');
-  const ans = btn.nextElementSibling;
-  ans.classList.toggle('open');
+  btn.nextElementSibling.classList.toggle('open');
 }
-
-buildGrid();
 </script>
 </body>
 </html>
