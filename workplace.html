@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>éé­è·å ´ï½MBTI è·å ´æºéæå Â· Soul Universe</title>
-<meta name="description" content="ç¨ MBTI äººæ ¼å¯ç¢¼ç ´è§£è·å ´å°å¢ã256 ç¨®è·å ´çµåæåï¼ç´æ¥çµ¦ä½ å°è©±è³æ¬ï¼ä¸åè·ä¸»ç®¡åäºéåé´¨è¬ã">
+<title>靈魂職場|MBTI 職場溝通指南 · Soul Universe</title>
+<meta name="description" content="用 MBTI 人格密碼破解職場困境。256 種職場組合指南,直接給你對話腳本,不再跟主管同事雞同鴨講。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-<!-- EmailJS SDKï¼ç¨æ¼ç¼éè·æ¥­å ±åå°ç¨æ¶ä¿¡ç®± -->
-<!-- è¢¢¥®èªªæï¼1) è³ https://www.emailjs.com/ åè²»è¨»å  2) å»ºç« Email Serviceï¼é£çµ Gmailï¼  3) å»ºç« Email Template  4) æä¸æ¹ä¸å PLACEHOLDER æ¿æçºä½ çå¯¦é ID -->
+<!-- EmailJS SDK:用於發送職業報告到用戶信箱 -->
+<!-- 設定說明：1) 至 https://www.emailjs.com/ 免費註冊  2) 建立 Email Service(連結 Gmail)  3) 建立 Email Template  4) 把下方三個 PLACEHOLDER 替換為你的實際 ID -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -22,7 +22,7 @@
 html{scroll-behavior:smooth}
 body{background:var(--dk);color:var(--txt);font-family:var(--serif);line-height:1.8}
 
-/* ââ Navbar ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Navbar ────────────────────────────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;display:flex;align-items:center;justify-content:space-between;background:rgba(12,15,26,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(232,168,32,.12)}
 .nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .nav-logo-icon{font-size:20px}
@@ -33,11 +33,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a!important;padding:8px 20px;border-radius:24px;font-weight:700!important;font-size:13px!important;transition:box-shadow .2s!important}
 .nav-cta:hover{box-shadow:0 4px 20px rgba(232,168,32,.5)!important}
 
-/* ââ Hero âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Hero ───────────────────────────────────────────────────────────────── */
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px 6vw 80px;position:relative;overflow:hidden}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(232,168,32,.08) 0%,transparent 70%)}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(232,168,32,.4);border-radius:24px;padding:6px 18px;font-size:12px;color:var(--gold);letter-spacing:.18em;margin-bottom:28px;font-family:var(--sans)}
-.hero-badge::before{content:'âï¸';font-size:14px}
+.hero-badge::before{content:'⚔️';font-size:14px}
 .hero h1{font-size:clamp(28px,5vw,56px);font-weight:300;letter-spacing:.1em;line-height:1.4;margin-bottom:16px;color:#fff}
 .hero h1 em{font-style:normal;color:var(--gold)}
 .hero-sub{font-size:clamp(14px,2vw,18px);color:var(--muted);max-width:600px;line-height:2.0;margin-bottom:40px;font-family:var(--sans)}
@@ -51,7 +51,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .hero-stat-num{font-size:32px;font-weight:700;color:var(--gold);display:block;letter-spacing:.05em}
 .hero-stat-label{font-size:12px;color:var(--muted);font-family:var(--sans);letter-spacing:.12em;margin-top:4px}
 
-/* ââ Know Your Type Quick Selector âââââââââââââââââââââââââââââââââââââââ */
+/* ── Know Your Type Quick Selector ─────────────────────────────────────── */
 .know-type-toggle{display:inline-flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;color:var(--teal);font-family:var(--sans);letter-spacing:.08em;border:1px solid rgba(0,196,160,.3);border-radius:20px;padding:6px 18px;transition:all .2s;background:none}
 .know-type-toggle:hover{background:rgba(0,196,160,.08);border-color:var(--teal)}
 .know-type-toggle .arrow{transition:transform .25s;display:inline-block}
@@ -65,10 +65,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 6vw;height:64px;di
 .type-btn:hover{background:rgba(232,168,32,.12);border-color:var(--gold);color:var(--gold)}
 .type-btn.active{background:rgba(232,168,32,.18);border-color:var(--gold);color:var(--gold)}
 
-/* ââ Divider ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Divider ────────────────────────────────────────────────────────────── */
 .divider{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto}
 
-/* ââ Section shared âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Section shared ─────────────────────────────────────────────────────── */
 section{padding:80px 6vw}
 .section-badge{display:inline-block;border:1px solid rgba(232,168,32,.35);border-radius:20px;padding:5px 16px;font-size:11px;color:var(--gold);letter-spacing:.18em;font-family:var(--sans);margin-bottom:16px}
 .section-title{font-size:clamp(22px,3.5vw,36px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:8px}
@@ -76,7 +76,7 @@ section{padding:80px 6vw}
 .section-header{text-align:center;margin-bottom:56px}
 .section-header .divider{margin:16px auto 0}
 
-/* ââ Pain Section âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Pain Section ───────────────────────────────────────────────────────── */
 .pain{background:var(--dk2)}
 .pain-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:960px;margin:0 auto}
 .pain-card{background:var(--dk3);border:1px solid rgba(232,168,32,.12);border-radius:12px;padding:28px;transition:border-color .2s}
@@ -86,14 +86,14 @@ section{padding:80px 6vw}
 .pain-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 .pain-quote{font-size:13px;color:rgba(232,168,32,.8);font-style:italic;margin-top:10px;padding-top:10px;border-top:1px solid rgba(232,168,32,.12)}
 
-/* ââ How it works âââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── How it works ───────────────────────────────────────────────────────── */
 .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;max-width:900px;margin:0 auto}
 .how-step{text-align:center;position:relative}
 .how-step-num{width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .how-step-title{font-size:15px;color:#fff;font-weight:700;margin-bottom:8px;font-family:var(--sans)}
 .how-step-text{font-size:13px;color:var(--muted);line-height:2.0;font-family:var(--sans)}
 
-/* ââ Products âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Products ───────────────────────────────────────────────────────────── */
 .products{background:var(--dk2)}
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:1000px;margin:0 auto}
 .product-card{background:var(--dk3);border:1px solid rgba(232,168,32,.15);border-radius:14px;padding:28px 24px;position:relative;transition:transform .2s,box-shadow .2s}
@@ -107,7 +107,7 @@ section{padding:80px 6vw}
 .product-desc{font-size:13px;color:var(--muted);font-family:var(--sans);line-height:1.9;margin-bottom:20px}
 .product-features{list-style:none;margin-bottom:24px}
 .product-features li{font-size:12.5px;color:var(--txt);font-family:var(--sans);padding:5px 0;border-bottom:1px solid rgba(232,168,32,.08);display:flex;align-items:flex-start;gap:8px;line-height:1.7}
-.product-features li::before{content:'â¦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
+.product-features li::before{content:'✦';color:var(--gold);font-size:10px;flex-shrink:0;margin-top:4px}
 .product-btn{display:block;text-align:center;padding:11px;border-radius:28px;font-family:var(--sans);font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.06em;transition:all .2s}
 .product-btn-outline{border:1px solid rgba(232,168,32,.5);color:var(--gold)}
 .product-btn-outline:hover{background:rgba(232,168,32,.1)}
@@ -121,7 +121,7 @@ section{padding:80px 6vw}
 .combo-original{font-size:13px;color:var(--muted2);text-decoration:line-through;font-family:var(--sans)}
 .combo-price{font-size:36px;font-weight:700;color:var(--gold);letter-spacing:.03em}
 
-/* ââ Free Careers Section âââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Free Careers Section ───────────────────────────────────────────────── */
 .careers{background:var(--dk)}
 .careers-selector{max-width:700px;margin:0 auto}
 .careers-note{font-size:13px;color:var(--muted);font-family:var(--sans);text-align:center;margin-bottom:20px}
@@ -142,7 +142,7 @@ section{padding:80px 6vw}
 .careers-upsell{margin-top:16px;font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center}
 .careers-upsell a{color:var(--gold);text-decoration:none}
 
-/* ââ Careers Email Gate âââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Careers Email Gate ─────────────────────────────────────────────────── */
 .careers-preview-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:8px;margin-bottom:16px}
 .career-preview-tag{background:rgba(0,196,160,.08);border:1px solid rgba(0,196,160,.2);border-radius:8px;padding:8px 14px;font-size:13px;color:var(--txt);font-family:var(--sans);text-align:center}
 .career-preview-tag.blurred{filter:blur(5px);opacity:.35;user-select:none;pointer-events:none}
@@ -161,7 +161,7 @@ section{padding:80px 6vw}
 .careers-full{display:none}
 .careers-full.show{display:block}
 
-/* ââ Test Teaser ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Test Teaser ────────────────────────────────────────────────────────── */
 .test-teaser{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center}
 .test-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:760px;margin:0 auto 40px}
 .test-card{background:var(--dk3);border:1px solid rgba(0,196,160,.2);border-radius:14px;padding:32px 28px;text-align:left;transition:border-color .2s,transform .2s}
@@ -178,7 +178,7 @@ section{padding:80px 6vw}
 .test-skip-note{font-size:12px;color:var(--muted2);font-family:var(--sans);text-align:center;margin-top:10px}
 .test-skip-note a{color:var(--teal);text-decoration:none;border-bottom:1px dashed rgba(0,196,160,.4)}
 
-/* ââ Testimonials / Preview âââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Testimonials / Preview ─────────────────────────────────────────────── */
 .preview{background:var(--dk2)}
 .preview-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:900px;margin:0 auto}
 .preview-card{background:var(--dk3);border:1px solid rgba(232,168,32,.1);border-radius:12px;padding:24px}
@@ -187,23 +187,23 @@ section{padding:80px 6vw}
 .preview-author{font-size:12px;color:var(--muted);font-family:var(--sans);display:flex;align-items:center;gap:8px}
 .preview-type-badge{background:rgba(232,168,32,.15);color:var(--gold);padding:2px 10px;border-radius:10px;font-size:11px;font-weight:700}
 
-/* ââ FAQ ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── FAQ ────────────────────────────────────────────────────────────────── */
 .faq{background:var(--dk)}
 .faq-list{max-width:720px;margin:0 auto}
 .faq-item{border-bottom:1px solid rgba(232,168,32,.12);padding:20px 0}
 .faq-q{font-size:15px;color:#fff;font-family:var(--sans);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;line-height:1.7}
-.faq-q::after{content:'ï¼';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
+.faq-q::after{content:'+';color:var(--gold);font-size:18px;flex-shrink:0;transition:transform .2s}
 .faq-item.open .faq-q::after{transform:rotate(45deg)}
 .faq-a{font-size:13.5px;color:var(--muted);font-family:var(--sans);line-height:2.1;margin-top:12px;display:none}
 .faq-item.open .faq-a{display:block}
 
-/* ââ Final CTA ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Final CTA ──────────────────────────────────────────────────────────── */
 .final-cta{background:linear-gradient(135deg,var(--dk2),var(--dk3));text-align:center;padding:100px 6vw}
 .final-cta h2{font-size:clamp(22px,3.5vw,40px);font-weight:300;letter-spacing:.12em;color:#fff;margin-bottom:16px}
 .final-cta p{font-size:15px;color:var(--muted);font-family:var(--sans);margin-bottom:40px;max-width:480px;margin-left:auto;margin-right:auto}
 .final-cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 
-/* ââ Footer âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Footer ─────────────────────────────────────────────────────────────── */
 footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48px 6vw 32px;text-align:center}
 .footer-logo{font-size:16px;color:var(--gold);letter-spacing:.2em;margin-bottom:16px}
 .footer-tagline{font-size:12.5px;color:var(--muted);font-style:italic;margin-bottom:28px}
@@ -212,7 +212,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .footer-links a:hover{color:var(--gold)}
 .footer-copy{font-size:11px;color:var(--muted2);font-family:var(--sans);letter-spacing:.06em}
 
-/* ââ Series Nav Dropdown ââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Series Nav Dropdown ────────────────────────────────────────────────── */
 .nav-series{position:relative}
 .nav-series-btn{color:var(--muted);font-size:14px;font-family:var(--sans);letter-spacing:.08em;cursor:pointer;display:flex;align-items:center;gap:5px;transition:color .2s;background:none;border:none;padding:0}
 .nav-series-btn:hover{color:var(--txt)}
@@ -229,7 +229,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .nav-series-item.current .nav-series-item-title{color:var(--gold)}
 .nav-series-divider{height:1px;background:rgba(232,168,32,.1);margin:6px 0}
 
-/* ââ Series Section âââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Series Section ─────────────────────────────────────────────────────── */
 .series-section{background:var(--dk2);padding:60px 6vw}
 .series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;max-width:900px;margin:0 auto}
 .series-card{display:flex;flex-direction:column;align-items:flex-start;gap:10px;background:var(--dk3);border:1px solid rgba(232,168,32,.12);border-radius:12px;padding:20px 18px;text-decoration:none;transition:border-color .2s,transform .18s}
@@ -242,7 +242,7 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 .series-card-badge{font-size:10px;color:var(--teal);font-family:var(--sans);border:1px solid rgba(0,196,160,.3);border-radius:10px;padding:2px 8px;align-self:flex-start;margin-top:2px}
 .series-card.current .series-card-badge{color:var(--gold);border-color:rgba(232,168,32,.4)}
 
-/* ââ Responsive âââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ */
+/* ── Responsive ─────────────────────────────────────────────────────────── */
 @media(max-width:600px){
   .nav-links .nav-link-hide{display:none}
   .hero-stats{gap:28px}
@@ -254,72 +254,72 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
 </head>
 <body>
 
-<!-- ââ Navbar ââ -->
+<!-- ── Navbar ── -->
 <nav>
   <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-logo">
-    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">â¦</span>
-    <span class="nav-logo-text">éé­å®å®</span>
+    <span class="nav-logo-icon" style="font-size:16px;letter-spacing:0">✦</span>
+    <span class="nav-logo-text">靈魂宇宙</span>
   </a>
   <div class="nav-links">
-    <a href="#products" class="nav-link-hide">ç¢å</a>
-    <a href="#careers" class="nav-link-hide">é©åè·æ¥­</a>
-    <a href="#test" class="nav-link-hide">åè²»æ¸¬é©</a>
+    <a href="#products" class="nav-link-hide">產品</a>
+    <a href="#careers" class="nav-link-hide">適合職業</a>
+    <a href="#test" class="nav-link-hide">免費測驗</a>
     <!-- Series dropdown -->
     <div class="nav-series nav-link-hide">
-      <button class="nav-series-btn">éé­ç³»å <span class="nav-series-arrow">â¾</span></button>
+      <button class="nav-series-btn">靈魂系列 <span class="nav-series-arrow">▾</span></button>
       <div class="nav-series-dropdown">
         <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-series-item">
-          <span class="nav-series-item-icon">ð§¬</span>
+          <span class="nav-series-item-icon">🧬</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">éé­æ¸¬é©</div>
-            <div class="nav-series-item-sub">åè²» MBTI äººæ ¼æ¸¬é©</div>
+            <div class="nav-series-item-title">靈魂測驗</div>
+            <div class="nav-series-item-sub">免費 MBTI 人格測驗</div>
           </div>
         </a>
         <a href="https://air6030i-star.github.io/soul-test/parenting.html" class="nav-series-item">
-          <span class="nav-series-item-icon">ð¨âð©âð§</span>
+          <span class="nav-series-item-icon">👨‍👩‍👧</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">éé­è¦ªå­</div>
-            <div class="nav-series-item-sub">è¦ªå­æºéæå</div>
+            <div class="nav-series-item-title">靈魂親子</div>
+            <div class="nav-series-item-sub">親子溝通指南</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
         <a href="https://air6030i-star.github.io/soul-test/workplace.html" class="nav-series-item current">
-          <span class="nav-series-item-icon">âï¸</span>
+          <span class="nav-series-item-icon">⚔️</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">éé­è·å ´ â ä½ å¨é</div>
-            <div class="nav-series-item-sub">è·å ´æºéæå</div>
+            <div class="nav-series-item-title">靈魂職場 ← 你在這</div>
+            <div class="nav-series-item-sub">職場溝通指南</div>
           </div>
         </a>
         <div class="nav-series-divider"></div>
         <a href="https://air6030i-star.github.io/soul-test/couple.html" class="nav-series-item">
-          <span class="nav-series-item-icon">ð</span>
+          <span class="nav-series-item-icon">💕</span>
           <div class="nav-series-item-text">
-            <div class="nav-series-item-title">éé­ææ</div>
-            <div class="nav-series-item-sub">æä¾¶ &amp; åææºéæå</div>
+            <div class="nav-series-item-title">靈魂情感</div>
+            <div class="nav-series-item-sub">情侶 &amp; 友情溝通指南</div>
           </div>
         </a>
       </div>
     </div>
-    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-cta">éå§æ¸¬é© â</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="nav-cta">開始測驗 →</a>
   </div>
 </nav>
 
-<!-- ââ Hero ââ -->
+<!-- ── Hero ── -->
 <section class="hero">
-  <div class="hero-badge">éé­å®å® Â· è·å ´ç³»å</div>
-  <h1>ä½ åèªªä¸é<br>ä¸æ¯å çºèª°çé¯<br>æ¯å çºä½ åç<em>å¤§è¦</em>æ ¹æ¬ä¸å</h1>
-  <p class="hero-sub">MBTI è·å ´æºéæåï¼256 ç¨®çµåï¼ä»å¤©å°±è½ç¨</p>
+  <div class="hero-badge">靈魂宇宙 · 職場系列</div>
+  <h1>你們說不通<br>不是因為誰的錯<br>是因為你們的<em>大腦</em>根本不同</h1>
+  <p class="hero-sub">MBTI 職場溝通指南,256 種組合,今天就能用</p>
   <div class="hero-btns">
-    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-primary">â¡ åè²»æ¸¬é©æçåè</a>
-    <a href="#products" class="btn-secondary">ð ç´æ¥é¸¨³¼æå</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-primary">⚡ 免費測驗我的型號</a>
+    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
   </div>
   <!-- Know-your-type quick selector -->
   <button class="know-type-toggle" id="knowTypeToggle" onclick="toggleKnowType()">
-    â å·²ç¥éèªå·±çåèï¼ç´æ¥é¸ <span class="arrow">â¾</span>
+    ✓ 已知道自己的型號,直接選購指南<span class="arrow">▾</span>
   </button>
   <div class="know-type-panel" id="knowTypePanel">
     <div class="know-type-inner">
-      <div class="know-type-label">é¸æä½ ç MBTI åèï¼ç´æ¥è·³å°é©åçè³æº</div>
+      <div class="know-type-label">選擇你的 MBTI 型號,直接跳到適合的資源</div>
       <div class="type-grid">
         <button class="type-btn" onclick="selectType('INTJ')">INTJ</button>
         <button class="type-btn" onclick="selectType('INTP')">INTP</button>
@@ -343,161 +343,161 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
   <div class="hero-stats">
     <div class="hero-stat">
       <span class="hero-stat-num">256</span>
-      <div class="hero-stat-label">ç¨®è·å ´çµå</div>
+      <div class="hero-stat-label">種職場組合</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">8</span>
-      <div class="hero-stat-label">é¡å¿«éæ¸¬é©</div>
+      <div class="hero-stat-label">題快速測驗</div>
     </div>
     <div class="hero-stat">
       <span class="hero-stat-num">64</span>
-      <div class="hero-stat-label">åäººæ ¼å¯ç¢¼</div>
+      <div class="hero-stat-label">型人格密碼</div>
     </div>
   </div>
 </section>
 
-<!-- ââ Pain Points ââ -->
+<!-- ── Pain Points ── -->
 <section class="pain" id="pain">
   <div class="section-header">
-    <div class="section-badge">ä½ æ¬ä¸æ¬ä¹éé</div>
-    <h2 class="section-title">éä¸ç¨®è·å ´å°å¢</h2>
+    <div class="section-badge">你本不本也遇過</div>
+    <h2 class="section-title">這三種職場困境</h2>
     <div class="divider"></div>
   </div>
   <div class="pain-grid">
     <div class="pain-card">
-      <div class="pain-icon">ð¤</div>
-      <div class="pain-title">ä¸»ç®¡çæ¯å¥è©±é½è®ä½ çªæ¯</div>
-      <p class="pain-text">ä»èªªè¦ãä¸»åç©æ¥µãï¼ä½ æææ¯ä»¶äºé½èªçåäºï¼ä»å°±æ¯çä¸è¦ãä½ ä¸æ¯ä¸åªåï¼ä½ åªæ¯èªè¨ä¸å°ã</p>
-      <p class="pain-quote">ãæé½ç¡åäºï¼ä½ä»éæ¯è¦ºå¾æä¸å¤ ãã</p>
+      <div class="pain-icon">😤</div>
+      <div class="pain-title">主管的每句話都讓你窒息</div>
+      <p class="pain-text">他說要「主動積極」,你明明每件事都認真做了,他就是看不見。你不是不努力,你只是語言不對。</p>
+      <p class="pain-quote">「我都盡力了,但他還是覺得我不夠。」</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">ð</div>
-      <div class="pain-title">ä½ çæ³æ³å¾ä¾èªªä¸é²å»</div>
-      <p class="pain-text">éææä½ æå¾å¥½çæ¹æ¡ï¼ä½å°æ¹ä¸å¥è©±å°±å¦å®ä½ ãä¸æ¬ä½ çæ³æ³ä¸å¥½ï¼æ¬ä½ ç¨é¯äºä»è½æ¥åçé »éã</p>
-      <p class="pain-quote">ãæèªªäºï¼ä½æè¦ºä»æ ¹æ¬æ²å¨è½ãã</p>
+      <div class="pain-icon">🔇</div>
+      <div class="pain-title">你的想法從來說不進去</div>
+      <p class="pain-text">開會時你有很好的方案,但對方三句話就否定你。不本你的想法不好,本你用錯了他能接受的頻道。</p>
+      <p class="pain-quote">「我說了,但感覺他根本沒在聽。」</p>
     </div>
     <div class="pain-card">
-      <div class="pain-icon">ð£</div>
-      <div class="pain-title">æ¯æ¬¡è¡çªä¹å¾é½ä¸ç¥éæéº¼ä¿®å¾©</div>
-      <p class="pain-text">æ°£æ¶äºï¼ä½éä¿å¡èãä½ ä¸ç¥éè¦èªªä»éº¼ï¼æåè¸©é·ãä½ éè¦çä¸æ¯éæ­ï¼æ¯ä¸å¥è½æéå°è©±çè©±ã</p>
-      <p class="pain-quote">ãåµå®ä¹å¾ï¼æåå°±éå§åè£æ²äºãã</p>
+      <div class="pain-icon">💣</div>
+      <div class="pain-title">每次衝突之後都不知道怎麼修復</div>
+      <p class="pain-text">氣消了,但關係卡著。你不知道要說什麼,怕又踩雷。你需要的不是道歉,是一句能打開對話的話。</p>
+      <p class="pain-quote">「吵完之後,我們就開始假裝沒事。」</p>
     </div>
   </div>
 </section>
 
-<!-- ââ How it works ââ -->
+<!-- ── How it works ── -->
 <section id="how">
   <div class="section-header">
-    <div class="section-badge">ä¸æ­¥é©</div>
-    <h2 class="section-title">éå§æ¹è®ä½ çè·å ´éä¿</h2>
+    <div class="section-badge">三步驟</div>
+    <h2 class="section-title">開始改變你的職場關係</h2>
     <div class="divider"></div>
   </div>
   <div class="how-grid">
     <div class="how-step">
       <div class="how-step-num">1</div>
-      <div class="how-step-title">ç¢ºèªä½ åçåè</div>
-      <p class="how-step-text">8 é¡å¿«éæ¸¬é©æ¾åºä½ ç MBTI åèï¼æç´æ¥å¨é¦é é¸æä½ å·²ç¥çåèï¼ç«å»è·³éæ¸¬é©</p>
+      <div class="how-step-title">確認你們的型號</div>
+      <p class="how-step-text">8 題快速測驗找出你的 MBTI 型號,或直接在首頁選擇你已知的型號,立刻跳過測驗</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">2</div>
-      <div class="how-step-title">é¸æä½ ççµåæå</div>
-      <p class="how-step-text">å¨ 256 ç¨®çµåä¸­é¸åºä½ åå°æ¹ççµåï¼åå¾éèº«å®è£½çåæå ±å</p>
+      <div class="how-step-title">選擇你的組合指南</div>
+      <p class="how-step-text">在 256 種組合中選出你和對方的組合,取得量身定製的分析報告</p>
     </div>
     <div class="how-step">
       <div class="how-step-num">3</div>
-      <div class="how-step-title">ç´æ¥å¥ç¨å°è©±è³æ¬</div>
-      <p class="how-step-text">ä¸ç¨åæ³ãéå¥è©±è¦æéº¼èªªãï¼ç´æ¥è¤è£½å ±åè£¡çè³æ¬ï¼ä»å¤©å°±è½ç¨å¨æå¤©çæè­°</p>
+      <div class="how-step-title">直接套用對話腳本</div>
+      <p class="how-step-text">不璨再想「這句話要怎麼說」,直接複製報告裡的腳本,今天就能璨在明天的會議</p>
     </div>
   </div>
 </section>
 
-<!-- ââ Products ââ -->
+<!-- ── Products ── -->
 <section class="products" id="products">
   <div class="section-header">
-    <div class="section-badge">ç¢åæ¹æ¡</div>
-    <h2 class="section-title">é¸æä½ éè¦çæ·±åº¦</h2>
-    <p class="section-sub">æ¯ç¨®çµåé½æç¨ç«çæåï¼ä¸æ¯éç¨æ¨¡æ¿</p>
+    <div class="section-badge">產品方案</div>
+    <h2 class="section-title">選擇你需要的深度</h2>
+    <p class="section-sub">每種組合都有獨立的指南,不是通用模板</p>
     <div class="divider"></div>
   </div>
   <div class="products-grid">
     <!-- Tier 1 -->
     <div class="product-card">
-      <div class="product-tier">å¥é Â· ç´å£æå</div>
-      <div class="product-price"><sup>US$</sup>5</div>
-      <div class="product-usd">ç´ NT$160</div>
-      <p class="product-desc">åè®æä½ èªå·±ã16ç¨®äººæ ¼åä¸æ¬ï¼8é ï¼æ­éä½ å¨è·å ´ä¸­çæç·æ¨¡å¼èé±å½¢å£åæºã</p>
+      <div class="product-tier">入門 · 紓壓手冊</div>
+      <div class="product-price"><sup>US$</sup>6</div>
+      <div class="product-usd">約 NT$195</div>
+      <p class="product-desc">先讀懂你自己。16種人格各一本,8頁,揭開你在職場中的情緒模式與隱形壓力源。</p>
       <ul class="product-features">
-        <li>ä½ çè·å ´å£åè§¸ç¼é»èçæ­£æ ¹æº</li>
-        <li>å¥äººè¦ºå¾ä½ å¥æªç 3 åè¡çºå¯ç¢¼</li>
-        <li>ä½ æå®¹æè¸©å°èªå·±ç 5 åé·</li>
-        <li>ç«å³å¯ç¨çæç·èª¿ç¯æå·§</li>
+        <li>你的職場壓力觸發點與真正根源</li>
+        <li>別人覺得你奇怪的 3 個行為密碼</li>
+        <li>你最容易踩到自己的 5 個雷</li>
+        <li>立即可用的情緒調節技巧</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/eigywp" target="_blank" class="product-btn product-btn-outline">é¸è³¼ç´å£æå â</a>
+      <a href="https://airwave553.gumroad.com/l/eigywp" target="_blank" class="product-btn product-btn-outline">選購紓壓手冊 →</a>
     </div>
     <!-- Tier 2 -->
     <div class="product-card featured">
-      <div class="product-featured-badge">â­ æå¤äººé¸</div>
-      <div class="product-tier">æ¨æºç Â· çµåæå</div>
-      <div class="product-price"><sup>US$</sup>10</div>
-      <div class="product-usd">ç´ NT$320</div>
-      <p class="product-desc">ä½  Ã å°æ¹çå°å±¬çµåæåã256ç¨®éå°ï¼10é ï¼ç´æ¥åè¨´ä½ çºä»éº¼è©±èªªä¸é²å»ãè¦æéº¼èªªã</p>
+      <div class="product-featured-badge">⭐ 最多人選</div>
+      <div class="product-tier">標準版 · 組合指南</div>
+      <div class="product-price"><sup>US$</sup>12</div>
+      <div class="product-usd">約 NT$385</div>
+      <p class="product-desc">你 × 對方的專屬組合指南。256種配對,10頁,直接告訴你為什麼話說不進去、要怎麼說。</p>
       <ul class="product-features">
-        <li>å°æ¹çæç¶­éè¼¯å®æ´è§£æ</li>
-        <li>3 åå¸åè¡çªå ´æ¯æè§£èå°ç­</li>
-        <li>å°è©±è³æ¬ï¼èèªªæ³ vs éé­å¯ç¢¼ç</li>
-        <li>7 æ¥è·å ´å¯¦è¸è¨ç«</li>
+        <li>對方的思維邏輯完整解析</li>
+        <li>3 個典型衝突場景拆解與對策</li>
+        <li>對話腳本:舊說法 vs 靈魂密碼版</li>
+        <li>7 日職場實踐計畫</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/ogfxwh" target="_blank" class="product-btn product-btn-fill">é¸è³¼æ¨æºç â</a>
+      <a href="https://airwave553.gumroad.com/l/ogfxwh" target="_blank" class="product-btn product-btn-fill">選購標準版 →</a>
     </div>
     <!-- Tier 3 -->
     <div class="product-card">
-      <div class="product-tier">Pro ç Â· å®æ´åæ</div>
-      <div class="product-price"><sup>US$</sup>15</div>
-      <div class="product-usd">ç´ NT$480</div>
-      <p class="product-desc">15é ä»¥ä¸æ·±åº¦å ±åãå¾ 64 åå­é¡ååºç¼ï¼çµ¦ä½ å¨ä¸»ç®¡ãä¸å±¬ãåäºä¸ç¨®è§è²ä¸çå®æ´è¡åæ¹æ¡ã</p>
+      <div class="product-tier">Pro 版 · 完整分析</div>
+      <div class="product-price"><sup>US$</sup>19</div>
+      <div class="product-usd">約 NT$615</div>
+      <p class="product-desc">15頁以上深度報告。從 64 型子類型出發,給你在主管、下屬、同事三種角色下的完整行動方案。</p>
       <ul class="product-features">
-        <li>ä½ ç 64 åå­é¡åè§£æï¼OH/OL/CH/CLï¼</li>
-        <li>ä¸ç¨®è·å ´è§è²åæï¼ä¸»ç®¡Â·ä¸å±¬Â·åäºï¼</li>
-        <li>3 åé«å£è¡çªå ´æ¯ + ç¶ä¸é¿é·ç­ç¥</li>
-        <li>å°è©±è³æ¬ + ä¸æ¥è·å ´å¯¦è¸è·¯ç·å</li>
-        <li>ä½ æå®¹æè¸©ç 5 åé·é±èåºè·¯</li>
+        <li>你的 64 型子類型解析(OH/OL/CH/CL)</li>
+        <li>三種職場角色分析(主管·下屬·同事)</li>
+        <li>3 個高壓衝突場景 + 當下避雷策略</li>
+        <li>對話腳本 + 七日職場實踐路線圖</li>
+        <li>你最容易踩的 5 個陷阱與出路</li>
       </ul>
-      <a href="https://airwave553.gumroad.com/l/ptqenn" target="_blank" class="product-btn product-btn-outline">é¸è³¼ Pro ç â</a>
+      <a href="https://airwave553.gumroad.com/l/ptqenn" target="_blank" class="product-btn product-btn-outline">選購 Pro 版 →</a>
     </div>
   </div>
   <!-- Combo -->
   <div class="product-combo" style="position:relative;border-color:rgba(232,168,32,.55);box-shadow:0 0 32px rgba(232,168,32,.1)">
     <div style="position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);border-radius:14px 14px 0 0"></div>
-    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">ð¥ æé«CPå¼ Â· æå¤äººé¸</div>
+    <div style="position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:11px;font-weight:700;padding:3px 16px;border-radius:20px;letter-spacing:.08em;font-family:var(--sans);white-space:nowrap">🔥 最高CP值 · 最多人選</div>
     <div class="combo-left" style="margin-top:6px">
-      <h3>å¨åçµåæ¹æ¡</h3>
-      <p>ç´å£æå + æ¨æºçæå + Pro å®æ´åæå ±å</p>
+      <h3>全包組合方案</h3>
+      <p>紓壓手冊 + 標準版指南 + Pro 完整分析報告</p>
       <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px">
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$5 ç´å£æå</span>
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$10 æ¨æºç</span>
-        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$15 Pro ç</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$6 紓壓手冊</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$12 標準版</span>
+        <span style="background:rgba(232,168,32,.12);color:var(--gold);font-size:11px;padding:3px 10px;border-radius:10px;font-family:var(--sans)">US$19 Pro 版</span>
       </div>
-      <span class="combo-save" style="margin-top:10px;display:inline-block">ç US$10 Â· äºØæ¼ç¾éçå£æå</span>
+      <span class="combo-save" style="margin-top:10px;display:inline-block">省 US$12 · 等於白送紓壓手冊</span>
     </div>
     <div class="combo-right">
-      <div class="combo-original">å°å® US$3</div>
-      <div class="combo-price">US$20</div>
-      <div class="product-usd" style="text-align:right">ç´ NT$640</div>
-      <a href="https://airwave553.gumroad.com/l/nodgkv" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">ç«å³é¸è³¼å¨åæ¹æ¡ â</a>
+      <div class="combo-original">小安 US$3</div>
+      <div class="combo-price">US$25</div>
+      <div class="product-usd" style="text-align:right">約 NT$805</div>
+      <a href="https://airwave553.gumroad.com/l/nodgkv" target="_blank" class="btn-primary" style="margin-top:12px;display:inline-flex">立即選購全包方案 →</a>
     </div>
   </div>
 </section>
 
-<!-- ââ Free Careers Section ââ -->
+<!-- ── Free Careers Section ── -->
 <section class="careers" id="careers">
   <div class="section-header">
-    <div class="section-badge">åè²»é å</div>
-    <h2 class="section-title">ä½ çäººæ ¼æé©ååªäºè·æ¥­ï¼</h2>
-    <p class="section-sub">é¸æä½ ç MBTI åèï¼åè²»åå¾å®æ´è·æ¥­æ¹åå ±å<br>ç´æ¥å¯éå°ä½ ç Email ä¿¡ç®±</p>
+    <div class="section-badge">免費領取</div>
+    <h2 class="section-title">你的人格最適合哪些職業?</h2>
+    <p class="section-sub">選擇你的 MBTI 型號,免費取得完整職業方向報告<br>直接寄送到你的 Email 信箱</p>
     <div class="divider"></div>
   </div>
   <div class="careers-selector">
-    <p class="careers-note">ç¬¬ä¸æ­¥ï¼é»é¸ä½ çåè â</p>
+    <p class="careers-note">第一步:點選你的型號 →</p>
     <div class="careers-type-grid" id="careersTypeGrid">
       <button class="ctype-btn" onclick="showCareers('INTJ',this)">INTJ</button>
       <button class="ctype-btn" onclick="showCareers('INTP',this)">INTP</button>
@@ -517,27 +517,27 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
       <button class="ctype-btn" onclick="showCareers('ESFP',this)">ESFP</button>
     </div>
 
-    <!-- çµæå -->
+    <!-- 結果區 -->
     <div class="careers-result" id="careersResult">
       <div class="careers-type-title" id="cResultTitle"></div>
       <div class="careers-type-subtitle" id="cResultSubtitle"></div>
 
-      <!-- é è¦½ï¼å3åè·æ¥­é¡¯ç¤ºï¼å¶é¤æ¨¡ç³ -->
+      <!-- 預覽:前3個職業顯示,其餘模糊 -->
       <div class="careers-preview-grid" id="cPreviewList"></div>
 
-      <!-- Email è¼¸å¥å -->
+      <!-- Email 輸入區 -->
       <div class="careers-email-gate" id="careersEmailGate">
-        <div class="careers-email-gate-title">â¦ è¼¸å¥ Emailï¼åè²»åå¾ä½ çå®æ´è·æ¥­å ±å</div>
-        <div class="careers-email-gate-sub">åå« 8 åæé©åè·æ¥­æ¹å + å¤©è³¦åªå¢åæ<br>ç´æ¥å¯å°ä½ çä¿¡ç®±ï¼æ°¸ä¹ä¿å­</div>
+        <div class="careers-email-gate-title">✦ 輸入 Email,免費取得你的完整職業報告</div>
+        <div class="careers-email-gate-sub">包含 8 個最適合職業方向 + 天賦優勢分析<br>直接寄到你的信箱,永久保存</div>
         <div class="careers-email-row">
           <input class="careers-email-input" type="email" id="careersEmailInput" placeholder="your@email.com" />
-          <button class="careers-email-btn" id="careersEmailBtn" onclick="sendCareersEmail()">åè²»é å â</button>
+          <button class="careers-email-btn" id="careersEmailBtn" onclick="sendCareersEmail()">免費領取 →</button>
         </div>
       </div>
 
-      <!-- éåºå¾ï¼æåè¨æ¯ + å®æ´çµæé¡¯ç¤º -->
+      <!-- 送出後:成功訊息 + 完整結果顯示 -->
       <div class="careers-sent-msg" id="careersSentMsg">
-        â å®æ´å ±åå·²å¯å°ä½ çä¿¡ç®±ï¼ä»¥ä¸æ¯ä½ ççµæï¼
+        ✅ 完整報告已寄到你的信箱!以下是你的結果:
       </div>
       <div class="careers-full" id="cFullResults">
         <div class="careers-list" id="cResultList"></div>
@@ -547,229 +547,229 @@ footer{background:var(--dk);border-top:1px solid rgba(232,168,32,.1);padding:48p
       <div style="margin-top:20px;background:rgba(232,168,32,0.06);border:1px solid rgba(232,168,32,0.2);border-radius:12px;padding:16px 18px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
           <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">åè²»å ±åï¼åæé çï¼</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">â¦ æé©åä½ çè·æ¥­æ¹å<br>â¦ ä½ çè·å ´å¤©è³¦åªå¢<br>â¦ ä½ ä¸åäººçäººæ ¼åæ</div>
+            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">免費報告(剛才領的)</div>
+            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 最適合你的職業方向<br>✦ 你的職場天賦優勢<br>✦ 你一個人的人格分析</div>
           </div>
           <div>
-            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">å®æ´æåï¼US$10ï¼</div>
-            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">â¦ ä½  Ã å°æ¹çè¡çªæ ¹æº<br>â¦ ä¸è§è²æ»ç¥ï¼ä¸»ç®¡/åäº/ä¸å±¬<br>â¦ ä»å¤©å°±è½ç¨çå°è©±è³æ¬</div>
+            <div style="font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.1em;font-family:var(--sans);margin-bottom:6px">完整指南(US$12)</div>
+            <div style="font-size:12px;color:var(--muted);font-family:var(--sans);line-height:1.9">✦ 你 × 對方的衝突根源<br>✦ 三角色攻略:主管/同事/下屬<br>✦ 今天就能用的對話腳本</div>
           </div>
         </div>
-        <a href="#products" style="display:block;text-align:center;font-size:13px;color:var(--gold);font-weight:700;text-decoration:none;font-family:var(--sans)">æ¥çå®æ´è·å ´æå â</a>
+        <a href="#products" style="display:block;text-align:center;font-size:13px;color:var(--gold);font-weight:700;text-decoration:none;font-family:var(--sans)">查看完整職場指南 →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ââ Test Teaser ââ -->
+<!-- ── Test Teaser ── -->
 <section class="test-teaser" id="test">
   <div class="section-header">
-    <div class="section-badge">åè²»æ¸¬é©</div>
-    <h2 class="section-title">éä¸ç¢ºå®èªå·±æ¯åªåï¼åæ¸¬é©</h2>
-    <p class="section-sub">æ¾åºä½ ç MBTI åè + 64åå­é¡åï¼ç´æ¥å°æä½ çè·å ´æºéæå</p>
+    <div class="section-badge">免費測驗</div>
+    <h2 class="section-title">還不確定自己是哪型?先測驗</h2>
+    <p class="section-sub">找出你的 MBTI 型號 + 64型子類型,直接對應你的職場溝通指南</p>
     <div class="divider"></div>
   </div>
   <div class="test-cards">
     <div class="test-card">
-      <div class="test-card-icon">ð§­</div>
-      <div class="test-card-badge">MBTI äººæ ¼æ¸¬é©</div>
-      <div class="test-card-title">æ¾åºä½ çè·å ´äººæ ¼åè</div>
-      <p class="test-card-text">æå¢å¼é¸æé¡ï¼ç²¾æºæ¸¬åºä½ ç MBTI äººæ ¼åèï¼å®æå¾ç´æ¥å°æå¯è³¼è²·çè·å ´çµåæåãåæè§£é 64 åéé­å¯ç¢¼ã</p>
-      <div class="test-card-time">ç´ <span>2 åé</span> Â· åè²»</div>
+      <div class="test-card-icon">🧭</div>
+      <div class="test-card-badge">MBTI 人格測驗</div>
+      <div class="test-card-title">找出你的職場人格型號</div>
+      <p class="test-card-text">情境式選擇題,精準測出你的 MBTI 人格型號,完成後直接對應可購買的職場組合指南。同時解鎖 64 型靈魂密碼。</p>
+      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
     </div>
     <div class="test-card">
-      <div class="test-card-icon">ð¯</div>
-      <div class="test-card-badge">è¡æ¥­é©éæ¸¬é©</div>
-      <div class="test-card-title">æ¾åºæé©åä½ çå·¥ä½é å</div>
-      <p class="test-card-text">8 é¡å·¥ä½åå¥½æ¸¬é©ï¼æ¨è¦æç¬¦åä½ å¤©è³¦èç¯å¥çè¡æ¥­ï¼ä»¥åä½ å¨é£åè¡æ¥­ä¸­çæ ¸å¿åªå¢</p>
-      <div class="test-card-time">ç´ <span>2 åé</span> Â· åè²»</div>
+      <div class="test-card-icon">🎯</div>
+      <div class="test-card-badge">行業適配測驗</div>
+      <div class="test-card-title">找出最適合你的工作領域</div>
+      <p class="test-card-text">8 題工作偏好測驗,推薦最符合你天賦與節奏的行業,以及你在那個行業中的核心優勢</p>
+      <div class="test-card-time">約 <span>2 分鐘</span> · 免費</div>
     </div>
   </div>
-  <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-teal">éå§åè²»æ¸¬é© â</a>
-  <p class="test-or">æè</p>
-  <p class="test-skip-note">å·²ç¥éèªå·±çåèï¼<a href="#careers" onclick="document.getElementById('knowTypeToggle').click();return false;">ç´æ¥é¸åèï¼è·³éæ¸¬é© â</a></p>
+  <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-teal">開始免費測驗 →</a>
+  <p class="test-or">或者</p>
+  <p class="test-skip-note">已知道自己的型號?<a href="#careers" onclick="document.getElementById('knowTypeToggle').click();return false;">直接選購指南</a></p>
 </section>
 
-<!-- ââ Social Proof / Preview quotes ââ -->
+<!-- ── Social Proof / Preview quotes ── -->
 <section class="preview" id="preview">
   <div class="section-header">
-    <div class="section-badge">è®èåé¥</div>
-    <h2 class="section-title">ä»åèªªéä»½æåå¹«äºä»éº¼</h2>
+    <div class="section-badge">讀者反饋</div>
+    <h2 class="section-title">他們說這份指南幫了什麼</h2>
     <div class="divider"></div>
   </div>
   <div class="preview-grid">
     <div class="preview-card">
-      <p class="preview-quote">ãçå°å°è©±è³æ¬é£é æç´æ¥æªåï¼æå¤©éæå°±éæ¨£èªªãä»¥åè·ä¸»ç®¡çæºéè®ææ¯å¤©é½å¨æ¶èè½éï¼éä»½å ±åè®æç¥é<em>åé¡ä¸æ¯æ</em>ï¼åªæ¯é »éä¸å°ãã</p>
+      <p class="preview-quote">「看到對話腳本那頁我直接截圖,明天開會就這樣說。以前跟主管的溝通讓我每天都在消耗能量,這份報告讓我知道<em>問題不是我</em>,只是頻道不對。」</p>
       <div class="preview-author">
         <span class="preview-type-badge">INFJ</span>
-        ä¸»ç®¡åè ESTJ Â· è·å ´ä¸å¹´
+        主管型號 ESTJ · 職場三年
       </div>
     </div>
     <div class="preview-card">
-      <p class="preview-quote">ã'ä¸åé«å£æå¢è³æ¬'éåé¨åå¤ªç²¾æºäºï¼æçææ³å°±æ¯æå¢äºãä»¥åæé½èªªé¯è©±ï¼ç¶å¾è¶è§£éè¶ç³ï¼ç¾å¨æç¥éè¦èªªä»éº¼ï¼<em>éç¥éçºä»éº¼éæ¨£èªªææ</em>ãã</p>
+      <p class="preview-quote">「'三個高壓情境腳本'這個部分太精準了,我的情況就是情境二。以前我都說錯話,然後越解釋越糟,現在我知道要說什麼,<em>還知道為什麼這樣說有效</em>。」</p>
       <div class="preview-author">
         <span class="preview-type-badge">ENTJ</span>
-        åäºåè INFP Â· æ°åµå¬å¸
+        同事型號 INFP · 新創公司
       </div>
     </div>
     <div class="preview-card">
-      <p class="preview-quote">ãææ²æ³å°ä¸ä»½ PDF å¯ä»¥è¬å¾ééº¼æºãå®èªª ISFJ å¨ ENTJ ä¸»ç®¡åºä¸æå¸¸è¦çèª¤è§£ï¼å°±æ¯ææ¯å¤©ççæãé£åæè¿°è®ææè¦º<em>èªå·±çµæ¼è¢«çè¦äº</em>ãã</p>
+      <p class="preview-quote">「我沒想到一份 PDF 可以講得這麼準。它說 ISFJ 在 ENTJ 主管底下最常見的誤解,就是我每天的狀態。那個描述讓我感覺<em>自己終於被看見了</em>。」</p>
       <div class="preview-author">
         <span class="preview-type-badge">ISFJ</span>
-        ä¸»ç®¡åè ENTJ Â· å¤§åä¼æ¥­
+        主管型號 ENTJ · 大型企業
       </div>
     </div>
   </div>
 </section>
 
-<!-- ââ FAQ ââ -->
+<!-- ── FAQ ── -->
 <section class="faq" id="faq">
   <div class="section-header">
-    <div class="section-badge">å¸¸è¦åé¡</div>
-    <h2 class="section-title">ä½ å¯è½æ³ç¥éçäº</h2>
+    <div class="section-badge">常見問題</div>
+    <h2 class="section-title">你可能想知道的事</h2>
     <div class="divider"></div>
   </div>
   <div class="faq-list">
     <div class="faq-item">
-      <div class="faq-q">æä¸ç¢ºå®å°æ¹æ¯åªååèï¼éè½è²·åï¼</div>
-      <p class="faq-a">å¯ä»¥ãä½ å¯ä»¥æ ¹æå°æ¹çè¡çºç¹å¾µä¾çæ¸¬åèï¼æåè³¼è²·èªå·±åèçç´å£æåï¼US$5ï¼ï¼è£¡é¢æå°ç§è¡¨å¹«ä½ è¾¨èªå°æ¹å¯è½çåèãè²·é¯äºæåä¹æåèæ´ææåï¼è¯çµ¡æåå°±å¥½ã</p>
+      <div class="faq-q">我不確定對方是哪個型號,還能買嗎?</div>
+      <p class="faq-a">可以。你可以根據對方的行為特徵來猜測型號,或先購買自己型號的紓壓手冊(US$6),裡面有對照表幫你辨認對方可能的型號。買錯了我們也有型號更換服務,聯絡我們就好。</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">æ¨æºçå Pro çæä»éº¼å·®å¥ï¼</div>
-      <p class="faq-a">æ¨æºçï¼10é ï¼æ¯ãè¨ºæ·å·¥å·ãï¼åè¨´ä½ ä½ åççµåæ¯ä»éº¼ãåé¡å¨åªãæéº¼æºéï¼é©åæ³å¿«éäºè§£çäººãProçï¼15é ä»¥ä¸ï¼æ¯ãè¡åå·¥å·ãï¼å¤äº 64 åå­é¡åè§£æãä¸ç¨®è·å ´è§è²çåæï¼ä½ æ¯ä¸»ç®¡/ä¸å±¬/åäºçæ¹æ¡åèªä¸åï¼ãé«å£æå¢æ¥æè³æ¬ï¼ä»¥å 7 æ¥è¡åè·¯ç·åï¼é©åæ³çæ­£æ¹è®éæ®µéä¿çäººã</p>
+      <div class="faq-q">標準版和 Pro 版有什麼差別?</div>
+      <p class="faq-a">標準版(10頁)是「診斷工具」,告訴你你們的組合是什麼、問題在哪、怎麼溝通,適合想快速了解的人。Pro版(15頁以上)是「行動工具」,多了 64 型子類型解析、三種職場角色的分析(你是主管/下屬/同事的方案各自不同)、高壓情境急救腳本,以及 7 日行動路線圖,適合想真正改變這段關係的人。</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">æ¸¬é©åªæ 8 é¡ï¼å¤ æºç¢ºåï¼</div>
-      <p class="faq-a">å¤ ãæåç 8 é¡æ¸¬é©éå° MBTI ååç¶­åº¦åè¨­è¨ 2 é¡è·å ´æå¢é¡ï¼è½ææååä¸»è¦äººæ ¼å¾åãå°æ¼å·²æä¸å®èªæèªè­çäººï¼æºç¢ºçè 60 é¡é·æ¸¬é©ç¸ç¶ãå¦æçµæè®ä½ å­çï¼å¯ä»¥ç´æ¥å¨é¦é é¸æä½ èªçºæ´ç¬¦åçåèã</p>
+      <div class="faq-q">測驗只有 8 題,夠準確嗎?</div>
+      <p class="faq-a">夠。我們的 8 題測驗針對 MBTI 四個維度各設計 2 題職場情境題,能有效區分主要人格傾向。對於已有一定自我認識的人,準確率與 60 題長測驗相當。如果結果讓你存疑,可以直接在首頁選擇你認為更符合的型號。</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">è³¼è²·å¾æéº¼åå¾ PDFï¼</div>
-      <p class="faq-a">éé Gumroad è³¼è²·ï¼ä»æ¬¾æåå¾æèªåå¯éä¸è¼é£çµå°ä½ ç Emailï¼éå¸¸ä¸è¶é 5 åéãæªæ¡ææä½ çåå­å Email æµ®æ°´å°ï¼æ¯ä½ å°å±¬ççæ¬ã</p>
+      <div class="faq-q">購買後怎麼取得 PDF?</div>
+      <p class="faq-a">透過 Gumroad 購買,付款成功後會自動寄送下載連結到你的 Email,通常不超過 5 分鐘。檔案會有你的名字和 Email 浮水印,是你專屬的版本。</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">éæ¯å ææç®å½åï¼</div>
-      <p class="faq-a">ä¸æ¯ãMBTI æ¯åºæ¼æ¦®æ ¼èªç¥åè½çè«çäººæ ¼åé¡å·¥å·ï¼éé­è·å ´ç³»åçå°è©±è³æ¬è¨­è¨åèäº NVCï¼éæ´åæºéï¼ãè©æç¾æºéæ¨¡åå Gottman éä¿ç ç©¶ãæåä¸é æ¸¬æªä¾ï¼æåçµ¦ä½ å¯ä»¥ç¾å¨å°±ç¨çæºéæ¹å¼ã</p>
+      <div class="faq-q">這是占星或算命嗎?</div>
+      <p class="faq-a">不是。MBTI 是基於榮格認知功能理論的人格分類工具,靈魂職場系列的對話腳本設計參考了 NVC(非暴力溝通)、薩提爾溝通模型和 Gottman 關係研究。我們不預測未來,我們給你可以現在就用的溝通方式。</p>
     </div>
     <div class="faq-item">
-      <div class="faq-q">åäº/ä¸»ç®¡ä¹è¦è®ææç¨åï¼</div>
-      <p class="faq-a">ä¸éè¦ãæåçè¨­è¨æ¹åæ¯ãå¦æåªæä½ ä¸åäººæ¹è®ï¼ä¹è½è®éæ®µéä¿å¾åèµ°ããä½ ä¸è½å¼·è¿«å°æ¹æ¹ï¼ä½ä½ å¯ä»¥æ¹è®ä½ èªªçæ¹å¼ï¼è®å°æ¹æ´è½æ¥æ¶ä½ æ³å³éçæ±è¥¿ã</p>
+      <div class="faq-q">同事/主管也要讀才有用嗎?</div>
+      <p class="faq-a">不需要。指南的設計方向是「如果只有你一個人改變,也能讓這段關係往前走」。你不能強迫對方改,但你可以改變你說的方式,讓對方更能接收你想傳達的東西。</p>
     </div>
   </div>
 </section>
 
-<!-- ââ Final CTA ââ -->
+<!-- ── Final CTA ── -->
 <section class="final-cta">
-  <h2>ä½ å·²ç¶åå¤ é£æ®µèªªä¸éçéä¿äº</h2>
-  <p>ä»å¤©æ¿å°ä½ çå°è©±è³æ¬ï¼æå¤©çå°è©±å°±ä¸ä¸æ¨£äº</p>
+  <h2>你已經受夠那段說不通的關係了</h2>
+  <p>今天拿到你的對話腳本,明天的對話就不一樣了</p>
   <div class="final-cta-btns">
-    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-teal">â¡ ååè²»æ¸¬é©åè</a>
-    <a href="#products" class="btn-secondary">ð ç´æ¥é¸è³¼æå</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="btn-teal">⚡ 先免費測驗型號</a>
+    <a href="#products" class="btn-secondary">📄 直接選購指南</a>
   </div>
 </section>
 
-<!-- ââ Series Navigation ââ -->
+<!-- ── Series Navigation ── -->
 <section class="series-section">
   <div class="section-header" style="margin-bottom:36px">
-    <div class="section-badge">éé­å®å®ç³»å</div>
-    <h2 class="section-title">éæåªäºç³»åé©åä½ ï¼</h2>
-    <p class="section-sub">è·å ´ä¹å¤ï¼éé­å®å®ä¹å¹«ä½ è§£è®è¦ªå­ãæä¾¶åæèæ´å¤äº¹çå ´æ¯</p>
+    <div class="section-badge">靈魂宇宙系列</div>
+    <h2 class="section-title">還有哪些系列適合你?</h2>
+    <p class="section-sub">職場之外,靈魂宇宙也幫你解讀親子、情侶友情與更多亹生場景</p>
     <div class="divider"></div>
   </div>
   <div class="series-grid">
     <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" class="series-card">
-      <span class="series-card-icon">ð§¬</span>
-      <div class="series-card-title">éé­æ¸¬é©</div>
-      <p class="series-card-desc">åè²» MBTI æ¸¬é©ï¼ç²¾æºæ¾åºä½ çäººæ ¼å¯ç¢¼ï¼æ¯ææç³»åçèµ·é»</p>
-      <span class="series-card-badge">åè²»</span>
+      <span class="series-card-icon">🧬</span>
+      <div class="series-card-title">靈魂測驗</div>
+      <p class="series-card-desc">免費 MBTI 測驗,精準找出你的人格密碼,是所有系列的起點</p>
+      <span class="series-card-badge">免費</span>
     </a>
     <a href="https://air6030i-star.github.io/soul-test/parenting.html" class="series-card">
-      <span class="series-card-icon">ð¨âð©âð§</span>
-      <div class="series-card-title">éé­è¦ªå­</div>
-      <p class="series-card-desc">è§£è®ä½ èå­©å­ä¹éçå¤©çé »éï¼ä¸åéåé´¨è¬ï¼æ¾åé£çµ</p>
-      <span class="series-card-badge">æºéæå</span>
+      <span class="series-card-icon">👨‍👩‍👧</span>
+      <div class="series-card-title">靈魂親子</div>
+      <p class="series-card-desc">解讀你與孩子之間的天生頻道,不再雞同鴨講,找回連結</p>
+      <span class="series-card-badge">溝通指南</span>
     </a>
     <div class="series-card current">
-      <span class="series-card-icon">âï¸</span>
-      <div class="series-card-title">éé­è·å ´</div>
-      <p class="series-card-desc">ç ´è§£è·å ´æºéå°å¢ï¼256 ç¨®çµåï¼ç´æ¥çµ¦ä½ å°è©±è³æ¬</p>
-      <span class="series-card-badge">ä½ å¨éè£¡</span>
+      <span class="series-card-icon">⚔️</span>
+      <div class="series-card-title">靈魂職場</div>
+      <p class="series-card-desc">破解職場溝通困境,256 種組合,直接給你對話腳本</p>
+      <span class="series-card-badge">你在這裡</span>
     </div>
     <a href="https://air6030i-star.github.io/soul-test/couple.html" class="series-card">
-      <span class="series-card-icon">ð</span>
-      <div class="series-card-title">éé­ææ</div>
-      <p class="series-card-desc">è§£ç¢¼ä½ èå¦ä¸åãå¥½åä¹éçå¤©çé »çï¼è¡çªä¸åãé£çµæ´æ·±</p>
-      <span class="series-card-badge">æä¾¶ &amp; åæ</span>
+      <span class="series-card-icon">💕</span>
+      <div class="series-card-title">靈魂情感</div>
+      <p class="series-card-desc">解碼你與另一半、好友之間的天生頻率,衝突不再、連結更深</p>
+      <span class="series-card-badge">情侶 &amp; 友情</span>
     </a>
   </div>
 </section>
 
-<!-- ââ Footer ââ -->
+<!-- ── Footer ── -->
 <footer>
-  <div class="footer-logo">âï¸ éé­è·å ´ Â· Soul Universe</div>
+  <div class="footer-logo">⚔️ 靈魂職場 · Soul Universe</div>
   <p class="footer-tagline">The quiet voice within is my loudest guide.</p>
   <div class="footer-links">
-    <a href="#products">è·å ´æå</a>
-    <a href="#careers">é©åè·æ¥­</a>
-    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html">åè²»æ¸¬é©</a>
-    <a href="https://airwave553.gumroad.com" target="_blank">Gumroad ååº</a>
+    <a href="#products">職場指南</a>
+    <a href="#careers">適合職業</a>
+    <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html">免費測驗</a>
+    <a href="https://airwave553.gumroad.com" target="_blank">Gumroad 商店</a>
   </div>
-  <p class="footer-copy">Â© 2026 Soul Universe Â· éé­å®å® Â· All rights reserved.</p>
+  <p class="footer-copy">© 2026 Soul Universe · 靈魂宇宙 · All rights reserved.</p>
 </footer>
 
 <script>
-// ââ Career data ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Career data ──────────────────────────────────────────────────────────
 const CAREERS = {
-  INTJ:{title:'INTJ æ°ç¥å®¶',subtitle:'é¡æ¯è¨­è¨è Â· å·éå·è¡è',
-    jobs:['ç­ç¥é¡§å','è³æç§å­¸å®¶','ç³»çµ±æ¶æ§å¸«','æ³å¾ç ç©¶å¡','æè³åæå¸«','ç¢åç­ç¥å¸«','å­¸è¡ç ç©¶å¡','ç¶²è·¯å®å¨å°å®¶'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>çè¦å¥äººçä¸è¦çæ¨¡å¼</em>ï¼ä¸¦å¨æ··äºä¸­å»ºç«æ¸æ°çç³»çµ±ãæé©åéè¦é·æè¦åãç¨ç«æèçé«è¤éåº¦å·¥ä½ã'},
-  INTP:{title:'INTP éè¼¯å­¸å®¶',subtitle:'çè«å»ºæ§è Â· ç³»çµ±æèè',
-    jobs:['è»é«å·¥ç¨å¸«','æ¸å­¸ç ç©¶å¡','å²å­¸ææ','ç³»çµ±åæå¸«','è³è¨å®å¨ç ç©¶å¡','AI å·¥ç¨å¸«','æè¡æä»¶æ°å¯«','ç²¾ç®å¸«'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>æè§£åé¡çåºå±¤éè¼¯</em>ï¼æè¤éçåçè®æå¯çè§£çæ¨¡åãæé©åéè¦æçºæ·±æçæè¡æå­¸è¡åå·¥ä½ã'},
-  ENTJ:{title:'ENTJ ææ®å®',subtitle:'å¤©çé å°è Â· ç®æ¨é©åå',
-    jobs:['å·è¡é·','åµæ¥­å®¶','ç®¡çé¡§å','æè³éè¡å®¶','å¾å¸«','ä¼æ¥­ç¼å±ä¸»ç®¡','æ¿ç­å¶è¨è','çéç¸½ç£'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>ææ¨¡ç³çé¡æ¯è®ææ¸æ°çå·è¡è¨ç«</em>ï¼ä¸¦é©ååéé«æå®æãæé©åéè¦æ±ºç­åèå½±é¿åçé å°åè·ä½ã'},
-  ENTP:{title:'ENTP è¾¯è«å®¶',subtitle:'åµæç ´å±è Â· è·¨çé£çµè',
-    jobs:['åµæ¥­å®¶','è¡é·ç­ç¥å¸«','å¾å¸«','ç¢åè¨­è¨å¸«','é¢¨éªæè³äºº','å»£ååµæç¸½ç£','ç§æè¨è','é¡§å'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>æç ´æ¢ææ¡æ¶ï¼æ¾å°å¥äººæ²æ³å°ççªç ´å£</em>ãæé©åé«åº¦åæãéè¦åµæè§£æ±ºåé¡çç°å¢ã'},
-  INFJ:{title:'INFJ æå¡è',subtitle:'æ´å¯äººå¿ççæ³ä¸»ç¾©è',
-    jobs:['å¿çè«®åå¸«','ç¤¾æä¼æ¥­å®¶','ä½å®¶','äººåè³æºé¡§å','å¹è¨å¸«','åçæäºç­ç¥å¸«','éçå©çµç¹ç®¡ç','æè²å·¥ä½è'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>çè§£äººçå§å¿éæ±ï¼ä¸¦æå®è½åæææç¾©çè¡å</em>ãæé©åè½è®ä½ ç¢çæ·±åº¦å½±é¿çå·¥ä½ï¼èä¸æ¯æµæ°´ç·å¼çä»»åã'},
-  INFP:{title:'INFP èª¿åè',subtitle:'å¹å¼é©åçåµæè',
-    jobs:['ææ¡åµä½è','ç¤¾å·¥å¸«','èè¡å®¶','UX ç ç©¶å¡','å¿çæ²»çå¸«','äººæå­¸ç§æå¸«','æç«å¸«','åçæåè¦å'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>æææèå¹å¼è§è½åæçå¯¦å¯æåçä½åææå</em>ãæé©åæåµä½èªç±åº¦ï¼ä¸è½é£çµäººèæç¾©çå·¥ä½ã'},
-  ENFJ:{title:'ENFJ ä¸»äººå¬',subtitle:'æ¿åµä»äººæé·çé å°è',
-    jobs:['ä¼æ¥­å¹è¨å¸«','å¬éä¸»ä»»','äººåè³æºä¸»ç®¡','æå¸«','çæ¶¯æç·´','åçå¤§ä½¿','ç¤¾ç¾¤è¡é·ä¸»ç®¡','éæ¿åºçµç¹ä¸»ç®¡'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>æç¥ä»äººçæ½åä¸¦å¹«å©ä»åæé·</em>ãæé©åä»¥äººçºæ ¸å¿çå·¥ä½ï¼è®ä½ è½åæå½±é¿åäººèçµç¹æåã'},
-  ENFP:{title:'ENFP æ´»åå®¶',subtitle:'åæ»¿ææåçåµææ¢ç´¢è',
-    jobs:['è¡é·åµæç¸½ç£','åçç­ç¥å¸«','è¨è','çæ¶¯æç·´','ç¤¾ç¾¤åªé«ç¶ç','ç¢åè¡é·','å¬å±æ¼è¬è','æ´»åç­å'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>é»çä»äººçç±æï¼ä¸¦çºæ¯åè¨ç«æ³¨å¥æç¾©æ</em>ãæé©åå¤åãå¿«éè®åãææ©æé£çµäººå¿çå·¥ä½ç°å¢ã'},
-  ISTJ:{title:'ISTJ ç©æµå¸«',subtitle:'å¯é ç©©å¥çç³»çµ±å®è­·è',
-    jobs:['æè¨å¸«','ç¨½æ ¸å¡','è¡æ¿ç®¡çå¸«','æ³å¾å©ç','åè³ªæ§ç®¡','è²¡ååæå¸«','è³æåº«ç®¡çå¡','é¢¨éªç®¡çå¸«'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>å»ºç«ç§©åºãç¢ºä¿ç³»çµ±å¯é éè¡</em>ãæé©åéè¦ç²¾ç¢ºåº¦é«ãæµç¨å´è¬¹ãè²¬ä»»æç¢ºçè·ä½ã'},
-  ISFJ:{title:'ISFJ å®è­·è',subtitle:'é»é»æ¯æçµç¹çééµåé',
-    jobs:['è­·çå¸«','è¡æ¿å©ç','å®¢æä¸»ç®¡','ç¤¾æå·¥ä½è','ç¹æèå¸«','åæ¸é¤¨å¡','äººäºè¡æ¿','ç¢åæ¸¬è©¦å·¥ç¨å¸«'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>ç´°å¿ç§é¡§ä»äººçéæ±ï¼è®å¨åçäººæå°å®å¿</em>ãæé©åè½çå°ä½ åªåçä¸­å°ååéï¼èä¸æ¯å¤§åå®åçµç¹ã'},
-  ESTJ:{title:'ESTJ ç¸½ç¶ç',subtitle:'å¯¦äºæ±æ¯çå·è¡è',
-    jobs:['ä¼æ¥­ä¸»ç®¡','å°æ¡ç¶ç','æ³å®','è²¡åé·','è»äºææ®å®','é«é¢è¡æ¿ä¸»ç®¡','æè²è¡æ¿å®å¡','ç¨½æ ¸é·'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>å»ºç«æ¸æ°è¦åãé«æå·è¡ãè®åéæç§©åºå°éä½</em>ãæé©åéè¦å¼·åç®¡çèåè²¬æ©å¶ççµç¹åè§è²ã'},
-  ESFJ:{title:'ESFJ å·æ¿å®',subtitle:'åèäººå¿çåè«§æ¨åè',
-    jobs:['æ¥­åä¸»ç®¡','å¬éé¡§å','äººäºè¡æ¿','æ´»åè¦åå¸«','é«çè¡æ¿','å°å­¸èå¸«','å®¢æ¶æåç¶ç','åçç¤¾ç¾¤ç®¡ç'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>è®æäººéåæï¼è®æ¯åäººé½æåå°è¢«ç§é¡§</em>ãæé©åæåå°åãé«åº¦äººéäºåçè·ä½ï¼å¨ç©©å®ççµç¹ä¸­æè½ç¼åã'},
-  ISTP:{title:'ISTP éè³å®¶',subtitle:'å·éè§£æ±ºåé¡çå¯¦ä½è',
-    jobs:['æ©æ¢°å·¥ç¨å¸«','å·¥æ¥­è¨­è¨å¸«','å¤ç§é«å¸«','è³å®åæå¸«','é£è¡å¡','æ±½è»æå¸«','æ³é«ç§å­¸å®¶','åµå¥å¼ç³»çµ±å·¥ç¨å¸«'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>å¨é«å£æè¤éçå¯¦éæå¢ä¸­å¿«éæ¾å°è§£æ³</em>ãæé©åæå¯¦éæä½æãéè¦å³æå¤æ·çæè¡åå·¥ä½ã'},
-  ISFP:{title:'ISFP æ¢éªå®¶',subtitle:'æå®ç´°è©çåµä½è',
-    jobs:['å¹³é¢è¨­è¨å¸«','æå½±å¸«','å»å¸«','èè¡æ²»çå¸«','å®¤å§è¨­è¨å¸«','æè£è¨­è¨å¸«','ç¸é«å¸«','ç©çæ²»çå¸«'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>æå°ç¾èç´°ç¯çæç¥ï¼è½åæè§¸åäººå¿çä½åæé«é©</em>ãæé©åæåµä½èªä¸»ç©ºéãä¸å¿æ¯å¤©éæçå·¥ä½ç°å¢ã'},
-  ESTP:{title:'ESTP ä¼æ¥­å®¶',subtitle:'è¡ååªåçç¾å¯¦ä¸»ç¾©è',
-    jobs:['æ¥­åå¡','åµæ¥­å®¶','ç·æ¥ææ´äººå¡','è¡ç¥¨äº¤æå¡','æ´»åçµ±ç±','æ¿å°ç¢æ¥­å','éåå¡æç·´','è«å¤å°å®¶'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>å¨æ··äºæé«å£ç°å¢ä¸­ç«å³è¡åï¼ææ©æè½åæçµæ</em>ãæé©åå¿«éæ±ºç­ãç¾å ´æè®çç°å¢ï¼ä¸é©åå¤§éææ¸æéæåæå·¥ä½ã'},
-  ESFP:{title:'ESFP è¡¨æ¼è',subtitle:'é»äº®ç¾å ´çè½éä¸­å¿',
-    jobs:['æ¼å¡','æ´»åç­å','è¡é·æ¥­å','å¬éå°å¡','å¹¼åæå¸«','æéå°è¦½','åçæ¨å»£å¤§ä½¿','ç¤¾ç¾¤åªé«éäºº'],
-    strength:'ä½ çå¤©è³¦å¨æ¼<em>åµé è®äººé£å¿çç¶ä¸é«é©ï¼ä¸¦è®å¨åçäººæå°ææ´»å</em>ãæé©åé«åº¦ç¤¾äº¤ãéè¦å³èæå°ãæå°åæåæ©æçå·¥ä½ã'}
+  INTJ:{title:'INTJ 戰略家',subtitle:'願景設計者 · 冷靜執行者',
+    jobs:['策略顧問','資料科學家','系統架構師','法律研究員','投資分析師','產品策略師','學術研究員','網路安全專家'],
+    strength:'你的天賦在於<em>看見別人看不見的模式</em>,並在混亂中建立清晰的系統。最適合需要長期規劃、獨立思考的高複雜度工作。'},
+  INTP:{title:'INTP 邏輯學家',subtitle:'理論建構者 · 系統思考者',
+    jobs:['軟體工程師','數學研究員','哲學教授','系統分析師','資訊安全研究員','AI 工程師','技術文件撰寫','精算師'],
+    strength:'你的天賦在於<em>拆解問題的底層邏輯</em>,把複雜的原理變成可理解的模型。最適合需要持續深挖的技術或學術型工作。'},
+  ENTJ:{title:'ENTJ 指揮官',subtitle:'天生領導者 · 目標驅動型',
+    jobs:['執行長','創業家','管理顧問','投資銀行家','律師','企業發展主管','政策制訂者','營運總監'],
+    strength:'你的天賦在於<em>把模糊的願景變成清晰的執行計畫</em>,並驅動團隊高效完成。最適合需要決策力與影響力的領導型職位。'},
+  ENTP:{title:'ENTP 辯論家',subtitle:'創意破局者 · 跨界連結者',
+    jobs:['創業家','行銷策略師','律師','產品設計師','風險投資人','廣告創意總監','科技記者','顧問'],
+    strength:'你的天賦在於<em>打破既有框架,找到別人沒想到的突破口</em>。最適合高度動態、需要創意解決問題的環境。'},
+  INFJ:{title:'INFJ 提倡者',subtitle:'洞察人心的理想主義者',
+    jobs:['心理諮商師','社會企業家','作家','人力資源顧問','培訓師','品牌故事策略師','非營利組織管理','教育工作者'],
+    strength:'你的天賦在於<em>理解人的內心需求,並把它轉化成有意義的行動</em>。最適合能讓你產生深度影響的工作,而不是流水線式的任務。'},
+  INFP:{title:'INFP 調停者',subtitle:'價值驅動的創意者',
+    jobs:['文案創作者','社工師','藝術家','UX 研究員','心理治療師','人文學科教師','插畫師','品牌文化規劃'],
+    strength:'你的天賦在於<em>把情感與價值觀轉化成真實可感受的作品或服務</em>。最適合有創作自由度,且能連結人與意義的工作。'},
+  ENFJ:{title:'ENFJ 主人公',subtitle:'激勵他人成長的領導者',
+    jobs:['企業培訓師','公關主任','人力資源主管','教師','生涯教練','品牌大使','社群行銷主管','非政府組織主管'],
+    strength:'你的天賦在於<em>感知他人的潛力並幫助他們成長</em>。最適合以人為核心的工作,讓你能同時影響個人與組織文化。'},
+  ENFP:{title:'ENFP 活動家',subtitle:'充滿感染力的創意探索者',
+    jobs:['行銷創意總監','品牌策略師','記者','生涯教練','社群媒體經理','產品行銷','公共演講者','活動策劃'],
+    strength:'你的天賦在於<em>點燃他人的熱情,並為每個計畫注入意義感</em>。最適合多元、快速變動、有機會連結人心的工作環境。'},
+  ISTJ:{title:'ISTJ 物流師',subtitle:'可靠穩健的系統守護者',
+    jobs:['會計師','稽核員','行政管理師','法律助理','品質控管','財務分析師','資料庫管理員','風險管理師'],
+    strength:'你的天賦在於<em>建立秩序、確保系統可靠運行</em>。最適合需要精確度高、流程嚴謹、責任明確的職位。'},
+  ISFJ:{title:'ISFJ 守護者',subtitle:'默默支撐組織的關鍵力量',
+    jobs:['護理師','行政助理','客服主管','社會工作者','特教老師','圖書館員','人事行政','產品測試工程師'],
+    strength:'你的天賦在於<em>細心照顧他人的需求,讓周圍的人感到安心</em>。最適合能看到你努力的中小型團隊,而不是大型官僚組織。'},
+  ESTJ:{title:'ESTJ 總經理',subtitle:'實事求是的執行者',
+    jobs:['企業主管','專案經理','法官','財務長','軍事指揮官','醫院行政主管','教育行政官員','稽核長'],
+    strength:'你的天賦在於<em>建立清晰規則、高效執行、讓團隊有秩序地運作</em>。最適合需要強力管理與問責機制的組織型角色。'},
+  ESFJ:{title:'ESFJ 執政官',subtitle:'凝聚人心的和諧推動者',
+    jobs:['業務主管','公關顧問','人事行政','活動規劃師','醫療行政','小學老師','客戶成功經理','品牌社群管理'],
+    strength:'你的天賦在於<em>讀懂人際動態,讓每個人都感受到被照顧</em>。最適合服務導向、高度人際互動的職位,在穩定的組織中最能發光。'},
+  ISTP:{title:'ISTP 鑑賞家',subtitle:'冷靜解決問題的實作者',
+    jobs:['機械工程師','工業設計師','外科醫師','資安分析師','飛行員','汽車技師','法醫科學家','嵌入式系統工程師'],
+    strength:'你的天賦在於<em>在高壓或複雜的實際情境中快速找到解法</em>。最適合有實際操作感、需要即時判斷的技術型工作。'},
+  ISFP:{title:'ISFP 探險家',subtitle:'感官細膩的創作者',
+    jobs:['平面設計師','攝影師','廚師','藝術治療師','室內設計師','服裝設計師','獸醫師','物理治療師'],
+    strength:'你的天賦在於<em>把對美與細節的感知,轉化成觸動人心的作品或體驗</em>。最適合有創作自主空間、不必每天開會的工作環境。'},
+  ESTP:{title:'ESTP 企業家',subtitle:'行動優先的現實主義者',
+    jobs:['業務員','創業家','緊急救援人員','股票交易員','活動統籌','房地產業務','運動員教練','談判專家'],
+    strength:'你的天賦在於<em>在混亂或高壓環境中立即行動,把機會轉化成結果</em>。最適合快速決策、現場應變的環境,不適合大量文書或靜態分析工作。'},
+  ESFP:{title:'ESFP 表演者',subtitle:'點亮現場的能量中心',
+    jobs:['演員','活動策劃','行銷業務','公關專員','幼兒教師','旅遊導覽','品牌推廣大使','社群媒體達人'],
+    strength:'你的天賦在於<em>創造讓人難忘的當下體驗,並讓周圍的人感到有活力</em>。最適合高度社交、需要即興應對、有台前曝光機會的工作。'}
 };
 
-// ââ Know Your Type toggle ââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Know Your Type toggle ────────────────────────────────────────────────
 function toggleKnowType(){
   const btn = document.getElementById('knowTypeToggle');
   const panel = document.getElementById('knowTypePanel');
@@ -798,22 +798,22 @@ function selectType(type){
   }, 400);
 }
 
-// ââ Careers Email Gate ââââââââââââââââââââââââââââââââââââââââââââââââââââ
-// EmailJS è¨­å®ï¼è«æ¿æçºä½ èªå·±ç IDï¼ï¼
-// 1. å° https://emailjs.com åè²»è¨»å
-// 2. Add New Service â é£çµä½ ç Gmail
-// 3. Email Templates â å»ºç«æ¨¡æ¿ï¼è¦ä¸æ¹èªªæï¼
-// 4. æä»¥ä¸ä¸åå¼æ¿æçºä½ çå¯¦é ID
+// ── Careers Email Gate ────────────────────────────────────────────────────
+// EmailJS 設定(請替換為你自己的 ID):
+// 1. 到 https://emailjs.com 免費註冊
+// 2. Add New Service → 連結你的 Gmail
+// 3. Email Templates → 建立模板(見下方說明)
+// 4. 把以下三個值替換為你的實際 ID
 const EMAILJS_SERVICE_ID  = 'service_mmdj828';
 const EMAILJS_TEMPLATE_ID = 'template_i4xb21t';
 const EMAILJS_PUBLIC_KEY  = 'uqPSWLUWlR4FT915U';
 
-// EmailJS æ¨¡æ¿è®æ¸èªªæï¼å¨ emailjs.com å»ºç«æ¨¡æ¿æä½¿ç¨ï¼ï¼
-// {{to_email}}   â æ¶ä»¶è emailï¼ç¨æ¶è¼¸å¥ï¼
-// {{type_code}}  â MBTI åèï¼ä¾å¦ INFZ
-// {{soul_name}}  â éé­åï¼ä¾å¦ å®è­·æ°´é­
-// {{jobs_list}}  â è·æ¥­åè¡¨ï¼æè¡åéï¼
-// {{strength}}   â å¤©è³¦åªå¢èªªæ
+// EmailJS 模板變數說明(在 emailjs.com 建立模板時使用):
+// {{to_email}}   — 收件者 email(用戶輸入)
+// {{type_code}}  — MBTI 型號,例如 INFZ
+// {{soul_name}}  — 靈魂名,例如 守護水魂
+// {{jobs_list}}  — 職業列表(換行分隔)
+// {{strength}}   — 天賦優勢說明
 
 let currentCareersType = null;
 
@@ -823,9 +823,9 @@ try {
   console.warn('EmailJS init failed:', e);
 }
 
-// ââ Careers display âââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── Careers display ───────────────────────────────────────────────────────
 function showCareers(type, btn){
-  // æ´æ°æéçæ
+  // 更新按鈕狀態
   document.querySelectorAll('.ctype-btn').forEach(b => b.classList.remove('active'));
   if(btn) btn.classList.add('active');
 
@@ -833,31 +833,31 @@ function showCareers(type, btn){
   if(!d) return;
   currentCareersType = type;
 
-  // æ¨é¡
+  // 標題
   document.getElementById('cResultTitle').textContent = d.title;
   document.getElementById('cResultSubtitle').textContent = d.subtitle;
 
-  // é è¦½ï¼å3åæ¸æ°ï¼å¾5åæ¨¡ç³
+  // 預覽:前3個清晰,後5個模糊
   const previewEl = document.getElementById('cPreviewList');
   previewEl.innerHTML = d.jobs.map((j, i) =>
     `<div class="career-preview-tag${i >= 3 ? ' blurred' : ''}">${j}</div>`
   ).join('');
 
-  // å¨é¨çµæï¼é±èï¼éåºå¾æé¡¯ç¤ºï¼
+  // 全部結果(隱藏,送出後才顯示)
   document.getElementById('cResultList').innerHTML = d.jobs.map(j =>
     `<div class="career-tag">${j}</div>`
   ).join('');
   document.getElementById('cResultStrength').innerHTML = d.strength;
 
-  // éç½® email æ¬ä½èçæ
+  // 重置 email 欄位與狀態
   document.getElementById('careersEmailInput').value = '';
   document.getElementById('careersEmailBtn').disabled = false;
-  document.getElementById('careersEmailBtn').textContent = 'åè²»é å â';
+  document.getElementById('careersEmailBtn').textContent = '免費領取 →';
   document.getElementById('careersEmailGate').style.display = 'block';
   document.getElementById('careersSentMsg').classList.remove('show');
   document.getElementById('cFullResults').classList.remove('show');
 
-  // é¡¯ç¤ºçµæå¡
+  // 顯示結果卡
   const result = document.getElementById('careersResult');
   result.classList.remove('visible');
   void result.offsetWidth;
@@ -865,28 +865,28 @@ function showCareers(type, btn){
   result.scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 
-// ââ é¡¯ç¤ºéåºå¾çæï¼Email æåâä¸é¡¯ç¤ºå®æ´çµæï¼å¤±æâé¡¯ç¤ºï¼ââââââââââââââ
+// ── 顯示送出後狀態(Email 成功→不顯示完整結果,失敗→顯示)──────────────
 function revealFullResults(email, success){
   document.getElementById('careersEmailGate').style.display = 'none';
   const sentEl = document.getElementById('careersSentMsg');
   if(success){
-    // Email æåï¼åªé¡¯ç¤ºå3é è¦½ï¼å¼å°å»ä¿¡ç®±æ¥çå®æ´çµæ
+    // Email 成功:只顯示前3預覽,引導去信箱查看完整結果
     sentEl.innerHTML =
-      'â å®æ´è·æ¥­å ±åå·²å¯å° <strong>' + email + '</strong>ï¼<br>'
-      + '<span style="font-size:13px;opacity:.85">ä¸æ¹é¡¯ç¤ºå3åæ¹åï¼å®æ´8åè·æ¥­ + å¤©è³¦åæå¨ä¿¡ç®±è£¡ ð©</span><br>'
-      + '<span style="font-size:11px;opacity:.6">æ²çå°ï¼è«æª¢æ¥åå¾ä¿¡ä»¶å¤¾</span>';
-    // ä¸é¡¯ç¤º cFullResultsï¼ä¿æèªå å»æ¶ä¿¡
+      '✅ 完整職業報告已寄到 <strong>' + email + '</strong>!<br>'
+      + '<span style="font-size:13px;opacity:.85">上方顯示前3個方向,完整8個職業 + 天賦分析在信箱裡 📩</span><br>'
+      + '<span style="font-size:11px;opacity:.6">沒看到?請檢查垃圾信件夾</span>';
+    // 不顯示 cFullResults,保持誘因去收信
   } else {
-    // Email å¤±æï¼æå¨é é¢é¡¯ç¤ºå®æ´çµæï¼é¿åç¨æ¶ç½ç­
+    // Email 失敗:才在頁面顯示完整結果,避免用戶白等
     sentEl.innerHTML =
-      'â ä½ çè·æ¥­åæçµæå¦ä¸<br>'
-      + '<span style="font-size:12px;opacity:.7">ï¼ä¿¡ç®±éç¥æ«æç¡æ³ééï¼å®æ´çµæå¦ä¸ï¼</span>';
+      '✅ 你的職業分析結果如下<br>'
+      + '<span style="font-size:12px;opacity:.7">(信箱通知暫時無法送達,完整結果如下)</span>';
     document.getElementById('cFullResults').classList.add('show');
   }
   sentEl.classList.add('show');
 }
 
-// ââ éåº Email ââââââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── 送出 Email ────────────────────────────────────────────────────────────
 function sendCareersEmail(){
   const emailInput = document.getElementById('careersEmailInput');
   const btn = document.getElementById('careersEmailBtn');
@@ -894,7 +894,7 @@ function sendCareersEmail(){
 
   if(!email || !email.includes('@')){
     emailInput.style.borderColor = '#e05050';
-    emailInput.placeholder = 'è«è¼¸å¥ææç Email';
+    emailInput.placeholder = '請輸入有效的 Email';
     setTimeout(() => {
       emailInput.style.borderColor = '';
       emailInput.placeholder = 'your@email.com';
@@ -906,33 +906,33 @@ function sendCareersEmail(){
   const d = CAREERS[currentCareersType];
 
   btn.disabled = true;
-  btn.textContent = 'å¯éä¸­â¦';
+  btn.textContent = '寄送中…';
 
-  // æ´çè·æ¥­åè¡¨
+  // 整理職業列表
   const jobsList = d.jobs.map((j, i) => `${i+1}. ${j}`).join('\n');
-  // ç§»é¤ HTML æ¨ç±¤
+  // 移除 HTML 標籤
   const strengthText = d.strength.replace(/<[^>]+>/g, '');
 
-  // ç¸å®¹ EmailJS é è¨­æ¨¡æ¿è®æ¸ï¼from_name / message / reply_toï¼
-  // åæå¸¶å¥èªè¨è®æ¸ï¼type_code / soul_name / jobs_list / strengthï¼
-  const msgBody = 'ã' + currentCareersType + 'ã ' + d.title
-    + '\n\né©åè·æ¥­ï¼\n' + jobsList
-    + '\n\nå¤©è³¦åªå¢ï¼\n' + strengthText
-    + '\n\nç¨æ¶ Emailï¼' + email;
+  // 相容 EmailJS 預設模板變數(from_name / message / reply_to)
+  // 同時帶入自訂變數(type_code / soul_name / jobs_list / strength)
+  const msgBody = '【' + currentCareersType + '】 ' + d.title
+    + '\n\n適合職業:\n' + jobsList
+    + '\n\n天賦優勢:\n' + strengthText
+    + '\n\n用戶 Email:' + email;
 
   const templateParams = {
     to_email:     email,
-    from_name:    'éé­è·å ´ Soul Universe',
+    from_name:    '靈魂職場 Soul Universe',
     reply_to:     email,
     type_code:    currentCareersType,
     soul_name:    d.title,
     jobs_list:    jobsList,
     strength:     strengthText,
     message:      msgBody,
-    report_title: 'éé­è·å ´ Â· è·æ¥­æ¹åå ±å'
+    report_title: '靈魂職場 · 職業方向報告'
   };
 
-  // ç¨ fetch ç´æ¥å¼å« EmailJS REST APIï¼æ¯ SDK æ´å¯é ï¼
+  // 用 fetch 直接呼叫 EmailJS REST API(比 SDK 更可靠)
   const payload = {
     service_id:     EMAILJS_SERVICE_ID,
     template_id:    EMAILJS_TEMPLATE_ID,
@@ -950,12 +950,12 @@ function sendCareersEmail(){
       revealFullResults(email, true);
     } else {
       return res.text().then(errText => {
-        // æé¯èª¤é¡¯ç¤ºå¨é é¢è®æåçå°
+        // 把錯誤顯示在頁面讓我們看到
         console.error('EmailJS HTTP ' + res.status + ':', errText);
         document.getElementById('careersEmailGate').querySelector('.careers-email-gate-title').textContent =
-          'â ï¸ é¯èª¤ ' + res.status + 'ï¼' + errText;
+          '⚠️ 錯誤 ' + res.status + ':' + errText;
         btn.disabled = false;
-        btn.textContent = 'åè²»é å â';
+        btn.textContent = '免費領取 →';
       });
     }
   })
@@ -965,7 +965,7 @@ function sendCareersEmail(){
   });
 }
 
-// ââ FAQ accordion ââââââââââââââââââââââââââââââââââââââââââââââââââââââââ
+// ── FAQ accordion ────────────────────────────────────────────────────────
 document.querySelectorAll('.faq-q').forEach(q => {
   q.addEventListener('click', () => {
     const item = q.parentElement;
@@ -975,7 +975,7 @@ document.querySelectorAll('.faq-q').forEach(q => {
   });
 });
 
-// ââ Series dropdown (click toggle) ââââââââââââââââââââââââââââââââââââââ
+// ── Series dropdown (click toggle) ──────────────────────────────────────
 const seriesBtn = document.querySelector('.nav-series-btn');
 const seriesNav = document.querySelector('.nav-series');
 if(seriesBtn){
@@ -988,7 +988,7 @@ if(seriesBtn){
   });
 }
 
-// ââ Smooth nav active highlight ââââââââââââââââââââââââââââââââââââââ
+// ── Smooth nav active highlight ──────────────────────────────────────
 const sections = document.querySelectorAll('section[id]');
 const navLinks = document.querySelectorAll('.nav-links a');
 window.addEventListener('scroll', () => {
@@ -1002,4 +1002,4 @@ window.addEventListener('scroll', () => {
 });
 </script>
 </body>
-</html>                                                                                                                                                                                                                                                                                                                                                                                                                     
+</html>

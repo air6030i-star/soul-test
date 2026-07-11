@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>éé­è·å ´ Â· åå¾ä½ çå°å±¬æå</title>
+<title>靈魂職場 · 取得你的專屬指南</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;700&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -16,31 +16,31 @@
 }
 body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:100vh;line-height:1.8}
 
-/* ââ HEADER ââ */
+/* ── HEADER ── */
 .header{background:linear-gradient(160deg,#1c2235 0%,#0c0f1a 100%);padding:40px 24px 36px;text-align:center;border-bottom:1px solid rgba(232,168,32,.2)}
 .header-badge{display:inline-block;border:1px solid rgba(232,168,32,.35);border-radius:20px;padding:5px 18px;margin-bottom:16px;font-size:11px;color:var(--gold);letter-spacing:.18em;font-family:var(--sans)}
 .header h1{font-size:clamp(20px,4vw,32px);font-weight:300;color:#fff;letter-spacing:.1em;line-height:1.6;margin-bottom:8px}
 .header h1 span{color:var(--gold)}
 .header-sub{font-size:13px;color:var(--muted);letter-spacing:.06em;font-family:var(--sans)}
 
-/* ââ MAIN ââ */
+/* ── MAIN ── */
 .main{max-width:680px;margin:0 auto;padding:40px 24px 60px}
 
-/* ââ STEP CARD ââ */
+/* ── STEP CARD ── */
 .step-card{background:var(--dk2);border-radius:16px;padding:32px 28px;border:1px solid rgba(232,168,32,.12);margin-bottom:24px}
 .step-card.disabled{opacity:.4;pointer-events:none}
 .step-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0c0f1a;font-size:12px;font-weight:700;margin-bottom:12px}
 .step-title{font-size:17px;font-weight:500;color:#fff;margin-bottom:6px;font-family:var(--sans)}
 .step-sub{font-size:13px;color:var(--muted);margin-bottom:20px;line-height:1.8;font-family:var(--sans)}
 
-/* ââ æ¹æ¡æ¨ç±¤ ââ */
+/* ── 方案標籤 ── */
 .product-badge{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:30px;margin-bottom:24px;font-size:14px;font-weight:500;font-family:var(--sans)}
 .badge-relief{background:rgba(0,196,160,.1);color:var(--teal);border:1px solid rgba(0,196,160,.3)}
 .badge-standard{background:rgba(232,168,32,.1);color:var(--gold);border:1px solid rgba(232,168,32,.3)}
 .badge-pro{background:rgba(240,192,64,.12);color:var(--gold2);border:1px solid rgba(240,192,64,.4)}
 .badge-bundle{background:linear-gradient(135deg,rgba(232,168,32,.1),rgba(0,196,160,.08));color:var(--gold);border:1px solid rgba(232,168,32,.3)}
 
-/* ââ MBTI é¸æå¨ ââ */
+/* ── MBTI 選擇器 ── */
 .picker-label{font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)}
 .mbti-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:8px}
 .mbti-btn{padding:10px 4px;border:1px solid rgba(232,168,32,.15);border-radius:8px;background:transparent;cursor:pointer;font-family:var(--sans);font-size:11px;color:var(--muted);line-height:1.4;transition:all .2s;text-align:center}
@@ -50,7 +50,7 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
 .mbti-btn.selected{border-color:var(--gold);background:rgba(232,168,32,.12)}
 .mbti-btn.selected .code{color:var(--gold)}
 
-/* ââ ä¸è¼å ââ */
+/* ── 下載區 ── */
 .download-area{display:none;background:linear-gradient(135deg,rgba(232,168,32,.06),rgba(0,196,160,.04));border:1px solid rgba(232,168,32,.25);border-radius:14px;padding:28px 24px;text-align:center;margin-top:8px}
 .download-area.show{display:block}
 .download-combo{font-size:15px;font-weight:500;color:var(--gold);margin-bottom:4px;letter-spacing:.08em;font-family:var(--sans)}
@@ -65,10 +65,10 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
 .btn-dl-size{font-size:11px;opacity:.75}
 .download-note{font-size:11px;color:var(--muted);margin-top:16px;line-height:1.8}
 
-/* ââ ç­å¾ä¸å³æç¤º ââ */
+/* ── 等待上傳提示 ── */
 .pending-notice{background:rgba(232,168,32,.06);border:1px dashed rgba(232,168,32,.3);border-radius:10px;padding:16px 20px;font-size:13px;color:var(--muted);line-height:1.8;text-align:center;font-family:var(--sans)}
 
-/* ââ FAQ ââ */
+/* ── FAQ ── */
 .faq-section{background:var(--dk2);border-top:1px solid rgba(232,168,32,.1);padding:56px 24px 64px}
 .faq-inner{max-width:680px;margin:0 auto}
 .faq-header{text-align:center;margin-bottom:40px}
@@ -104,9 +104,9 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
 <body>
 
 <div class="header">
-  <div class="header-badge">SOUL WORKPLACE Â· éé­è·å ´</div>
-  <h1>æè¬ä½ çè³¼è²·<br><span>ä½ çæåæ­£å¨ç­ä½  â¦</span></h1>
-  <p class="header-sub">é¸æä½ ç MBTI åèï¼ç«å³åå¾å°å±¬ PDF</p>
+  <div class="header-badge">SOUL WORKPLACE · 靈魂職場</div>
+  <h1>感謝你的購買<br><span>你的指南正在等你 ✦</span></h1>
+  <p class="header-sub">選擇你的 MBTI 型號，立即取得專屬 PDF</p>
 </div>
 
 <div class="main">
@@ -115,39 +115,39 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
     <div class="product-badge" id="product-badge"></div>
   </div>
 
-  <!-- STEP 1ï¼ä½ çé¡å -->
+  <!-- STEP 1：你的類型 -->
   <div class="step-card" id="step-you">
     <div class="step-num">1</div>
-    <div class="step-title">ä½ æ¯åªç¨®éé­ï¼</div>
-    <div class="step-sub" id="step-you-sub">é¸æä½ ç MBTI é¡å</div>
+    <div class="step-title">你是哪種靈魂？</div>
+    <div class="step-sub" id="step-you-sub">選擇你的 MBTI 類型</div>
     <div class="mbti-grid" id="you-grid"></div>
   </div>
 
-  <!-- STEP 2ï¼å°æ¹é¡åï¼éç´å£æé¡¯ç¤ºï¼ -->
+  <!-- STEP 2：對方類型（非紓壓才顯示） -->
   <div class="step-card disabled" id="step-them" style="display:none">
     <div class="step-num">2</div>
-    <div class="step-title" id="step-them-title">å°æ¹æ¯åªç¨®éé­ï¼</div>
-    <div class="step-sub">é¸æä¸»ç®¡ / åäºç MBTI é¡å</div>
+    <div class="step-title" id="step-them-title">對方是哪種靈魂？</div>
+    <div class="step-sub">選擇主管 / 同事的 MBTI 類型</div>
     <div class="mbti-grid" id="them-grid"></div>
   </div>
 
-  <!-- ä¸è¼å -->
+  <!-- 下載區 -->
   <div class="download-area" id="download-area">
-    <div class="download-combo" id="dl-combo">â</div>
-    <div class="download-combo-soul" id="dl-soul">â</div>
+    <div class="download-combo" id="dl-combo">—</div>
+    <div class="download-combo-soul" id="dl-soul">—</div>
     <div class="download-links" id="dl-links"></div>
     <div class="download-note">
-      PDF ä¸è¼å¾å¯æ°¸ä¹ä¿å­ Â· å»ºè­°å²å­å°é²ç«¯åä»½<br>
-      æä»»ä½åé¡è«è¯ç¹« air6030i@gmail.com
+      PDF 下載後可永久保存 · 建議儲存到雲端備份<br>
+      有任何問題請聯繫 air6030i@gmail.com
     </div>
   </div>
 
   <!-- FAQ mini -->
   <div style="margin-top:32px">
-    <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">å¸¸è¦åé¡</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">ä¸è¼å¾æä¸éï¼</strong><br>è«ç¢ºèªè£ç½®æå®è£ PDF é±è®å¨ï¼Adobe Reader æææ©å§å»ºï¼ã</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">é¸é¯ MBTI äºï¼</strong><br>ç´æ¥éæ°é¸æå³å¯ï¼é é¢ä¸æ¹ææ´æ°ã</div>
-    <div style="font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans)"><strong style="color:var(--txt)">è³¼è²·å¨åçæ³åå¾ä¸ä»½ï¼</strong><br>é¸å¥½çµåå¾æåæé¡¯ç¤ºä¸åä¸è¼æéã</div>
+    <div style="font-size:12px;color:var(--muted);letter-spacing:.1em;margin-bottom:12px;font-family:var(--sans)">常見問題</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">下載後打不開？</strong><br>請確認裝置有安裝 PDF 閱讀器（Adobe Reader 或手機內建）。</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:10px;font-family:var(--sans)"><strong style="color:var(--txt)">選錯 MBTI 了？</strong><br>直接重新選擇即可，頁面上方會更新。</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.9;font-family:var(--sans)"><strong style="color:var(--txt)">購買全包版想取得三份？</strong><br>選好組合後會同時顯示三個下載按鈕。</div>
   </div>
 </div>
 
@@ -156,67 +156,67 @@ body{background:var(--dk);color:var(--txt);font-family:var(--serif);min-height:1
   <div class="faq-inner">
     <div class="faq-header">
       <div class="faq-tag">FAQ</div>
-      <h2 class="faq-title">å¸¸è¦åé¡</h2>
-      <p class="faq-sub">æ¾ä¸å°ç­æ¡ï¼è«å¯ä¿¡è³ <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
+      <h2 class="faq-title">常見問題</h2>
+      <p class="faq-sub">找不到答案？請寄信至 <a href="mailto:air6030i@gmail.com">air6030i@gmail.com</a></p>
     </div>
     <div class="faq-group">
-      <div class="faq-group-label">ð¥ ä¸è¼ç¸é</div>
+      <div class="faq-group-label">📥 下載相關</div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>è²·å®ä¹å¾æéº¼ä¸è¼ï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>è³¼è²·æåå¾ï¼ä½ ææ¶å° Gumroad å¯ä¾çæ¶æä¿¡ãé»éä¿¡ä¸­çãView contentãæéï¼é²å¥æ¬é é¢å¾é¸æä½ ç MBTI åèï¼å³å¯ç«å³ä¸è¼å°å±¬ PDFã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>買完之後怎麼下載？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>購買成功後，你會收到 Gumroad 寄來的收據信。點開信中的「View content」按鈕，進入本頁面後選擇你的 MBTI 型號，即可立即下載專屬 PDF。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>æä¸ç¥éå°æ¹ç MBTI æéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>我不知道對方的 MBTI 怎麼辦？</span><span class="faq-arrow">▾</span></button>
         <div class="faq-a">
-          <p>å¯ä»¥åæ ¹æå°æ¹çè¡çºç¹å¾µçæ¸¬ï¼æè«å°æ¹åæ¸¬é©ãå¦æä¸ç¢ºå®ï¼å¯ä»¥åä¸è¼å¹¾åææ¥è¿çåèçæ¬ä¾æ¯è¼ã</p>
-          <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" target="_blank" class="faq-link">ð åè²»éé­å®å® MBTI æ¸¬é©</a>
+          <p>可以先根據對方的行為特徵猜測，或請對方做測驗。如果不確定，可以先下載幾個最接近的型號版本來比較。</p>
+          <a href="https://air6030i-star.github.io/soul-test/couple-quiz.html" target="_blank" class="faq-link">👉 免費靈魂宇宙 MBTI 測驗</a>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>ä¸è¼é£çµæä¸éæéº¼è¾¦ï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>è«åç¢ºèªç¶²è·¯é£ç·æ­£å¸¸ãè¥ä½¿ç¨ææ©ï¼å»ºè­°æ¹ç¨ Chrome æ Safari çè¦½å¨ãè¥ä»ç¡æ³ä½¿ç¨ï¼è«å¯ä¿¡è³ air6030i@gmail.comï¼24 å°æå§åè¦ã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>下載連結打不開怎麼辦？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>請先確認網路連線正常。若使用手機，建議改用 Chrome 或 Safari 瀏覽器。若仍無法使用，請寄信至 air6030i@gmail.com，24 小時內回覆。</p></div>
       </div>
     </div>
     <div class="faq-group">
-      <div class="faq-group-label">ð¦ ç¢åç¸é</div>
+      <div class="faq-group-label">📦 產品相關</div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>æ¨æºçå Pro çå·®å¨åªè£¡ï¼</span><span class="faq-arrow">â¾</span></button>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>標準版和 Pro 版差在哪裡？</span><span class="faq-arrow">▾</span></button>
         <div class="faq-a">
-          <p><strong style="color:var(--gold)">æ¨æºç NT$320</strong> â è¨ºæ·å·¥å·ï¼å¹«ä½ å¿«éäºè§£éæ¹çè·å ´éé­çµåãè¡çªæ¨¡å¼èå°è©±è³æ¬ã</p>
-          <p style="margin-top:8px"><strong style="color:var(--gold2)">Pro ç NT$480</strong> â æ·±åº¦è¡åæåï¼å«è·å ´å£ååæãæºéé¢¨æ ¼å°ç§ã4 é±è¡åè¨ç«ï¼é©åæ³æ ¹æ¬æ¹è®è·å ´éä¿çäººã</p>
+          <p><strong style="color:var(--gold)">標準版 NT$320</strong> — 診斷工具，幫你快速了解雙方的職場靈魂組合、衝突模式與對話腳本。</p>
+          <p style="margin-top:8px"><strong style="color:var(--gold2)">Pro 版 NT$480</strong> — 深度行動指南，含職場壓力分析、溝通風格對照、4 週行動計畫，適合想根本改變職場關係的人。</p>
         </div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>ä¸åä¸çåå«ä»éº¼ï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>å¨åçï¼NT$640ï¼åå«ä¸ä»½ç¢åï¼<strong>ç´å£æå + æ¨æºçæå + Pro çæå</strong>ï¼åè³¼ç NT$320ã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>三合一版包含什麼？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>全包版（NT$640）包含三份產品：<strong>紓壓手冊 + 標準版指南 + Pro 版指南</strong>，合購省 NT$320。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>è³¼è²·å¾å¯ä»¥ä¸è¼å¶ä»çµååï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>å¯ä»¥ï¼æ¬é é¢å¯ä»¥èªç±é¸æä»»ä½ MBTI çµåä¸è¼ï¼ä¸åéå¶ãå¦æä½ æå¤ä½åäºæä¸»ç®¡ï¼æ­¡è¿å¨é¨ä¸è¼ã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>購買後可以下載其他組合嗎？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>可以！本頁面可以自由選擇任何 MBTI 組合下載，不受限制。如果你有多位同事或主管，歡迎全部下載。</p></div>
       </div>
     </div>
     <div class="faq-group">
-      <div class="faq-group-label">ð° ä»æ¬¾èéæ¬¾</div>
+      <div class="faq-group-label">💰 付款與退款</div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>æ¯æ´åªäºä»æ¬¾æ¹å¼ï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>éé Gumroad å¹³å°ä»æ¬¾ï¼æ¯æ´ä¿¡ç¨å¡ï¼VisaãMastercardãAmerican Expressï¼ PayPalã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>支援哪些付款方式？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>透過 Gumroad 平台付款，支援信用卡（Visa、Mastercard、American Express） PayPal。</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)"><span>å¯ä»¥éæ¬¾åï¼</span><span class="faq-arrow">â¾</span></button>
-        <div class="faq-a"><p>æä¾ <strong>30 å¤©éæ¬¾ä¿è­</strong>ãè«å¯ä¿¡è³ air6030i@gmail.com ä¸¦èªªæè³¼è²·æ¥æèè¨å®ç·¨èã</p></div>
+        <button class="faq-q" onclick="toggleFaq(this)"><span>可以退款嗎？</span><span class="faq-arrow">▾</span></button>
+        <div class="faq-a"><p>提供 <strong>30 天退款保證</strong>。請寄信至 air6030i@gmail.com 並說明購買日期與訂單編號。</p></div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="footer">Â© 2026 Soul Universe Â· éé­è·å ´ç³»å</div>
+<div class="footer">© 2026 Soul Universe · 靈魂職場系列</div>
 
 <script>
 const SOULS = {
-  INFJ:'å®è­·æ°´é­', ENFJ:'å¼è·¯è±é­', INFP:'æåå¤¢è', ENFP:'å½©è¹é¢¨é­',
-  INTJ:'æåå»ºç¯å¸«', ENTJ:'å¾éé·¹é­', INTP:'è¿·å®®æè', ENTP:'é¢¶é¢¨è¾¯å£«',
-  ISFJ:'æº«å·¢è­·è¡', ESFJ:'æé½è¯ç¹«è', ISFP:'éè¬ç«é­', ESFP:'èå°åé­',
-  ISTJ:'ç£ç³å®å', ESTJ:'éµåºå°è»', ISTP:'æ²é»åå®¢', ESTP:'éé»çé­'
+  INFJ:'守護水魂', ENFJ:'引路花魂', INFP:'月光夢者', ENFP:'彩虹風魂',
+  INTJ:'星圖建築師', ENTJ:'征途鷹魂', INTP:'迷宮思者', ENTP:'颶風辯士',
+  ISFJ:'溫巢護衛', ESFJ:'暖陽聯繫者', ISFP:'靜謐畫魂', ESFP:'舞台光魂',
+  ISTJ:'磐石守則', ESTJ:'鐵序將軍', ISTP:'沉默刀客', ESTP:'閃電炎魂'
 };
 const TYPES = ['INFJ','ENFJ','INFP','ENFP','INTJ','ENTJ','INTP','ENTP',
                'ISFJ','ESFJ','ISFP','ESFP','ISTJ','ESTJ','ISTP','ESTP'];
@@ -758,7 +758,7 @@ const LINKS = {
   }
 };
 
-// ââ åµæ¸¬è³¼è²·æ¹æ¡ ââââââââââââââââââââââââââââââââââââââââââ
+// ── 偵測購買方案 ──────────────────────────────────────────
 const params = new URLSearchParams(window.location.search);
 const productParam = (params.get('product') || 'standard').toLowerCase();
 let productType = 'standard';
@@ -766,24 +766,24 @@ if(productParam.includes('pro')) productType = 'pro';
 else if(productParam.includes('relief') || productParam.includes('stress')) productType = 'relief';
 else if(productParam.includes('bundle')) productType = 'bundle';
 
-// ââ æ¹æ¡æ¨ç±¤ ââââââââââââââââââââââââââââââââââââââââââââââ
+// ── 方案標籤 ──────────────────────────────────────────────
 const badgeEl = document.getElementById('product-badge');
 const badgeMap = {
-  relief:   ['badge-relief',  'è·å ´ç´å£æå NT$160'],
-  standard: ['badge-standard','è·å ´æºéæå æ¨æºç NT$320'],
-  pro:      ['badge-pro',     'è·å ´æºéæå Proç NT$480'],
-  bundle:   ['badge-bundle',  'å¨åç NT$640 Â· ä¸åä¸']
+  relief:   ['badge-relief',  '職場紓壓手冊 NT$160'],
+  standard: ['badge-standard','職場溝通指南 標準版 NT$320'],
+  pro:      ['badge-pro',     '職場溝通指南 Pro版 NT$480'],
+  bundle:   ['badge-bundle',  '全包版 NT$640 · 三合一']
 };
 const [badgeClass, badgeText] = badgeMap[productType] || badgeMap.standard;
 badgeEl.className = 'product-badge ' + badgeClass;
 badgeEl.textContent = badgeText;
 
-// ââ èª¿æ´ Step 1 èªªæ ââââââââââââââââââââââââââââââââââââââ
+// ── 調整 Step 1 說明 ──────────────────────────────────────
 if(productType === 'relief'){
-  document.getElementById('step-you-sub').textContent = 'é¸æä½ ç MBTI é¡åï¼ä¸è¼ä½ çè·å ´ç´å£æå';
+  document.getElementById('step-you-sub').textContent = '選擇你的 MBTI 類型，下載你的職場紓壓手冊';
 }
 
-// ââ å»ºç« MBTI æé ââââââââââââââââââââââââââââââââââââââââ
+// ── 建立 MBTI 按鈕 ────────────────────────────────────────
 function makeGrid(containerId, role){
   const container = document.getElementById(containerId);
   TYPES.forEach(t => {
@@ -832,37 +832,37 @@ function showDownload(){
 
   if(productType === 'relief'){
     const url = LINKS.relief[selectedYou];
-    comboEl.textContent = selectedYou + ' Â· ' + SOULS[selectedYou];
-    soulEl.textContent  = 'è·å ´ç´å£æå';
+    comboEl.textContent = selectedYou + ' · ' + SOULS[selectedYou];
+    soulEl.textContent  = '職場紓壓手冊';
     if(!url || url.startsWith('PLACEHOLDER')){
-      linksEl.innerHTML = '<div class="pending-notice">æ­¤åèç PDF å³å°ä¸ç·ï¼è«ç¨åæè¯ç¹« air6030i@gmail.com</div>';
+      linksEl.innerHTML = '<div class="pending-notice">此型號的 PDF 即將上線，請稍候或聯繫 air6030i@gmail.com</div>';
     } else {
-      linksEl.innerHTML = `<a href="${url}" class="btn-download btn-dl-relief" target="_blank"><span class="btn-dl-label">ä¸è¼è·å ´ç´å£æå</span><span class="btn-dl-size">PDF Â· NT$160</span></a>`;
+      linksEl.innerHTML = `<a href="${url}" class="btn-download btn-dl-relief" target="_blank"><span class="btn-dl-label">下載職場紓壓手冊</span><span class="btn-dl-size">PDF · NT$160</span></a>`;
     }
   } else {
     const key = selectedYou + '-' + selectedThem;
-    comboEl.textContent = selectedYou + ' Ã ' + selectedThem;
-    soulEl.textContent  = SOULS[selectedYou] + ' Ã ' + SOULS[selectedThem];
+    comboEl.textContent = selectedYou + ' × ' + selectedThem;
+    soulEl.textContent  = SOULS[selectedYou] + ' × ' + SOULS[selectedThem];
     const stdUrl = LINKS.standard[key];
     const proUrl = LINKS.pro[key];
 
     const makeBtn = (url, cls, label, price) => {
       if(!url || url.startsWith('PLACEHOLDER')){
-        return `<div class="pending-notice">${label} PDF å³å°ä¸ç·</div>`;
+        return `<div class="pending-notice">${label} PDF 即將上線</div>`;
       }
-      return `<a href="${url}" class="btn-download ${cls}" target="_blank"><span class="btn-dl-label">ä¸è¼ ${label}</span><span class="btn-dl-size">PDF Â· NT$${price}</span></a>`;
+      return `<a href="${url}" class="btn-download ${cls}" target="_blank"><span class="btn-dl-label">下載 ${label}</span><span class="btn-dl-size">PDF · NT$${price}</span></a>`;
     };
 
     if(productType === 'standard'){
-      linksEl.innerHTML = makeBtn(stdUrl,'btn-dl-standard','è·å ´æºéæå æ¨æºç','320');
+      linksEl.innerHTML = makeBtn(stdUrl,'btn-dl-standard','職場溝通指南 標準版','320');
     } else if(productType === 'pro'){
-      linksEl.innerHTML = makeBtn(proUrl,'btn-dl-pro','è·å ´æºéæå Proç','480');
+      linksEl.innerHTML = makeBtn(proUrl,'btn-dl-pro','職場溝通指南 Pro版','480');
     } else if(productType === 'bundle'){
       const relUrl = LINKS.relief[selectedYou];
       linksEl.innerHTML =
-        makeBtn(relUrl,'btn-dl-relief','è·å ´ç´å£æå','160') +
-        makeBtn(stdUrl,'btn-dl-standard','è·å ´æºéæå æ¨æºç','320') +
-        makeBtn(proUrl,'btn-dl-pro','è·å ´æºéæå Proç','480');
+        makeBtn(relUrl,'btn-dl-relief','職場紓壓手冊','160') +
+        makeBtn(stdUrl,'btn-dl-standard','職場溝通指南 標準版','320') +
+        makeBtn(proUrl,'btn-dl-pro','職場溝通指南 Pro版','480');
     }
   }
   area.classList.add('show');
