@@ -4,9 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>靈魂人格測驗 · 64型靈魂密碼</title>
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
+  <meta name="description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。8 題情境題，直接對應親子、職場、情感溝通指南。">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="靈魂人格測驗 · 64型靈魂密碼 · Soul Universe">
+  <meta property="og:description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。你是 16 型之一，還是 64 格裡專屬你的那一格？">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="靈魂人格測驗 · 64型靈魂密碼 · Soul Universe">
+  <meta name="twitter:description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。">
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <!-- defer：讓頂欄與載入畫面先渲染，React/Babel 在背景下載（Babel 於 DOM 解析完後再轉譯測驗程式）-->
+  <script defer src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+  <script defer src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+  <script defer src="https://unpkg.com/@babel/standalone@7/babel.min.js"></script>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
     html,body{background:#070510;min-height:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
@@ -30,6 +39,12 @@
     @media(max-width:380px){
       .bh{padding:13px 14px!important;font-size:15px!important}
     }
+    /* ── 開場載入畫面（React 掛載後自動被取代）── */
+    #su-boot{min-height:70vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px}
+    .su-boot-spin{width:44px;height:44px;border-radius:50%;border:3px solid rgba(139,124,246,0.18);border-top-color:#A78BFA;animation:subspin 0.9s linear infinite}
+    @keyframes subspin{to{transform:rotate(360deg)}}
+    .su-boot-text{color:rgba(255,255,255,0.45);font-size:14px;letter-spacing:.12em}
+    .su-boot-sub{color:rgba(255,255,255,0.22);font-size:12px;letter-spacing:.06em}
   </style>
 </head>
 <body>
@@ -42,14 +57,22 @@
   </a>
   <div class="su-nav-links">
     <a href="index.html" class="su-nav-link active hide-sm">人格測驗</a>
-    <a href="parenting.html" class="su-nav-link hide-sm">親子指南</a>
-    <a href="workplace.html" class="su-nav-link hide-sm">職場指南</a>
-    <a href="couple.html" class="su-nav-link hide-sm">情感指南</a>
+    <a href="../02_MBTI親子關係/親子網站/靈魂親子-銷售頁.html" class="su-nav-link hide-sm">親子指南</a>
+    <a href="../03_MBTI職場關係/職場網站/index.html" class="su-nav-link hide-sm">職場指南</a>
+    <a href="../04_MBTI情侶友情關係/情感網站/index.html" class="su-nav-link hide-sm">情感指南</a>
+    <a href="../21_排盤引擎整合/命理銷售頁/index.html" class="su-nav-link hide-sm">命理排盤</a>
     <a href="index.html" class="su-nav-cta">免費測驗 →</a>
   </div>
 </nav>
 
-<div id="root"></div>
+<div id="root">
+  <!-- React 掛載前的品牌載入畫面：原本是整頁白屏直到 ~3MB 腳本下載+編譯完 -->
+  <div id="su-boot">
+    <div class="su-boot-spin"></div>
+    <div class="su-boot-text">✦ 靈魂宇宙</div>
+    <div class="su-boot-sub">正在為你開啟 64 型靈魂測驗…</div>
+  </div>
+</div>
 <script type="text/babel">
 const{useState,useEffect}=React;
 
@@ -412,7 +435,7 @@ const SOULS = {
 const MBTI_KEYS = Object.keys(SOULS);
 const getDayIdx = () => new Date().getDay();
 const getDateStr = () => { const d=new Date(); return `${d.getMonth()+1}月${d.getDate()}日`; };
-const SUBTYPE_LABELS = { AH:"果斷·溫暖", AC:"果斷·高冷", OH:"糾結·溫暖", OC:"糾結·高冷" };
+const SUBTYPE_LABELS = { AH:"A-H 果斷·溫暖", AC:"A-C 果斷·高冷", OH:"O-H 糾結·溫暖", OC:"O-C 糾結·高冷" };
 const SUBTYPE_DESC = { AH:"行動力強，親和溫暖", AC:"果斷直接，自帶距離感", OH:"思慮細膩，溫柔體貼", OC:"深思熟慮，神秘高冷" };
 
 const QUESTIONS = [
@@ -508,7 +531,7 @@ function SoulApp() {
   const [p1sub, setP1sub] = useState("OH"); const [p2sub, setP2sub] = useState("OH");
   const [compatDone, setCompatDone] = useState(false);
   const [tab, setTab] = useState("daily");
-  const [count] = useState(43891+Math.floor(Math.random()*80));
+  // （已移除假人數計數器 43891+random——改用真實產品規格當底部信任列）
   const [showShare, setShowShare] = useState(false);
   const [shareStyle, setShareStyle] = useState("dark");
   const [copied, setCopied] = useState(false);
@@ -547,6 +570,7 @@ function SoulApp() {
     return (
       <span style={{display:"inline-flex",alignItems:"center",gap:6,background:`${si.glow}22`,border:`1px solid ${si.color}44`,borderRadius:20,...fs.outer}}>
         <span style={{fontFamily:"'Courier New',monospace",fontWeight:900,color:si.color,fontSize:fs.code.fontSize,letterSpacing:1}}>{type}</span>
+        {st && <span style={{fontSize:13,color:`${si.color}88`,fontFamily:"monospace"}}>-{st.slice(0,1)}-{st.slice(1)}</span>}
         <span style={{width:1,height:12,background:`${si.color}44`}}/>
         <span style={{fontSize:fs.name.fontSize,color:"rgba(255,255,255,0.55)"}}>{si.emoji} {si.name}</span>
       </span>
@@ -568,7 +592,7 @@ function SoulApp() {
     const nick = ST ? ST.nick : "";
     const desc = ST ? ST.desc : "";
     const rare = ST ? ST.rare : "";
-    const typeCode = mbtiType || "";
+    const typeCode = mbtiType && subtype ? `${mbtiType}-${subtype.slice(0,1)}-${subtype.slice(1)}` : "";
 
     if (isDark) {
       // Dark background
@@ -684,7 +708,7 @@ function SoulApp() {
     const canvas = document.createElement("canvas");
     drawShareCard(canvas, shareStyle);
     const a = document.createElement("a");
-    a.download = `靈魂密碼-${mbtiType}.png`;
+    a.download = `靈魂密碼-${mbtiType}-${subtype}.png`;
     a.href = canvas.toDataURL("image/png");
     a.click();
   };
@@ -715,7 +739,7 @@ function SoulApp() {
           <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",textAlign:"center",marginBottom:10,flexShrink:0}}>長按卡片截圖，或點下方下載</div>
           <button onClick={downloadCard} className="bh" style={B("linear-gradient(135deg,#8B7CF6,#F472B6)",{marginBottom:8,flexShrink:0})}>⬇️ 下載分享卡片</button>
           <button onClick={()=>{
-            const soul = S && ST ? `${mbtiType} · ${ST.nick}` : mbtiType;
+            const soul = S && ST ? `${mbtiType}-${subtype} ${ST.name}` : mbtiType;
             const daily = ST && ST.daily && ST.daily[0] ? ST.daily[0] : "內在最安靜的聲音，是我最響亮的嚮導";
             const txt = `我剛測出我的靈魂密碼是 ${soul} ✦\n\n「${daily.substring(0,40)}」\n\n你也來測測你的64型靈魂密碼吧！🔮\nhttps://soul-cosmos.netlify.app`;
             navigator.clipboard.writeText(txt).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2500);});
@@ -732,7 +756,7 @@ function SoulApp() {
     <div style={base}><BG/>
       <div style={W}>
         <div style={{textAlign:"center",padding:"52px 0 24px",animation:"fu 0.7s ease both"}}>
-          <div style={{display:"inline-block",background:"rgba(139,124,246,0.1)",border:"1px solid rgba(139,124,246,0.2)",borderRadius:30,padding:"5px 14px",fontSize:13,color:"#A78BFA",marginBottom:16,letterSpacing:2}}>✦ 基於榮格16型人格心理學 × 64型進階系統 ✦</div>
+          <div style={{display:"inline-block",background:"rgba(139,124,246,0.1)",border:"1px solid rgba(139,124,246,0.2)",borderRadius:30,padding:"5px 14px",fontSize:13,color:"#A78BFA",marginBottom:16,letterSpacing:2}}>✦ 整合國際16型人格研究 × 64型進階系統 ✦</div>
           <div style={{fontSize:60,marginBottom:4}}>🔮</div>
           <h1 style={{fontSize:32,fontWeight:900,margin:"0 0 6px",lineHeight:1.2}}><span className="sh">靈魂人格測驗</span></h1>
           <p style={{color:"rgba(255,255,255,0.4)",fontSize:15,lineHeight:1.8,margin:"8px 0 0"}}>探索你的靈魂密碼 · 64型進階人格系統<br/>每天一則成長語錄 + 靈魂指引</p>
@@ -757,6 +781,10 @@ function SoulApp() {
             <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:4,letterSpacing:1}}>🌱 今日成長語錄</div>
             <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.55)"}}>{SOULS["INFJ"].subtypes.OH.growth[di]}</p>
           </div>
+          <a href="../21_排盤引擎整合/%2330_64閘門日曆/index.html" style={{display:"block",background:"rgba(201,162,75,0.1)",border:"1px solid rgba(201,162,75,0.3)",borderRadius:10,padding:12,marginTop:8,textDecoration:"none"}}>
+            <div style={{fontSize:12,color:"#E8C66A",marginBottom:4,letterSpacing:1}}>🔮 今日閘門能量 · 免費天天看</div>
+            <p style={{margin:0,fontSize:14,lineHeight:1.6,color:"rgba(255,255,255,0.6)"}}>今天宇宙開哪一道門？看你今天的能量主題 →</p>
+          </a>
           <p style={{margin:"8px 0 0",fontSize:13,color:"rgba(255,255,255,0.25)",textAlign:"center"}}>完成測驗，解鎖你的專屬 64型靈魂密碼 ↓</p>
         </div>
 
@@ -766,7 +794,6 @@ function SoulApp() {
               {mbtiType && <button onClick={resetAll} className="bh" style={B("rgba(255,255,255,0.06)",{marginTop:8,fontSize:14,color:"rgba(255,255,255,0.35)"})}>↺ 重新測驗</button>}
           {mbtiType && subtype && <button onClick={()=>setPage("daily")} className="bh" style={B("linear-gradient(135deg,#F472B6,#E879A0)")}>🌙 今日靈語中心</button>}
           <button onClick={()=>setPage("compat")} className="bh" style={B("rgba(255,255,255,0.05)",{border:"1px solid rgba(255,255,255,0.1)"})}>💕 靈魂配對分析</button>
-          <button onClick={()=>setPage("sub")} className="bh" style={B("rgba(255,255,255,0.05)",{border:"1px solid rgba(255,255,255,0.1)"})}>🌟 訂閱每日靈語 + 成長語錄</button>
         </div>
 
         {/* Features */}
@@ -782,7 +809,7 @@ function SoulApp() {
         {/* 系列導流 */}
         <div style={{width:"100%",paddingBottom:8,animation:"fu 0.7s 0.5s ease both"}}>
           <div style={{fontSize:11,color:"rgba(255,255,255,0.2)",textAlign:"center",letterSpacing:"0.15em",marginBottom:12,fontFamily:"sans-serif"}}>✦ 靈魂宇宙系列 · 從了解自己到讀懂身邊的人 ✦</div>
-          <a href="parenting.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.07)",border:"1px solid rgba(212,136,42,0.18)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
+          <a href="../02_MBTI親子關係/親子網站/靈魂親子-銷售頁.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.07)",border:"1px solid rgba(212,136,42,0.18)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
             <span style={{fontSize:22,flexShrink:0}}>👨‍👩‍👧</span>
             <div style={{flex:1}}>
               <div style={{color:"#e8a840",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂親子 · 親子溝通指南</div>
@@ -790,7 +817,7 @@ function SoulApp() {
             </div>
             <span style={{color:"rgba(212,136,42,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
           </a>
-          <a href="workplace.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(0,196,160,0.06)",border:"1px solid rgba(0,196,160,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
+          <a href="../03_MBTI職場關係/職場網站/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(0,196,160,0.06)",border:"1px solid rgba(0,196,160,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
             <span style={{fontSize:22,flexShrink:0}}>⚔️</span>
             <div style={{flex:1}}>
               <div style={{color:"#00c4a0",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂職場 · 職場溝通指南</div>
@@ -798,7 +825,7 @@ function SoulApp() {
             </div>
             <span style={{color:"rgba(0,196,160,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
           </a>
-          <a href="couple.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(244,114,182,0.06)",border:"1px solid rgba(244,114,182,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
+          <a href="../04_MBTI情侶友情關係/情感網站/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(244,114,182,0.06)",border:"1px solid rgba(244,114,182,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
             <span style={{fontSize:22,flexShrink:0}}>💕</span>
             <div style={{flex:1}}>
               <div style={{color:"#F472B6",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂情感 · 情侶友情指南</div>
@@ -806,16 +833,16 @@ function SoulApp() {
             </div>
             <span style={{color:"rgba(244,114,182,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
           </a>
-          <a href="index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(139,124,246,0.06)",border:"1px solid rgba(139,124,246,0.15)",borderRadius:12,padding:"14px 16px",textDecoration:"none",cursor:"pointer"}}>
-            <span style={{fontSize:22,flexShrink:0}}>🌊</span>
+          <a href="../21_排盤引擎整合/命理銷售頁/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(201,162,75,0.07)",border:"1px solid rgba(201,162,75,0.2)",borderRadius:12,padding:"14px 16px",textDecoration:"none",cursor:"pointer"}}>
+            <span style={{fontSize:22,flexShrink:0}}>🔮</span>
             <div style={{flex:1}}>
-              <div style={{color:"#8B7CF6",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>心靈避風港 · 靈魂療癒</div>
-              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>情緒安頓 · 找回內在穩定中心</div>
+              <div style={{color:"#C9A24B",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂命理 · 紫微八字排盤</div>
+              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>看你的命定藍圖 · 紫微×八字專業排盤</div>
             </div>
-            <span style={{color:"rgba(139,124,246,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
+            <span style={{color:"rgba(201,162,75,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
           </a>
         </div>
-        <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,paddingBottom:40}}>👥 {count.toLocaleString()} 個靈魂 · ⭐ 4.9 分 · 🔄 每日更新</p>
+        <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,paddingBottom:40}}>⏱ 8 題約 2 分鐘 · 完全免費　✦ 16 型 × 4 子型 · 64 型完整系統 · 每日更新</p>
       </div>
     </div>
   );
@@ -918,11 +945,11 @@ function SoulApp() {
 
             {/* Subtype info */}
             <div style={{...C(),marginBottom:12}}>
-              <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:10,letterSpacing:1}}>🔬 {mbtiType} 的 4 種靈魂光譜</div>
+              <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:10,letterSpacing:1}}>🔬 你的64型代碼</div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 {Object.entries(SUBTYPE_LABELS).map(([k,label])=>(
                   <div key={k} style={{background:k===subtype?`${S.color}18`:"rgba(255,255,255,0.03)",border:`1px solid ${k===subtype?S.color+"44":"rgba(255,255,255,0.06)"}`,borderRadius:10,padding:"10px 12px"}}>
-                    <div style={{fontSize:13,color:k===subtype?S.color:"rgba(255,255,255,0.55)",fontWeight:k===subtype?700:500,marginBottom:3}}>{S.subtypes[k]?.nick||label} {k===subtype?"← 你":""}</div>
+                    <div style={{fontSize:13,fontFamily:"monospace",color:k===subtype?S.color:"rgba(255,255,255,0.35)",fontWeight:k===subtype?700:400,marginBottom:3}}>{mbtiType}-{k.slice(0,1)}-{k.slice(1)} {k===subtype?"← 你":""}</div>
                     <div style={{fontSize:13,color:"rgba(255,255,255,0.4)"}}>{SUBTYPE_DESC[k]}</div>
                   </div>
                 ))}
@@ -934,7 +961,7 @@ function SoulApp() {
               <div style={{...C(),border:`1px dashed ${S.color}33`}}>
                 <div style={{textAlign:"center",marginBottom:12}}>
                   <div style={{fontSize:28,marginBottom:6}}>🔮</div>
-                  <h3 style={{margin:"0 0 3px",fontSize:17}}>解鎖你的完整靈魂密碼</h3>
+                  <h3 style={{margin:"0 0 3px",fontSize:17}}>解鎖 {mbtiType}-{subtype.slice(0,1)}-{subtype.slice(1)} 完整靈魂密碼</h3>
                   <p style={{color:"rgba(255,255,255,0.35)",fontSize:14,margin:0}}>愛情 · 事業 · 財運 · 靈魂伴侶 · 塔羅 · 2026運勢</p>
                 </div>
                 <div style={{background:"rgba(0,0,0,0.15)",borderRadius:10,padding:12,marginBottom:10}}>
@@ -944,12 +971,12 @@ function SoulApp() {
                     </div>
                   ))}
                 </div>
-                <button onClick={()=>setPaid(true)} className="bh" style={B(`linear-gradient(135deg,${S.color},${S.glow})`,{marginBottom:4})}>✨ US$4.99 解鎖完整靈魂密碼</button>
+                <button onClick={()=>setPaid(true)} className="bh" style={B(`linear-gradient(135deg,${S.color},${S.glow})`,{marginBottom:4})}>✨ NT$99 解鎖完整靈魂密碼</button>
                 <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,margin:0}}>一次解鎖 · 永久珍藏</p>
               </div>
             ):(
               <div style={C()}>
-                <h3 style={{margin:"0 0 12px",color:S.color,fontSize:16}}>🌟 你的完整靈魂密碼</h3>
+                <h3 style={{margin:"0 0 12px",color:S.color,fontSize:16}}>🌟 {mbtiType}-{subtype.slice(0,1)}-{subtype.slice(1)} 完整靈魂密碼</h3>
                 {[{icon:"💕",t:"靈魂伴侶",c:`你在感情中展現${ST.nick}的特質。你的元素是${S.element}，與${S.planet}能量共振，注定與特定靈魂有深層的宇宙牽引。`},{icon:"💼",t:"天命事業",c:`${S.sub}的天命是在${S.element}的能量領域建立影響力。今年是你核心能力爆發的關鍵時機。`},{icon:"🔮",t:"2026靈魂旅程",c:`${S.tarot[di]}是你本週的宇宙指引。上半年能量積累，下半年全面爆發，你的靈魂旅程已正式啟動。`}].map(s=>(
                   <div key={s.t} style={{background:"rgba(0,0,0,0.18)",borderRadius:10,padding:12,marginBottom:8}}>
                     <b style={{color:S.color,fontSize:14}}>{s.icon} {s.t}</b>
@@ -963,7 +990,7 @@ function SoulApp() {
             <button onClick={()=>setPage("daily")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.1)"})}> 🌙 進入我的每日靈語中心</button>
             <div style={{width:"100%",marginTop:8,marginBottom:8}}>
               <div style={{fontSize:11,color:"rgba(255,255,255,0.25)",textAlign:"center",letterSpacing:"0.15em",marginBottom:10,fontFamily:"sans-serif"}}>✦ 根據你的型號，這些指南最適合你 ✦</div>
-              <a href="parenting.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.08)",border:"1px solid rgba(212,136,42,0.2)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
+              <a href="../02_MBTI親子關係/親子網站/靈魂親子-銷售頁.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.08)",border:"1px solid rgba(212,136,42,0.2)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
                 <span style={{fontSize:22,flexShrink:0}}>👨‍👩‍👧</span>
                 <div style={{flex:1}}>
                   <div style={{color:"#e8a840",fontWeight:700,fontSize:14,marginBottom:2}}>靈魂親子指南</div>
@@ -971,7 +998,7 @@ function SoulApp() {
                 </div>
                 <span style={{color:"rgba(212,136,42,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
               </a>
-              <a href="workplace.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(0,196,160,0.07)",border:"1px solid rgba(0,196,160,0.18)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
+              <a href="../03_MBTI職場關係/職場網站/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(0,196,160,0.07)",border:"1px solid rgba(0,196,160,0.18)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
                 <span style={{fontSize:22,flexShrink:0}}>⚔️</span>
                 <div style={{flex:1}}>
                   <div style={{color:"#00c4a0",fontWeight:700,fontSize:14,marginBottom:2}}>靈魂職場指南</div>
@@ -979,13 +1006,21 @@ function SoulApp() {
                 </div>
                 <span style={{color:"rgba(0,196,160,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
               </a>
-              <a href="couple.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(244,114,182,0.07)",border:"1px solid rgba(244,114,182,0.18)",borderRadius:12,padding:"14px 16px",textDecoration:"none",cursor:"pointer"}}>
+              <a href="../04_MBTI情侶友情關係/情感網站/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(244,114,182,0.07)",border:"1px solid rgba(244,114,182,0.18)",borderRadius:12,padding:"14px 16px",textDecoration:"none",cursor:"pointer"}}>
                 <span style={{fontSize:22,flexShrink:0}}>💕</span>
                 <div style={{flex:1}}>
                   <div style={{color:"#F472B6",fontWeight:700,fontSize:14,marginBottom:2}}>靈魂情感指南</div>
                   <div style={{color:"rgba(255,255,255,0.4)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>你們的關係密碼 · 讀懂彼此的愛的語言</div>
                 </div>
                 <span style={{color:"rgba(244,114,182,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
+              </a>
+              <a href="../21_排盤引擎整合/命理銷售頁/index.html" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(201,162,75,0.08)",border:"1px solid rgba(201,162,75,0.2)",borderRadius:12,padding:"14px 16px",marginTop:8,textDecoration:"none",cursor:"pointer"}}>
+                <span style={{fontSize:22,flexShrink:0}}>🔮</span>
+                <div style={{flex:1}}>
+                  <div style={{color:"#C9A24B",fontWeight:700,fontSize:14,marginBottom:2}}>靈魂命理排盤</div>
+                  <div style={{color:"rgba(255,255,255,0.4)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>看你的命定藍圖 · 紫微×八字專業排盤</div>
+                </div>
+                <span style={{color:"rgba(201,162,75,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
               </a>
             </div>
             <button onClick={()=>setPage("home")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.15)",marginBottom:40})}>← 返回首頁</button>
@@ -1034,23 +1069,6 @@ function SoulApp() {
                   <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:6,letterSpacing:1}}>✦ 今日靈魂宣言 ✦</div>
                   <p style={{margin:0,fontSize:17,color:S.color,fontStyle:"italic",fontWeight:600,lineHeight:1.7}}>「{ST.affirmation[di%3]}」</p>
                 </div>
-                {!subscribed&&(
-                  <div style={C()}>
-                    <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:8,letterSpacing:1}}>其他型號今日靈語（訂閱解鎖）</div>
-                    <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6}}>
-                      {MBTI_KEYS.filter(t=>t!==mbtiType).slice(0,4).map(t=>(
-                        <div key={t} style={{...C({padding:10}),opacity:0.35}}>
-                          <div style={{display:"flex",gap:5,alignItems:"center",marginBottom:3}}>
-                            <span style={{fontFamily:"monospace",fontSize:13,color:SOULS[t].color}}>{t}</span>
-                            <span style={{fontSize:14}}>{SOULS[t].emoji}</span>
-                          </div>
-                          <div style={{fontSize:13,color:"rgba(255,255,255,0.2)",filter:"blur(3px)"}}>████████████████</div>
-                        </div>
-                      ))}
-                    </div>
-                    <button onClick={()=>setPage("sub")} className="bh" style={B("linear-gradient(135deg,#8B7CF6,#F472B6)",{marginTop:10,marginBottom:0,padding:"10px 14px"})}>🌟 訂閱解鎖全部64型靈語</button>
-                  </div>
-                )}
               </div>
             )}
 
@@ -1127,7 +1145,6 @@ function SoulApp() {
               <div style={{fontSize:12,color:"rgba(255,255,255,0.2)",letterSpacing:2,textAlign:"center",marginBottom:10}}>✦ 靈魂宇宙 · 探索更多 ✦</div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 {[
-                  {icon:"🌑",title:"靈魂避風港",desc:"情緒低潮時的深夜陪伴",color:"#7C6FDD",url:"https://soul-haven.vercel.app"},
                   {icon:"🌱",title:"靈魂親子",desc:"找到孩子聽得進去的頻道",color:"#c4794a",url:"https://soul-parenting.vercel.app"},
                   {icon:"🔮",title:"靈魂覺醒",desc:"顯化阻礙 × 內在療癒",color:"#d4a0c8",url:"https://soul-awakening.vercel.app"},
                   {icon:"💕",title:"靈魂配對",desc:"查看你的靈魂緣分",color:"#F472B6",url:null,action:()=>setPage("compat")},
@@ -1192,8 +1209,8 @@ function SoulApp() {
                   </select>
                   <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:4}}>
                     {Object.entries(SUBTYPE_LABELS).map(([k,label])=>(
-                      <button key={k} onClick={()=>f.setSub(k)} style={{padding:"6px 4px",background:f.sub===k?`${f.ac}22`:"rgba(255,255,255,0.04)",border:`1px solid ${f.sub===k?f.ac+"44":"rgba(255,255,255,0.08)"}`,borderRadius:8,color:f.sub===k?"white":"rgba(255,255,255,0.4)",fontSize:11,cursor:"pointer"}}>
-                        {label}
+                      <button key={k} onClick={()=>f.setSub(k)} style={{padding:"6px 4px",background:f.sub===k?`${f.ac}22`:"rgba(255,255,255,0.04)",border:`1px solid ${f.sub===k?f.ac+"44":"rgba(255,255,255,0.08)"}`,borderRadius:8,color:f.sub===k?"white":"rgba(255,255,255,0.4)",fontSize:12,cursor:"pointer",fontFamily:"monospace"}}>
+                        {k.slice(0,1)}-{k.slice(1)}
                       </button>
                     ))}
                   </div>
@@ -1224,11 +1241,6 @@ function SoulApp() {
                 <div style={{background:"rgba(0,0,0,0.18)",borderRadius:10,padding:12,marginBottom:10}}>
                   <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.65)",fontStyle:"italic"}}>「{cm.desc}」</p>
                 </div>
-                <div style={{background:"rgba(244,114,182,0.06)",border:"1px solid rgba(244,114,182,0.15)",borderRadius:10,padding:12}}>
-                  <div style={{fontSize:12,color:"rgba(244,114,182,0.6)",marginBottom:6,letterSpacing:1}}>🔒 訂閱解鎖深度配對報告</div>
-                  <p style={{margin:"0 0 8px",color:"rgba(255,255,255,0.35)",fontSize:14,lineHeight:1.6}}>溝通密碼 · 衝突模式 · 今生靈魂課題 · 如何讓關係更深</p>
-                  <button onClick={()=>setPage("sub")} className="bh" style={B("linear-gradient(135deg,#F472B6,#E879A0)",{marginBottom:0,padding:"10px 12px"})}>🌟 訂閱後查看完整配對</button>
-                </div>
               </div>
             )}
             <div style={{height:40}}/>
@@ -1240,14 +1252,47 @@ function SoulApp() {
 
   // ── SUBSCRIPTION ──────────────────────────────────────────────────────────────
   if(page==="sub") {
-    const plans=[
-      {n:"月靈訂閱",p:"NT$149",per:"/月",u:"每天不到5元",f:["每日靈語 + 成長語錄","每日塔羅指引","今日能量預報","64型全部每日內容","幸運色 & 守護星球"],c:"#8B7CF6",hot:false},
-      {n:"季靈訂閱",p:"NT$399",per:"/季",u:"省NT$48 · 最受歡迎",f:["月靈全部功能","季度靈魂深度報告","64型配對深度解析","靈魂成長課題PDF","新功能優先體驗"],c:"#F472B6",hot:true},
-      {n:"年靈訂閱",p:"NT$1299",per:"/年",u:"省NT$489 · 超值方案",f:["季靈全部功能","生日月專屬靈魂報告","年度靈魂旅程地圖","1對1 AI靈魂諮詢","永久會員徽章"],c:"#FBBF24",hot:false},
-    ];
+    const plans=[];
     return (
       <div style={base}><BG/>
         <div style={W}>
           <div style={{padding:"28px 0"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:18}}>
-              <button onClick={()=>setPage(mbtiType?"daily":"hom
+              <button onClick={()=>setPage(mbtiType?"daily":"home")} style={{background:"rgba(255,255,255,0.07)",border:"none",color:"white",padding:"6px 11px",borderRadius:10,cursor:"pointer",fontSize:11}}>←</button>
+              <div><div style={{fontWeight:700,fontSize:13}}>🌟 靈魂訂閱方案</div><div style={{color:"rgba(255,255,255,0.3)",fontSize:10}}>每天都有新的宇宙訊息等著你</div></div>
+            </div>
+            <div style={{...C(),background:"rgba(139,124,246,0.07)",border:"1px solid rgba(139,124,246,0.15)",textAlign:"center",marginBottom:12}}>
+              <p style={{margin:"0 0 6px",fontSize:12,color:"rgba(255,255,255,0.6)",lineHeight:1.7}}>每天早上打開，讓宇宙告訴你<br/>今天的 <span style={{fontFamily:"monospace",color:mbtiType&&subtype?S?.color:"#8B7CF6"}}>{mbtiType&&subtype?`${mbtiType}-${subtype.slice(0,1)}-${subtype.slice(1)}`:"你的型號"}</span> 應該怎麼走</p>
+              <div style={{display:"flex",justifyContent:"center",gap:12,fontSize:10,color:"rgba(255,255,255,0.3)"}}>
+                <span>🔄 每日更新</span><span>🌱 成長語錄</span><span>🃏 塔羅指引</span><span>❌ 隨時取消</span>
+              </div>
+            </div>
+            {plans.map((pl,i)=>(
+              <div key={pl.n} className="gh" style={{...C(),border:pl.hot?`1px solid ${pl.c}44`:"1px solid rgba(255,255,255,0.07)",position:"relative",animation:`fu 0.5s ${i*0.08}s ease both`}}>
+                {pl.hot&&<div style={{position:"absolute",top:-10,left:"50%",transform:"translateX(-50%)",background:`linear-gradient(135deg,${pl.c},${pl.c}99)`,color:"white",padding:"2px 12px",borderRadius:16,fontSize:9,fontWeight:700,whiteSpace:"nowrap"}}>🔥 最多人選擇</div>}
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+                  <div><div style={{fontWeight:700,fontSize:14}}>{pl.n}</div><div style={{fontSize:9,color:"rgba(255,255,255,0.3)",marginTop:2}}>{pl.u}</div></div>
+                  <div style={{textAlign:"right"}}><span style={{fontWeight:900,color:pl.c,fontSize:18}}>{pl.p}</span><span style={{color:"rgba(255,255,255,0.2)",fontSize:10}}>{pl.per}</span></div>
+                </div>
+                <div style={{marginBottom:10}}>
+                  {pl.f.map(f=><div key={f} style={{color:"rgba(255,255,255,0.5)",fontSize:11,marginBottom:4,display:"flex",gap:6,alignItems:"center"}}><div style={{width:3,height:3,borderRadius:"50%",background:pl.c,flexShrink:0}}/>{f}</div>)}
+                </div>
+                <button onClick={()=>{setSubscribed(true);setPage(mbtiType?"daily":"home");}} className="bh" style={B(`linear-gradient(135deg,${pl.c},${pl.c}99)`,{marginBottom:0,padding:"11px 14px"})}>選擇 {pl.n}</button>
+              </div>
+            ))}
+            <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:10,marginTop:6}}>✦ 隨時可取消 · 安全付款 · 不自動續費 ✦</p>
+            <div style={{height:40}}/>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+
+ReactDOM.createRoot(document.getElementById('root')).render(<SoulApp />);
+</script>
+<!--SU_TESTICONS_START--><style>.su-ic{display:inline-flex;align-items:center;justify-content:center;vertical-align:-.16em}</style><script>(function(){var ICONS={"book": "<path d=\"M16 9C13 6.8 9.7 6 5.5 6V25c4.2 0 7.5.8 10.5 3 3-2.2 6.3-3 10.5-3V6C22.3 6 19 6.8 16 9z\"/><path d=\"M16 9v19\"/>", "briefcase": "<rect x=\"5\" y=\"11\" width=\"22\" height=\"13\" rx=\"2\"/><path d=\"M12 11V9.2A2.2 2.2 0 0 1 14.2 7h3.6A2.2 2.2 0 0 1 20 9.2V11\"/><path d=\"M5 16.5h22\"/>", "calendar": "<rect x=\"5\" y=\"7\" width=\"22\" height=\"20\" rx=\"2\"/><path d=\"M5 13h22\"/><path d=\"M11 4v5\"/><path d=\"M21 4v5\"/><circle cx=\"16\" cy=\"20\" r=\"1.6\" fill=\"CUR\"/>", "card": "<rect x=\"8\" y=\"4\" width=\"16\" height=\"24\" rx=\"2.5\"/><path d=\"M16 10l1.3 3.4 3.4 1.3-3.4 1.3L16 19.4l-1.3-3.4-3.4-1.3 3.4-1.3z\"/>", "clipboard": "<rect x=\"7\" y=\"6\" width=\"18\" height=\"22\" rx=\"2.5\"/><path d=\"M12 6V4.6A1.6 1.6 0 0 1 13.6 3h4.8A1.6 1.6 0 0 1 20 4.6V6\"/><path d=\"M11.5 16.5l3 3 6-6\"/>", "compass": "<circle cx=\"16\" cy=\"16\" r=\"11.5\"/><polygon points=\"16,8 18.6,16 16,24 13.4,16\"/><circle cx=\"16\" cy=\"16\" r=\"1.5\" fill=\"CUR\"/>", "crystal": "<circle cx=\"16\" cy=\"13\" r=\"8.5\"/><path d=\"M11.5 8.5a5.5 5.5 0 0 1 4-2.3\"/><path d=\"M10 24h12\"/><path d=\"M11 21.5 9.5 24M21 21.5 22.5 24\"/><path d=\"M8 27h16\"/>", "flame": "<path d=\"M16 28c-4.4 0-8-3.2-8-7.5 0-5 4-7.5 4-12.5 3 1.5 4 4 4 6 1.5-1.5 2-3.5 2-5.5 3 2.5 6 6.5 6 12C24 24.8 20.4 28 16 28z\"/><path d=\"M16 28c-2.2 0-4-1.6-4-3.8 0-2.4 2-3.4 2-6.2 2.5 1.8 6 3.6 6 7C20 26.4 18.2 28 16 28z\"/>", "flask": "<path d=\"M13 4h6\"/><path d=\"M14 4v7.2L7.5 23.2A2 2 0 0 0 9.3 26h13.4a2 2 0 0 0 1.8-2.8L18 11.2V4\"/><path d=\"M10.7 18h10.6\"/>", "heart": "<path d=\"M16 26S5 19.5 5 12.3A5.6 5.6 0 0 1 16 9a5.6 5.6 0 0 1 11 3.3C27 19.5 16 26 16 26z\"/>", "heartbreak": "<path d=\"M16 27S4.5 20 4.5 12.3A5.7 5.7 0 0 1 16 9a5.7 5.7 0 0 1 11.5 3.3C27.5 20 16 27 16 27z\"/><path d=\"M16.5 9.5l-2.5 6 3.6 2.4-2.2 5\"/>", "leaf": "<path d=\"M26 6C13 6 7 12 7 21c0 2 .6 3.6 1.4 5C18 24 26 17 26 6z\"/><path d=\"M9 27 18 15\"/>", "loop": "<path d=\"M8 13a8 8 0 0 1 14-3\"/><polyline points=\"22,5 22,10 17,10\"/><path d=\"M24 19a8 8 0 0 1-14 3\"/><polyline points=\"10,27 10,22 15,22\"/>", "masks": "<path d=\"M5 7c4 0 7 1 7 1s3-1 7-1c0 5-1 9-3.5 11.5C13 21 11 21 8.5 18.5 6 16 5 12 5 7z\"/><circle cx=\"8.2\" cy=\"11\" r=\"1\" fill=\"CUR\"/><path d=\"M19 13c2.2.2 4 .6 5 1 0 4-.8 7-2.8 9-2 2-3.6 2-5.6 0a8 8 0 0 1-1.4-2\"/><circle cx=\"22.5\" cy=\"16.5\" r=\"1\" fill=\"CUR\"/>", "moon": "<path d=\"M22 21.5A11 11 0 0 1 11.5 6 11 11 0 1 0 22 21.5z\"/><circle cx=\"24\" cy=\"9\" r=\"1\" fill=\"CUR\"/><circle cx=\"21\" cy=\"13\" r=\"0.8\" fill=\"CUR\"/>", "palette": "<path d=\"M16 4C9.4 4 4 8.9 4 15c0 5 4 8 8 8 2 0 2-1.5 1.4-2.4-.7-1-.5-2.6 1-2.6h3.6c4 0 8-2.6 8-7C26 7.7 21.5 4 16 4z\"/><circle cx=\"11\" cy=\"12\" r=\"1.3\" fill=\"CUR\"/><circle cx=\"16\" cy=\"9.5\" r=\"1.3\" fill=\"CUR\"/><circle cx=\"21\" cy=\"12\" r=\"1.3\" fill=\"CUR\"/>", "people": "<circle cx=\"11\" cy=\"11.5\" r=\"4\"/><path d=\"M4 26c0-4.6 3.1-7.5 7-7.5s7 2.9 7 7.5\"/><path d=\"M20 8.2A4 4 0 0 1 25 12a4 4 0 0 1-2.4 3.7\"/><path d=\"M21 18.7c4 .3 7 3.2 7 7.3\"/>", "person": "<circle cx=\"16\" cy=\"11\" r=\"5\"/><path d=\"M6 27c0-5.5 4.5-9 10-9s10 3.5 10 9\"/>", "sprout": "<path d=\"M16 28V13\"/><path d=\"M16 16c-1.2-4-4.6-6-9-6 .4 4.2 4 6.6 9 6z\"/><path d=\"M16 14c1-3.6 4-5.6 8-5.6-.4 3.6-3.4 5.9-8 5.6z\"/>", "star": "<path d=\"M16 4c1.2 7 4 9.8 11 11-7 1.2-9.8 4-11 11-1.2-7-4-9.8-11-11 7-1.2 9.8-4 11-11z\"/>", "target": "<circle cx=\"16\" cy=\"16\" r=\"11.5\"/><circle cx=\"16\" cy=\"16\" r=\"6.5\"/><circle cx=\"16\" cy=\"16\" r=\"2\" fill=\"CUR\"/>", "wave": "<path d=\"M4 11q3-4 6 0t6 0 6 0\"/><path d=\"M4 17q3-4 6 0t6 0 6 0\"/><path d=\"M4 23q3-4 6 0t6 0 6 0\"/>"},MAP={"🔮": "crystal", "✨": "star", "🌟": "star", "💫": "star", "💕": "heart", "❤": "heart", "💗": "heart", "💔": "heartbreak", "🌱": "sprout", "🌿": "leaf", "🃏": "card", "🎴": "card", "🌙": "moon", "🔬": "flask", "🎨": "palette", "⚔": "briefcase", "💼": "briefcase", "🧬": "clipboard", "🎯": "target", "🧭": "compass", "🔄": "loop", "🔁": "loop", "🔥": "flame", "🌊": "wave", "🎭": "masks", "👥": "people", "👤": "person", "📅": "calendar", "📖": "book", "💑": "people"},FAM="\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67";var KEYS=Object.keys(MAP);function svgi(k){var p=ICONS[k];if(!p)return null;return '<svg viewBox="0 0 32 32" width="1.1em" height="1.1em" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:-.18em">'+p.split('CUR').join('currentColor')+'</svg>';}function mk(key){var s=document.createElement('span');s.className='su-ic';s.innerHTML=svgi(key)||'';return s;}function walk(root){var wlk=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),hits=[],n;while(n=wlk.nextNode()){var pe=n.parentElement;if(!pe)continue;var tg=pe.tagName;if(tg==='SCRIPT'||tg==='STYLE')continue;if(pe.closest&&pe.closest('.su-ic'))continue;var v=n.nodeValue;if(!v)continue;var h=false;if(v.indexOf(FAM)>=0)h=true;else for(var i=0;i<KEYS.length;i++){if(v.indexOf(KEYS[i])>=0){h=true;break;}}if(h)hits.push(n);}hits.forEach(function(t){var v=t.nodeValue,frag=document.createDocumentFragment(),buf='',i=0;while(i<v.length){if(v.substr(i,FAM.length)===FAM){if(buf){frag.appendChild(document.createTextNode(buf));buf='';}frag.appendChild(mk('sprout'));i+=FAM.length;continue;}var m=null;for(var k=0;k<KEYS.length;k++){if(v.substr(i,KEYS[k].length)===KEYS[k]){m=KEYS[k];break;}}if(m){if(buf){frag.appendChild(document.createTextNode(buf));buf='';}frag.appendChild(mk(MAP[m]));i+=m.length;}else{buf+=v[i];i++;}}if(buf)frag.appendChild(document.createTextNode(buf));try{t.parentNode.replaceChild(frag,t);}catch(e){}});}var obs,pending=false;function apply(){try{obs&&obs.disconnect();}catch(e){}try{walk(document.body);}catch(e){}try{obs&&obs.observe(document.body,{childList:true,subtree:true,characterData:true});}catch(e){}}obs=new MutationObserver(function(){if(pending)return;pending=true;setTimeout(function(){pending=false;apply();},220);});function start(){apply();}if(document.readyState!=='loading')setTimeout(start,300);else document.addEventListener('DOMContentLoaded',function(){setTimeout(start,300);});})();</script><!--SU_TESTICONS_END--></body>
+</html>
