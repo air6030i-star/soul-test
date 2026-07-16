@@ -956,36 +956,6 @@ function SoulApp() {
               </div>
             </div>
 
-            {/* Deep report */}
-            {!paid?(
-              <div style={{...C(),border:`1px dashed ${S.color}33`}}>
-                <div style={{textAlign:"center",marginBottom:12}}>
-                  <div style={{fontSize:28,marginBottom:6}}>🔮</div>
-                  <h3 style={{margin:"0 0 3px",fontSize:17}}>解鎖 {mbtiType}-{subtype.slice(0,1)}-{subtype.slice(1)} 完整靈魂密碼</h3>
-                  <p style={{color:"rgba(255,255,255,0.35)",fontSize:14,margin:0}}>愛情 · 事業 · 財運 · 靈魂伴侶 · 塔羅 · 2026運勢</p>
-                </div>
-                <div style={{background:"rgba(0,0,0,0.15)",borderRadius:10,padding:12,marginBottom:10}}>
-                  {["💕 靈魂伴侶完整配對","💼 天命事業路徑","💰 本年財運預測","🌟 靈魂三大成長課題","🔮 年度宇宙能量","🎨 你的幸運色彩系統"].map(f=>(
-                    <div key={f} style={{color:"rgba(255,255,255,0.5)",fontSize:14,marginBottom:5,display:"flex",alignItems:"center",gap:6}}>
-                      <div style={{width:3,height:3,borderRadius:"50%",background:S.color,flexShrink:0}}/>{f}
-                    </div>
-                  ))}
-                </div>
-                <button onClick={()=>setPaid(true)} className="bh" style={B(`linear-gradient(135deg,${S.color},${S.glow})`,{marginBottom:4})}>✨ NT$99 解鎖完整靈魂密碼</button>
-                <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,margin:0}}>一次解鎖 · 永久珍藏</p>
-              </div>
-            ):(
-              <div style={C()}>
-                <h3 style={{margin:"0 0 12px",color:S.color,fontSize:16}}>🌟 {mbtiType}-{subtype.slice(0,1)}-{subtype.slice(1)} 完整靈魂密碼</h3>
-                {[{icon:"💕",t:"靈魂伴侶",c:`你在感情中展現${ST.nick}的特質。你的元素是${S.element}，與${S.planet}能量共振，注定與特定靈魂有深層的宇宙牽引。`},{icon:"💼",t:"天命事業",c:`${S.sub}的天命是在${S.element}的能量領域建立影響力。今年是你核心能力爆發的關鍵時機。`},{icon:"🔮",t:"2026靈魂旅程",c:`${S.tarot[di]}是你本週的宇宙指引。上半年能量積累，下半年全面爆發，你的靈魂旅程已正式啟動。`}].map(s=>(
-                  <div key={s.t} style={{background:"rgba(0,0,0,0.18)",borderRadius:10,padding:12,marginBottom:8}}>
-                    <b style={{color:S.color,fontSize:14}}>{s.icon} {s.t}</b>
-                    <p style={{color:"rgba(255,255,255,0.6)",fontSize:14,marginTop:6,lineHeight:1.7,margin:"6px 0 0"}}>{s.c}</p>
-                  </div>
-                ))}
-              </div>
-            )}
-
             <button onClick={()=>setShowShare(true)} className="bh" style={B("linear-gradient(135deg,#F472B6,#8B7CF6)",{marginBottom:8})}>🎴 分享我的靈魂密碼</button>
             <button onClick={()=>setPage("daily")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.1)"})}> 🌙 進入我的每日靈語中心</button>
             <div style={{width:"100%",marginTop:8,marginBottom:8}}>
