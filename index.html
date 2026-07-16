@@ -741,7 +741,7 @@ function SoulApp() {
           <button onClick={()=>{
             const soul = S && ST ? `${mbtiType}-${subtype} ${ST.name}` : mbtiType;
             const daily = ST && ST.daily && ST.daily[0] ? ST.daily[0] : "內在最安靜的聲音，是我最響亮的嚮導";
-            const txt = `我剛測出我的靈魂密碼是 ${soul} ✦\n\n「${daily.substring(0,40)}」\n\n你也來測測你的64型靈魂密碼吧！🔮\nhttps://soul-cosmos.netlify.app`;
+            const txt = `我剛測出我的靈魂密碼是 ${soul} ✦\n\n「${daily.substring(0,40)}」\n\n你也來測測你的64型靈魂密碼吧！🔮\nhttps://air6030i-star.github.io/soul-test/`;
             navigator.clipboard.writeText(txt).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2500);});
           }} className="bh" style={B(copied?"linear-gradient(135deg,#34D399,#059669)":"rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.15)",marginBottom:8,flexShrink:0})}>
             {copied ? "✅ 已複製！貼到 LINE / WhatsApp 傳給朋友" : "📋 複製文字 → 分享給朋友"}
