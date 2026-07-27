@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>找到最適合你的那面鏡子｜Soul Universe</title>
+<meta name="description" content="3 分鐘、4 個問題。不用懂八字紫微人類圖——你回答，我們幫你選最適合你現在的一份 Soul Report。">
+<meta property="og:title" content="找到最適合你的那面鏡子｜Soul Universe">
+<meta property="og:description" content="3 分鐘、4 個問題，找到最適合你現在的一份 Soul Report。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F7F3EA; --card:#FFFFFF; --navy:#12263C; --navy-soft:#3D5570;
+    --gold:#A8834B; --gold-soft:#C9A96E; --line:#E4DCCB;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Noto Serif TC',serif; background:var(--ivory); color:var(--navy);
+    line-height:1.8; min-height:100vh; display:flex; flex-direction:column; align-items:center;
+    padding:28px 18px 40px;
+  }
+  .wrap{width:100%;max-width:560px;}
+  .brand{text-align:center;font-size:12px;letter-spacing:4px;color:var(--gold);margin-bottom:18px;}
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:34px 26px; box-shadow:0 6px 24px rgba(18,38,60,0.06);
+  }
+  h1{font-size:24px;font-weight:700;text-align:center;margin-bottom:14px;letter-spacing:1px;}
+  .intro{font-size:15px;color:var(--navy-soft);text-align:center;margin-bottom:26px;}
+  .qnum{font-size:12px;letter-spacing:3px;color:var(--gold);margin-bottom:10px;}
+  .qtitle{font-size:19px;font-weight:600;margin-bottom:20px;}
+  .opt{
+    display:block;width:100%;text-align:left;font-family:inherit;font-size:15.5px;color:var(--navy);
+    background:var(--ivory); border:1px solid var(--line); border-radius:12px;
+    padding:14px 16px; margin-bottom:12px; cursor:pointer; line-height:1.7;
+    transition:border-color .15s, background .15s;
+  }
+  .opt:hover{border-color:var(--gold-soft); background:#FBF8F0;}
+  .btn{
+    display:inline-block; font-family:inherit; font-size:16px; font-weight:600; letter-spacing:1px;
+    color:#fff; background:var(--navy); border:none; border-radius:999px;
+    padding:13px 38px; cursor:pointer; text-decoration:none; text-align:center;
+    transition:opacity .15s;
+  }
+  .btn:hover{opacity:.88;}
+  .btn-gold{background:var(--gold);}
+  .center{text-align:center;}
+  .dots{display:flex;justify-content:center;gap:8px;margin:22px 0 0;}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line);}
+  .dot.on{background:var(--gold);}
+  .r-sys{font-size:13px;letter-spacing:3px;color:var(--gold);text-align:center;margin-bottom:8px;}
+  .r-title{font-size:22px;font-weight:700;text-align:center;margin-bottom:16px;}
+  .r-why{font-size:15.5px;color:var(--navy-soft);margin-bottom:24px;text-align:center;}
+  .r-note{
+    font-size:14px; color:var(--navy-soft); background:var(--ivory);
+    border-left:3px solid var(--gold-soft); border-radius:0 10px 10px 0;
+    padding:12px 14px; margin-top:20px; text-align:left;
+  }
+  .r-upgrade{
+    font-size:14px; color:var(--navy-soft); border-top:1px dashed var(--line);
+    margin-top:24px; padding-top:18px; text-align:left;
+  }
+  .r-upgrade a{color:var(--gold);font-weight:600;text-decoration:none;border-bottom:1px solid var(--gold-soft);}
+  .again{display:block;text-align:center;font-size:13px;color:var(--navy-soft);margin-top:22px;text-decoration:none;}
+  .footer{font-size:12.5px;color:var(--navy-soft);text-align:center;margin-top:30px;letter-spacing:.5px;}
+  .footer a{color:var(--gold);text-decoration:none;}
+  .hidden{display:none;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand">SOUL UNIVERSE</div>
+
+  <!-- 開場 -->
+  <div class="card" id="page-welcome">
+    <h1>找到最適合你的那面鏡子</h1>
+    <p class="intro">3 分鐘、4 個問題。<br>不用懂八字紫微人類圖——你回答，<br>我們幫你選最適合你現在的一份 Soul Report。</p>
+    <div class="center"><button class="btn" onclick="go('q1')">開始 →</button></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="card hidden" id="page-q1">
+    <div class="qnum">QUESTION 1</div>
+    <div class="qtitle">你現在最想釐清的是什麼？</div>
+    <button class="opt" onclick="a1('A')">想更了解自己——性格、天賦、方向</button>
+    <button class="opt" onclick="a1('B')">想了解一段關係——我們合不合、怎麼相處</button>
+    <button class="opt" onclick="a1('C')">想看今年怎麼走——時機、節奏、該衝該守</button>
+    <button class="opt" onclick="a1('D')">想深度驗證真正的我——一套系統說的，我想確認是不是真的</button>
+    <div class="dots"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card hidden" id="page-q2">
+    <div class="qnum">QUESTION 2</div>
+    <div class="qtitle">你對自己的了解程度？</div>
+    <button class="opt" onclick="a2('A')">還在摸索，第一次接觸這類工具</button>
+    <button class="opt" onclick="a2('B')">有一些基礎（做過測驗／看過命盤）</button>
+    <button class="opt" onclick="a2('C')">蠻了解自己，想要更深或不同角度的確認</button>
+    <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card hidden" id="page-q3">
+    <div class="qnum">QUESTION 3</div>
+    <div class="qtitle">你做決定的方式比較像？</div>
+    <button class="opt" onclick="a3('A')">快速直覺，當下就知道要不要</button>
+    <button class="opt" onclick="a3('B')">需要多方參考、反覆比較</button>
+    <button class="opt" onclick="a3('C')">靠感覺和氛圍，說不上來但很準</button>
+    <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card hidden" id="page-q4">
+    <div class="qnum">QUESTION 4</div>
+    <div class="qtitle">你最在意的面向？</div>
+    <button class="opt" onclick="a4('A')">工作方向、怎麼發揮</button>
+    <button class="opt" onclick="a4('B')">感情與關係模式</button>
+    <button class="opt" onclick="a4('C')">財運與資源節奏</button>
+    <button class="opt" onclick="a4('D')">整體格局、人生大方向</button>
+    <div class="dots"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></div>
+  </div>
+
+  <!-- 結果 -->
+  <div class="card hidden" id="page-result">
+    <div class="r-sys">YOUR MIRROR</div>
+    <div class="r-title" id="r-title"></div>
+    <p class="r-why" id="r-why"></p>
+    <div class="center"><a class="btn btn-gold" id="r-cta" href="#" target="_blank" rel="noopener"></a></div>
+    <div class="r-note" id="r-note"></div>
+    <div class="r-upgrade hidden" id="r-upgrade">
+      你已經有基礎了。想確認這些特質是不是在其他系統也反覆出現，可以直接看
+      <a href="https://airwave553.gumroad.com/l/nqoybd" target="_blank" rel="noopener">三面鏡交叉驗證完整版</a>
+      ——三套系統交叉驗證同一個你。
+    </div>
+    <a class="again" href="#" onclick="restart();return false;">← 重新測一次</a>
+  </div>
+
+  <p class="footer">命盤只是地圖。方向盤，一直都在你手上。<br>—— <a href="https://souluniverse.app" target="_blank" rel="noopener">Soul Universe 靈魂宇宙</a></p>
+</div>
+
+<script>
+var S = { q1:null, q2:null, q3:null, q4:null };
+
+var RESULTS = {
+  bazi: {
+    title: "Soul Report｜認識自己起點版 · 八字",
+    why: "你在意的是資源與節奏——八字看五行喜用和大運，最擅長回答「我的力氣該用在哪」。",
+    cta: "看我的 Soul Report →",
+    url: "https://airwave553.gumroad.com/l/daazfs",
+    note: "📝 結帳時「適合你的系統」欄請填：八字"
+  },
+  ziwei: {
+    title: "Soul Report｜認識自己起點版 · 紫微",
+    why: "你想看的是整體格局——紫微十二宮把性格、關係、事業攤成一張全景圖，適合想看全局的你。",
+    cta: "看我的 Soul Report →",
+    url: "https://airwave553.gumroad.com/l/daazfs",
+    note: "📝 結帳時「適合你的系統」欄請填：紫微"
+  },
+  hd: {
+    title: "Soul Report｜認識自己起點版 · 人類圖",
+    why: "你憑直覺做決定——人類圖正好講「你天生怎麼運作、怎麼做決定最不內耗」。",
+    cta: "看我的 Soul Report →",
+    url: "https://airwave553.gumroad.com/l/daazfs",
+    note: "📝 結帳時「適合你的系統」欄請填：人類圖"
+  },
+  astro: {
+    title: "Soul Report｜認識自己起點版 · 占星",
+    why: "你靠感覺讀世界——占星的行星語言最貼近情感與關係的細微處。",
+    cta: "看我的 Soul Report →",
+    url: "https://airwave553.gumroad.com/l/daazfs",
+    note: "📝 結帳時「適合你的系統」欄請填：占星"
+  },
+  annual: {
+    title: "Soul Report｜年度流年報告",
+    why: "你想知道的是「今年」——順風在哪、卡點在哪、每個月節奏怎麼走。",
+    cta: "看我的流年 →",
+    url: "https://airwave553.gumroad.com/l/zhxoof",
+    note: "📝 結帳時「適合你的系統」欄請填：八字（在意財運/工作）或 紫微（在意感情/整體）；「要看哪一年」填例：2026"
+  },
+  couple: {
+    title: "Relationship Soul Report｜關係合盤報告",
+    why: "你想看的不是你，是你們——雙系統合盤，看你們為什麼相吸、也為什麼拉扯。",
+    cta: "看我們的合盤 →",
+    url: "https://airwave553.gumroad.com/l/vmgmv",
+    note: "📝 結帳時填你和對方兩個人的生辰"
+  },
+  mirror3: {
+    title: "Soul Report｜三面鏡交叉驗證完整版",
+    why: "一面鏡子說的你可以懷疑；三面鏡子重複指向的，就值得相信。",
+    cta: "交叉驗證真正的我 →",
+    url: "https://airwave553.gumroad.com/l/nqoybd",
+    note: "📝 做過 64 型測驗的話，結帳時「測驗結果代碼」填你的型號（選填）"
+  }
+};
+
+function show(id){
+  var pages = ["page-welcome","page-q1","page-q2","page-q3","page-q4","page-result"];
+  for (var i=0;i<pages.length;i++){ document.getElementById(pages[i]).classList.add("hidden"); }
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+function go(q){ show("page-" + q); }
+
+function a1(v){
+  S.q1 = v;
+  if (v === "B") return finish("couple");
+  if (v === "D") return finish("mirror3");
+  if (v === "C") return show("page-q4");   // 流年線：只再問 Q4
+  show("page-q2");                          // A：續答 Q2–Q4
+}
+function a2(v){ S.q2 = v; show("page-q3"); }
+function a3(v){ S.q3 = v; show("page-q4"); }
+function a4(v){
+  S.q4 = v;
+  if (S.q1 === "C") return finish("annual", v);
+  // 系統分派：以 Q4 為主；Q3-A 且 Q4 非 C/D → 人類圖；Q3-C 且 Q4 非 A/C → 占星
+  var sys = { A:"hd", B:"astro", C:"bazi", D:"ziwei" }[v];
+  if (S.q3 === "A" && (v === "A" || v === "B")) sys = "hd";
+  if (S.q3 === "C" && (v === "B" || v === "D")) sys = "astro";
+  finish(sys);
+}
+
+function finish(key, q4){
+  var r = RESULTS[key];
+  document.getElementById("r-title").textContent = r.title;
+  document.getElementById("r-why").textContent = r.why;
+  var cta = document.getElementById("r-cta");
+  cta.textContent = r.cta; cta.href = r.url;
+  var note = r.note;
+  if (key === "annual" && q4){
+    var hint = (q4 === "B" || q4 === "D") ? "依你的回答，建議填：紫微" : "依你的回答，建議填：八字";
+    note = "📝 " + hint + "。結帳時「適合你的系統」欄請填：八字 或 紫微；「要看哪一年」填例：2026";
+  }
+  document.getElementById("r-note").textContent = note;
+  // 升級註：Q2-C 或 Q3-B（三面鏡結果本身不再附）
+  var up = document.getElementById("r-upgrade");
+  if (key !== "mirror3" && (S.q2 === "C" || S.q3 === "B")) up.classList.remove("hidden");
+  else up.classList.add("hidden");
+  show("page-result");
+}
+
+function restart(){
+  S = { q1:null, q2:null, q3:null, q4:null };
+  show("page-welcome");
+}
+</script>
+</body>
+</html>
