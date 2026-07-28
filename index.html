@@ -1232,7 +1232,7 @@ function SoulApp() {
               <div><div style={{fontWeight:700,fontSize:13}}>🌟 靈魂訂閱方案</div><div style={{color:"rgba(255,255,255,0.3)",fontSize:10}}>每天都有新的宇宙訊息等著你</div></div>
             </div>
             <div style={{...C(),background:"rgba(139,124,246,0.07)",border:"1px solid rgba(139,124,246,0.15)",textAlign:"center",marginBottom:12}}>
-              <p style={{margin:"0 0 6px",fontSize:12,color:"rgba(255,255,255,0.6)",lineHeight:1.7}}>每天早上打開，讓宇宙告訴你<br/>今天的 <span style={{fontFamily:"monospace",color:mbtiType&&subtype?S?.color:"#8B7CF6"}}>{mbtiType&&subtype?`${mbtiType}-${subtype.slice(0,1)}-${subtype.slice(1)}`:"你的型號"}</span> 應該怎麼走</p>
+              <p style={{margin:"0 0 6px",fontSize:12,color:"rgba(255,255,255,0.6)",lineHeight:1.7}}>每天早上打開，讓宇宙告訴你<br/>今天的 <span style={{fontFamily:"monospace",color:mbtiType&&subtype?S?.color:"#8B7CF6"}}>{mbtiType&&subtype?`${mbtiType}·${S?.subtypes?.[subtype]?.nick||S?.sub||""}`:"你的型號"}</span> 應該怎麼走</p>
               <div style={{display:"flex",justifyContent:"center",gap:12,fontSize:10,color:"rgba(255,255,255,0.3)"}}>
                 <span>🔄 每日更新</span><span>🌱 成長語錄</span><span>🃏 塔羅指引</span><span>❌ 隨時取消</span>
               </div>
