@@ -592,7 +592,7 @@ function SoulApp() {
     const nick = ST ? ST.nick : "";
     const desc = ST ? ST.desc : "";
     const rare = ST ? ST.rare : "";
-    const typeCode = mbtiType && subtype ? `${mbtiType}-${subtype.slice(0,1)}-${subtype.slice(1)}` : "";
+    const typeCode = mbtiType || "";   // 對外只顯示型號；OH/OL 等子類型代碼純後台，不上分享卡
 
     if (isDark) {
       // Dark background
