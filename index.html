@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>靈魂人格測驗 · 64型靈魂密碼</title>
-  <meta name="description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。8 題情境題，直接對應親子、職場、情感溝通指南。">
+  <meta name="description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。14 題情境題，直接對應親子、職場、情感溝通指南。">
   <meta property="og:type" content="website">
   <meta property="og:title" content="靈魂人格測驗 · 64型靈魂密碼 · Soul Universe">
   <meta property="og:description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。你是 16 型之一，還是 64 格裡專屬你的那一格？">
@@ -46,6 +46,21 @@
     .su-boot-text{color:rgba(255,255,255,0.45);font-size:14px;letter-spacing:.12em}
     .su-boot-sub{color:rgba(255,255,255,0.22);font-size:12px;letter-spacing:.06em}
   </style>
+
+  <!-- ── 漏斗量測（2026-09-05 加，同日修正）──
+       節點 2「測驗點擊」與節點 3「完成測驗」原本完全沒有數字。
+       Cloudflare Web Analytics：免費、無 cookie、不需要把網域轉過去（github.io 可用）。
+       Cloudflare 後台 → Analytics & Logs → Web Analytics，站台 air6030i-star.github.io
+       token 於 2026-09-05 填入。這個 token 不是密鑰，本來就會出現在網頁原始碼裡。
+
+       spa:true 是預設值，這裡寫出來是為了提醒：本頁的節點 3／4 完全靠 SPA 路由量測。
+       Cloudflare 偵測路由變化的方式是 Soft Navigations API → Navigation API →
+       最後才退回「攔截 history.pushState ＋ 監聽 onpopstate」。
+       ⚠️ 三種機制都不吃 history.replaceState。所以本頁標記 hash 一律用 pushState，
+       不要「順手」改回 replaceState，改了數字會安靜地變成 0。
+       https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/ -->
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token": "75239ea2d434408991eb1bfd30b3ce9f", "spa": true}'></script>
 </head>
 <body>
 
@@ -439,30 +454,31 @@ const SUBTYPE_LABELS = { AH:"A-H 果斷·溫暖", AC:"A-C 果斷·高冷", OH:"O
 const SUBTYPE_DESC = { AH:"行動力強，親和溫暖", AC:"果斷直接，自帶距離感", OH:"思慮細膩，溫柔體貼", OC:"深思熟慮，神秘高冷" };
 
 const QUESTIONS = [
-  // E/I ── 0=I, 1=E
+  /* 2026-09-05 由 20 題縮短為 12 題（每維度 3 題）。
+     原因：首頁承諾「2 分鐘」，但 20+2 題實測約 3–4 分鐘，落差會拉低完成率。
+     每維度保留 3 題是信度與長度的折衷——2 題太少會讓結果不穩定。
+     計分已改為依 dim 欄位加總，不再依賴題目索引，所以要加回題目直接補進陣列即可。
+     被拿掉的 8 題原文：
+       [EI] 別人眼中的你是…
+       [EI] 你在群體中的角色通常是…
+       [SN] 你「理解」一件事的感覺是…
+       [SN] 閱讀時你更想從中得到什麼？
+       [TF] 一段關係出現問題，你更優先想到的是…
+       [TF] 收到禮物時，你更在意什麼？
+       [JP] 計劃臨時改變時，你的感覺是…
+       [JP] 你比較喜歡哪種工作或生活方式？ */
   {q:"深夜一個人時，你最常做什麼？",a:["獨自思考人生計劃或沉浸某個問題","刷手機、聽音樂、讓思緒自由漫遊"],dim:"EI"},
-  {q:"別人眼中的你是…",a:["需要多了解才能感受到你的有趣","很快就能感覺到你的存在和能量"],dim:"EI"},
-  {q:"一個完全自由的週末，你的理想是…",a:["獨自充電：讀書、散步、安靜地待著","和朋友出去：聚餐、玩耍、感受人群的活力"],dim:"EI"},
-  {q:"參加完一場熱鬧的聚會後，你通常感覺…",a:["有點疲憊，需要一段安靜的時間恢復","更興奮有活力，甚至想繼續找人玩"],dim:"EI"},
-  {q:"你在群體中的角色通常是…",a:["觀察者，選擇性地說話，不刻意引人注意","自然而然地活絡氣氛，很快就融入互動"],dim:"EI"},
-  // S/N ── 0=S, 1=N
   {q:"遇到全新的情況，你的第一步通常是…",a:["回想過去有沒有類似的經驗，用已知的來判斷","直覺就有感覺了，自然知道這件事會怎麼走"],dim:"SN"},
-  {q:"學新東西時，你更想要…",a:["詳細的步驟和具體的實際例子，一步一步來","先理解背後的原理和整體架構，細節再說"],dim:"SN"},
-  {q:"你「理解」一件事的感覺是…",a:["把所有細節和步驟都搞清楚，才覺得真的懂了","抓到整體的圖像和背後的意義，才覺得真的懂了"],dim:"SN"},
-  {q:"閱讀時你更想從中得到什麼？",a:["具體可以用的資訊或方法，學了馬上能用","新的視角或深刻的洞見，讓你重新理解某件事"],dim:"SN"},
-  {q:"你更容易注意到…",a:["周遭環境的細節和眼前的現實狀況","事物背後的象徵意涵和隱藏的連結模式"],dim:"SN"},
-  // T/F ── 0=T, 1=F
   {q:"朋友向你訴苦時，你的第一反應是…",a:["分析情況，給出具體的建議和解決方法","先傾聽和陪著，讓他感覺被理解比解決問題更重要"],dim:"TF"},
-  {q:"給別人回饋時，你通常會…",a:["直接說哪裡不對，對就是對、錯就是錯，對方應該能接受","先想怎麼說才不會傷到他，表達方式比內容本身更重要"],dim:"TF"},
-  {q:"一段關係出現問題，你更優先想到的是…",a:["搞清楚問題的根源和責任在哪裡","先確保對方沒事、雙方的感情還在"],dim:"TF"},
-  {q:"收到禮物時，你更在意什麼？",a:["實不實用，符不符合你的實際需求","對方花了多少心思，背後的情意"],dim:"TF"},
-  {q:"做了一個讓某人不開心的正確決定，你會…",a:["覺得無妨，做對的事比讓人開心更重要","心裡有點過不去，希望找到兩全的方法"],dim:"TF"},
-  // J/P ── 0=J, 1=P
   {q:"旅行前你會…",a:["查好攻略、訂好行程，盡量照計劃走","只買機票，其他全部隨機應變就好"],dim:"JP"},
+  {q:"一個完全自由的週末，你的理想是…",a:["獨自充電：讀書、散步、安靜地待著","和朋友出去：聚餐、玩耍、感受人群的活力"],dim:"EI"},
+  {q:"學新東西時，你更想要…",a:["詳細的步驟和具體的實際例子，一步一步來","先理解背後的原理和整體架構，細節再說"],dim:"SN"},
+  {q:"給別人回饋時，你通常會…",a:["直接說哪裡不對，對就是對、錯就是錯，對方應該能接受","先想怎麼說才不會傷到他，表達方式比內容本身更重要"],dim:"TF"},
   {q:"你的房間或書桌通常是…",a:["整齊、每樣東西都有固定位置","有點亂，但你大概知道東西在哪"],dim:"JP"},
+  {q:"參加完一場熱鬧的聚會後，你通常感覺…",a:["有點疲憊，需要一段安靜的時間恢復","更興奮有活力，甚至想繼續找人玩"],dim:"EI"},
+  {q:"你更容易注意到…",a:["周遭環境的細節和眼前的現實狀況","事物背後的象徵意涵和隱藏的連結模式"],dim:"SN"},
+  {q:"做了一個讓某人不開心的正確決定，你會…",a:["覺得無妨，做對的事比讓人開心更重要","心裡有點過不去，希望找到兩全的方法"],dim:"TF"},
   {q:"對於截止日期，你通常…",a:["提前完成，最後一刻的壓力讓你很不舒服","靠近截止日才真正進入最佳狀態"],dim:"JP"},
-  {q:"計劃臨時改變時，你的感覺是…",a:["不太舒服，需要時間重新調整心態","還好，甚至覺得這樣更有趣更刺激"],dim:"JP"},
-  {q:"你比較喜歡哪種工作或生活方式？",a:["有明確計劃和清晰的結構，按部就班","彈性自由，根據當下狀況隨時調整"],dim:"JP"},
 ];
 
 const SUBTYPE_Q = [
@@ -471,15 +487,18 @@ const SUBTYPE_Q = [
 ];
 
 const calcType = (ans) => {
+  /* 2026-09-05：原本用硬編索引（Q0-4 是 EI、Q5-9 是 SN⋯），
+     一改題數就會整組錯位。改成依每題自己的 dim 欄位加總，
+     之後增減題目都不必再動這個函式。答案 0 = 前者，1 = 後者。 */
   let E=0,I=0,T=0,F=0,J=0,P=0,S=0,N=0;
-  // Q0-4: E/I (0=I, 1=E)
-  for(let i=0;i<5;i++){ if(ans[i]===0)I++;else E++; }
-  // Q5-9: S/N (0=S, 1=N)
-  for(let i=5;i<10;i++){ if(ans[i]===0)S++;else N++; }
-  // Q10-14: T/F (0=T, 1=F)
-  for(let i=10;i<15;i++){ if(ans[i]===0)T++;else F++; }
-  // Q15-19: J/P (0=J, 1=P)
-  for(let i=15;i<20;i++){ if(ans[i]===0)J++;else P++; }
+  QUESTIONS.forEach((q,i)=>{
+    const v = ans[i];
+    if(v !== 0 && v !== 1) return;          // 沒答到的題不計分
+    if(q.dim==="EI"){ v===0 ? I++ : E++; }
+    else if(q.dim==="SN"){ v===0 ? S++ : N++; }
+    else if(q.dim==="TF"){ v===0 ? T++ : F++; }
+    else if(q.dim==="JP"){ v===0 ? J++ : P++; }
+  });
   return `${E>=I?"E":"I"}${N>=S?"N":"S"}${T>=F?"T":"F"}${J>=P?"J":"P"}`;
 };
 
@@ -508,13 +527,30 @@ const BG = () => {
   );
 };
 
+/* ── 安全儲存（2026-09-05 加）──
+   原本十處直接呼叫 localStorage，一個 try/catch 都沒有。
+   其中四處在 useState 的初始化器裡，也就是第一次 render 就會執行。
+   只要瀏覽器擋掉 site data，存取會丟 SecurityError，React 初次 render 就中斷，
+   整個 App 不掛載——使用者只看得到最上面那條靜態導覽列，以為網站壞了。
+   會遇到的情境：iOS 私密瀏覽、內容封鎖器、Firefox「全部封鎖 cookie」、
+   以及 Threads／IG 內建瀏覽器的追蹤保護。本站流量正好主要來自後者，
+   所以這不是理論風險。
+   擋掉時退回記憶體版：這一次測驗照常做完、照常看到結果，
+   只是關掉分頁後不會記得——對漏斗來說，這比整頁空白好太多。 */
+const memStore = {};
+const store = {
+  get(k){ try { return localStorage.getItem(k); } catch(e){ return k in memStore ? memStore[k] : null; } },
+  set(k,v){ try { localStorage.setItem(k,v); } catch(e){ memStore[k] = String(v); } },
+  remove(k){ try { localStorage.removeItem(k); } catch(e){ delete memStore[k]; } },
+};
+
 function SoulApp() {
   const [page, setPage] = useState("home");
   const [mbtiType, setMbtiType] = useState(
-    () => localStorage.getItem("soul_mbtiType") || null
+    () => store.get("soul_mbtiType") || null
   );
   const [subtype, setSubtype] = useState(
-    () => localStorage.getItem("soul_subtype") || null
+    () => store.get("soul_subtype") || null
   );
   const [ans, setAns] = useState([]);
   const [subAns, setSubAns] = useState([]);
@@ -522,10 +558,10 @@ function SoulApp() {
   const [subQIdx, setSubQIdx] = useState(0);
   const [testPhase, setTestPhase] = useState("mbti"); // mbti | subtype
   const [paid, setPaid] = useState(
-    () => localStorage.getItem("soul_paid") === "true"
+    () => store.get("soul_paid") === "true"
   );
   const [subscribed, setSubscribed] = useState(
-    () => localStorage.getItem("soul_subscribed") === "true"
+    () => store.get("soul_subscribed") === "true"
   );
   const [p1, setP1] = useState(""); const [p2, setP2] = useState("");
   const [p1sub, setP1sub] = useState("OH"); const [p2sub, setP2sub] = useState("OH");
@@ -537,17 +573,17 @@ function SoulApp() {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    if (mbtiType) localStorage.setItem("soul_mbtiType", mbtiType);
-    if (subtype) localStorage.setItem("soul_subtype", subtype);
-    localStorage.setItem("soul_paid", paid);
-    localStorage.setItem("soul_subscribed", subscribed);
+    if (mbtiType) store.set("soul_mbtiType", mbtiType);
+    if (subtype) store.set("soul_subtype", subtype);
+    store.set("soul_paid", paid);
+    store.set("soul_subscribed", subscribed);
   }, [mbtiType, subtype, paid, subscribed]);
 
   const resetAll = () => {
-    localStorage.removeItem("soul_mbtiType");
-    localStorage.removeItem("soul_subtype");
-    localStorage.removeItem("soul_paid");
-    localStorage.removeItem("soul_subscribed");
+    store.remove("soul_mbtiType");
+    store.remove("soul_subtype");
+    store.remove("soul_paid");
+    store.remove("soul_subscribed");
     setMbtiType(null);
     setSubtype(null);
     setPaid(false);
@@ -833,16 +869,12 @@ function SoulApp() {
             </div>
             <span style={{color:"rgba(244,114,182,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
           </a>
-          <a href="https://mingli.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(201,162,75,0.07)",border:"1px solid rgba(201,162,75,0.2)",borderRadius:12,padding:"14px 16px",textDecoration:"none",cursor:"pointer"}}>
-            <span style={{fontSize:22,flexShrink:0}}>🔮</span>
-            <div style={{flex:1}}>
-              <div style={{color:"#C9A24B",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂命理 · 紫微八字排盤</div>
-              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>看你的命定藍圖 · 紫微×八字專業排盤</div>
-            </div>
-            <span style={{color:"rgba(201,162,75,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
-          </a>
+          {/* 命理入口已於 2026-09-05 移除（首頁卡）。理由見 docs/漏斗定稿-2026-09.md：
+              命盤只出現在 LINE 選單／購買完成頁／讀者主動問起時。
+              這裡是 bio 點進來看到的第一頁，交生辰是信任建立之後才做的動作。
+              全站頂欄 :79 的「命理排盤」刻意保留（帶 hide-sm，手機不顯示）。 */}
         </div>
-        <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,paddingBottom:40}}>⏱ 8 題約 2 分鐘 · 完全免費　✦ 16 型 × 4 子型 · 64 型完整系統 · 每日更新</p>
+        <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,paddingBottom:40}}>⏱ 14 題約 2 分鐘 · 完全免費　✦ 16 型 × 4 子型 · 64 型完整系統 · 每日更新</p>
       </div>
     </div>
   );
@@ -863,7 +895,7 @@ function SoulApp() {
       } else {
         const nsa=[...subAns,idx]; setSubAns(nsa);
         if(subQIdx<SUBTYPE_Q.length-1){ setSubQIdx(subQIdx+1); }
-        else { setSubtype(calcSubtype(nsa)); setPage("result"); }
+        else { setSubtype(calcSubtype(nsa)); setPage("result"); if(typeof history!=="undefined") history.pushState(null,"","#result"); }
       }
     };
 
@@ -959,6 +991,35 @@ function SoulApp() {
             <button onClick={()=>setShowShare(true)} className="bh" style={B("linear-gradient(135deg,#F472B6,#8B7CF6)",{marginBottom:8})}>🎴 分享我的靈魂密碼</button>
             <button onClick={()=>setPage("daily")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.1)"})}> 🌙 進入我的每日靈語中心</button>
             <div style={{width:"100%",marginTop:8,marginBottom:8}}>
+              {/* ── 加 LINE：領延伸解讀（2026-09-05 加）──
+    位置刻意放在四個產品連結「之前」：她剛看完今日靈語，情緒是想多看一點，
+    此刻給一個免費、低門檻的下一步，比丟四個要付費的指南自然。
+    onClick 會把 URL 標記成 #line-click，讓漏斗節點 4 也能量測。 */}
+              <div style={{...C(), border:`1px solid ${S.color}33`, background:`${S.glow}0a`}}>
+                <div style={{fontSize:12, color:S.color, marginBottom:10, letterSpacing:1}}>
+                  ✦ 想把結果再往下看一層嗎？
+                </div>
+                <p style={{margin:"0 0 12px", fontSize:15, lineHeight:1.9, color:"rgba(255,255,255,0.85)"}}>
+                  上面那些每天都會換。加入 Soul Universe LINE，我會給你：
+                </p>
+                <ul style={{margin:"0 0 14px", paddingLeft:18, fontSize:14, lineHeight:2, color:"rgba(255,255,255,0.7)"}}>
+                  <li>你的類型在關係裡最常出現的反應</li>
+                  <li>容易被誤會的一個地方</li>
+                  <li>現在可以帶走的一個自我提問</li>
+                </ul>
+                <a href="https://line.me/R/ti/p/@555ynysz" target="_blank" rel="noopener"
+                   onClick={()=>{ if(typeof history!=="undefined") history.pushState(null,"","#line-click"); }}
+                   style={{display:"block", textAlign:"center", padding:"14px 20px",
+                           background:S.color, color:"#0b0716", borderRadius:12,
+                           fontSize:16, fontWeight:700, textDecoration:"none", minHeight:48}}>
+                  加入 LINE，領取延伸解讀
+                </a>
+                <p style={{margin:"10px 0 0", fontSize:12, lineHeight:1.7, color:"rgba(255,255,255,0.35)", textAlign:"center"}}>
+                  基本結果已經顯示，不加入也沒關係。<br/>
+                  LINE 只用來傳送類型解讀與相關工具，不會天天打擾你。
+                </p>
+              </div>
+
               <div style={{fontSize:11,color:"rgba(255,255,255,0.25)",textAlign:"center",letterSpacing:"0.15em",marginBottom:10,fontFamily:"sans-serif"}}>✦ 根據你的型號，這些指南最適合你 ✦</div>
               <a href="https://parenting.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.08)",border:"1px solid rgba(212,136,42,0.2)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
                 <span style={{fontSize:22,flexShrink:0}}>👨‍👩‍👧</span>
@@ -984,14 +1045,8 @@ function SoulApp() {
                 </div>
                 <span style={{color:"rgba(244,114,182,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
               </a>
-              <a href="https://mingli.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(201,162,75,0.08)",border:"1px solid rgba(201,162,75,0.2)",borderRadius:12,padding:"14px 16px",marginTop:8,textDecoration:"none",cursor:"pointer"}}>
-                <span style={{fontSize:22,flexShrink:0}}>🔮</span>
-                <div style={{flex:1}}>
-                  <div style={{color:"#C9A24B",fontWeight:700,fontSize:14,marginBottom:2}}>靈魂命理排盤</div>
-                  <div style={{color:"rgba(255,255,255,0.4)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>看你的命定藍圖 · 紫微×八字專業排盤</div>
-                </div>
-                <span style={{color:"rgba(201,162,75,0.6)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
-              </a>
+              {/* 命理入口已於 2026-09-05 移除（結果頁）。她剛做完測驗，
+                  這一刻按漏斗定稿只該有一個出口：加 LINE 領延伸解讀。 */}
             </div>
             <button onClick={()=>setPage("home")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.15)",marginBottom:40})}>← 返回首頁</button>
           </div>
@@ -1116,7 +1171,6 @@ function SoulApp() {
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 {[
                   {icon:"🌱",title:"靈魂親子",desc:"找到孩子聽得進去的頻道",color:"#c4794a",url:"https://parenting.souluniverse.app"},
-                  {icon:"🔮",title:"靈魂命理",desc:"個人命書 × 流年 × 合盤",color:"#d4a0c8",url:"https://mingli.souluniverse.app"},
                   {icon:"💕",title:"靈魂配對",desc:"查看你的靈魂緣分",color:"#F472B6",url:null,action:()=>setPage("compat")},
                 ].map((item)=>(
                   <button
