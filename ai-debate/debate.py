@@ -94,6 +94,9 @@ def call_codex(prompt, workdir):
 
 def call_mock(agent, prompt):
     time.sleep(1.2)
+    if "【分歧整理】" in prompt.rsplit("【本輪任務】", 1)[-1]:
+        return ("## 共同認同\n- 產品格式需要簡化\n## 主要分歧\n1. 〈先做哪種格式〉\n   - Claude：Notion 版\n"
+                "   - ChatGPT：電子書版\n   - 核心假設：是否已有穩定流量\n   - 需要什麼資料才能判斷：現有轉換率")
     task = prompt.rsplit("【本輪任務】", 1)[-1].strip().splitlines()[0][:60]
     host = re.findall(r"\[主持人\] (.+)", prompt)
     extra = f"\n\n回應主持人：「{host[-1][:40]}」——這點我同意要優先處理。" if host else ""
@@ -114,24 +117,46 @@ def ask(agent, prompt, workdir, mock):
 #   opening  : 開場任務
 #   debate   : 每輪任務（清單依輪次取用，超過則用最後一個）
 #   closing  : 最終立場
-#   synthesis: 由一方整合的結論格式
+#   synthesis: 由一方整合的結論格式（一律再附上 SYNTHESIS_RULES）
+#   focus    : 是否在開場後整理「分歧」，之後每輪只討論這些分歧（預設 True）
 # ---------------------------------------------------------------------------
 
+MAX_ISSUES = 3
 DEFAULT_CLOSING = "這是最後一輪。請用條列寫出你的最終立場：你同意對方的哪些點、仍然不同意哪些點、理由是什麼。"
-DEFAULT_SYNTHESIS = ("請以中立立場整合整場討論，產出結論，格式如下：\n"
-                     "## 共識\n## 分歧（雙方各自理由）\n## 待補資料 / 待確認事項\n## 建議的下一步\n## 風險提醒")
+DEFAULT_CROSSREAD = ("【互相閱讀】現在你看得到對方的獨立分析。請不要重寫自己的分析，而是：\n"
+                     "1) 你同意對方的哪些點\n2) 你不同意或認為有錯的點與理由（有案件資料時回原檔查證並註明出處）\n"
+                     "3) 對方提到而你漏掉的重點\n4) 你要修正自己原本的哪些地方")
+DEFAULT_SYNTHESIS = ("請整合整場討論，格式如下：\n"
+                     "## 共同認同\n## 仍有分歧（每點分別寫出 Claude 的立場與 ChatGPT 的立場）\n"
+                     "## 造成分歧的核心假設\n## 缺乏的資料／建議補查\n## 可立即執行事項\n## 最大風險\n## 需要主持人決定的事")
+SYNTHESIS_RULES = (
+    "\n\n整合規則（務必遵守）：\n"
+    "- 你是中立書記，不是裁判。不要替主持人做決定，也不要為了收尾而硬湊共識或寫「綜合兩方意見，建議 A」。\n"
+    "- 只有雙方都明確同意的才能寫成共識；其餘一律放進「仍有分歧」，用兩方各自的原意寫出立場，並標明是 Claude 或 ChatGPT，"
+    "不要偏袒你自己先前的立場。\n"
+    "- 每個分歧都要寫出背後的核心假設：這個假設成立時偏向哪一方、要什麼資料才能驗證。\n"
+    "- 「需要主持人決定的事」請寫成選擇題（例如：優先追求上市速度，還是互動性？），並說明各選項的代價。\n"
+    "- 若上面指定的格式沒有「仍有分歧」與「需要主持人決定的事」，請在最後補上這兩節。")
+ISSUES_TASK = (
+    f"【分歧整理】請擔任中立書記（不是裁判），根據到目前為止雙方的發言，整理出真正的分歧，最多 {MAX_ISSUES} 個，依重要性排序。"
+    "只列雙方看法實質不同的地方；用語不同但意思相同的不算。若主持人有補充新條件，請依新條件重新判斷。"
+    "嚴格依照以下格式，不要加其他內容：\n"
+    "## 共同認同\n（簡短條列）\n"
+    "## 主要分歧\n1. 〈分歧標題〉\n   - Claude：…\n   - ChatGPT：…\n"
+    "   - 核心假設：…（這個假設成立就偏向哪一方）\n   - 需要什麼資料才能判斷：…")
+FOCUS_RULE = ("請只針對上面列出的分歧逐點回應（標明編號），已有共識的部分不要重講。"
+              "若你被對方說服，請直接說「第 N 點我改變立場」；若主持人補充的條件改變了某個分歧，請直接指出。")
 
 MODES = [
     {
         "key": "consult", "name": "會診（案件分析）",
-        "desc": "各自閉卷讀資料 → 互相事實核對 → 爭點討論 → 共識/分歧/待補資料/下一步/風險。",
+        "desc": "各自閉卷讀資料 → 互相事實核對 → 整理爭點 → 只針對爭點討論 → 結構化結論。",
         "roles": ("分析師", "分析師"), "blind": True,
         "opening": ("請獨立完成初步分析（你看不到對方的答案）。若有案件資料，請實際開檔閱讀。"
                     "請產出：1) 資料清單 2) 時間軸 3) 關鍵事實摘錄（註明出處檔名）4) 目前狀況 5) 爭點 6) 資料缺口。"),
-        "debate": [
-            "【事實核對】逐點檢查對方的初步分析，必要時回原檔查證，指出對方讀錯的、漏讀的、推論過頭的地方，並修正你自己的錯誤。",
-            "【議程討論】針對仍有歧見的爭點逐一回應對方最新發言；若主持人有插話，請先回應主持人。",
-        ],
+        "crossread": ("【事實核對】逐點檢查對方的初步分析，回原檔查證，指出對方讀錯的、漏讀的、推論過頭的地方"
+                      "（註明出處），並修正你自己的錯誤。"),
+        "debate": ["【議程討論】回應對方最新發言；若主持人有插話，請先回應主持人。"],
         "closing": DEFAULT_CLOSING, "synthesis": DEFAULT_SYNTHESIS,
     },
     {
@@ -149,7 +174,35 @@ MODES = [
         "opening": "請發表立論：你的立場、三個最強論點與證據。",
         "debate": ["請反駁對方最新的論點，並強化自己的論證。不要輕易讓步，但也不能無視有效的反駁。"],
         "closing": "結辯：總結你方最有力的論點，並指出對方未能回應的弱點。",
-        "synthesis": "請擔任中立評審，整理：\n## 正方最強論點\n## 反方最強論點\n## 雙方未解決的關鍵問題\n## 評審判斷（哪方論證較完整、為什麼）\n## 給主持人的建議",
+        "synthesis": ("請整理辯論結果：\n## 正方最強論點\n## 反方最強論點\n## 雙方都承認的事實\n## 仍有分歧\n"
+                      "## 造成分歧的核心假設\n## 哪些論點缺乏證據\n## 需要主持人決定的事"),
+    },
+    {
+        "key": "business", "name": "商業評估",
+        "desc": "一方看市場與收入、一方看成本與風險，逐項檢驗數字與假設。",
+        "roles": ("市場與收入分析", "成本與風險分析"), "blind": True,
+        "opening": ("請從你的角色獨立評估：目標客群與需求證據、競品與替代方案、定價與收入估算、"
+                    "成本（時間／金錢／人力）、主要風險。所有數字都要寫出估算依據；沒有證據的請標註「假設」。"),
+        "crossread": ("【互相閱讀】檢查對方的數字與假設：哪些有依據、哪些只是假設、哪些明顯高估或低估。"
+                      "再補上對方從他的角度沒看到、但從你的角度很重要的因素。"),
+        "debate": ["請回應對方最新發言。能用數字就用數字；對「假設」要提出最便宜、最快的驗證方式。"],
+        "closing": "請寫出你的最終評估：做／不做／有條件做（條件是什麼），以及你最沒把握的一個假設。",
+        "synthesis": ("請整合商業評估：\n## 評估總表（市場／收入／成本／風險：每項寫出雙方看法與依據）\n"
+                      "## 關鍵假設與最便宜的驗證方式\n## 情境比較（樂觀／保守）\n## 共同認同\n## 仍有分歧\n"
+                      "## 最大風險\n## 需要主持人決定的事"),
+    },
+    {
+        "key": "execution", "name": "執行會議",
+        "desc": "把方向拆成任務：一方規劃，一方檢查資源與時程，最後一定產出任務清單與下一步。",
+        "roles": ("執行規劃者", "風險與資源檢查者"), "blind": False,
+        "opening": ("執行規劃者：把目標拆成具體任務，每項寫出負責人、期限、完成標準。"
+                    "負責人只能是「主持人」「Claude」「ChatGPT」或「待指派」。"
+                    "風險與資源檢查者：檢查規劃者的任務清單，指出時程不合理、資源不足、依賴關係錯誤與遺漏的任務。"),
+        "debate": ["執行規劃者：依檢查意見修正任務清單。風險與資源檢查者：確認修正版，指出還剩下的問題。"],
+        "closing": "請寫出你認為本週最該先做的一件事與理由，以及仍然不同意對方的地方。",
+        "synthesis": ("請整理成會議紀錄：\n## 決議事項（只列雙方都同意的）\n"
+                      "## 任務清單（表格：任務｜負責人｜期限｜完成標準｜依賴）\n## 本週第一步\n"
+                      "## 仍有分歧\n## 風險與預防措施\n## 需要主持人決定的事"),
     },
     {
         "key": "review", "name": "提案＋審查",
@@ -158,12 +211,13 @@ MODES = [
         "opening": "提案者：請提出具體方案（步驟、理由、預期結果）。審查者：請審查提案者的方案，列出問題、風險與遺漏，依嚴重程度排序。",
         "debate": ["提案者：根據審查意見修正方案，說明改了什麼、哪些不改及原因。審查者：審查修正版，確認哪些問題已解決、還剩哪些。"],
         "closing": DEFAULT_CLOSING,
-        "synthesis": "請整合出最終版本：\n## 最終方案\n## 已解決的問題\n## 仍存在的風險\n## 執行前待確認事項",
+        "synthesis": ("請整合出最終版本：\n## 最終方案（只納入雙方都同意的部分）\n## 已解決的問題\n"
+                      "## 仍有分歧\n## 仍存在的風險\n## 執行前待確認事項\n## 需要主持人決定的事"),
     },
     {
         "key": "brainstorm", "name": "腦力激盪",
         "desc": "先發散想點子、互相接龍延伸，最後收斂排序。",
-        "roles": ("創意發想者", "創意發想者"), "blind": True,
+        "roles": ("創意發想者", "創意發想者"), "blind": True, "focus": False,
         "opening": "請提出至少 5 個不同方向的點子，越多元越好，先不要批評。",
         "debate": ["請在對方的點子上接龍延伸或組合出新點子（至少 3 個），再挑出你覺得最有潛力的一個說明原因。"],
         "closing": "請從所有點子中選出你心中的前三名，並說明評估標準（可行性、效益、成本）。",
@@ -181,7 +235,7 @@ MODES = [
     {
         "key": "socratic", "name": "蘇格拉底詰問",
         "desc": "以提問為主，一層層追問定義、前提與推論，逼近問題本質。",
-        "roles": ("詰問者", "回答者"), "blind": False,
+        "roles": ("詰問者", "回答者"), "blind": False, "focus": False,
         "opening": "詰問者：請先提出 2～3 個釐清定義與前提的問題。回答者：請認真回答詰問者的問題。",
         "debate": ["詰問者：針對回答中的模糊處或矛盾繼續追問。回答者：回答並承認被問倒的地方。"],
         "closing": "請各自說明：經過詰問後，你對這個主題的理解有什麼改變？",
@@ -199,7 +253,7 @@ MODES = [
     {
         "key": "teach", "name": "教學問答",
         "desc": "先手當老師講解，後手當學生提問，適合學習新主題。",
-        "roles": ("老師（深入淺出講解）", "學生（好奇、會追問、會舉例確認）"), "blind": False,
+        "roles": ("老師（深入淺出講解）", "學生（好奇、會追問、會舉例確認）"), "blind": False, "focus": False,
         "opening": "老師：請用淺顯方式介紹這個主題的核心概念。學生：請針對老師的講解提出不懂的地方或追問。",
         "debate": ["老師：回答學生的問題並舉例。學生：用自己的話複述理解，再提出新的問題。"],
         "closing": "老師：總結重點。學生：說出你學到的三件事。",
@@ -271,13 +325,30 @@ class Session:
         custom = (self.cfg.get("roles") or ["", ""])[idx].strip()
         return custom or self.mode["roles"][idx]
 
+    @property
+    def focus(self):
+        return self.mode.get("focus", True) and self.cfg.get("focus") is not False
+
+    @property
+    def issues(self):
+        """最近一次的分歧整理（沒有則為 None）"""
+        return next((m for m in reversed(self.messages) if m.get("kind") == "issues"), None)
+
     # ----- 步驟規劃 -----
     def plan_opening(self):
         a, b = self.speakers()
         if self.mode["blind"]:
-            return [{"phase": "開場（各自閉卷）", "agents": [a, b], "task": self.mode["opening"], "blind": True}]
-        return [{"phase": "開場", "agents": [a], "task": self.mode["opening"]},
-                {"phase": "開場", "agents": [b], "task": self.mode["opening"]}]
+            steps = [{"phase": "① 各自分析（閉卷）", "agents": [a, b], "task": self.mode["opening"]},
+                     {"phase": "② 互相閱讀", "agents": [a, b], "task": self.mode.get("crossread", DEFAULT_CROSSREAD)}]
+        else:
+            steps = [{"phase": "開場", "agents": [a], "task": self.mode["opening"]},
+                     {"phase": "開場", "agents": [b], "task": self.mode["opening"]}]
+        if self.focus:
+            steps.append(self.issues_step())
+        return steps
+
+    def issues_step(self):
+        return {"phase": "③ 分歧整理", "agents": [self.cfg.get("synth", "claude")], "task": ISSUES_TASK, "kind": "issues"}
 
     def plan_rounds(self, n):
         a, b = self.speakers()
@@ -288,15 +359,16 @@ class Session:
             task = deb[min(self.round_no - 1, len(deb) - 1)]
             label = f"第 {self.round_no} 輪"
             order = (a, b) if self.round_no % 2 == 1 or self.cfg.get("alternate") is False else (b, a)
-            steps += [{"phase": label, "agents": [order[0]], "task": task},
-                      {"phase": label, "agents": [order[1]], "task": task}]
+            steps += [{"phase": label, "agents": [order[0]], "task": task, "kind": "round"},
+                      {"phase": label, "agents": [order[1]], "task": task, "kind": "round"}]
         return steps
 
     def plan_closing(self):
         a, b = self.speakers()
         synth = self.cfg.get("synth", "claude")
-        return [{"phase": "最終立場", "agents": [a, b], "task": self.mode["closing"], "blind": True},
-                {"phase": "結論整合", "agents": [synth], "task": self.mode["synthesis"], "synthesis": True}]
+        return [{"phase": "最終立場", "agents": [a, b], "task": self.mode["closing"], "kind": "closing"},
+                {"phase": "結論整合", "agents": [synth], "task": self.mode["synthesis"] + SYNTHESIS_RULES,
+                 "synthesis": True}]
 
     # ----- 主持人操作 -----
     def start(self):
@@ -323,8 +395,15 @@ class Session:
 
     def ask_one(self, agent):
         with self.lock:
-            self.queue.insert(0, {"phase": "主持人點名", "agents": [agent],
+            self.queue.insert(0, {"phase": "主持人點名", "agents": [agent], "kind": "round",
                                   "task": "主持人點名請你發言：請直接回應主持人最新的插話或問題。"})
+        self.run_async()
+
+    def reissue(self):
+        """重新整理分歧（例如主持人補充了新條件之後）"""
+        with self.lock:
+            self.queue.insert(0, self.issues_step())
+        self.add_message("system", "主持人要求重新整理分歧", phase="主持")
         self.run_async()
 
     def pause(self, on):
@@ -393,7 +472,8 @@ class Session:
             if err:
                 self.add_message("system", f"{AGENTS[ag]['name']} 發生錯誤：{err}", phase="錯誤")
             else:
-                self.add_message(ag, text, phase=step["phase"], synthesis=step.get("synthesis", False))
+                self.add_message(ag, text, phase=step["phase"], synthesis=step.get("synthesis", False),
+                                 kind=step.get("kind", ""))
         self.thinking = []
 
     # ----- 提示詞 -----
@@ -421,6 +501,11 @@ class Session:
         if new_host and not step.get("synthesis"):
             parts.append("\n【主持人最新插話（請優先回應）】\n" + "\n".join(f"- {t}" for t in new_host))
 
+        issues = self.issues
+        if issues and step.get("kind") in ("round", "closing"):
+            by = AGENTS[issues["speaker"]]["name"]
+            parts.append(f"\n【本場聚焦的分歧（由 {by} 以中立書記身分整理）】\n{issues['text']}\n{FOCUS_RULE}")
+
         length = self.cfg.get("length", "約 300～500 字")
         parts.append(f"\n【本輪任務】\n{step['task']}")
         parts.append(f"\n發言規則：使用繁體中文；直接寫出你的發言內容（不要加「{me}：」前綴）；"
@@ -444,10 +529,10 @@ class Session:
         return text
 
     # ----- 紀錄 -----
-    def add_message(self, speaker, text, phase="", synthesis=False):
+    def add_message(self, speaker, text, phase="", synthesis=False, kind=""):
         with self.lock:
             self.messages.append({"speaker": speaker, "text": text, "phase": phase,
-                                  "time": now(), "synthesis": synthesis})
+                                  "time": now(), "synthesis": synthesis, "kind": kind})
         self.save()
 
     def to_dict(self):
@@ -545,7 +630,7 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, {
                 "case_dir": self.app.case_dir, "out_dir": str(self.app.out_dir), "mock": self.app.mock,
                 "files": list_case_files(self.app.case_dir, 50),
-                "modes": [{k: m[k] for k in ("key", "name", "desc", "roles", "blind")} for m in MODES],
+                "modes": [{**{k: m[k] for k in ("key", "name", "desc", "roles", "blind")}, "focus": m.get("focus", True)} for m in MODES],
                 "cli": {"claude": bool(shutil.which("claude")), "codex": bool(shutil.which("codex"))},
                 "history": self.app.history()})
         if len(parts) == 3 and parts[:2] == ["api", "session"]:
@@ -576,7 +661,7 @@ class Handler(BaseHTTPRequestHandler):
         if parts == ["api", "start"]:
             if not str(body.get("topic", "")).strip():
                 return self._send(400, {"error": "請輸入討論題目"})
-            cfg = {k: body.get(k) for k in ("topic", "mode", "rounds", "first", "synth", "roles", "length", "alternate")}
+            cfg = {k: body.get(k) for k in ("topic", "mode", "rounds", "first", "synth", "roles", "length", "alternate", "focus")}
             cfg["created"] = now()
             s = Session(cfg, self.app)
             self.app.sessions[s.id] = s
@@ -599,6 +684,8 @@ class Handler(BaseHTTPRequestHandler):
                         s.more_rounds(int(body.get("rounds", 1)))
             elif action == "more":
                 s.more_rounds(int(body.get("rounds", 1)))
+            elif action == "reissue":
+                s.reissue()
             elif action == "conclude":
                 s.conclude()
             elif action == "pause":
@@ -643,6 +730,9 @@ button.primary{background:var(--accent);color:var(--bg);border-color:var(--accen
 .msg.host{background:var(--host-bg);align-self:center;border:1px dashed var(--muted);max-width:75%}
 .msg.system{align-self:center;background:none;color:var(--muted);font-size:13px;padding:2px}
 .msg.synthesis{max-width:100%;align-self:stretch;border:2px solid var(--accent)}
+.msg.issues{max-width:100%;align-self:stretch;border:2px dashed var(--accent);background:var(--card)}
+.msg .tag{display:inline-block;font-size:11px;padding:0 8px;margin-right:6px;border-radius:99px;background:var(--accent);color:var(--bg)}
+.check{display:flex;gap:8px;align-items:center;font-weight:400;margin-top:14px}.check input{width:auto}
 .thinking{color:var(--muted);font-size:14px;align-self:center}.dots::after{content:"…";animation:d 1.2s infinite}
 @keyframes d{0%{content:"."}33%{content:".."}66%{content:"..."}}
 #bar{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);padding:10px 16px}
@@ -672,6 +762,7 @@ button.primary{background:var(--accent);color:var(--bg);border-color:var(--accen
       <div><label>結論由誰整合</label><select id="synth"><option value="claude">Claude</option><option value="chatgpt">ChatGPT</option></select></div>
       <div><label>每次發言長度</label><select id="length"><option>約 150～300 字</option><option selected>約 300～500 字</option><option>約 600～1000 字，可以詳細</option></select></div>
     </div>
+    <label class="check" id="focusBox"><input type="checkbox" id="focus" checked> 聚焦分歧：開場後先整理出最多 3 個主要分歧，之後每輪只討論這些</label>
     <p style="margin-top:16px"><button class="primary" id="startBtn">開始討論</button></p>
   </div>
   <div class="card hist"><b>繼續上次議程</b><div id="history" class="hint">（尚無紀錄）</div></div>
@@ -690,6 +781,7 @@ button.primary{background:var(--accent);color:var(--bg);border-color:var(--accen
     <select id="target" style="width:auto"><option value="">由下一位回應</option><option value="claude">點名 Claude 回答</option><option value="chatgpt">點名 ChatGPT 回答</option></select>
     <button id="pauseBtn">⏸ 暫停</button>
     <button id="moreBtn">➕ 再討論</button><select id="moreN" style="width:auto"><option>1</option><option selected>2</option><option>3</option></select><span class="hint">輪</span>
+    <button id="reissueBtn" title="補充新條件後，請它們重新判斷分歧">🧭 重新整理分歧</button>
     <button id="concludeBtn">🏁 請下結論</button>
     <button id="stopBtn">⏹ 結束</button>
     <a id="dl" class="hint" target="_blank">下載紀錄</a>
@@ -716,11 +808,12 @@ async function init(){
   if(location.hash.length>1)openRoom(location.hash.slice(1));
 }
 function pick(k){mode=info.modes.find(m=>m.key===k);document.querySelectorAll(".mode").forEach(e=>e.classList.toggle("sel",e.dataset.k===k));
-  $("#roleA").placeholder=mode.roles[0];$("#roleB").placeholder=mode.roles[1];}
+  $("#roleA").placeholder=mode.roles[0];$("#roleB").placeholder=mode.roles[1];
+  $("#focus").disabled=!mode.focus;$("#focusBox").style.opacity=mode.focus?1:.45;}
 window.onhashchange=()=>{const h=location.hash.slice(1);if(h&&h!==sid)openRoom(h)};
 $("#startBtn").onclick=async()=>{
   try{const r=await api("/api/start",{topic:$("#topic").value,mode:mode.key,rounds:+$("#rounds").value,first:$("#first").value,
-    synth:$("#synth").value,length:$("#length").value,roles:[$("#roleA").value,$("#roleB").value]});location.hash=r.id;}catch(e){alert(e.message)}};
+    synth:$("#synth").value,length:$("#length").value,roles:[$("#roleA").value,$("#roleB").value],focus:mode.focus&&$("#focus").checked});location.hash=r.id;}catch(e){alert(e.message)}};
 function openRoom(id){sid=id;since=0;$("#chat").innerHTML="";$("#setup").classList.add("hidden");$("#room").classList.remove("hidden");$("#bar").classList.remove("hidden");
   $("#dl").href=`/api/session/${id}/transcript.md`;clearInterval(timer);poll();timer=setInterval(poll,1200);}
 async function poll(){
@@ -728,8 +821,9 @@ async function poll(){
   state=v;$("#roomTopic").textContent=v.topic;$("#roomMeta").textContent=`${v.mode}｜Claude＝${v.roles.claude}｜ChatGPT＝${v.roles.chatgpt}`;
   const nearBottom=innerHeight+scrollY>=document.body.scrollHeight-260;
   document.querySelector(".thinking")?.remove();
-  for(const m of v.messages){const d=document.createElement("div");d.className="msg "+m.speaker+(m.synthesis?" synthesis":"");
-    const who=m.speaker==="system"?"":`<div class="who">${NAMES[m.speaker]}${m.phase?"｜"+esc(m.phase):""}<span class="hint"> ${m.time.slice(11,16)}</span></div>`;
+  for(const m of v.messages){const d=document.createElement("div");d.className="msg "+m.speaker+(m.synthesis?" synthesis":"")+(m.kind==="issues"?" issues":"");
+    const tag=m.kind==="issues"?'<span class="tag">🧭 分歧整理</span>':m.synthesis?'<span class="tag">🏁 結論</span>':"";
+    const who=m.speaker==="system"?"":`<div class="who">${tag}${NAMES[m.speaker]}${m.phase?"｜"+esc(m.phase):""}<span class="hint"> ${m.time.slice(11,16)}</span></div>`;
     d.innerHTML=who+esc(m.text);$("#chat").appendChild(d);}
   since=v.total;
   if(v.thinking.length){const t=document.createElement("div");t.className="thinking";t.innerHTML=v.thinking.map(a=>NAMES[a]).join(" 與 ")+" 思考中<span class=dots></span>";$("#chat").appendChild(t);}
@@ -747,6 +841,7 @@ $("#say").onkeydown=e=>{if(e.key==="Enter"&&(e.ctrlKey||e.metaKey))$("#sendBtn")
 $("#pauseBtn").onclick=()=>act("pause",{on:!state.paused});
 $("#moreBtn").onclick=()=>act("more",{rounds:+$("#moreN").value});
 $("#concludeBtn").onclick=()=>act("conclude");
+$("#reissueBtn").onclick=()=>act("reissue");
 $("#stopBtn").onclick=()=>{if(confirm("結束目前排程？（已完成的發言都會保留）"))act("stop")};
 $("#newBtn").onclick=()=>{clearInterval(timer);sid=null;history.pushState("",document.title,location.pathname);location.reload()};
 init();
