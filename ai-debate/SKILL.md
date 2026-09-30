@@ -13,13 +13,20 @@ description: 雙 AI 會診／討論主持台。讓本機已登入的 Claude Code
 
 ## Claude Code 該怎麼用這個 skill
 
-1. 確認兩個指令都已安裝並登入：`claude --version`、`codex --version`（codex 未登入請使用者先執行 `codex login`）。
+1. 確認兩個指令都已安裝並登入。直接跑自我檢查最快，它會真的各呼叫一次：
+   ```bash
+   python ai-debate/debate.py --check
+   ```
+   兩邊都印出 `✓ 有回覆` 才算可用。出現 `✗` 時訊息裡會附上 CLI 自己的錯誤輸出，
+   依訊息處理（未登入請使用者執行 `claude` 或 `codex login`），再跑一次 `--check`。
 2. 啟動主持台（會自動開瀏覽器）：
    ```bash
    python ai-debate/debate.py "<案件資料夾>"      # 有案件資料
    python ai-debate/debate.py                    # 純題目討論
    python ai-debate/debate.py --mock             # 不耗額度，先試介面
    ```
+   若某一步兩邊都發言失敗，主持台會立刻停下排程（不會繼續跑完剩下的輪數白燒額度），
+   錯誤訊息會直接出現在會議室裡；處理完按「再討論」就能接續。
 3. 告訴使用者網址（預設 http://127.0.0.1:8765/），接下來由使用者在瀏覽器主持。
 4. 討論結束後，可讀取 `_AI會診/<場次>/transcript.md` 幫使用者摘要或延伸。
 
@@ -79,4 +86,5 @@ description: 雙 AI 會診／討論主持台。讓本機已登入的 Claude Code
 | `DEBATE_CLAUDE_CMD` | `claude -p --output-format text` | 改用其他模型，如加 `--model opus` |
 | `DEBATE_CODEX_CMD` | `codex exec` | 如加 `-m gpt-5` |
 | `DEBATE_TIMEOUT` | `900` | 單次發言逾時秒數 |
+| `DEBATE_CHECK_TIMEOUT` | `180` | `--check` 每邊最多等幾秒 |
 | `DEBATE_PORT` | `8765` | 連接埠（被占用會自動往後找） |

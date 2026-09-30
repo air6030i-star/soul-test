@@ -50,41 +50,108 @@ AGENTS = {
 }
 
 
+class CLIError(RuntimeError):
+    """呼叫 claude / codex 失敗，訊息是給主持人看的中文說明。"""
+
+
 def _split_cmd(env_key, default):
     return shlex.split(os.environ.get(env_key, default), posix=(os.name != "nt"))
 
 
-def call_claude(prompt, workdir):
-    """claude -p：非互動模式，只允許讀檔類工具。"""
+_TS_RE = re.compile(r"^\d{4}-\d\d-\d\dT[\d:.]+Z?\s+")
+_COUNT_RE = re.compile(r"\b\d+/\d+\b")
+
+
+def tidy_output(text, keep_lines=15, limit=1200):
+    """把 CLI 輸出收斂成可讀的錯誤訊息。
+
+    codex 連不上時會把同一行（只差時間戳與重試次數）刷幾十次，直接截尾會只看到雜訊。
+    這裡去掉時間戳與「2/5」之類的計數後去重，只保留最後幾行不同的內容。
+    """
+    seen, keep = set(), []
+    for raw in (text or "").splitlines():
+        line = raw.rstrip()
+        if not line:
+            continue
+        key = _COUNT_RE.sub("N/N", _TS_RE.sub("", line))
+        if key in seen:
+            continue
+        seen.add(key)
+        keep.append(line)
+    return "\n".join(keep[-keep_lines:]).strip()[-limit:]
+
+
+def _as_text(data):
+    if isinstance(data, bytes):
+        return data.decode("utf-8", "replace")
+    return data or ""
+
+
+def run_cli(cmd, prompt, workdir, label, timeout=None):
+    """共用的 CLI 呼叫：提示詞走 stdin，逾時與找不到指令都給明確訊息。"""
+    # DEBATE_*_CMD 可能寫成完整路徑（Windows 上還可能帶引號），所以先脫引號再找。
+    raw = cmd[0].strip('"').strip("'")
+    exe = shutil.which(raw) or (raw if os.path.isfile(raw) else None)
+    if not exe:
+        raise CLIError(f"找不到 {cmd[0]} 指令。請先安裝並登入 {label}，"
+                       f"或用 --mock 試跑介面。")
+    # 用絕對路徑呼叫；Windows 上 npm 裝的是 claude.cmd / codex.cmd，仍需要 shell 才能執行。
+    cmd = [exe] + list(cmd[1:])
+    secs = timeout or AI_TIMEOUT
+    try:
+        return subprocess.run(
+            cmd, input=prompt, capture_output=True, text=True, encoding="utf-8",
+            errors="replace", cwd=workdir, timeout=secs,
+            shell=(os.name == "nt"),
+        )
+    except subprocess.TimeoutExpired as e:
+        # 逾時的時候 CLI 通常已經把真正的原因（例如未登入、連不上）寫到 stderr 了，
+        # 一併帶出來，不然只看到「逾時」完全不知道要修什麼。
+        # 注意 TimeoutExpired.stderr 在 POSIX 上是 bytes、在 Windows 上是 str。
+        detail = tidy_output(_as_text(e.stderr) or _as_text(e.stdout))
+        raise CLIError(
+            f"{label} 超過 {secs} 秒沒有回應。常見原因：尚未登入、額度用盡、網路不通。"
+            f"（可用環境變數 DEBATE_TIMEOUT 加長逾時秒數）"
+            + (f"\n它在逾時前印出的訊息：\n{detail}" if detail else "")
+        ) from None
+
+
+def call_claude(prompt, workdir, timeout=None):
+    """claude -p：非互動模式，只允許讀檔類工具（已實測：寫檔會被拒絕）。"""
     cmd = _split_cmd("DEBATE_CLAUDE_CMD", "claude -p --output-format text")
     cmd += ["--allowedTools", "Read", "Grep", "Glob"]
-    proc = subprocess.run(
-        cmd, input=prompt, capture_output=True, text=True, encoding="utf-8",
-        errors="replace", cwd=workdir, timeout=AI_TIMEOUT,
-        shell=(os.name == "nt"),
-    )
+    proc = run_cli(cmd, prompt, workdir, "Claude Code", timeout)
+    text = (proc.stdout or "").strip()
     if proc.returncode != 0:
-        raise RuntimeError((proc.stderr or proc.stdout or "claude 執行失敗").strip()[-1500:])
-    return proc.stdout.strip()
+        raise CLIError(f"claude 執行失敗（結束碼 {proc.returncode}）：\n"
+                       + (tidy_output(proc.stderr) or tidy_output(proc.stdout) or "沒有錯誤訊息"))
+    if not text:
+        detail = tidy_output(proc.stderr)
+        raise CLIError("claude 沒有回覆任何內容。"
+                       + (f"\n錯誤輸出：\n{detail}" if detail else "請執行 --check 確認登入狀態。"))
+    return text
 
 
-def call_codex(prompt, workdir):
-    """codex exec：唯讀沙盒，最後一則訊息寫到暫存檔再讀回。"""
+def call_codex(prompt, workdir, timeout=None):
+    """codex exec：唯讀沙盒，最後一則訊息寫到暫存檔再讀回。
+
+    注意 codex 會把橫幅與進度寫到 stderr，正式回覆只在 --output-last-message 指定的檔案裡，
+    所以空白檔案要當成失敗，不能當成「AI 沒話說」。
+    """
     fd, last_msg = tempfile.mkstemp(suffix=".txt", prefix="codex_")
     os.close(fd)
     try:
         cmd = _split_cmd("DEBATE_CODEX_CMD", "codex exec")
         cmd += ["--sandbox", "read-only", "--skip-git-repo-check",
                 "--output-last-message", last_msg, "-"]
-        proc = subprocess.run(
-            cmd, input=prompt, capture_output=True, text=True, encoding="utf-8",
-            errors="replace", cwd=workdir, timeout=AI_TIMEOUT,
-            shell=(os.name == "nt"),
-        )
+        proc = run_cli(cmd, prompt, workdir, "ChatGPT Codex CLI", timeout)
         text = Path(last_msg).read_text(encoding="utf-8", errors="replace").strip()
-        if proc.returncode != 0 and not text:
-            raise RuntimeError((proc.stderr or proc.stdout or "codex 執行失敗").strip()[-1500:])
-        return text or proc.stdout.strip()
+        if not text:
+            text = (proc.stdout or "").strip()   # 舊版沒有 --output-last-message 時的退路
+        if not text:
+            raise CLIError(f"codex 沒有回覆任何內容（結束碼 {proc.returncode}）：\n"
+                           + (tidy_output(proc.stderr) or tidy_output(proc.stdout) or "沒有錯誤訊息"))
+        return text
     finally:
         try:
             os.remove(last_msg)
@@ -104,10 +171,12 @@ def call_mock(agent, prompt):
             f"1. 先釐清前提。\n2. 列出證據與反例。\n3. 提出可執行的下一步。{extra}")
 
 
-def ask(agent, prompt, workdir, mock):
+def ask(agent, prompt, workdir, mock, timeout=None):
     if mock:
         return call_mock(agent, prompt)
-    return call_claude(prompt, workdir) if agent == "claude" else call_codex(prompt, workdir)
+    if agent == "claude":
+        return call_claude(prompt, workdir, timeout)
+    return call_codex(prompt, workdir, timeout)
 
 
 # ---------------------------------------------------------------------------
@@ -279,6 +348,13 @@ def now():
     return dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
 
+def write_atomic(path, text):
+    """先寫暫存檔再置換，避免存檔中途被 Ctrl+C 打斷、留下讀不回來的 state.json。"""
+    tmp = path.with_name(path.name + ".tmp")
+    tmp.write_text(text, encoding="utf-8")
+    os.replace(tmp, path)
+
+
 def list_case_files(folder, limit=200):
     if not folder:
         return []
@@ -444,6 +520,7 @@ class Session:
         except Exception as e:  # noqa: BLE001
             self.add_message("system", f"錯誤：{e}", phase="錯誤")
             with self.lock:
+                self.queue = []          # 別讓剩下的步驟繼續跑下去
                 self.status = "error"
         finally:
             self.thinking = []
@@ -467,14 +544,20 @@ class Session:
             t.start()
         for t in threads:
             t.join()
+        spoke = 0
         for ag in agents:
             text, err = results[ag]
             if err:
                 self.add_message("system", f"{AGENTS[ag]['name']} 發生錯誤：{err}", phase="錯誤")
             else:
+                spoke += 1
                 self.add_message(ag, text, phase=step["phase"], synthesis=step.get("synthesis", False),
                                  kind=step.get("kind", ""))
         self.thinking = []
+        if not spoke:
+            # 這一步沒有任何人成功發言，後面的步驟只會重複失敗並繼續消耗額度。
+            raise RuntimeError("這一步沒有任何一方成功發言，已停止排程以免繼續消耗額度。"
+                               "請處理上面的錯誤訊息，再按「再討論」接續。")
 
     # ----- 提示詞 -----
     def build_prompt(self, agent, step, messages):
@@ -544,8 +627,8 @@ class Session:
         with self.lock:
             self.dir.mkdir(parents=True, exist_ok=True)
             data = self.to_dict()
-            (self.dir / "state.json").write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
-            (self.dir / "transcript.md").write_text(self.to_markdown(), encoding="utf-8")
+            write_atomic(self.dir / "state.json", json.dumps(data, ensure_ascii=False, indent=2))
+            write_atomic(self.dir / "transcript.md", self.to_markdown())
 
     def to_markdown(self):
         md = [f"# 雙 AI 討論紀錄：{self.cfg.get('topic', '').strip()[:60]}", "",
@@ -851,16 +934,59 @@ init();
 """
 
 
+# ---------------------------------------------------------------------------
+# 連線自我檢查（--check）
+# ---------------------------------------------------------------------------
+
+CHECK_TIMEOUT = int(os.environ.get("DEBATE_CHECK_TIMEOUT", "180"))
+CHECK_PROMPT = "這是連線測試。請只回覆四個字：連線正常"
+CHECK_TARGETS = [("claude", "claude", "Claude Code", "claude"),
+                 ("chatgpt", "codex", "ChatGPT Codex CLI", "codex login")]
+
+
+def check_clis(workdir):
+    """用最短的提示詞各問一次，確認兩個 CLI 真的裝好、登入好、會回話。
+
+    比直接開一場討論便宜得多：每邊只花一次極短的回覆，出問題也馬上看到原因。
+    """
+    print(f"檢查兩個 CLI（每邊最多等 {CHECK_TIMEOUT} 秒）…")
+    bad = []
+    for agent, exe, label, login_hint in CHECK_TARGETS:
+        print(f"\n── {label}（{exe}）")
+        # 不在這裡先 which()：實際用的指令可能被 DEBATE_*_CMD 換成完整路徑，
+        # 那樣 which("claude") 會找不到卻其實可用。交給 run_cli 解析並回報。
+        t0 = time.time()
+        try:
+            text = ask(agent, CHECK_PROMPT, workdir, False, timeout=CHECK_TIMEOUT)
+        except Exception as e:  # noqa: BLE001
+            print(f"   ✗ 呼叫失敗（{time.time() - t0:.0f} 秒）：")
+            print("     " + str(e).replace("\n", "\n     "))
+            print(f"   → 若是登入問題，請執行 `{login_hint}`。")
+            bad.append(label)
+            continue
+        print(f"   ✓ 有回覆（{time.time() - t0:.0f} 秒）：{' '.join(text.split())[:80]}")
+
+    if bad:
+        print("\n有問題的是：" + "、".join(bad) + "。處理完再跑一次 --check。")
+        return False
+    print("\n兩邊都正常，可以開始討論了。")
+    return True
+
+
 def main():
     ap = argparse.ArgumentParser(description="雙 AI 會診 / 討論主持台")
     ap.add_argument("case_dir", nargs="?", default="", help="案件資料夾（選填）")
     ap.add_argument("--port", type=int, default=int(os.environ.get("DEBATE_PORT", "8765")))
     ap.add_argument("--mock", action="store_true", help="模擬模式：不呼叫真的 AI")
+    ap.add_argument("--check", action="store_true",
+                    help="只檢查兩個 CLI 是否裝好、登入好、會回話（各花一次極短回覆）")
     ap.add_argument("--no-browser", action="store_true", help="不要自動開瀏覽器")
     args = ap.parse_args()
 
     if args.case_dir and not os.path.isdir(args.case_dir):
         sys.exit(f"找不到資料夾：{args.case_dir}")
+    if args.check:
+        sys.exit(0 if check_clis(args.case_dir or os.getcwd()) else 1)
     if not args.mock:
         for c in ("claude", "codex"):
             if not shutil.which(c):
