@@ -1,0 +1,29 @@
+# ============================================================
+# Life OS 資料層 — 永遠不進 git
+# 這個 repo 是 public + GitHub Pages，個人資料進來就是公開的。
+# 只保留資料夾骨架（.gitkeep），內容一律留在本機。
+# ============================================================
+
+lifeos/100_Todo/**
+!lifeos/100_Todo/**/
+!lifeos/100_Todo/**/.gitkeep
+
+lifeos/300_Journal/**
+!lifeos/300_Journal/**/
+!lifeos/300_Journal/**/.gitkeep
+
+lifeos/900_Archive/**
+!lifeos/900_Archive/**/
+!lifeos/900_Archive/**/.gitkeep
+
+lifeos/200_Reference/private/**
+!lifeos/200_Reference/private/README.md
+
+# 草案暫存
+draft-*.md
+
+# 系統／編輯器
+.DS_Store
+Thumbs.db
+*.swp
+.obsidian/workspace*.json
