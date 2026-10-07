@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>靈魂人格測驗 · 64型靈魂密碼</title>
-  <meta name="description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。14 題情境題，直接對應親子、職場、情感溝通指南。">
+  <title>靈魂原型測驗｜免費 16 型自我探索 · Soul Universe</title>
+  <meta name="description" content="約 2 分鐘、14 個生活情境題，免費看見你的 4 字母型號與靈魂原型名。不用註冊，答完立即看結果。">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="靈魂人格測驗 · 64型靈魂密碼 · Soul Universe">
-  <meta property="og:description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。你是 16 型之一，還是 64 格裡專屬你的那一格？">
+  <meta property="og:title" content="靈魂原型測驗｜免費 16 型自我探索 · Soul Universe">
+  <meta property="og:description" content="約 2 分鐘、14 個生活情境題，免費看見你的 4 字母型號與靈魂原型名。不用註冊，答完立即看結果。">
     <meta property="og:image" content="https://souluniverse.app/assets/soul-universe-hero-minimal-characters.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:url" content="https://air6030i-star.github.io/soul-test/">
     <meta property="og:site_name" content="靈魂宇宙 Soul Universe">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="靈魂人格測驗 · 64型靈魂密碼 · Soul Universe">
-  <meta name="twitter:description" content="2 分鐘免費測出你的 MBTI 型號＋64 型靈魂密碼。">
+  <meta name="twitter:title" content="靈魂原型測驗｜免費 16 型自我探索 · Soul Universe">
+  <meta name="twitter:description" content="約 2 分鐘、14 個生活情境題，免費看見你的 4 字母型號與靈魂原型名。不用註冊，答完立即看結果。">
     <meta name="twitter:image" content="https://souluniverse.app/assets/soul-universe-hero-minimal-characters.jpg">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <!-- defer：讓頂欄與載入畫面先渲染，React/Babel 在背景下載（Babel 於 DOM 解析完後再轉譯測驗程式）-->
@@ -27,14 +27,14 @@
     html,body{background:#070510;min-height:100%;overflow-x:hidden;-webkit-text-size-adjust:100%}
     #root{min-height:100vh;padding-top:56px}
     /* ── 靈魂宇宙 全站頂欄 ── */
-    .su-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:rgba(7,5,16,0.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(139,124,246,0.13)}
-    .su-nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#A78BFA;font-size:15px;letter-spacing:.18em;font-weight:500}
+    .su-nav{position:fixed;top:0;left:0;right:0;z-index:200;height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 5vw;background:#20283A;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(246,241,232,0.08)}
+    .su-nav-logo{display:flex;align-items:center;gap:8px;text-decoration:none;color:#B8A1E8;font-size:15px;letter-spacing:.18em;font-weight:500}
     .su-nav-logo-mark{font-size:14px}
     .su-nav-links{display:flex;align-items:center;gap:6px}
-    .su-nav-link{color:rgba(255,255,255,0.38);text-decoration:none;font-size:13px;letter-spacing:.06em;padding:6px 10px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
-    .su-nav-link:hover{color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.06)}
-    .su-nav-link.active{color:#A78BFA;background:rgba(139,124,246,0.12)}
-    .su-nav-cta{background:linear-gradient(135deg,#8B7CF6,#F472B6);color:white!important;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:opacity .2s}
+    .su-nav-link{color:rgba(217,209,198,0.72);text-decoration:none;font-size:13px;letter-spacing:.06em;padding:6px 10px;border-radius:8px;transition:color .2s,background .2s;white-space:nowrap}
+    .su-nav-link:hover{color:#F6F1E8;background:rgba(246,241,232,0.06)}
+    .su-nav-link.active{color:#F6F1E8;background:rgba(246,241,232,0.08)}
+    .su-nav-cta{background:linear-gradient(135deg,#B24A9B,#A43C8D);color:white!important;padding:7px 16px;border-radius:20px;font-size:13px;font-weight:700;text-decoration:none;letter-spacing:.04em;transition:opacity .2s}
     .su-nav-cta:hover{opacity:.85}
     @media(max-width:480px){.su-nav-link.hide-sm{display:none}.su-nav-cta{padding:6px 12px;font-size:12px}}
     button,select{touch-action:manipulation;-webkit-appearance:none}
@@ -67,23 +67,160 @@
        https://developers.cloudflare.com/web-analytics/get-started/web-analytics-spa/ -->
   <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js"
     data-cf-beacon='{"token": "75239ea2d434408991eb1bfd30b3ce9f", "spa": true}'></script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1775140523751030');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1775140523751030&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+<!-- Meta Pixel 2026-10-07 起停用（Ula 決定）；恢復前須更新 FAQ 與隱私權政策 -->
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ── 新封面（A 版 Mira & Milo，改自 MotionSites Wellness Hero）── */
+.sx-hero{position:relative;height:calc(100svh - 56px);min-height:560px;overflow:hidden;background:#efe4d4;color:#2b2a3d;font-family:"Noto Sans TC",sans-serif;z-index:1}
+.sx-hero picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+.sx-hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:50%;background:linear-gradient(180deg,rgba(241,232,219,0),rgba(241,232,219,.85) 55%);z-index:5;pointer-events:none}
+.sx-layer{position:absolute;inset:0;z-index:10;display:flex;flex-direction:column;justify-content:flex-end;padding:16px 16px 20px}
+.sx-glass{background:rgba(255,253,248,.55);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.7)}
+.sx-content{max-width:700px}
+.sx-eyebrow{display:inline-block;font-size:12px;border-radius:999px;padding:6px 12px;margin-bottom:14px;letter-spacing:.06em;color:#2b3a67}
+.sx-h1{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(24px,8vw,2rem);line-height:1.3;letter-spacing:.02em;color:#24304f;margin:0}
+.sx-sub{color:#4d4b5e;font-size:14px;line-height:1.75;margin:12px 0 0;max-width:520px}
+.sx-cta{display:flex;width:100%;align-items:center;justify-content:space-between;margin-top:18px;border-radius:999px;padding:6px 6px 6px 22px;color:#2b2a3d;font:14px "Noto Sans TC",sans-serif;max-width:440px;cursor:pointer}
+.sx-cta b{background:#2b3a67;color:#fff;border-radius:999px;padding:13px 22px;font-size:15px;font-weight:700}
+.sx-pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.sx-pill{font-size:12px;border-radius:999px;padding:6px 12px;color:#3d3c50}
+.sx-fade{height:72px;background:linear-gradient(180deg,#f1e8db,#070510);position:relative;z-index:1}
+@media(min-width:640px){.sx-h1{font-size:3.4rem}.sx-sub{font-size:17px}.sx-layer{padding:32px 40px 48px}}
+@media (min-aspect-ratio: 1/1) and (min-width: 900px){
+  .sx-hero picture img{object-position:right center}
+  .sx-hero::after{top:0;height:auto;width:60%;background:linear-gradient(90deg,rgba(241,232,219,.75),rgba(241,232,219,0))}
+  .sx-layer{justify-content:center;padding:32px 56px}
+  .sx-content{max-width:46%}
+  .sx-h1{font-size:clamp(2.6rem,4vw,4rem)}
+}
+
+/* ── 封面以下：Sift 風格（奶油紙底、襯線標題、細線分隔）── */
+.sv{background:#f6efe4;color:#24304f;font-family:"Noto Sans TC",sans-serif;position:relative;z-index:1}
+.sv-wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.sv-sec{padding:56px 0;border-top:1px solid rgba(36,48,79,.12)}
+.sv-sec:first-child{border-top:0;padding-top:40px}
+.sv-kicker{font-size:12px;letter-spacing:.2em;color:#b06a4f;text-align:center;margin-bottom:10px}
+.sv-h2{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(21px,6vw,26px);line-height:1.4;text-align:center;margin:0 0 28px;color:#24304f}
+.sv-today{max-width:560px;margin:0 auto;background:#fffaf2;border:1px solid rgba(36,48,79,.1);border-radius:18px;padding:26px 24px;box-shadow:0 10px 30px rgba(120,90,60,.08)}
+.sv-today .lbl{font-size:12px;letter-spacing:.12em;color:#8a8597;margin-bottom:6px}
+.sv-quote{font-family:"Noto Serif TC",serif;font-size:20px;line-height:1.7;margin:0 0 18px;color:#24304f}
+.sv-line{font-size:15px;line-height:1.75;color:#4d4b5e;margin:0;padding-top:16px;border-top:1px dashed rgba(36,48,79,.15)}
+.sv-gate{display:block;margin-top:16px;padding:12px 14px;border-radius:12px;background:#f3e6d3;color:#7a5236;text-decoration:none;font-size:14px;line-height:1.6}
+.sv-hint{text-align:center;font-size:13px;color:#8a8597;margin:14px 0 0}
+.sv-ctas{max-width:440px;margin:28px auto 0;display:flex;flex-direction:column;gap:10px}
+.sv-btn{width:100%;min-height:52px;border-radius:999px;font:700 16px "Noto Sans TC",sans-serif;cursor:pointer;letter-spacing:.04em}
+.sv-btn.pri{background:#2b3a67;color:#fff;border:0}
+.sv-btn.sec{background:transparent;color:#2b3a67;border:1.5px solid rgba(43,58,103,.35)}
+.sv-btn.soft{background:#efe0cf;color:#7a5236;border:0}
+.sv-feats{display:grid;grid-template-columns:1fr;gap:0}
+.sv-feat{display:flex;gap:18px;padding:20px 4px;border-top:1px solid rgba(36,48,79,.1)}
+.sv-feat:first-child{border-top:0}
+.sv-num{font-family:"Noto Serif TC",serif;font-size:22px;color:#b06a4f;min-width:34px}
+.sv-feat h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;margin:0 0 4px;color:#24304f}
+.sv-feat p{margin:0;font-size:14.5px;line-height:1.7;color:#5a5868}
+.sv-cards{display:grid;grid-template-columns:1fr;gap:14px}
+.sv-card{display:block;text-decoration:none;background:#fffaf2;border:1px solid rgba(36,48,79,.1);border-radius:18px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.sv-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(120,90,60,.12)}
+.sv-card .band{height:8px}
+.sv-card .bd{padding:20px 20px 18px}
+.sv-card h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;margin:0 0 6px;color:#24304f}
+.sv-card p{margin:0 0 14px;font-size:14px;line-height:1.65;color:#5a5868}
+.sv-card .go{font-size:13px;font-weight:700;letter-spacing:.06em}
+.sv-foot{text-align:center;font-size:13px;color:#8a8597;padding:28px 0 56px;border-top:1px solid rgba(36,48,79,.12)}
+@media(min-width:760px){
+  .sv-h2{font-size:32px}
+  .sv-feats{grid-template-columns:1fr 1fr;column-gap:48px}
+  .sv-feat:nth-child(2){border-top:0}
+  .sv-cards{grid-template-columns:repeat(3,1fr)}
+}
+.sx-fade{background:linear-gradient(180deg,#f1e8db,#f6efe4)!important;height:24px!important}
+
+/* ── V2 區塊 ── */
+.v2-pains{display:grid;grid-template-columns:1fr;gap:12px}
+.v2-pain{background:#fffaf2;border:1px solid rgba(36,48,79,.1);border-radius:16px;padding:18px 20px;font-family:"Noto Serif TC",serif;font-size:17px;line-height:1.65;color:#24304f}
+.v2-note{font-size:12px;color:#9a95a6;text-align:center;margin-top:12px}
+.v2-result{display:grid;grid-template-columns:1fr;gap:24px;align-items:center}
+.v2-shot{max-width:300px;margin:0 auto;border-radius:22px;overflow:hidden;border:6px solid #24304f;box-shadow:0 16px 36px rgba(36,48,79,.18);position:relative}
+.v2-shot img{display:block;width:100%}
+.v2-shot span{position:absolute;top:10px;left:10px;background:#24304f;color:#fff;font-size:11px;padding:3px 9px;border-radius:999px;letter-spacing:.08em}
+.v2-list{list-style:none;padding:0;margin:0}
+.v2-list li{padding:14px 0 14px 30px;border-top:1px solid rgba(36,48,79,.1);position:relative;font-size:15.5px;line-height:1.7;color:#3d3c50}
+.v2-list li:first-child{border-top:0}
+.v2-list li::before{content:"✦";position:absolute;left:4px;top:14px;color:#b06a4f;font-size:13px}
+.v2-list b{color:#24304f;font-weight:700}
+.v2-vals{display:grid;grid-template-columns:1fr;gap:12px}
+.v2-val{padding:22px 20px;border-radius:16px;background:#efe4d4}
+.v2-val h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:19px;margin:0 0 6px;color:#24304f}
+.v2-val p{margin:0;font-size:14.5px;line-height:1.7;color:#55526a}
+.v2-design{max-width:620px;margin:0 auto;font-size:15.5px;line-height:1.85;color:#3d3c50}
+.v2-design p{margin:0 0 12px}
+.v2-steps{display:grid;grid-template-columns:1fr;gap:14px;counter-reset:st}
+.v2-step{display:flex;gap:16px;align-items:flex-start;background:#fffaf2;border:1px solid rgba(36,48,79,.1);border-radius:16px;padding:18px 20px}
+.v2-step b{flex:none;width:34px;height:34px;border-radius:50%;background:#2b3a67;color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Noto Serif TC",serif;font-size:16px}
+.v2-step h3{margin:0 0 4px;font-size:16.5px;color:#24304f;font-family:"Noto Serif TC",serif;font-weight:500}
+.v2-step p{margin:0;font-size:14px;line-height:1.65;color:#5a5868}
+.v2-faq{max-width:680px;margin:0 auto}
+.v2-faq details{border-top:1px solid rgba(36,48,79,.12);padding:16px 4px}
+.v2-faq details:last-child{border-bottom:1px solid rgba(36,48,79,.12)}
+.v2-faq summary{cursor:pointer;font-family:"Noto Serif TC",serif;font-size:17px;color:#24304f;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.v2-faq summary::after{content:"+";color:#b06a4f;font-size:20px;line-height:1}
+.v2-faq details[open] summary::after{content:"−"}
+.v2-faq p{margin:10px 0 0;font-size:14.5px;line-height:1.75;color:#55526a}
+.v2-todo{display:inline-block;background:#fde6c8;color:#8a4b17;font-size:12px;padding:2px 8px;border-radius:6px}
+.v2-brand{max-width:600px;margin:0 auto;text-align:center;font-size:15.5px;line-height:1.85;color:#3d3c50}
+.v2-brand .core{font-family:"Noto Serif TC",serif;font-size:clamp(17px,4.9vw,20px);color:#24304f;margin:0 0 14px}
+.v2-final{text-align:center;background:#24304f;color:#fff;border-radius:24px;padding:40px 22px;margin:8px 0}
+.v2-final h2{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(22px,6vw,30px);margin:0 0 10px;color:#fff}
+.v2-final p{margin:0 0 22px;color:rgba(255,255,255,.75);font-size:14.5px}
+.v2-final .sv-btn{max-width:360px;background:#f6efe4;color:#24304f;border:0}
+.v2-final small{display:block;margin-top:12px;color:rgba(255,255,255,.6);font-size:12.5px}
+.v2-foot{padding:40px 0 20px}
+.v2-foot .mini{font-size:13px;color:#8a8597;text-align:center;margin:0 0 14px;letter-spacing:.1em}
+.v2-daily{max-width:560px;margin:0 auto 18px;background:#fffaf2;border:1px solid rgba(36,48,79,.1);border-radius:16px;padding:16px 18px;font-size:14px;color:#55526a;line-height:1.7}
+.v2-daily q{font-family:"Noto Serif TC",serif;color:#24304f;font-size:16px}
+.v2-links{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:14px}
+.v2-links a,.v2-links button{font:500 13.5px "Noto Sans TC",sans-serif;color:#2b3a67;background:transparent;border:1px solid rgba(43,58,103,.25);border-radius:999px;padding:8px 14px;text-decoration:none;cursor:pointer}
+@media(min-width:760px){
+  .v2-pains{grid-template-columns:1fr 1fr}
+  .v2-result{grid-template-columns:320px 1fr;gap:48px}
+  .v2-vals{grid-template-columns:repeat(3,1fr)}
+  .v2-steps{grid-template-columns:repeat(3,1fr)}
+  .v2-step{flex-direction:column}
+}
+
+.v2-mock{max-width:300px;margin:0 auto;background:#fffaf2;border:6px solid #24304f;border-radius:24px;padding:30px 22px 22px;position:relative;box-shadow:0 16px 36px rgba(36,48,79,.16)}
+.v2-mock .tag{position:absolute;top:10px;left:12px;background:#24304f;color:#fff;font-size:11px;padding:3px 9px;border-radius:999px;letter-spacing:.1em}
+.v2-mock .m-type{font-family:"Noto Serif TC",serif;font-size:24px;color:#24304f;text-align:center;letter-spacing:.06em;margin-top:6px}
+.v2-mock .m-name{font-family:"Noto Serif TC",serif;font-size:16px;color:#b06a4f;text-align:center;margin:4px 0 18px}
+.v2-mock .m-row{padding:12px 0;border-top:1px dashed rgba(36,48,79,.18)}
+.v2-mock .m-row b{display:block;font-size:13px;color:#24304f;margin-bottom:8px}
+.v2-mock .m-row i{display:block;height:8px;border-radius:4px;background:#eadfcd;margin-bottom:6px}
+.v2-mock .m-row i.s{width:70%}
+.v2-mock .m-row i.q{height:26px;border-radius:8px;background:#f3e6d3}
+.v2-mock .m-btn{margin-top:14px;text-align:center;font-size:12.5px;color:#4f7d6f;background:#e6efe9;border-radius:999px;padding:9px 10px}
+/* FIX 2｜桌面標題不孤字 */
+@media (min-aspect-ratio: 1/1) and (min-width: 900px){
+  .sx-content{max-width:52%}
+  .sx-h1{font-size:clamp(2.4rem,3.3vw,3.4rem)!important}
+}
+/* FIX 3｜窄螢幕／短螢幕首屏完整容納 */
+.sx-hero{min-height:480px!important}
+.sx-cta-note{display:none;font-size:12.5px;color:#4d4b5e;margin-top:8px}
+@media (max-width:359px){
+  .sx-cta span{display:none}
+  .sx-cta{justify-content:center;padding:6px}
+  .sx-cta b{width:100%;text-align:center}
+  .sx-cta-note{display:block}
+}
+@media (max-height:640px){
+  .sx-layer{padding-bottom:12px}
+  .sx-eyebrow{margin-bottom:8px}
+  .sx-sub{margin-top:6px;font-size:13px;line-height:1.6}
+  .sx-cta{margin-top:10px}
+  .sx-h1{font-size:clamp(22px,7.2vw,28px)}
+}
+</style>
 </head>
 <body>
 
@@ -108,7 +245,7 @@ src="https://www.facebook.com/tr?id=1775140523751030&ev=PageView&noscript=1"
   <div id="su-boot">
     <div class="su-boot-spin"></div>
     <div class="su-boot-text">✦ 靈魂宇宙</div>
-    <div class="su-boot-sub">正在為你開啟 64 型靈魂測驗…</div>
+    <div class="su-boot-sub">正在為你開啟靈魂原型測驗…</div>
   </div>
 </div>
 <script type="text/babel">
@@ -221,7 +358,7 @@ const SOULS = {
         daily:["你今天感應到需要你的人，去找他。","你給自己的溫柔，和你給別人的一樣重要。","你的猶豫不是弱點，是你在確認每個決定都來自愛。","今天讓直覺帶路，不過度思考。","你幫助了很多人，今天讓別人幫你一次。","你的溫柔是你最大的力量，今天用它照顧自己。","你不需要修好所有人，今天先修好自己的狀態。"],
         growth:["你把別人的痛苦吸收進來，記得也把它釋放出去。","你的溫柔是天賦，界限是讓它持續的智慧。","你值得你給別人的那種溫柔和理解。","你的直覺很準，你的自我懷疑有時候不是。","你幫助別人找到方向，但你自己的方向也需要被找到。","你最深的成長是學會說：我也需要幫助。","你的溫柔讓你的洞見有了人心，那是最完整的天賦。"],
         affirmation:["我的溫柔不是我的弱點，是我的力量。","我值得被照顧，就像我照顧別人一樣。","我的界限是我對自己最深的愛。"] },
-      OC:{ nick:"沉在宇宙底部的靈魂", rare:"0.3%", desc:"世界上最稀有的靈魂類型之一，看見太多、感受太多",
+      OC:{ nick:"沉在宇宙底部的靈魂", rare:"0.3%", desc:"看見太多、感受太多的靈魂",
         daily:["你感應到的那個真相，今天需要你說出來。","你的沉默是你的選擇，但有時候是你的逃避。","你的孤獨裡有整個宇宙，今天帶一個人進來看一看。","你不需要拯救所有人，今天先拯救自己的狀態。","你的洞見比你的沉默更需要被世界聽見。","今天讓你的靈魂稍微靠近一下這個世界。","你的複雜是你，接受它，然後活出它。"],
         growth:["你是世界上少數真正看見靈魂的人，那是責任。","你的孤獨不是命運，是你還沒找到值得打開的人。","你的沉默保護了你，也把你鎖在裡面了。","你最深的洞見值得被說出來，找到那個聽的人。","你的使命需要你走出來，靈魂的工作不能在孤島上完成。","你看見了黑暗，但你也有光。今天讓光出來一點。","你的複雜和你的孤獨，都是你靈魂旅程的一部分。"],
         affirmation:["我的洞見需要被說出來，才能真正改變什麼。","我的孤獨是暫時的旅程，不是永恆的家。","我看見宇宙的深處，也看見人心的深處。"] }
@@ -327,7 +464,7 @@ const SOULS = {
         daily:["你的行動就是你的語言，今天繼續讓它說。","你默默做的那些事，有人感受到了。","今天讓你的冷靜帶著你的愛走。","你不需要說出來，但今天讓一個人聽到你說謝謝。","你的照顧是深沉的，今天讓它也照顧到自己。","不說不代表不在乎，但說出來讓愛更完整。","今天做一件讓最重要的人感覺被愛的事。"],
         growth:["你的行動是愛最真實的語言，繼續說。","你的高冷讓別人不確定可不可以靠近你，偶爾給個信號。","你默默照顧，但你也值得被主動照顧。","你的冷靜讓你的照顧不帶期待，那是最純粹的愛。","說出來你的感受不會讓你的愛變少，反而會更完整。","你的行動很有力量，加上一點語言，會更無敵。","你不需要掌聲，但你值得被感謝，接受它吧。"],
         affirmation:["我用行動愛，那是我最誠實的語言。","我的冷靜不是冷漠，是我愛的方式。","我默默守護，那是我給世界的禮物。"] },
-      OH:{ nick:"想太多卻最溫柔的靈魂", rare:"4.5%", desc:"全球最常見的類型之一，最讓人感覺被照顧的靈魂",
+      OH:{ nick:"想太多卻最溫柔的靈魂", rare:"4.5%", desc:"最讓人感覺被照顧的靈魂",
         daily:["你已經做得夠好了，今天讓自己也感覺到這一點。","你的溫柔是這個世界最需要的東西，繼續給。","今天說出一個你自己需要的東西，讓別人有機會給你。","你記住了所有人的需要，今天記住自己的一個。","你不需要讓每個人都滿意，你只需要讓自己問心無愧。","今天允許自己接受別人的照顧，那也是給別人的禮物。","你的溫柔改變了很多人的一天，今天讓它也改變你的一天。"],
         growth:["你記住了所有人，記得也記住自己。","你的善良需要界限才能持續，界限是愛的一種形式。","你對別人有多溫柔，對自己的批評就有多嚴苛，讓它平衡一點。","你值得你給別人的那種溫柔和照顧。","你害怕讓人失望，但讓自己失望更值得注意。","你最大的成長是學會說：我也需要被照顧。","你的溫柔讓世界更好，你的界限讓你能持續溫柔。"],
         affirmation:["我的溫柔是力量，我的界限讓它持續。","我值得我給別人的那種深情照顧。","我照顧別人，也照顧自己，兩個同樣重要。"] },
@@ -471,6 +608,11 @@ const SOULS = {
 };
 
 const MBTI_KEYS = Object.keys(SOULS);
+const GENERIC_REFLECT = { // B＋（2026-10-07 Ula）：從既有語錄挑選的通用句，對所有人相同，依星期輪替；不是依作答推算
+  remind:["不需要所有人都懂你，需要你懂自己。","今天允許自己不確定，然後還是去做。","你默默在乎的事，值得被說出來。","完成一件事比開始十件事更讓人相信你。","今天允許自己被感謝，不要說沒什麼。","你照顧好自己，才能持續照顧別人。","你在乎別人，也要在乎自己足夠被照顧。"],
+  act:["今天主動問一個人：你還好嗎？","今天完成一件你一直拖著的事。","今天做一件讓自己感覺踏實的事。","今天為你最重要的關係做一件小事。","今天主動說出一件你欣賞某人的事。","今天做一件只為了讓自己開心的事。","今天告訴一個人你也需要他的陪伴。"],
+  self:["我照顧別人，也照顧自己。","我已經夠好了，我相信自己。","我值得我給別人的那種照顧。","我選擇，我行動，我不後悔。","我在乎每一個人，也在乎自己。","我不需要掌聲，但我值得被看見。","我照亮別人的路，也照亮自己的路。"]
+};
 const getDayIdx = () => new Date().getDay();
 const getDateStr = () => { const d=new Date(); return `${d.getMonth()+1}月${d.getDate()}日`; };
 const SUBTYPE_LABELS = { AH:"A-H 果斷·溫暖", AC:"A-C 果斷·高冷", OH:"O-H 糾結·溫暖", OC:"O-C 糾結·高冷" };
@@ -629,7 +771,6 @@ function SoulApp() {
     return (
       <span style={{display:"inline-flex",alignItems:"center",gap:6,background:`${si.glow}22`,border:`1px solid ${si.color}44`,borderRadius:20,...fs.outer}}>
         <span style={{fontFamily:"'Courier New',monospace",fontWeight:900,color:si.color,fontSize:fs.code.fontSize,letterSpacing:1}}>{type}</span>
-        {st && <span style={{fontSize:13,color:`${si.color}88`,fontFamily:"monospace"}}>-{st.slice(0,1)}-{st.slice(1)}</span>}
         <span style={{width:1,height:12,background:`${si.color}44`}}/>
         <span style={{fontSize:fs.name.fontSize,color:"rgba(255,255,255,0.55)"}}>{si.emoji} {si.name}</span>
       </span>
@@ -648,8 +789,8 @@ function SoulApp() {
     const emoji = S ? S.emoji : "🔮";
     const soulName = S ? S.name : "";
     const enName = S ? S.en : "";
-    const nick = ST ? ST.nick : "";
-    const desc = ST ? ST.desc : "";
+    const nick = "";   // B＋：不上子型描述
+    const desc = "";
     const rare = ST ? ST.rare : "";
     const typeCode = mbtiType || "";   // 對外只顯示型號；OH/OL 等子類型代碼純後台，不上分享卡
 
@@ -709,7 +850,7 @@ function SoulApp() {
     ctx.textAlign = "center";
     ctx.font = "32px Georgia, serif";
     ctx.fillStyle = isDark ? "rgba(139,124,246,0.6)" : color + "aa";
-    ctx.fillText("靈魂人格測驗  ·  64型靈魂密碼", W/2, 70);
+    ctx.fillText("靈魂原型測驗  ·  Soul Universe", W/2, 70);
 
     // Emoji
     ctx.font = "160px serif";
@@ -743,6 +884,7 @@ function SoulApp() {
     const maxW = 860;
     const words = desc.split("");
     let line = "「", y = 640;
+    if (desc) {
     for (let i = 0; i < words.length; i++) {
       const test = line + words[i];
       if (ctx.measureText(test + "」").width > maxW && line.length > 1) {
@@ -751,11 +893,8 @@ function SoulApp() {
       } else { line += words[i]; }
     }
     ctx.fillText(line + "」", W/2, y);
+    }
 
-    // Rare badge
-    ctx.font = "32px Georgia, serif";
-    ctx.fillStyle = txtSub;
-    ctx.fillText("全球約 " + rare + " 的靈魂", W/2, y + 70);
 
     // Bottom URL
     ctx.font = "28px 'Courier New', monospace";
@@ -767,7 +906,7 @@ function SoulApp() {
     const canvas = document.createElement("canvas");
     drawShareCard(canvas, shareStyle);
     const a = document.createElement("a");
-    a.download = `靈魂密碼-${mbtiType}-${subtype}.png`;
+    a.download = `靈魂原型-${mbtiType}.png`;
     a.href = canvas.toDataURL("image/png");
     a.click();
   };
@@ -782,7 +921,7 @@ function SoulApp() {
         <div style={{width:"100%",maxWidth:420,display:"flex",flexDirection:"column",height:"100%",maxHeight:"100vh"}} onClick={e=>e.stopPropagation()}>
           {/* Top bar */}
           <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",padding:"12px 4px",flexShrink:0}}>
-            <div style={{fontWeight:700,fontSize:17}}>🎴 分享我的靈魂密碼</div>
+            <div style={{fontWeight:700,fontSize:17}}>🎴 分享我的靈魂原型</div>
             <button onClick={()=>setShowShare(false)} style={{background:"rgba(255,255,255,0.1)",border:"none",color:"white",width:32,height:32,borderRadius:"50%",cursor:"pointer",fontSize:16,display:"flex",alignItems:"center",justifyContent:"center"}}>✕</button>
           </div>
           {/* Style toggle */}
@@ -798,9 +937,9 @@ function SoulApp() {
           <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",textAlign:"center",marginBottom:10,flexShrink:0}}>長按卡片截圖，或點下方下載</div>
           <button onClick={downloadCard} className="bh" style={B("linear-gradient(135deg,#8B7CF6,#F472B6)",{marginBottom:8,flexShrink:0})}>⬇️ 下載分享卡片</button>
           <button onClick={()=>{
-            const soul = S && ST ? `${mbtiType}-${subtype} ${ST.name}` : mbtiType;
-            const daily = ST && ST.daily && ST.daily[0] ? ST.daily[0] : "內在最安靜的聲音，是我最響亮的嚮導";
-            const txt = `我剛測出我的靈魂密碼是 ${soul} ✦\n\n「${daily.substring(0,40)}」\n\n你也來測測你的64型靈魂密碼吧！🔮\nhttps://air6030i-star.github.io/soul-test/`;
+            const soul = S ? `${mbtiType} ${S.name}` : mbtiType;
+            const daily = GENERIC_REFLECT.remind[di];
+            const txt = `我剛測出我的靈魂原型是 ${soul} ✦\n\n「${daily.substring(0,40)}」\n\n你也來測測你的靈魂原型吧！🔮\nhttps://air6030i-star.github.io/soul-test/`;
             navigator.clipboard.writeText(txt).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2500);});
           }} className="bh" style={B(copied?"linear-gradient(135deg,#34D399,#059669)":"rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.15)",marginBottom:8,flexShrink:0})}>
             {copied ? "✅ 已複製！貼到 LINE / WhatsApp 傳給朋友" : "📋 複製文字 → 分享給朋友"}
@@ -812,93 +951,143 @@ function SoulApp() {
   };
 
   if(page==="home") return (
-    <div style={base}><BG/>
-      <div style={W}>
-        <div style={{textAlign:"center",padding:"52px 0 24px",animation:"fu 0.7s ease both"}}>
-          <div style={{display:"inline-block",background:"rgba(139,124,246,0.1)",border:"1px solid rgba(139,124,246,0.2)",borderRadius:30,padding:"5px 14px",fontSize:13,color:"#A78BFA",marginBottom:16,letterSpacing:2}}>✦ 整合國際16型人格研究 × 64型進階系統 ✦</div>
-          <div style={{fontSize:60,marginBottom:4}}>🔮</div>
-          <h1 style={{fontSize:32,fontWeight:900,margin:"0 0 6px",lineHeight:1.2}}><span className="sh">靈魂人格測驗</span></h1>
-          <p style={{color:"rgba(255,255,255,0.4)",fontSize:15,lineHeight:1.8,margin:"8px 0 0"}}>探索你的靈魂密碼 · 64型進階人格系統<br/>每天一則成長語錄 + 靈魂指引</p>
-
-          <div style={{display:"flex",justifyContent:"center",gap:12,marginTop:14,fontSize:13,color:"rgba(255,255,255,0.3)"}}>
-            <span>✨ 64型人格</span><span>💕 靈魂配對</span><span>🌱 成長語錄</span><span>🃏 塔羅指引</span>
+    <div style={{...base,background:"#f6efe4",color:"#24304f"}}>
+      <section className="sx-hero">
+        <picture>
+          <source media="(min-aspect-ratio: 1/1) and (min-width: 900px)" srcSet="hero-mira-milo-desktop.webp" type="image/webp"/>
+          <source media="(min-aspect-ratio: 1/1) and (min-width: 900px)" srcSet="hero-mira-milo-desktop.jpg"/>
+          <source srcSet="hero-mira-milo.webp" type="image/webp"/>
+          <img src="hero-mira-milo.jpg" alt="Mira 坐在窗邊看著天空，黑白貓 Milo 靠在她身旁" fetchpriority="high"/>
+        </picture>
+        <div className="sx-layer">
+          <div className="sx-content">
+            <span className="sx-eyebrow sx-glass">免費・靈魂原型測驗</span>
+            <h1 className="sx-h1">約 2 分鐘，<br/>找到你的靈魂原型</h1>
+            <p className="sx-sub">從 14 個生活情境開始，觀察自己怎麼回應、選擇與前進。</p>
+            <button className="sx-cta sx-glass" onClick={()=>{setPage("test");setQIdx(0);setAns([]);setSubAns([]);setTestPhase("mbti");}}><span>免費・不用註冊・立即看結果</span><b>開始測驗</b></button>
+            <div className="sx-cta-note">免費・不用註冊・立即看結果</div>
+            
           </div>
         </div>
+      </section>
+      <div className="sx-fade"/>
+      <div className="sv"><div className="sv-wrap">
 
-        {/* Preview */}
-        <div style={{...C(),border:"1px solid rgba(139,124,246,0.15)",background:"rgba(139,124,246,0.06)",animation:"fu 0.7s 0.1s ease both"}}>
-          <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:12}}>
-            <div style={{width:6,height:6,borderRadius:"50%",background:"#8B7CF6",animation:"pg 2s infinite"}}/>
-            <span style={{fontSize:13,color:"#A78BFA",letterSpacing:1}}>今日預覽 · {getDateStr()}</span>
-
+        {/* 2｜生活困擾 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">你是不是也常這樣？</div>
+          <h2 className="sv-h2">有些反應，你自己也說不清楚為什麼</h2>
+          <div className="v2-pains">
+            <div className="v2-pain">明明只是想關心對方，最後卻變成爭吵。</div>
+            <div className="v2-pain">別人隨口一句話，你可以想一整晚。</div>
+            <div className="v2-pain">很多事想做，卻總在決定之前卡住。</div>
+            <div className="v2-pain">很會照顧別人，卻不太知道自己需要什麼。</div>
           </div>
-          <div style={{background:"rgba(0,0,0,0.2)",borderRadius:10,padding:12,marginBottom:8,borderLeft:"2px solid #3B82F6"}}>
-            <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:4,letterSpacing:1}}>🌙 今日靈語</div>
-            <p style={{margin:0,fontSize:16,lineHeight:1.7,color:"rgba(255,255,255,0.7)",fontStyle:"italic"}}>「{SOULS["INFJ"].subtypes.OH.daily[di]}」</p>
-          </div>
-          <div style={{background:"rgba(0,0,0,0.15)",borderRadius:10,padding:12}}>
-            <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:4,letterSpacing:1}}>🌱 今日成長語錄</div>
-            <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.55)"}}>{SOULS["INFJ"].subtypes.OH.growth[di]}</p>
-          </div>
-          <a href="https://souluniverse.app" style={{display:"block",background:"rgba(201,162,75,0.1)",border:"1px solid rgba(201,162,75,0.3)",borderRadius:10,padding:12,marginTop:8,textDecoration:"none"}}>
-            <div style={{fontSize:12,color:"#E8C66A",marginBottom:4,letterSpacing:1}}>🔮 今日閘門能量 · 免費天天看</div>
-            <p style={{margin:0,fontSize:14,lineHeight:1.6,color:"rgba(255,255,255,0.6)"}}>今天宇宙開哪一道門？看你今天的能量主題 →</p>
-          </a>
-          <p style={{margin:"8px 0 0",fontSize:13,color:"rgba(255,255,255,0.25)",textAlign:"center"}}>完成測驗，解鎖你的專屬 64型靈魂密碼 ↓</p>
-        </div>
+          <p className="v2-note">以上是常見的生活情境，不是使用者回饋</p>
+        </section>
 
-        {/* CTAs */}
-        <div style={{animation:"fu 0.7s 0.2s ease both"}}>
-          <button onClick={()=>{setPage("test");setQIdx(0);setAns([]);setSubAns([]);setTestPhase("mbti");}} className="bh" style={B("linear-gradient(135deg,#8B7CF6,#6C63FF)")}>✨ 免費探索我的64型靈魂密碼</button>
-              {mbtiType && <button onClick={resetAll} className="bh" style={B("rgba(255,255,255,0.06)",{marginTop:8,fontSize:14,color:"rgba(255,255,255,0.35)"})}>↺ 重新測驗</button>}
-          {mbtiType && subtype && <button onClick={()=>setPage("daily")} className="bh" style={B("linear-gradient(135deg,#F472B6,#E879A0)")}>🌙 今日靈語中心</button>}
-          <button onClick={()=>setPage("compat")} className="bh" style={B("rgba(255,255,255,0.05)",{border:"1px solid rgba(255,255,255,0.1)"})}>💕 靈魂配對分析</button>
-        </div>
+        {/* 3｜測驗成果 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">測完你會看到什麼</div>
+          <h2 className="sv-h2">一份屬於你的靈魂原型說明</h2>
+          <div className="v2-result">
+            <div className="v2-mock" aria-label="結果頁內容示意">
+              <span className="tag">示意</span>
+              <div className="m-type">4 個英文字母</div>
+              <div className="m-name">＋ 你的靈魂原型名</div>
+              <div className="m-row"><b>今日的一句提醒</b><i className="q"/></div>
+              <div className="m-row"><b>今天可以試試的小行動</b><i/><i className="s"/></div>
+              <div className="m-row"><b>給自己的一句話</b><i className="q"/></div>
+              <div className="m-btn">想再多看一層？可自由選擇加入 LINE</div>
+            </div>
+            <ul className="v2-list">
+              <li><b>你的型號與靈魂原型名</b>：4 個英文字母，加上靈魂宇宙為它取的名字</li>
+              <li><b>每天換一次的反思語句</b>：一句提醒、一個今天可以試試的小行動、一句給自己的話</li>
+              <li><b>想再多看一層</b>：可以自己選擇加入 LINE，領取延伸解讀；不加也能看完基本結果</li>
+            </ul>
+          </div>
+        </section>
 
-        {/* Features */}
-        <div style={{paddingBottom:40,animation:"fu 0.7s 0.3s ease both"}}>
-          <p style={{textAlign:"center",color:"rgba(255,255,255,0.25)",fontSize:13,marginBottom:12,letterSpacing:1}}>✦ 每天都有新的內容等著你 ✦</p>
-          {[{icon:"🔬",t:"64型進階人格系統",d:"16型，每一型再分四種運作方式，更精準描述你是誰"},{icon:"🌙",t:"今日靈語",d:"根據你的型號，每天不同的宇宙指引"},{icon:"🌱",t:"每日成長語錄",d:"針對你人格特質量身定制的成長方向"},{icon:"🃏",t:"每日塔羅指引",d:"你今天的塔羅訊息，結合人格深度解讀"},{icon:"💕",t:"靈魂配對深讀",d:"兩人64型代碼的宇宙緣分與溝通密碼"},].map((f,i)=>(
-            <div key={i} className="gh" style={{...C(),display:"flex",gap:12,alignItems:"flex-start",animation:`fu 0.5s ${0.35+i*0.07}s ease both`}}>
-              <div style={{fontSize:26,flexShrink:0}}>{f.icon}</div>
-              <div><div style={{fontWeight:700,marginBottom:3,fontSize:16}}>{f.t}</div><div style={{color:"rgba(255,255,255,0.4)",fontSize:14,lineHeight:1.6}}>{f.d}</div></div>
-            </div>
-          ))}
-        </div>
-        {/* 系列導流 */}
-        <div style={{width:"100%",paddingBottom:8,animation:"fu 0.7s 0.5s ease both"}}>
-          <div style={{fontSize:11,color:"rgba(255,255,255,0.2)",textAlign:"center",letterSpacing:"0.15em",marginBottom:12,fontFamily:"sans-serif"}}>✦ 靈魂宇宙系列 · 從了解自己到讀懂身邊的人 ✦</div>
-          <a href="https://parenting.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.07)",border:"1px solid rgba(212,136,42,0.18)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
-            <span style={{fontSize:22,flexShrink:0}}>👨‍👩‍👧</span>
-            <div style={{flex:1}}>
-              <div style={{color:"#e8a840",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂親子 · 親子溝通指南</div>
-              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>256種親子組合 · 讀懂孩子的秘密語言</div>
-            </div>
-            <span style={{color:"rgba(212,136,42,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
-          </a>
-          <a href="https://work.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(0,196,160,0.06)",border:"1px solid rgba(0,196,160,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
-            <span style={{fontSize:22,flexShrink:0}}>⚔️</span>
-            <div style={{flex:1}}>
-              <div style={{color:"#00c4a0",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂職場 · 職場溝通指南</div>
-              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>256種職場組合 · 破解主管同事的思維邏輯</div>
-            </div>
-            <span style={{color:"rgba(0,196,160,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
-          </a>
-          <a href="https://love.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(244,114,182,0.06)",border:"1px solid rgba(244,114,182,0.15)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
-            <span style={{fontSize:22,flexShrink:0}}>💕</span>
-            <div style={{flex:1}}>
-              <div style={{color:"#F472B6",fontWeight:700,fontSize:14,marginBottom:2,fontFamily:"sans-serif"}}>靈魂情感 · 情侶友情指南</div>
-              <div style={{color:"rgba(255,255,255,0.35)",fontSize:12,lineHeight:1.5,fontFamily:"sans-serif"}}>你們的關係密碼 · 讀懂彼此的愛的語言</div>
-            </div>
-            <span style={{color:"rgba(244,114,182,0.5)",fontSize:12,flexShrink:0,fontFamily:"sans-serif"}}>了解 →</span>
-          </a>
-          {/* 命理入口已於 2026-09-05 移除（首頁卡）。理由見 docs/漏斗定稿-2026-09.md：
-              命盤只出現在 LINE 選單／購買完成頁／讀者主動問起時。
-              這裡是 bio 點進來看到的第一頁，交生辰是信任建立之後才做的動作。
-              全站頂欄 :79 的「命理排盤」刻意保留（帶 hide-sm，手機不顯示）。 */}
-        </div>
-        <p style={{textAlign:"center",color:"rgba(255,255,255,0.2)",fontSize:13,paddingBottom:40}}>⏱ 14 題約 2 分鐘 · 完全免費　✦ 16 型 × 4 子型 · 64 型完整系統 · 每日更新</p>
-      </div>
+        {/* 4｜測驗價值 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">這對你有什麼幫助</div>
+          <h2 className="sv-h2">不是替你貼標籤，是幫你看見自己</h2>
+          <div className="v2-vals">
+            <div className="v2-val"><h3>觀察自己的反應</h3><p>留意哪些情境特別容易牽動你。</p></div>
+            <div className="v2-val"><h3>留意彼此的差異</h3><p>把不同的反應方式，當成理解關係的一個起點。</p></div>
+            <div className="v2-val"><h3>開始一個自我提問</h3><p>從結果出發，試著問自己：我最近最想理解的是什麼？</p></div>
+          </div>
+        </section>
+
+        {/* 5｜信任建立 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">這個測驗怎麼設計的</div>
+          <h2 className="sv-h2">從日常情境出發，不考你標準答案</h2>
+          <div className="v2-design">
+            <p>14 題都是生活裡會遇到的情境，例如一個人的深夜、和朋友意見不同的時候。選你最常有的反應就好，沒有對錯。</p>
+            <p>前 12 題以 16 型人格架構為基礎，判斷你接收資訊與做決定的傾向；最後 2 題是延伸題。結果會顯示你的 4 字母型號和對應的靈魂原型名。</p>
+            <p>這是一個自我探索的工具，不是心理診斷，也不預測你的命運。</p>
+          </div>
+        </section>
+
+        {/* 6｜使用流程 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">會不會很麻煩</div>
+          <h2 className="sv-h2">三個步驟，大約兩分鐘</h2>
+          <div className="v2-steps">
+            <div className="v2-step"><b>1</b><div><h3>回答 14 題</h3><p>都是生活情境，憑直覺選，大約 2 分鐘。</p></div></div>
+            <div className="v2-step"><b>2</b><div><h3>立刻看到結果</h3><p>不用註冊、不用留 Email，答完就顯示。</p></div></div>
+            <div className="v2-step"><b>3</b><div><h3>想多了解再決定</h3><p>想看延伸解讀，可以自己選擇加入 LINE；不加也完全沒關係。</p></div></div>
+          </div>
+        </section>
+
+        {/* 7｜FAQ */}
+        <section className="sv-sec">
+          <div className="sv-kicker">常見問題</div>
+          <h2 className="sv-h2">開始之前，你可能想知道</h2>
+          <div className="v2-faq">
+            <details open><summary>真的免費嗎？</summary><p>測驗和基本結果都免費，不需要付款。</p></details>
+            <details><summary>需要註冊或留資料嗎？</summary><p>不用註冊，也不用留下姓名或 Email，答完就能看到結果。</p></details>
+            <details><summary>我的作答和結果會被保存嗎？</summary><p>你的 14 題答案會直接在瀏覽器中計算，不需要提供姓名或 Email。</p><p>完成後，結果類型會保存在目前使用的瀏覽器，方便你之後回來查看。按頁尾的「重新測驗」會清除已保存的結果類型；從其他「開始測驗」入口重新作答時，不會先刪除原本的結果。</p><p>網站也會使用必要的網站主機、流量統計及第三方網頁服務，相關資料依各服務的政策處理。詳情可查看<a href="privacy.html" style={{color:"#2b3a67"}}>隱私權政策</a>。</p></details>
+            <details><summary>和一般 16 型人格測驗一樣嗎？</summary><p>這個測驗以 16 型人格架構作為探索起點。結果會顯示你的 4 字母型號，以及 Soul Universe 為它設計的「靈魂原型」名稱，例如「土魂」。</p><p>它不是官方 MBTI 測驗，而是 Soul Universe 的自我探索版本。</p></details>
+            <details><summary>結果準嗎？</summary><p>這是一個幫助你觀察自己、開始自我探索的工具，不是心理診斷，也不代表一個人全部的樣子。</p><p>如果有些地方很有共鳴，可以把它當成理解自己的起點；如果有些地方不像你，也可以留意自己真正的感受與經驗。</p></details>
+          </div>
+        </section>
+
+        {/* 8｜品牌介紹 */}
+        <section className="sv-sec">
+          <div className="sv-kicker">關於靈魂宇宙</div>
+          <div className="v2-brand">
+            <p className="core">一個陪你看見自己，一個陪你慢慢走。</p>
+            <p>靈魂宇宙想做的，是讓你更了解自己，也更懂身邊的人。Mira 和 Milo 會陪你從這個測驗開始。</p>
+          </div>
+        </section>
+
+        {/* 9｜最後 CTA */}
+        <section className="v2-final">
+          <h2>準備好認識自己了嗎？</h2>
+          <p>14 個生活情境，大約 2 分鐘。</p>
+          <button onClick={()=>{setPage("test");setQIdx(0);setAns([]);setSubAns([]);setTestPhase("mbti");}} className="sv-btn">免費開始測驗</button>
+          <small>不用註冊・立即看結果</small>
+        </section>
+
+        {/* 10｜頁尾 */}
+        <footer className="v2-foot">
+          <div className="mini">測完之後，還可以看看</div>
+          <div className="v2-daily">今日的一句提醒 · {getDateStr()}<br/><q>{GENERIC_REFLECT.remind[di]}</q></div>
+          <div className="v2-links">
+            {mbtiType && <button onClick={resetAll}>↺ 重新測驗</button>}
+            {/* 今日靈語中心入口暫時隱藏（B＋，功能保留） */}
+            {/* 靈魂配對入口暫時隱藏（2026-10-07 Ula 核准，功能保留）：<button onClick={()=>setPage("compat")}>靈魂配對分析</button> */}
+            <a href="https://parenting.souluniverse.app">靈魂親子</a>
+            <a href="https://work.souluniverse.app">靈魂職場</a>
+            <a href="https://love.souluniverse.app">靈魂情感</a>
+            <a href="https://mingli.souluniverse.app">靈魂命理</a>
+          </div>
+          <div className="mini" style={{marginTop:22,lineHeight:1.9}}>聯絡我們<br/>Email：<a href="mailto:souluniversestudio@gmail.com" style={{color:"#2b3a67"}}>souluniversestudio@gmail.com</a><br/>LINE 官方帳號：<a href="https://line.me/R/ti/p/@555ynysz" target="_blank" rel="noopener" style={{color:"#2b3a67"}}>@555ynysz</a><br/><a href="privacy.html" style={{color:"#2b3a67"}}>隱私權政策</a></div>
+          {/* 命理入口已於 2026-09-05 移除（首頁卡）。今日閘門能量（連往 souluniverse.app）V2 先拿掉，減少出口；見 content/V2-文案與區塊說明.md */}
+        </footer>
+      </div></div>
     </div>
   );
 
@@ -967,52 +1156,29 @@ function SoulApp() {
         <div style={W}>
           <div style={{padding:"32px 0",animation:"fu 0.6s ease both"}}>
             <div style={{textAlign:"center",marginBottom:20}}>
+              <div style={{fontSize:13,color:"rgba(255,255,255,0.45)",letterSpacing:2,marginBottom:8}}>你的探索結果</div>
               <div style={{fontSize:66,filter:`drop-shadow(0 0 16px ${S.glow})`,marginBottom:10}}>{S.emoji}</div>
               <TypeChip type={mbtiType} st={subtype} size="lg"/>
-              <div style={{color:"rgba(255,255,255,0.4)",fontSize:14,marginTop:8}}>{S.en} · {ST.nick}</div>
-              <div style={{display:"inline-block",background:"rgba(255,255,255,0.05)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:20,padding:"3px 12px",fontSize:13,color:"rgba(255,255,255,0.4)",marginTop:6}}>
-                全球約 {ST.rare} 的靈魂
-              </div>
+              <div style={{color:"rgba(255,255,255,0.4)",fontSize:14,marginTop:8}}>{S.en}</div>
             </div>
 
-            {/* Core desc */}
-            <div style={{...C(),border:`1px solid ${S.color}22`,background:`${S.glow}08`,marginBottom:12}}>
-              <p style={{margin:0,fontSize:16,lineHeight:1.8,color:"rgba(255,255,255,0.75)",textAlign:"center",fontStyle:"italic"}}>「{ST.desc}」</p>
+            {/* B＋ 通用反思語句（不依型號或子型分配） */}
+            <p style={{margin:"0 0 10px",fontSize:12.5,color:"rgba(255,255,255,0.4)",textAlign:"center",lineHeight:1.7}}>以下是每天換一次、給每個人的反思語句，不是依你的作答推算的結果。</p>
+            <div style={{...C({padding:16}),border:`1px solid ${S.color}18`,marginBottom:10}}>
+              <div style={{fontSize:12,color:S.color,marginBottom:6,letterSpacing:1}}>今日的一句提醒</div>
+              <p style={{margin:0,fontSize:16,lineHeight:1.7,fontStyle:"italic",color:"rgba(255,255,255,0.75)"}}>「{GENERIC_REFLECT.remind[di]}」</p>
+            </div>
+            <div style={{...C({padding:16}),border:`1px solid ${S.color}18`,marginBottom:10}}>
+              <div style={{fontSize:12,color:S.color,marginBottom:6,letterSpacing:1}}>今天可以試試的小行動</div>
+              <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.65)"}}>{GENERIC_REFLECT.act[di]}</p>
+            </div>
+            <div style={{...C({textAlign:"center",padding:16}),border:`1px solid ${S.color}18`,marginBottom:12}}>
+              <div style={{fontSize:12,color:"rgba(255,255,255,0.35)",marginBottom:6,letterSpacing:1}}>給自己的一句話</div>
+              <p style={{margin:0,fontSize:16,color:S.color,fontStyle:"italic",fontWeight:600,lineHeight:1.7}}>「{GENERIC_REFLECT.self[di]}」</p>
             </div>
 
-            {/* Today 2-col */}
-            <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:10,marginBottom:12}}>
-              <div style={{...C({padding:14}),border:`1px solid ${S.color}18`}}>
-                <div style={{fontSize:12,color:S.color,marginBottom:6,letterSpacing:1}}>🌙 今日靈語</div>
-                <p style={{margin:0,fontSize:15,lineHeight:1.7,fontStyle:"italic",color:"rgba(255,255,255,0.7)"}}>「{ST.daily[di]}」</p>
-              </div>
-              <div style={{...C({padding:14}),border:`1px solid ${S.color}18`}}>
-                <div style={{fontSize:12,color:S.color,marginBottom:6,letterSpacing:1}}>🌱 今日成長</div>
-                <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.55)"}}>{ST.growth[di]}</p>
-              </div>
-            </div>
-
-            {/* Affirmation */}
-            <div style={{...C({textAlign:"center"}),border:`1px solid ${S.color}18`,marginBottom:12}}>
-              <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:8,letterSpacing:1}}>✦ 今日靈魂宣言 ✦</div>
-              <p style={{margin:0,fontSize:17,color:S.color,fontStyle:"italic",fontWeight:600,lineHeight:1.7}}>「{ST.affirmation[di%3]}」</p>
-            </div>
-
-            {/* Subtype info */}
-            <div style={{...C(),marginBottom:12}}>
-              <div style={{fontSize:12,color:"rgba(255,255,255,0.3)",marginBottom:10,letterSpacing:1}}>🔬 你的64型代碼</div>
-              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
-                {Object.entries(SUBTYPE_LABELS).map(([k,label])=>(
-                  <div key={k} style={{background:k===subtype?`${S.color}18`:"rgba(255,255,255,0.03)",border:`1px solid ${k===subtype?S.color+"44":"rgba(255,255,255,0.06)"}`,borderRadius:10,padding:"10px 12px"}}>
-                    <div style={{fontSize:13,fontFamily:"monospace",color:k===subtype?S.color:"rgba(255,255,255,0.35)",fontWeight:k===subtype?700:400,marginBottom:3}}>{mbtiType}-{k.slice(0,1)}-{k.slice(1)} {k===subtype?"← 你":""}</div>
-                    <div style={{fontSize:13,color:"rgba(255,255,255,0.4)"}}>{SUBTYPE_DESC[k]}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <button onClick={()=>setShowShare(true)} className="bh" style={B("linear-gradient(135deg,#F472B6,#8B7CF6)",{marginBottom:8})}>🎴 分享我的靈魂密碼</button>
-            <button onClick={()=>setPage("daily")} className="bh" style={B("rgba(255,255,255,0.07)",{border:"1px solid rgba(255,255,255,0.1)"})}> 🌙 進入我的每日靈語中心</button>
+            <button onClick={()=>setShowShare(true)} className="bh" style={B("linear-gradient(135deg,#F472B6,#8B7CF6)",{marginBottom:8})}>🎴 分享我的靈魂原型</button>
+            {/* 每日靈語中心入口暫時隱藏（B＋：該頁為子型內容，功能保留）：<button onClick={()=>setPage("daily")}> 🌙 進入我的每日靈語中心</button> */}
             <div style={{width:"100%",marginTop:8,marginBottom:8}}>
               {/* ── 加 LINE：領延伸解讀（2026-09-05 加）──
     位置刻意放在四個產品連結「之前」：她剛看完今日靈語，情緒是想多看一點，
@@ -1039,11 +1205,11 @@ function SoulApp() {
                 </a>
                 <p style={{margin:"10px 0 0", fontSize:12, lineHeight:1.7, color:"rgba(255,255,255,0.35)", textAlign:"center"}}>
                   基本結果已經顯示，不加入也沒關係。<br/>
-                  LINE 只用來傳送類型解讀與相關工具，不會天天打擾你。
+                  LINE 可用來接收類型延伸內容、相關工具，也可用於客服與必要聯繫。
                 </p>
               </div>
 
-              <div style={{fontSize:11,color:"rgba(255,255,255,0.25)",textAlign:"center",letterSpacing:"0.15em",marginBottom:10,fontFamily:"sans-serif"}}>✦ 根據你的型號，這些指南最適合你 ✦</div>
+              <div style={{fontSize:11,color:"rgba(255,255,255,0.25)",textAlign:"center",letterSpacing:"0.15em",marginBottom:10,fontFamily:"sans-serif"}}>✦ 想把結果用在關係裡，可以看看這些指南 ✦</div>
               <a href="https://parenting.souluniverse.app" style={{display:"flex",alignItems:"center",gap:12,background:"rgba(212,136,42,0.08)",border:"1px solid rgba(212,136,42,0.2)",borderRadius:12,padding:"14px 16px",marginBottom:8,textDecoration:"none",cursor:"pointer"}}>
                 <span style={{fontSize:22,flexShrink:0}}>👨‍👩‍👧</span>
                 <div style={{flex:1}}>
@@ -1194,7 +1360,7 @@ function SoulApp() {
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>
                 {[
                   {icon:"🌱",title:"靈魂親子",desc:"找到孩子聽得進去的頻道",color:"#c4794a",url:"https://parenting.souluniverse.app"},
-                  {icon:"💕",title:"靈魂配對",desc:"查看你的靈魂緣分",color:"#F472B6",url:null,action:()=>setPage("compat")},
+                  /* 靈魂配對入口暫時隱藏（2026-10-07，功能保留）：{icon:"💕",title:"靈魂配對",desc:"查看你的靈魂緣分",color:"#F472B6",url:null,action:()=>setPage("compat")}, */
                 ].map((item)=>(
                   <button
                     key={item.title}
@@ -1237,14 +1403,14 @@ function SoulApp() {
       const base = sameAO&&sameHC?82:sameAO||sameHC?74:66;
       return{lv:"宇宙牽引",score:base+Math.floor(Math.random()*12),desc:"你們的相遇是宇宙的精心編排，有著值得深入探索的靈魂連結，也有需要共同學習的課題。"};
     };
-    const cm=getC(p1,p1sub,p2,p2sub);
+    const cm=getC(p1,null,p2,null);
     return (
       <div style={base}><BG/>
         <div style={W}>
           <div style={{padding:"28px 0"}}>
             <div style={{display:"flex",alignItems:"center",gap:10,marginBottom:18}}>
               <button onClick={()=>setPage("home")} style={{background:"rgba(255,255,255,0.07)",border:"none",color:"white",padding:"6px 11px",borderRadius:10,cursor:"pointer",fontSize:14}}>←</button>
-              <div><div style={{fontWeight:700,fontSize:16}}>💕 64型靈魂配對分析</div><div style={{color:"rgba(255,255,255,0.3)",fontSize:13}}>輸入雙方的完整靈魂代碼</div></div>
+              <div><div style={{fontWeight:700,fontSize:16}}>💕 靈魂配對分析</div><div style={{color:"rgba(255,255,255,0.3)",fontSize:13}}>選擇雙方的 16 型人格</div></div>
             </div>
             <div style={C()}>
               {[{label:"你的靈魂型號",type:p1,setType:setP1,sub:p1sub,setSub:setP1sub,ac:"#8B7CF6"},{label:"對方的靈魂型號",type:p2,setType:setP2,sub:p2sub,setSub:setP2sub,ac:"#F472B6"}].map((f,i)=>(
@@ -1254,13 +1420,6 @@ function SoulApp() {
                     <option value="" style={{background:"#0d0a1a"}}>選擇16型人格</option>
                     {MBTI_KEYS.map(t=><option key={t} value={t} style={{background:"#0d0a1a"}}>{t} · {SOULS[t].emoji} {SOULS[t].name} ({SOULS[t].en})</option>)}
                   </select>
-                  <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:4}}>
-                    {Object.entries(SUBTYPE_LABELS).map(([k,label])=>(
-                      <button key={k} onClick={()=>f.setSub(k)} style={{padding:"6px 4px",background:f.sub===k?`${f.ac}22`:"rgba(255,255,255,0.04)",border:`1px solid ${f.sub===k?f.ac+"44":"rgba(255,255,255,0.08)"}`,borderRadius:8,color:f.sub===k?"white":"rgba(255,255,255,0.4)",fontSize:12,cursor:"pointer",fontFamily:"monospace"}}>
-                        {k.slice(0,1)}-{k.slice(1)}
-                      </button>
-                    ))}
-                  </div>
                   {f.type && <div style={{marginTop:6}}><TypeChip type={f.type} st={f.sub} size="sm"/></div>}
                 </div>
               ))}
@@ -1278,12 +1437,6 @@ function SoulApp() {
                     {p2&&<TypeChip type={p2} st={p2sub} size="sm"/>}
                   </div>
                   <div style={{fontWeight:800,fontSize:21,color:"#F472B6",marginBottom:8}}>{cm.lv}</div>
-                  <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:8}}>
-                    <div style={{flex:1,maxWidth:100,background:"rgba(255,255,255,0.07)",borderRadius:20,height:4,overflow:"hidden"}}>
-                      <div style={{width:`${cm.score}%`,height:"100%",background:"linear-gradient(90deg,#F472B6,#8B7CF6)",borderRadius:20}}/>
-                    </div>
-                    <span style={{color:"#F472B6",fontWeight:700,fontSize:16}}>{cm.score}%</span>
-                  </div>
                 </div>
                 <div style={{background:"rgba(0,0,0,0.18)",borderRadius:10,padding:12,marginBottom:10}}>
                   <p style={{margin:0,fontSize:15,lineHeight:1.7,color:"rgba(255,255,255,0.65)",fontStyle:"italic"}}>「{cm.desc}」</p>
