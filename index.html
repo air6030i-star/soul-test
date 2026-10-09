@@ -220,6 +220,24 @@
   .sx-cta{margin-top:10px}
   .sx-h1{font-size:clamp(22px,7.2vw,28px)}
 }
+
+/* ── 四領域探索卡片（soul-home-four-paths，依「網站四領域卡片規格 v1」）── */
+.fp-kicker{color:#9A573F}
+.fp-sub{text-align:center;color:#5a5868;font-size:15px;line-height:1.75;margin:-14px auto 28px;max-width:30em}
+.fp-grid{display:grid;grid-template-columns:1fr;gap:18px}
+.fp-card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fbf6ee;border:1px solid rgba(36,48,79,.1);border-radius:22px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.fp-card:hover{transform:translateY(-3px);box-shadow:0 14px 32px rgba(120,90,60,.14)}
+.fp-card:focus-visible{outline:3px solid #2b3a67;outline-offset:3px}
+.fp-text{padding:22px 22px 6px}
+.fp-tag{display:inline-block;font-size:22px;letter-spacing:.08em;font-weight:700;padding:7px 18px;border-radius:999px}
+.fp-card h3{font-family:"Noto Serif TC",serif;font-weight:500;font-size:clamp(19px,5.2vw,22px);line-height:1.45;color:#24304f;margin:12px 0 8px}
+.fp-card p{margin:0;font-size:14.5px;line-height:1.75;color:#55526a}
+.fp-img{display:block;width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;background:#f3ebdf}
+.fp-cta{display:flex;align-items:center;justify-content:space-between;padding:14px 22px 18px;font-size:15px;font-weight:700;color:#2b3a67}
+.fp-cta span{font-size:18px;transition:transform .2s}
+.fp-card:hover .fp-cta span{transform:translateX(4px)}
+@media(min-width:760px){.fp-grid{grid-template-columns:1fr 1fr;gap:24px}}
+@media (prefers-reduced-motion:reduce){.fp-card,.fp-cta span{transition:none}.fp-card:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -1041,6 +1059,51 @@ function SoulApp() {
           </div>
         </section>
 
+        {/* 6.5｜四領域探索路徑（soul-home-four-paths；Orange 親子／Ruby 職場／Milo 情感／Oreo 命理） */}
+        <section className="sv-sec">
+          <div className="sv-kicker fp-kicker">SOUL UNIVERSE PATHS</div>
+          <h2 className="sv-h2">從認識自己，走向更深的探索</h2>
+          <p className="fp-sub">每一條路，都從不同角度陪你看見自己與關係。</p>
+          <div className="fp-grid">
+            <a className="fp-card" href="https://parenting.souluniverse.app">
+              <div className="fp-text">
+                <span className="fp-tag" style={{background:"#f3e1cc",color:"#84491f"}}>靈魂親子</span>
+                <h3>先看懂自己，再慢慢讀懂孩子</h3>
+                <p>從彼此不同的反應與溝通方式開始，慢慢理解親子關係裡反覆出現的卡點。</p>
+              </div>
+              <img className="fp-img" src="su-domain-parenting-orange-v1-800.webp" srcSet="su-domain-parenting-orange-v1-800.webp 800w, su-domain-parenting-orange-v1.webp 1600w" sizes="(min-width:760px) 460px, 100vw" alt="Orange：暖橘虎斑貓坐在窗邊毯子上，旁邊有一本繪本" loading="lazy" decoding="async" width="800" height="1000"/>
+              <div className="fp-cta">前往探索<span aria-hidden="true">→</span></div>
+            </a>
+            <a className="fp-card" href="https://work.souluniverse.app">
+              <div className="fp-text">
+                <span className="fp-tag" style={{background:"#e1e7ee",color:"#3e5570"}}>靈魂職場</span>
+                <h3>看見你在工作裡，總是怎麼前進</h3>
+                <p>從溝通、判斷與合作方式，觀察自己在職場裡反覆出現的模式。</p>
+              </div>
+              <img className="fp-img" src="su-domain-work-ruby-v1-800.webp" srcSet="su-domain-work-ruby-v1-800.webp 800w, su-domain-work-ruby-v1.webp 1600w" sizes="(min-width:760px) 460px, 100vw" alt="Ruby：灰棕虎斑白貓在書桌上，一隻前腳踩著筆記本" loading="lazy" decoding="async" width="800" height="1000"/>
+              <div className="fp-cta">前往探索<span aria-hidden="true">→</span></div>
+            </a>
+            <a className="fp-card" href="https://love.souluniverse.app">
+              <div className="fp-text">
+                <span className="fp-tag" style={{background:"#f4e1e1",color:"#9a4f5e"}}>靈魂情感</span>
+                <h3>看懂關係，也別忘了把自己帶回來</h3>
+                <p>從重要關係裡反覆出現的互動，慢慢看見彼此，也看見自己的需要。</p>
+              </div>
+              <img className="fp-img" src="su-domain-emotion-milo-v1-800.webp" srcSet="su-domain-emotion-milo-v1-800.webp 800w, su-domain-emotion-milo-v1.webp 1600w" sizes="(min-width:760px) 460px, 100vw" alt="Milo：黑白賓士貓趴在黃昏窗邊的軟墊上" loading="lazy" decoding="async" width="800" height="1000"/>
+              <div className="fp-cta">前往探索<span aria-hidden="true">→</span></div>
+            </a>
+            <a className="fp-card" href="https://mingli.souluniverse.app">
+              <div className="fp-text">
+                <span className="fp-tag" style={{background:"#e2e4ee",color:"#2f3b66"}}>靈魂命理</span>
+                <h3>換一個系統，看見生命裡反覆出現的線索</h3>
+                <p>從八字、紫微、人類圖與西占等不同系統，探索自己的生命脈絡與個人特質。</p>
+              </div>
+              <img className="fp-img" src="su-domain-mingli-oreo-v1-800.webp" srcSet="su-domain-mingli-oreo-v1-800.webp 800w, su-domain-mingli-oreo-v1.webp 1600w" sizes="(min-width:760px) 460px, 100vw" alt="Oreo：黑白賓士貓端坐在深藍毯子上，旁邊是金色渾天儀" loading="lazy" decoding="async" width="800" height="1000"/>
+              <div className="fp-cta">前往探索<span aria-hidden="true">→</span></div>
+            </a>
+          </div>
+        </section>
+
         {/* 7｜FAQ */}
         <section className="sv-sec">
           <div className="sv-kicker">常見問題</div>
@@ -1079,10 +1142,6 @@ function SoulApp() {
             {mbtiType && <button onClick={resetAll}>↺ 重新測驗</button>}
             {/* 今日靈語中心入口暫時隱藏（B＋，功能保留） */}
             {/* 靈魂配對入口暫時隱藏（2026-10-07 Ula 核准，功能保留）：<button onClick={()=>setPage("compat")}>靈魂配對分析</button> */}
-            <a href="https://parenting.souluniverse.app">靈魂親子</a>
-            <a href="https://work.souluniverse.app">靈魂職場</a>
-            <a href="https://love.souluniverse.app">靈魂情感</a>
-            <a href="https://mingli.souluniverse.app">靈魂命理</a>
           </div>
           <div className="mini" style={{marginTop:22,lineHeight:1.9}}>聯絡我們<br/>Email：<a href="mailto:souluniversestudio@gmail.com" style={{color:"#2b3a67"}}>souluniversestudio@gmail.com</a><br/>LINE 官方帳號：<a href="https://line.me/R/ti/p/@555ynysz" target="_blank" rel="noopener" style={{color:"#2b3a67"}}>@555ynysz</a><br/><a href="privacy.html" style={{color:"#2b3a67"}}>隱私權政策</a></div>
           {/* 命理入口已於 2026-09-05 移除（首頁卡）。今日閘門能量（連往 souluniverse.app）V2 先拿掉，減少出口；見 content/V2-文案與區塊說明.md */}
